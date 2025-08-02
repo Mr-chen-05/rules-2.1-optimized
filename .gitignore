@@ -1,0 +1,85 @@
+# Rules 2.1 Optimized - Git忽略文件
+
+# 临时文件
+*.tmp
+*.temp
+*.log
+*.bak
+*.swp
+*.swo
+*~
+
+# 系统文件
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# IDE和编辑器文件
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.atom/
+.brackets.json
+
+# Node.js (如果有MCP工具相关)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Python (如果有MCP工具相关)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.env
+.venv
+
+# 测试和构建文件
+dist/
+build/
+coverage/
+.nyc_output/
+.coverage
+htmlcov/
+
+# 配置文件中的敏感信息
+config.local.*
+.env.local
+.env.production
+secrets.json
+mcp-config-local.json
+
+# 用户特定的配置文件
+user-config.json
+personal-settings.json
+
+# 备份文件
+*.backup
+*.orig
+
+# 压缩文件
+*.zip
+*.rar
+*.7z
+*.tar.gz
+
+# 项目特定的临时文件
+test-project/
+demo-project/
+temp-install/
+.test-*
+
+#工具脚本
+tools/

@@ -1,0 +1,181 @@
+---
+description: "Standard commit workflow with conventional format and emojis - 标准化提交工作流"
+globs: ["**/*"]
+alwaysApply: true
+---
+
+# 📝 Commit Workflow - 提交工作流
+
+创建格式良好的提交，使用约定式提交格式和描述性表情符号。
+
+## 🚀 Commands - 命令
+
+- `/commit` - 标准提交（包含预提交检查）
+- `/commit --no-verify` - 跳过预提交检查的快速提交
+- `/commit-fast` - 快速提交工作流，自动选择第一个消息
+
+## ✨ Features - 功能特性
+
+- 默认运行预提交检查（lint、build、生成文档）
+- 如果没有暂存文件，自动暂存文件
+- 使用约定式提交格式和描述性表情符号
+- 建议为不同关注点拆分提交
+
+## 📋 Commit Types - 提交类型
+
+| 类型 | 表情符号 | 描述 | 示例 |
+|------|----------|------|------|
+| **feat** | ✨ | 新功能 | `✨ feat: 添加用户认证功能` |
+| **fix** | 🐛 | Bug修复 | `🐛 fix: 修复登录页面验证错误` |
+| **docs** | 📝 | 文档变更 | `📝 docs: 更新API文档` |
+| **refactor** | ♻️ | 重构代码 | `♻️ refactor: 重构用户服务层` |
+| **style** | 🎨 | 代码格式 | `🎨 style: 格式化代码，添加缺失分号` |
+| **perf** | ⚡️ | 性能改进 | `⚡️ perf: 优化数据库查询性能` |
+| **test** | ✅ | 测试相关 | `✅ test: 添加用户注册单元测试` |
+| **chore** | 🧑‍💻 | 工具配置 | `🧑‍💻 chore: 更新构建配置` |
+| **wip** | 🚧 | 进行中的工作 | `🚧 wip: 用户权限功能开发中` |
+| **remove** | 🔥 | 删除代码 | `🔥 remove: 删除废弃的API接口` |
+| **hotfix** | 🚑 | 紧急修复 | `🚑 hotfix: 修复生产环境登录问题` |
+| **security** | 🔒 | 安全改进 | `🔒 security: 加强密码加密机制` |
+
+## 📋 Process - 提交流程
+
+### 1. 检查暂存变更
+```bash
+git status
+```
+
+### 2. 如果没有暂存变更，审查并暂存适当的文件
+```bash
+git add <files>
+# 或者暂存所有变更
+git add .
+```
+
+### 3. 运行预提交检查（除非使用 --no-verify）
+- 代码检查 (lint)
+- 构建验证
+- 测试运行
+- 文档生成
+
+### 4. 分析变更以确定提交类型
+- 查看修改的文件和内容
+- 确定主要变更类型
+- 考虑是否需要拆分为多个提交
+
+### 5. 生成描述性提交消息
+- 使用格式：`emoji type(scope): description`
+- 包含作用域（如适用）：`type(scope): description`
+- 为复杂变更添加正文，解释原因
+- 引用相关问题/PR
+
+### 6. 执行提交
+```bash
+git commit -m "✨ feat(auth): 添加JWT认证中间件
+
+- 实现JWT token生成和验证
+- 添加认证中间件到路由保护
+- 更新用户模型包含token字段
+
+Closes #123"
+```
+
+## ✅ Best Practices - 最佳实践
+
+### 提交原则
+- **原子性** - 保持提交专注和原子化
+- **命令式语气** - 使用"添加功能"而不是"已添加功能"
+- **解释原因** - 说明为什么，而不仅仅是什么
+- **引用问题** - 在相关时引用问题/PR
+- **拆分变更** - 将不相关的变更拆分为单独的提交
+
+### 消息格式
+```
+<emoji> <type>(<scope>): <description>
+
+<body>
+
+<footer>
+```
+
+### 示例提交消息
+
+**简单功能添加：**
+```
+✨ feat: 添加用户头像上传功能
+```
+
+**带作用域的修复：**
+```
+🐛 fix(api): 修复用户查询接口分页错误
+```
+
+**复杂变更带正文：**
+```
+♻️ refactor(database): 重构用户数据访问层
+
+- 将原始SQL查询迁移到ORM
+- 添加数据库连接池配置
+- 优化查询性能和内存使用
+
+性能提升约30%，代码可维护性显著改善
+
+Closes #456
+```
+
+## 🔧 Pre-commit Checks - 预提交检查
+
+### 自动运行的检查
+1. **代码检查** - ESLint, Prettier, 等
+2. **类型检查** - TypeScript, mypy, 等
+3. **测试运行** - 单元测试和集成测试
+4. **构建验证** - 确保代码可以成功构建
+5. **文档生成** - 自动更新API文档
+
+### 跳过检查
+```bash
+# 紧急情况下跳过预提交检查
+git commit --no-verify -m "🚑 hotfix: 紧急修复生产问题"
+```
+
+## 📋 Checklist - 检查清单
+
+### 提交前
+- [ ] 变更已审查和测试
+- [ ] 提交消息清晰描述性
+- [ ] 使用正确的提交类型和表情符号
+- [ ] 包含相关的作用域
+- [ ] 引用相关问题/PR
+
+### 提交后
+- [ ] 推送到远程仓库
+- [ ] 检查CI/CD流水线状态
+- [ ] 更新相关文档
+- [ ] 通知团队成员（如需要）
+
+## 🎯 Integration - 集成
+
+### Git Hooks
+```bash
+# 安装预提交钩子
+npm install --save-dev husky lint-staged
+
+# 配置 package.json
+{
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,vue}": ["eslint --fix", "git add"],
+    "*.{css,scss}": ["stylelint --fix", "git add"]
+  }
+}
+```
+
+### 与CI/CD集成
+- 自动触发构建和测试
+- 代码质量检查
+- 自动部署到测试环境
+- 生成变更日志

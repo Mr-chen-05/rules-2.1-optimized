@@ -1,0 +1,220 @@
+---
+description: "Comprehensive documentation generation - 全面的文档生成"
+globs: ["**/*.md", "**/*.mdx", "**/*.rst", "**/*.txt"]
+alwaysApply: false
+---
+
+# 📝 Documentation Creation - 文档创建
+
+生成全面、结构化的项目文档。
+
+## 🚀 Commands - 命令
+
+- `/create-docs` - 创建完整文档
+- `/api-docs` - 生成API文档
+- `/user-guide` - 创建用户指南
+- `/dev-docs` - 开发者文档
+
+## 📋 Process - 文档流程
+
+### 1. 📊 文档规划 (Documentation Planning)
+- 分析目标受众和使用场景
+- 确定文档结构和内容范围
+- 选择合适的文档工具和格式
+- **转换条件**：文档规划完整，结构清晰
+
+### 2. ✍️ 内容创建 (Content Creation)
+- 编写核心文档内容
+- 添加代码示例和截图
+- 创建图表和流程图
+- **转换条件**：内容完整，质量达标
+
+### 3. 🔍 审查优化 (Review & Optimization)
+- 检查内容准确性和完整性
+- 优化文档结构和可读性
+- 添加导航和索引
+- **转换条件**：文档质量优秀，用户友好
+
+### 4. 🚀 发布维护 (Publish & Maintain)
+- 发布到文档平台
+- 设置自动更新机制
+- 收集用户反馈
+- **转换条件**：文档发布成功，维护机制完善
+
+## 📚 Documentation Types - 文档类型
+
+### 用户文档 (User Documentation)
+- **README** - 项目概述和快速开始
+- **用户指南** - 详细使用说明
+- **FAQ** - 常见问题解答
+- **教程** - 分步骤学习指南
+
+### 开发者文档 (Developer Documentation)
+- **API文档** - 接口规范和示例
+- **架构文档** - 系统设计和结构
+- **贡献指南** - 开发参与规范
+- **部署指南** - 环境配置和部署
+
+### 技术文档 (Technical Documentation)
+- **设计文档** - 技术方案和决策
+- **测试文档** - 测试策略和用例
+- **运维文档** - 监控和故障处理
+- **变更日志** - 版本更新记录
+
+## 🛠️ Documentation Tools - 文档工具
+
+### 静态站点生成器
+- **VitePress** - Vue生态文档工具
+- **Docusaurus** - React生态文档平台
+- **GitBook** - 在线文档协作
+- **Notion** - 团队知识库
+
+### API文档工具
+- **Swagger/OpenAPI** - REST API文档
+- **GraphQL Playground** - GraphQL API文档
+- **Postman** - API测试和文档
+- **Insomnia** - API设计和测试
+
+### 图表工具
+- **Mermaid** - 代码化图表
+- **Draw.io** - 在线图表编辑
+- **PlantUML** - UML图表生成
+- **Excalidraw** - 手绘风格图表
+
+## 📋 Documentation Template - 文档模板
+
+### README模板
+```markdown
+# 项目名称
+
+简短的项目描述
+
+## 🚀 快速开始
+
+### 安装
+\`\`\`bash
+npm install
+\`\`\`
+
+### 使用
+\`\`\`bash
+npm start
+\`\`\`
+
+## 📚 文档
+
+- [用户指南](./docs/user-guide.md)
+- [API文档](./docs/api.md)
+- [开发指南](./docs/development.md)
+
+## 🤝 贡献
+
+请阅读 [贡献指南](./CONTRIBUTING.md)
+
+## 📄 许可证
+
+[MIT](./LICENSE)
+```
+
+### API文档模板
+```markdown
+# API文档
+
+## 认证
+
+所有API请求需要包含认证头：
+\`\`\`
+Authorization: Bearer <token>
+\`\`\`
+
+## 端点
+
+### GET /api/users
+
+获取用户列表
+
+**参数：**
+- `page` (number) - 页码，默认1
+- `limit` (number) - 每页数量，默认10
+
+**响应：**
+\`\`\`json
+{
+  "data": [...],
+  "total": 100,
+  "page": 1
+}
+\`\`\`
+```
+
+## ✅ Best Practices - 最佳实践
+
+### 内容原则
+- **用户导向** - 从用户角度组织内容
+- **简洁明了** - 避免冗余和复杂表述
+- **示例丰富** - 提供充足的代码示例
+- **及时更新** - 保持文档与代码同步
+
+### 结构设计
+- **层次清晰** - 合理的标题层级
+- **导航便利** - 清晰的目录和链接
+- **搜索友好** - 关键词和标签优化
+- **移动适配** - 响应式设计
+
+### 维护策略
+- **版本控制** - 文档版本管理
+- **自动化** - 自动生成和更新
+- **反馈机制** - 用户意见收集
+- **定期审查** - 内容质量检查
+
+## 🔧 Automation - 自动化
+
+### 文档生成
+```bash
+# 生成API文档
+npm run docs:api
+
+# 生成类型文档
+npm run docs:types
+
+# 构建文档站点
+npm run docs:build
+```
+
+### CI/CD集成
+```yaml
+# .github/workflows/docs.yml
+name: Documentation
+on:
+  push:
+    branches: [main]
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Generate docs
+        run: npm run docs:build
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+```
+
+## 📋 Checklist - 检查清单
+
+### 内容检查
+- [ ] 信息准确完整
+- [ ] 示例代码可运行
+- [ ] 链接有效可访问
+- [ ] 图片清晰有意义
+
+### 结构检查
+- [ ] 目录结构合理
+- [ ] 导航清晰便利
+- [ ] 搜索功能正常
+- [ ] 移动端适配良好
+
+### 质量检查
+- [ ] 语法拼写正确
+- [ ] 格式统一规范
+- [ ] 版本信息准确
+- [ ] 更新日期最新
