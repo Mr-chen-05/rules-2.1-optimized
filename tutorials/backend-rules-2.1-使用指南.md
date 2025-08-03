@@ -258,12 +258,14 @@ mmp
 npm config get registry
 
 # 应该显示：https://registry.npmmirror.com/
+# 注意：这是淘宝镜像的新域名，旧域名 registry.npm.taobao.org 已停用
 ```
 
 **🔧 方法 2：手动切换镜像源**
 
 **切换到淘宝镜像（推荐后端开发）：**
 ```bash
+# 淘宝镜像新域名（推荐）
 npm config set registry https://registry.npmmirror.com
 ```
 
@@ -287,6 +289,10 @@ npm config set registry https://registry.npmjs.org/
 - 📦 **Spring Boot 工具** - Java 相关 npm 工具安装加速
 - 🐍 **Python 工具** - node-gyp 等编译工具安装加速
 - 🛠️ **开发工具** - nodemon、pm2 等工具快速安装
+- 🗄️ **数据库工具** - MongoDB、Redis、MySQL 相关 npm 包加速
+- 🔐 **安全工具** - bcrypt、jsonwebtoken、passport 等安全包加速
+- 📡 **API工具** - axios、request、graphql 等网络请求库加速
+- 🧪 **测试工具** - mocha、chai、supertest 等测试框架加速
 
 #### **其他环境安装：**
 - **Git 安装**：访问 https://git-scm.com 下载对应版本
