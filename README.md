@@ -1,4 +1,4 @@
-# 🎯 Rules 2.2.1 Optimized - 企业级AI助手规则体系
+# 🎯 Rules 2.2.2 Optimized - 企业级AI助手规则体系
 
 > **[🇨🇳 查看完全中文版](https://github.com/Mr-chen-05/rules-2.1-optimized-zh) | [国内镜像](https://gitee.com/czsuccess/rules-2.1-optimized-zh)**
 
@@ -216,7 +216,7 @@ cd mcp-scripts
 
 ## 📋 项目信息
 
-**Rules 2.2.1 Optimized (Enterprise Edition)** | 发布：2025年8月3日 | 质量：PERFECT (A++)
+**Rules 2.2.2 Optimized (Enterprise Edition)** | 发布：2025年8月3日 | 质量：PERFECT (A++)
 
 基于 [steipete/agent-rules](https://github.com/steipete/agent-rules) 优化扩展 | 博客作者：m0_73635308 | 邮箱：3553952458@qq.com
 

@@ -43,7 +43,7 @@
 - ✅ 完整错误处理
 - ✅ 路径安全处理
 - ✅ 标准化退出码
-- ✅ **路径检测优化**（v2.2.1新增）
+- ✅ **路径检测优化**（v2.2.2新增）
 
 ## 📋 开始前的准备（必读！）
 
@@ -230,7 +230,7 @@ Installation completed!
 - ✅ `create-docs.mdc` - 文档创建
 - ✅ `implement-task.mdc` - 任务实现
 - ✅ `feedback-enhanced.mdc` - 反馈增强
-- ✅ `mcp-intelligent-strategy.mdc` - 🧠 MCP智能策略（v2.2.1新增）
+- ✅ `mcp-intelligent-strategy.mdc` - 🧠 MCP智能策略（v2.2.2新增）
 
 ### 📋 后端脚本会集成哪些规则？
 
@@ -251,7 +251,7 @@ Installation completed!
 - ✅ `create-docs.mdc` - 文档创建
 - ✅ `implement-task.mcp` - 任务实现
 - ✅ `feedback-enhanced.mdc` - 反馈增强
-- ✅ `mcp-intelligent-strategy.mdc` - 🧠 MCP智能策略（v2.2.1新增）
+- ✅ `mcp-intelligent-strategy.mdc` - 🧠 MCP智能策略（v2.2.2新增）
 
 ### 🎯 关键区别总结
 
@@ -345,7 +345,7 @@ del /q %TEMP%\*.tmp
 │   ├── bug-fix.mdc             # 错误修复
 │   ├── mermaid.mdc             # 图表生成
 │   ├── feedback-enhanced.mdc   # 智能反馈
-│   └── mcp-intelligent-strategy.mdc  # 🧠 MCP智能策略（v2.2.1新增）
+│   └── mcp-intelligent-strategy.mdc  # 🧠 MCP智能策略（v2.2.2新增）
 ├── .trae/rules/
 │   └── frontend-complete.md    # Trae AI规则文件
 ├── CLAUDE.md                   # Claude Code规则文件 (47KB)
