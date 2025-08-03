@@ -221,6 +221,68 @@ pip install uv
 uvx mcp-feedback-enhanced@latest
 ```
 
+#### ✅ 验证安装结果
+
+**重要说明：** MCP工具分为两种类型，验证方式不同：
+
+**📦 Node.js MCP工具（4个）- 可在文件夹中看到：**
+```bash
+# 检查安装目录（应该看到4个文件夹）
+# 根据你在安装脚本中选择的路径：
+
+# 如果选择了 C:\MCP-Tools（默认选项1）
+dir "C:\MCP-Tools\node_modules\@modelcontextprotocol"
+
+# 如果选择了 D:\MCP-Tools（选项2）
+dir "D:\MCP-Tools\node_modules\@modelcontextprotocol"
+
+# 如果选择了自定义路径（选项3），替换为你的实际路径
+dir "你的自定义路径\node_modules\@modelcontextprotocol"
+
+# 应该显示：
+# server-filesystem
+# server-memory
+# server-github
+# server-everything
+```
+
+**🐍 Python MCP工具（1个）- 无法在文件夹中看到：**
+
+⚠️ **特别注意：** `mcp-feedback-enhanced` 是Python包，通过 `uvx` 安装，**不会出现在node_modules文件夹中**！
+
+**验证mcp-feedback-enhanced安装：**
+```bash
+# 检查版本（验证是否安装成功）
+uvx mcp-feedback-enhanced@latest version
+
+# 应该显示类似：
+# MCP Feedback Enhanced Enhanced v2.6.0
+# 作者: Minidoracat
+# GitHub: https://github.com/Minidoracat/mcp-feedback-enhanced
+
+# 测试功能（可选）
+uvx mcp-feedback-enhanced@latest test --web
+```
+
+**� 自动检测安装路径（推荐）：**
+```bash
+# 运行自动检测脚本，找到你的MCP工具安装位置
+.\docs\find-mcp-installation.bat
+
+# 或者运行完整验证脚本
+.\docs\verify-mcp-tools.bat
+```
+
+**�📊 完整安装验证清单：**
+- ✅ **4个Node.js包** - 在 `你的安装路径\node_modules\@modelcontextprotocol\` 中可见
+- ✅ **1个Python包** - 通过 `uvx mcp-feedback-enhanced@latest version` 验证
+- ✅ **总计5个MCP工具** - 全部安装成功
+
+**💡 路径说明：**
+- **默认路径**：`C:\MCP-Tools`（安装脚本选项1）
+- **D盘路径**：`D:\MCP-Tools`（安装脚本选项2）
+- **自定义路径**：你在安装时选择的路径（安装脚本选项3）
+
 ### 步骤3：创建配置文件
 
 #### 📁 找到MCP工具安装路径

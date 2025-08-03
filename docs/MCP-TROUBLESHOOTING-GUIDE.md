@@ -6,6 +6,37 @@
 
 ## 🚨 紧急问题快速解决
 
+### 问题0: 找不到mcp-feedback-enhanced工具
+**症状**: 在文件夹中看不到mcp-feedback-enhanced，怀疑安装失败
+
+**🔥 一键解决方案**:
+```powershell
+# 验证mcp-feedback-enhanced是否安装（这是正确的验证方式）
+uvx mcp-feedback-enhanced@latest version
+```
+
+**⚠️ 重要说明**:
+- **mcp-feedback-enhanced是Python包，不会出现在node_modules文件夹中！**
+- **这是正常现象，不是安装失败！**
+- **只能通过uvx命令验证，无法在文件管理器中看到**
+
+**详细验证方法**:
+```powershell
+# 1. 验证Node.js MCP工具（4个）- 应该在文件夹中可见
+# 根据你在安装时选择的路径：
+dir "C:\MCP-Tools\node_modules\@modelcontextprotocol"  # 默认路径（选项1）
+dir "D:\MCP-Tools\node_modules\@modelcontextprotocol"  # D盘路径（选项2）
+dir "你的安装路径\node_modules\@modelcontextprotocol"    # 自定义路径（选项3）
+# 应该显示: server-filesystem, server-memory, server-github, server-everything
+
+# 2. 验证Python MCP工具（1个）- 不在文件夹中，用命令验证
+uvx mcp-feedback-enhanced@latest version
+# 应该显示: MCP Feedback Enhanced Enhanced v2.6.0
+
+# 3. 测试功能（可选）
+uvx mcp-feedback-enhanced@latest test --web
+```
+
 ### 问题1: MCP工具完全无法启动
 **症状**: AI工具显示MCP连接失败或无响应
 
