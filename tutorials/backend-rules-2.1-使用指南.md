@@ -221,53 +221,72 @@ nvm uninstall 16.20.0
 nvm alias default 18.19.0
 ```
 
-#### **📦 npm镜像源切换教程**
+#### **🚀 npm 镜像源切换教程（解决后端依赖安装慢问题）**
 
-**为什么要切换镜像源？**
-npm默认使用国外服务器，在国内下载速度很慢，切换到国内镜像可以大幅提升下载速度。
+**🤔 为什么后端开发更需要切换镜像源？**
 
-**🚀 推荐方案：使用nrm管理镜像源**
+- 📦 **依赖包多** - 后端项目通常依赖包更多，下载时间长
+- 🏗️ **微服务架构** - 多个服务需要频繁安装依赖
+- 🛠️ **开发工具** - 需要安装各种开发和构建工具
+- 🚀 **CI/CD 流程** - 自动化部署需要快速安装依赖
+
+**🔥 方法 1：使用小满 zs 工具包（推荐）**
+
+感谢：本教程基于哔哩哔哩小满 zs 的工具包，原创教程来源于小满 zs。
+
+**步骤 1：安装小满 zs 工具包**
 ```bash
-# 安装nrm（npm registry manager）
-npm install -g nrm
-
-# 查看可用镜像源
-nrm ls
-
-# 切换到淘宝镜像（推荐）
-nrm use taobao
-
-# 测试镜像源速度
-nrm test
-
-# 验证当前镜像源
-npm config get registry
+# 全局安装小满zs工具包
+npm i xmzs -g
 ```
 
-**🔧 手动切换镜像源**
+**步骤 2：使用 mmp 命令管理镜像源**
 ```bash
-# 切换到淘宝镜像
-npm config set registry https://registry.npmmirror.com
+# 安装完成后，会生成一个mmp命令
+mmp
+```
 
-# 切换到腾讯镜像
-npm config set registry https://mirrors.cloud.tencent.com/npm/
+**步骤 3：选择淘宝镜像源**
+运行 `mmp` 命令后，会显示镜像源列表：
 
-# 恢复官方镜像
-npm config set registry https://registry.npmjs.org
+- 使用方向键选择 **taobao（淘宝镜像）**
+- 按回车键确认选择
 
+**步骤 4：验证切换成功**
+```bash
 # 查看当前镜像源
 npm config get registry
+
+# 应该显示：https://registry.npmmirror.com/
 ```
 
-**⚡ 临时使用镜像源**
+**🔧 方法 2：手动切换镜像源**
+
+**切换到淘宝镜像（推荐后端开发）：**
 ```bash
-# 临时使用淘宝镜像安装包
-npm install --registry https://registry.npmmirror.com
-
-# 使用cnpm（淘宝镜像的npm客户端）
-npm install -g cnpm --registry=https://registry.npmmirror.com
-cnpm install package-name
+npm config set registry https://registry.npmmirror.com
 ```
+
+**恢复官方镜像：**
+```bash
+npm config set registry https://registry.npmjs.org/
+```
+
+**🎯 后端开发镜像源选择建议**
+
+| 场景 | 推荐镜像源 | 原因 |
+|------|------------|------|
+| 🏗️ **微服务开发** | 淘宝镜像 | 速度快，稳定性好 |
+| 🛠️ **工具安装** | 淘宝镜像 | 工具包多，下载快 |
+| 🚀 **生产部署** | 官方镜像 | 最新版本，安全性高 |
+| 📦 **依赖管理** | 华为镜像 | 企业级稳定性 |
+
+**✅ 后端开发切换成功标志**
+
+- 🚀 **Express/Koa 安装** - 从几分钟缩短到1秒钟
+- 📦 **Spring Boot 工具** - Java 相关 npm 工具安装加速
+- 🐍 **Python 工具** - node-gyp 等编译工具安装加速
+- 🛠️ **开发工具** - nodemon、pm2 等工具快速安装
 
 #### **其他环境安装：**
 - **Git 安装**：访问 https://git-scm.com 下载对应版本

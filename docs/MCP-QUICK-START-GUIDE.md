@@ -87,34 +87,51 @@ nvm use 18.19.0       # 切换到指定版本
 
 #### 🚀 npm 镜像源配置（解决安装慢问题）
 
-如果你在中国大陆，强烈建议配置npm镜像源以提高安装速度：
+如果你在中国大陆，强烈建议配置npm镜像源以提高MCP工具安装速度：
 
 <details>
 <summary>📦 <strong>npm镜像源配置教程</strong>（点击展开）</summary>
 
-**方式1：使用淘宝镜像（推荐）**
-```bash
-# 设置淘宝镜像
-npm config set registry https://registry.npmmirror.com
+**🔥 方法 1：使用小满 zs 工具包（推荐）**
 
-# 验证配置
+感谢：本教程基于哔哩哔哩小满 zs 的工具包，原创教程来源于小满 zs。
+
+**步骤 1：安装小满 zs 工具包**
+```bash
+# 全局安装小满zs工具包
+npm i xmzs -g
+```
+
+**步骤 2：使用 mmp 命令管理镜像源**
+```bash
+# 安装完成后，会生成一个mmp命令
+mmp
+```
+
+**步骤 3：选择淘宝镜像源**
+运行 `mmp` 命令后，会显示镜像源列表：
+
+- 使用方向键选择 **taobao（淘宝镜像）**
+- 按回车键确认选择
+
+**步骤 4：验证切换成功**
+```bash
+# 查看当前镜像源
 npm config get registry
-# 应该显示：https://registry.npmmirror.com
+
+# 应该显示：https://registry.npmmirror.com/
 ```
 
-**方式2：使用cnpm（备选）**
-```bash
-# 安装cnpm
-npm install -g cnpm --registry=https://registry.npmmirror.com
+**🔧 方法 2：手动切换镜像源**
 
-# 使用cnpm安装包
-cnpm install -g @modelcontextprotocol/server-filesystem
+**切换到淘宝镜像：**
+```bash
+npm config set registry https://registry.npmmirror.com
 ```
 
-**方式3：临时使用镜像**
+**恢复官方镜像：**
 ```bash
-# 临时使用淘宝镜像安装
-npm install -g @modelcontextprotocol/server-filesystem --registry=https://registry.npmmirror.com
+npm config set registry https://registry.npmjs.org/
 ```
 
 </details>
