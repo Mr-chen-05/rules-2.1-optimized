@@ -158,46 +158,58 @@ npm config set registry https://registry.npmjs.org/
 
 ### 步骤2：安装MCP工具
 
-#### 🚀 一键安装脚本（推荐）
+#### 🚀 一键自动安装脚本（推荐）
 
-我们为您准备了自动安装脚本：
+**运行自动安装脚本：**
 
 ```bash
-# 创建MCP工具目录
+# 方法1：双击运行（推荐）
+# 在文件管理器中找到 docs/install-mcp-tools.bat，双击运行
+
+# 方法2：命令行运行
+cd docs
+.\install-mcp-tools.bat
+```
+
+**脚本功能：**
+- ✅ 让用户选择安装路径（默认：C:\MCP-Tools）
+- ✅ 自动检查Node.js和Python环境
+- ✅ 自动创建MCP工具目录
+- ✅ 自动安装所有MCP工具
+- ✅ 提供详细的安装进度和结果报告
+- ✅ 显示最终安装路径
+
+#### 🔧 手动安装（备选方案）
+
+**方案1：全局安装（简单但路径复杂）**
+```bash
+# 全局安装所有MCP工具
+npm install -g @modelcontextprotocol/server-filesystem
+npm install -g @modelcontextprotocol/server-memory
+npm install -g @modelcontextprotocol/server-github
+npm install -g @modelcontextprotocol/server-everything
+
+# 安装Python工具
+pip install uv
+```
+
+**方案2：本地安装（推荐，路径清晰）**
+```bash
+# 创建专用目录
 mkdir C:\MCP-Tools
 cd C:\MCP-Tools
 
 # 初始化项目
 npm init -y
 
-# 安装所有MCP工具
+# 逐个安装MCP工具
 npm install @modelcontextprotocol/server-filesystem
 npm install @modelcontextprotocol/server-memory
 npm install @modelcontextprotocol/server-github
 npm install @modelcontextprotocol/server-everything
 
-# 安装Python MCP工具
+# 安装Python工具
 pip install uv
-```
-
-#### 🔧 手动安装（备选）
-
-**安装Node.js MCP工具：**
-```bash
-# 全局安装（推荐）
-npm install -g @modelcontextprotocol/server-filesystem
-npm install -g @modelcontextprotocol/server-memory
-npm install -g @modelcontextprotocol/server-github
-npm install -g @modelcontextprotocol/server-everything
-
-# 或者安装到指定目录
-mkdir C:\MCP-Tools
-cd C:\MCP-Tools
-npm init -y
-npm install @modelcontextprotocol/server-filesystem
-npm install @modelcontextprotocol/server-memory
-npm install @modelcontextprotocol/server-github
-npm install @modelcontextprotocol/server-everything
 ```
 
 **安装Python MCP工具：**

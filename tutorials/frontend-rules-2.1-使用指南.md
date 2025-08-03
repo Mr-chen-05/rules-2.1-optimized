@@ -298,27 +298,50 @@ npm config set registry https://registry.npmjs.org/
 
 如果你想使用完整的智能反馈功能，需要配置MCP工具：
 
-### **3.1 快速安装**
+### **3.1 一键自动安装（推荐）**
+
+**使用自动安装脚本：**
+```bash
+# 方法1：双击运行（推荐）
+# 在文件管理器中找到 docs/install-mcp-tools.bat，双击运行
+
+# 方法2：命令行运行
+cd docs
+.\install-mcp-tools.bat
+```
+
+**脚本功能：**
+- ✅ 让用户选择安装路径（默认：C:\MCP-Tools）
+- ✅ 自动检查Node.js和Python环境
+- ✅ 自动创建MCP工具目录
+- ✅ 自动安装所有MCP工具
+- ✅ 提供详细的安装进度和结果报告
+- ✅ 显示最终安装路径
+
+### **3.2 手动安装（备选）**
+
+如果自动脚本无法使用，可以手动安装：
+
 ```bash
 # 创建MCP工具目录
-mkdir MCP-Tools
-cd MCP-Tools
+mkdir C:\MCP-Tools
+cd C:\MCP-Tools
 
 # 初始化项目
 npm init -y
 
-# 安装Node.js MCP工具
-npm install -g @modelcontextprotocol/server-filesystem
-npm install -g @modelcontextprotocol/server-memory
-npm install -g @modelcontextprotocol/server-github
-npm install -g @modelcontextprotocol/server-everything
+# 安装Node.js MCP工具（本地安装，路径清晰）
+npm install @modelcontextprotocol/server-filesystem
+npm install @modelcontextprotocol/server-memory
+npm install @modelcontextprotocol/server-github
+npm install @modelcontextprotocol/server-everything
 
 # 安装Python MCP工具
 pip install uv
 # mcp-feedback-enhanced 通过 uvx 运行，无需预安装
 ```
 
-### **3.2 配置文件**
+### **3.3 配置文件**
 
 **⚠️ 重要提醒：** 下面的配置文件是**模板**，你必须根据自己的实际情况修改，否则无法正常工作！
 
