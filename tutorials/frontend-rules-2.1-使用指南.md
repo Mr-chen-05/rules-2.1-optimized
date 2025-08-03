@@ -303,12 +303,14 @@ npm config set registry https://registry.npmjs.org/
 **使用自动安装脚本：**
 ```bash
 # 方法1：双击运行（推荐）
-# 在文件管理器中找到 docs/install-mcp-tools.bat，双击运行
+# 在文件管理器中找到 mcp-scripts/install-mcp-tools-enhanced.bat，双击运行
 
 # 方法2：命令行运行
-cd docs
-.\install-mcp-tools.bat
+cd mcp-scripts
+.\install-mcp-tools-enhanced.bat
 ```
+
+**📚 详细配置指南**：如需更详细的MCP配置说明，请参考 [MCP快速入门指南](../docs/MCP-QUICK-START-GUIDE.md) 或 [MCP详细配置指南](../docs/MCP-DETAILED-CONFIG-GUIDE.md)
 
 **脚本功能：**
 - ✅ 让用户选择安装路径（默认：C:\MCP-Tools）

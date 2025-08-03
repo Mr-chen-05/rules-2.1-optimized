@@ -2,10 +2,12 @@
 
 > **📖 目标**: 详细介绍每个MCP工具的功能、使用场景和最佳实践
 >
+> **📅 更新日期**: 2024年8月3日
+>
 > **⚠️ 新手提示**: 这是高级参考文档，建议先完成以下步骤：
 > 1. 📚 阅读 [项目简介](../README.md) 了解整体功能
-> 2. 🚀 完成 [MCP快速入门](MCP-QUICK-START-GUIDE.md) 配置工具
-> 3. 🎯 选择适合的 [前端](../tutorials/frontend-rules-2.1-使用指南.md) 或 [后端](../tutorials/backend-rules-2.1-使用指南.md) 教程
+> 2. 🚀 完成 [MCP快速入门指南](MCP-QUICK-START-GUIDE.md) 或 [MCP详细配置指南](MCP-DETAILED-CONFIG-GUIDE.md) 配置工具
+> 3. 🎯 选择适合的 [前端开发指南](../tutorials/frontend-rules-2.1-使用指南.md) 或 [后端开发指南](../tutorials/backend-rules-2.1-使用指南.md) 教程
 > 4. 然后再查看本详细功能说明
 
 ## 📋 工具概览

@@ -2,6 +2,8 @@
 
 > **目标**：让所有AI实例都具备智能的MCP工具使用能力，实现效率最大化
 >
+> **📅 更新日期**: 2024年8月3日
+>
 > **📚 相关文档**: [MCP工具详细功能参考](MCP-TOOLS-REFERENCE.md) - 了解每个工具的具体功能和使用场景
 >
 > **💡 阅读建议**: 本文档为高级策略指南，建议先完成MCP工具配置和基础使用后再阅读
@@ -176,10 +178,11 @@ flowchart TD
 
 ### 自动部署机制
 这个策略已经集成到所有安装脚本中：
-- ✅ **Augment**: `augment-frontend.bat`, `augment-backend.bat`
-- ✅ **Cursor**: `cursor-frontend.bat`, `cursor-backend.bat`
-- ✅ **Claude Code**: `claude-frontend.bat`, `claude-backend.bat`
-- ✅ **Trae AI**: `trae-frontend.bat`, `trae-backend.bat`
+- ✅ **MCP工具安装**: `mcp-scripts/install-mcp-tools-enhanced.bat`
+- ✅ **前端开发指南**: `tutorials/frontend-rules-2.1-使用指南.md`
+- ✅ **后端开发指南**: `tutorials/backend-rules-2.1-使用指南.md`
+- ✅ **快速入门指南**: `docs/MCP-QUICK-START-GUIDE.md`
+- ✅ **详细配置指南**: `docs/MCP-DETAILED-CONFIG-GUIDE.md`
 
 ### 规则文件位置
 - **项目规则**: `project-rules/mcp-intelligent-strategy.mdc`

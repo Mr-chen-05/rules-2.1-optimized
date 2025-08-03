@@ -1,347 +1,135 @@
-# 🚀 MCP工具快速入门指南 - 5分钟上手
+# 🚀 MCP工具快速入门指南
 
-> **🎯 目标**: 让完全新手在5分钟内成功配置并使用MCP工具  
-> **📱 适用**: Augment、Cursor、Claude Code、Trae AI等AI开发工具  
-> **⏱️ 预计时间**: 5-10分钟  
-
-## 📖 什么是MCP？
-
-**MCP (Model Context Protocol)** 是连接AI助手与外部工具的标准协议，让AI能够：
-- 📁 操作文件系统（读写文件、创建目录）
-- 🧠 管理记忆（保存和检索信息）
-- 🐙 集成GitHub（创建仓库、提交代码）
-- 💬 获取用户反馈（交互式确认和输入）
-- 🔧 执行各种工具命令
-
-> **📚 详细了解**: 查看 [MCP工具详细功能参考](MCP-TOOLS-REFERENCE.md) 了解每个工具的具体功能、使用场景和最佳实践
+> **🎯 目标**: 5分钟内完成MCP工具配置，立即开始使用智能反馈功能
 >
-> **💡 新手建议**: 建议先完成本快速入门指南，成功配置MCP工具后再深入学习详细功能
+> **📱 适用**: 所有AI开发工具（Augment、Cursor、Claude Code、Trae AI等）
+>
+> **⏱️ 预计时间**: 5-10分钟
+>
+> **📅 更新日期**: 2024年8月3日
 
-## 🎯 一键配置（推荐方式）
+## 🔥 方式一：自动配置（推荐新手）
 
-### 步骤1：检查和配置环境
+> **🎯 特点**：脚本自动安装MCP工具并生成配置文件，无需手动配置
+>
+> **⏱️ 时间**：3-5分钟
+>
+> **💡 适合**：新手用户、快速体验、标准配置需求
 
-#### 🔍 环境检查
-```powershell
-# 检查Node.js（必需）
-node --version
-# 应该显示 v16.0.0 或更高版本
+### 📋 脚本版本选择
 
-# 检查Python（必需）
-python --version
-# 应该显示 Python 3.8 或更高版本
-```
+项目提供两个功能完全相同的安装脚本，**仅界面提示语言不同**：
 
-#### 📦 Node.js 安装选项
+| 脚本文件 | 界面提示语言 | 特点 | 推荐用户 |
+|---------|-------------|------|----------|
+| `install-mcp-tools-enhanced.bat` | **纯英文提示** | 简洁专业，国际化标准 | 开发者、英文用户 |
+| `install-mcp-tools-enhanced-final.bat` | **中文提示** | 友好易懂，本土化 | 中文用户、新手 |
 
-**方式1：直接安装（推荐新手）**
-- 🔗 **下载地址**：https://nodejs.org
-- 📝 **选择版本**：点击左侧绿色按钮下载 LTS 版本
+> **💡 重要说明**：两个脚本的**功能完全相同**，都会自动安装5个MCP工具并生成配置文件，区别仅在于安装过程中的提示信息语言
 
-**方式2：使用 NVM 管理（推荐开发者）**
-- ✅ **优点**：可以安装和切换多个 Node.js 版本
-- 🎯 **适合人群**：需要在不同项目间切换 Node.js 版本的开发者
+### 步骤1：运行安装脚本
 
-<details>
-<summary>🚀 <strong>NVM 详细安装教程</strong>（点击展开）</summary>
-
-**⚠️ 重要：安装 NVM 前必须先卸载已有 Node.js！**
-
-**🗑️ 卸载已有 Node.js：**
-1. **检查是否已安装**：
-   ```bash
-   node --version
-   ```
-   - ✅ 显示"不是内部或外部命令" = 没安装，可直接安装 NVM
-   - ❌ 显示版本号 = 已安装，需要先卸载
-
-2. **卸载步骤**：
-   - 按`Win + R`，输入`appwiz.cpl`，按回车
-   - 找到"Node.js" → 右键 → 卸载
-   - 清理残留：删除 `C:\Users\%USERNAME%\AppData\Roaming\npm` 目录
-
-**🔽 NVM 安装步骤：**
-1. **下载**：访问 https://github.com/coreybutler/nvm-windows/releases
-2. **安装**：右键以管理员身份运行 `nvm-setup.exe`
-3. **验证**：打开新的命令提示符，输入 `nvm version`
-4. **安装Node.js**：
-   ```bash
-   # 安装最新LTS版本
-   nvm install 18.19.0
-   nvm use 18.19.0
-
-   # 验证安装
-   node --version
-   npm --version
-   ```
-
-**🎯 NVM 常用命令：**
+**选择英文版本：**
 ```bash
-nvm list              # 查看已安装版本
-nvm list available    # 查看可安装版本
-nvm install 18.19.0   # 安装指定版本
-nvm use 18.19.0       # 切换到指定版本
-```
-
-</details>
-
-#### 🚀 npm 镜像源配置（解决安装慢问题）
-
-如果你在中国大陆，强烈建议配置npm镜像源以提高MCP工具安装速度：
-
-<details>
-<summary>📦 <strong>npm镜像源配置教程</strong>（点击展开）</summary>
-
-**🔥 方法 1：使用小满 zs 工具包（推荐）**
-
-感谢：本教程基于哔哩哔哩小满 zs 的工具包，原创教程来源于小满 zs。
-
-**步骤 1：安装小满 zs 工具包**
-```bash
-# 全局安装小满zs工具包
-npm i xmzs -g
-```
-
-**步骤 2：使用 mmp 命令管理镜像源**
-```bash
-# 安装完成后，会生成一个mmp命令
-mmp
-```
-
-**步骤 3：选择淘宝镜像源**
-运行 `mmp` 命令后，会显示镜像源列表：
-
-- 使用方向键选择 **taobao（淘宝镜像）**
-- 按回车键确认选择
-
-**步骤 4：验证切换成功**
-```bash
-# 查看当前镜像源
-npm config get registry
-
-# 应该显示：https://registry.npmmirror.com/
-# 注意：这是淘宝镜像的新域名，旧域名 registry.npm.taobao.org 已停用
-```
-
-**🔧 方法 2：手动切换镜像源**
-
-**切换到淘宝镜像：**
-```bash
-# 淘宝镜像新域名（推荐）
-npm config set registry https://registry.npmmirror.com
-```
-
-**恢复官方镜像：**
-```bash
-npm config set registry https://registry.npmjs.org/
-```
-
-**🎯 MCP工具安装镜像源选择建议**
-
-| 场景 | 推荐镜像源 | 原因 |
-|------|------------|------|
-| 🏗️ **微服务开发** | 淘宝镜像 | 速度快，稳定性好 |
-| 🛠️ **工具安装** | 淘宝镜像 | 工具包多，下载快 |
-| 🚀 **生产部署** | 官方镜像 | 最新版本，安全性高 |
-| 📦 **依赖管理** | 华为镜像 | 企业级稳定性 |
-
-**✅ MCP工具安装切换成功标志**
-
-- 🚀 **Express/Koa 安装** - 从几分钟缩短到1秒钟
-- 📦 **Spring Boot 工具** - Java 相关 npm 工具安装加速
-- 🐍 **Python 工具** - node-gyp 等编译工具安装加速
-- 🛠️ **开发工具** - nodemon、pm2 等工具快速安装
-- 🔧 **MCP服务器** - @modelcontextprotocol 相关包快速下载
-- 📡 **网络工具** - 各种网络请求和API工具加速安装
-
-</details>
-
-### 步骤2：安装MCP工具
-
-#### 🚀 一键自动安装脚本（推荐）
-
-**运行自动安装脚本：**
-
-```bash
-# 方法1：双击运行（推荐）
-# 在文件管理器中找到 docs/install-mcp-tools.bat，双击运行
+# 方法1：双击运行（最简单）
+# 在文件管理器中找到 mcp-scripts/install-mcp-tools-enhanced.bat，双击运行
 
 # 方法2：命令行运行
-cd docs
-.\install-mcp-tools.bat
+cd mcp-scripts
+.\install-mcp-tools-enhanced.bat
 ```
 
-**脚本功能：**
-- ✅ 让用户选择安装路径（默认：C:\MCP-Tools）
-- ✅ 自动检查Node.js和Python环境
-- ✅ 自动创建MCP工具目录
-- ✅ 自动安装所有MCP工具
-- ✅ 提供详细的安装进度和结果报告
-- ✅ 显示最终安装路径
-
-#### 🔧 手动安装（备选方案）
-
-**方案1：全局安装（简单但路径复杂）**
+**选择中文版本：**
 ```bash
-# 全局安装所有MCP工具
-npm install -g @modelcontextprotocol/server-filesystem
-npm install -g @modelcontextprotocol/server-memory
-npm install -g @modelcontextprotocol/server-github
-npm install -g @modelcontextprotocol/server-everything
+# 方法1：双击运行（最简单）
+# 在文件管理器中找到 mcp-scripts/install-mcp-tools-enhanced-final.bat，双击运行
 
-# 安装Python工具
-pip install uv
+# 方法2：命令行运行
+cd mcp-scripts
+.\install-mcp-tools-enhanced-final.bat
 ```
 
-**方案2：本地安装（推荐，路径清晰）**
-```bash
-# 创建专用目录
-mkdir C:\MCP-Tools
-cd C:\MCP-Tools
+> **⚠️ 重要提示**：
+> - 在Windows命令行中执行.bat脚本时，必须加上 `.\` 前缀，否则可能无法正确执行
+> - **Web界面默认关闭**：生成的配置文件中 `MCP_NO_BROWSER=true`，如需启用Web反馈界面，请手动修改为 `false`
 
-# 初始化项目
-npm init -y
+### 步骤2：选择安装选项
+脚本会自动检测你的系统环境，并提供以下选项：
 
-# 逐个安装MCP工具
-npm install @modelcontextprotocol/server-filesystem
-npm install @modelcontextprotocol/server-memory
-npm install @modelcontextprotocol/server-github
-npm install @modelcontextprotocol/server-everything
+```
+=== MCP Tools Enhanced Installer v3.2 ===
 
-# 安装Python工具
-pip install uv
+检测到的可用驱动器:
+1. C:\ (系统盘)
+2. D:\ (数据盘)
+3. E:\ (扩展盘)
+
+请选择安装驱动器 [1-3]: 1
+
+安装路径将为: C:\MCP-Tools
+是否确认? [Y/N]: Y
 ```
 
-**安装Python MCP工具：**
+### 步骤3：等待安装完成
+脚本会自动完成以下操作：
+- ✅ 检查Node.js和Python环境
+- ✅ 创建MCP工具目录
+- ✅ 安装4个Node.js MCP工具
+- ✅ 安装1个Python MCP工具
+- ✅ 生成配置文件模板
+
+## 📋 安装验证
+
+### 验证Node.js工具（4个）
 ```bash
-# 安装uv工具
-pip install uv
-
-# 安装反馈增强工具
-uvx mcp-feedback-enhanced@latest
-```
-
-#### ✅ 验证安装结果
-
-**重要说明：** MCP工具分为两种类型，验证方式不同：
-
-**📦 Node.js MCP工具（4个）- 可在文件夹中看到：**
-```bash
-# 检查安装目录（应该看到4个文件夹）
-# 根据你在安装脚本中选择的路径：
-
-# 如果选择了 C:\MCP-Tools（默认选项1）
+# 检查安装目录（根据你选择的路径）
 dir "C:\MCP-Tools\node_modules\@modelcontextprotocol"
 
-# 如果选择了 D:\MCP-Tools（选项2）
-dir "D:\MCP-Tools\node_modules\@modelcontextprotocol"
-
-# 如果选择了自定义路径（选项3），替换为你的实际路径
-dir "你的自定义路径\node_modules\@modelcontextprotocol"
-
-# 应该显示：
-# server-filesystem
-# server-memory
-# server-github
-# server-everything
+# 应该看到以下4个工具：
+# - server-filesystem
+# - server-memory  
+# - server-github
+# - server-everything
 ```
 
-**🐍 Python MCP工具（1个）- 无法在文件夹中看到：**
-
-⚠️ **特别注意：** `mcp-feedback-enhanced` 是Python包，通过 `uvx` 安装，**不会出现在node_modules文件夹中**！
-
-**验证mcp-feedback-enhanced安装：**
+### 验证Python工具（1个）
 ```bash
-# 检查版本（验证是否安装成功）
+# 验证mcp-feedback-enhanced（这是Python包，不在文件夹中）
 uvx mcp-feedback-enhanced@latest version
 
-# 应该显示类似：
-# MCP Feedback Enhanced Enhanced v2.6.0
-# 作者: Minidoracat
-# GitHub: https://github.com/Minidoracat/mcp-feedback-enhanced
-
-# 测试功能（可选）
-uvx mcp-feedback-enhanced@latest test --web
+# 应该显示：MCP Feedback Enhanced v2.6.0
 ```
 
-**� 自动检测安装路径（推荐）：**
-```bash
-# 运行自动检测脚本，找到你的MCP工具安装位置
-.\docs\find-mcp-installation.bat
+## ⚙️ 配置文件设置
 
-# 或者运行完整验证脚本
-.\docs\verify-mcp-tools.bat
-```
+### 步骤1：复制配置模板
+安装完成后，脚本会在安装目录生成 `mcp-config-template.json` 文件。
 
-**�📊 完整安装验证清单：**
-- ✅ **4个Node.js包** - 在 `你的安装路径\node_modules\@modelcontextprotocol\` 中可见
-- ✅ **1个Python包** - 通过 `uvx mcp-feedback-enhanced@latest version` 验证
-- ✅ **总计5个MCP工具** - 全部安装成功
-
-**💡 路径说明：**
-- **默认路径**：`C:\MCP-Tools`（安装脚本选项1）
-- **D盘路径**：`D:\MCP-Tools`（安装脚本选项2）
-- **自定义路径**：你在安装时选择的路径（安装脚本选项3）
-
-### 步骤3：创建配置文件
-
-#### 📁 找到MCP工具安装路径
-
-**🚀 使用自动查找脚本（推荐）：**
-```bash
-# 运行自动查找脚本
-.\find-mcp-tools.bat
-```
-
-**🔧 手动查找：**
-```bash
-# 查看npm全局安装路径
-npm root -g
-
-# 或者检查常见位置
-dir "C:\MCP-Tools\node_modules\@modelcontextprotocol" 2>nul
-dir "%APPDATA%\npm\node_modules\@modelcontextprotocol" 2>nul
-```
-
-#### 📝 创建配置文件
-
-**创建文件：** 在MCP工具目录下创建 `mcp-config.json`
-
-**🔥 完整配置模板（推荐）：**
-
+### 步骤2：修改配置文件
 ```json
 {
   "mcpServers": {
     "filesystem": {
-      "command": "node",
+      "command": "npx",
       "args": [
-        "C:\\MCP-Tools\\node_modules\\@modelcontextprotocol\\server-filesystem\\dist\\index.js",
-        "D:\\你的项目路径"
-      ],
-      "env": {}
+        "@modelcontextprotocol/server-filesystem",
+        "你的项目路径"
+      ]
     },
     "memory": {
-      "command": "node",
-      "args": [
-        "C:\\MCP-Tools\\node_modules\\@modelcontextprotocol\\server-memory\\dist\\index.js"
-      ],
-      "env": {}
+      "command": "npx", 
+      "args": ["@modelcontextprotocol/server-memory"]
     },
     "github": {
-      "command": "node",
-      "args": [
-        "C:\\MCP-Tools\\node_modules\\@modelcontextprotocol\\server-github\\dist\\index.js"
-      ],
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-github"],
       "env": {
-        "GITHUB_PERSONAL_ACCESS_TOKEN": "ghp_xxxxxxxxxxxxxxxxxxxx"
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "你的GitHub令牌"
       }
     },
     "everything": {
-      "command": "node",
-      "args": [
-        "C:\\MCP-Tools\\node_modules\\@modelcontextprotocol\\server-everything\\dist\\index.js"
-      ],
-      "env": {}
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-everything"]
     },
     "mcp-feedback-enhanced": {
       "command": "uvx",
@@ -349,156 +137,185 @@ dir "%APPDATA%\npm\node_modules\@modelcontextprotocol" 2>nul
       "timeout": 600,
       "env": {
         "MCP_WEB_PORT": "8765",
-        "MCP_DESKTOP_MODE": "false",
-        "MCP_DEBUG": "false"
-      },
-      "autoApprove": ["interactive_feedback"]
+        "MCP_DESKTOP_MODE": "false"
+      }
     }
   }
 }
 ```
 
-#### 🔧 必须修改的配置项
+### 步骤3：必须修改的内容
+1. **项目路径**: 将 `"你的项目路径"` 改为实际项目目录
+2. **GitHub令牌**: 将 `"你的GitHub令牌"` 改为真实Token（可选）
 
-**1. MCP工具路径：**
-```json
-// 将 C:\\MCP-Tools 替换为你的实际安装路径
-"C:\\MCP-Tools\\node_modules\\@modelcontextprotocol\\..."
-```
+## 🔧 方式二：手动配置（高级用户）
 
-**2. 项目路径：**
-```json
-// 将 D:\\你的项目路径 替换为你的实际项目路径
-"D:\\你的项目路径"
-```
+> **🎯 特点**：手动安装MCP工具并自定义配置，完全控制配置过程
+>
+> **⏱️ 时间**：10-15分钟
+>
+> **💡 适合**：高级用户、自定义需求、企业级部署
 
-**3. GitHub Token：**
-```json
-// 将 ghp_xxxxxxxxxxxxxxxxxxxx 替换为你的GitHub Token
-"GITHUB_PERSONAL_ACCESS_TOKEN": "ghp_xxxxxxxxxxxxxxxxxxxx"
-```
+### 手动安装MCP工具
 
-### 步骤4：配置AI工具
-
-#### 🔧 Cursor 配置
-
-1. **打开Cursor设置**
-   - 按 `Ctrl + ,` 打开设置
-   - 搜索 "MCP" 或 "Model Context Protocol"
-
-2. **添加配置文件路径**
-   - 找到 "MCP Config Path" 设置项
-   - 输入你的配置文件路径：`C:\MCP-Tools\mcp-config.json`
-
-3. **重启Cursor**
-   - 完全关闭Cursor
-   - 重新打开Cursor
-
-#### 🔧 Claude Code 配置
-
-1. **打开Claude Code设置**
-   - 点击左下角设置图标
-   - 选择 "Preferences"
-
-2. **配置MCP**
-   - 找到 "MCP Configuration" 部分
-   - 输入配置文件路径：`C:\MCP-Tools\mcp-config.json`
-
-3. **重启Claude Code**
-   - 关闭并重新打开Claude Code
-
-#### 🔧 Augment 配置
-
-1. **打开Augment设置**
-   - 点击右上角设置图标
-   - 选择 "Settings"
-
-2. **配置MCP**
-   - 找到 "MCP Tools" 设置
-   - 输入配置文件路径：`C:\MCP-Tools\mcp-config.json`
-
-3. **重启Augment**
-   - 关闭并重新打开Augment
-
-### 步骤5：验证配置
-
-#### ✅ 验证清单
-
-**环境检查：**
-- [ ] Node.js 版本 ≥ 16.0.0
-- [ ] Python 版本 ≥ 3.8
-- [ ] MCP工具已正确安装
-
-**配置文件检查：**
-- [ ] 配置文件路径正确
-- [ ] JSON格式正确
-- [ ] 所有路径已修改为实际路径
-
-**AI工具检查：**
-- [ ] AI工具已重启
-- [ ] 配置文件路径已设置
-- [ ] 没有MCP相关错误
-
-#### 🧪 功能测试
-
-**测试文件系统功能：**
-1. 在AI工具中询问："请查看我的项目结构"
-2. AI应该能够列出你的项目文件
-
-**测试记忆功能：**
-1. 告诉AI："请记住这个信息：测试MCP记忆功能"
-2. 稍后询问："你还记得我之前说的什么吗？"
-3. AI应该能够回忆起之前的信息
-
-**测试GitHub功能：**
-1. 询问："请查看我的GitHub仓库"
-2. AI应该能够访问你的GitHub信息
-
-## 🐛 常见问题解决
-
-### 问题1：找不到MCP工具
-
-**解决方案：**
+**步骤1：安装Node.js工具**
 ```bash
-# 使用自动查找脚本
-.\find-mcp-tools.bat
-
-# 或者重新安装
+# 安装4个Node.js MCP工具
 npm install -g @modelcontextprotocol/server-filesystem
 npm install -g @modelcontextprotocol/server-memory
 npm install -g @modelcontextprotocol/server-github
 npm install -g @modelcontextprotocol/server-everything
 ```
 
-### 问题2：配置文件路径错误
+**步骤2：安装Python工具**
+```bash
+# 安装Python MCP工具
+uvx install mcp-feedback-enhanced@latest
+```
 
-**解决方案：**
-1. 确认配置文件路径正确
-2. 检查JSON格式是否正确
-3. 确保所有路径都已修改为实际路径
+### 手动创建配置文件
 
-### 问题3：AI工具无法加载MCP
+**步骤3：创建配置文件**
+在合适的位置创建 `mcp-config.json` 文件：
 
-**解决方案：**
-1. 重启AI工具
-2. 检查配置文件路径设置
-3. 查看AI工具的错误日志
+```json
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-filesystem", "你的项目路径"]
+    },
+    "memory": {
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-memory"]
+    },
+    "github": {
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "你的GitHub令牌"
+      }
+    },
+    "everything": {
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-everything"]
+    },
+    "mcp-feedback-enhanced": {
+      "command": "uvx",
+      "args": ["mcp-feedback-enhanced@latest"],
+      "env": {
+        "MCP_NO_BROWSER": "true"
+      }
+    }
+  }
+}
+```
 
-### 问题4：GitHub功能无法使用
+### AI工具配置
 
-**解决方案：**
-1. 检查GitHub Token是否正确
-2. 确认Token权限包含：`repo`, `user`, `workflow`
-3. 重新生成Token
+**步骤4：配置AI工具**
+
+### Augment配置
+1. 打开Augment设置
+2. 找到MCP配置选项
+3. 导入或粘贴配置文件内容
+
+### Cursor配置
+1. 打开Cursor设置（Ctrl+,）
+2. 搜索"MCP"
+3. 在settings.json中添加配置
+
+### Claude Code配置
+1. 在项目根目录创建 `.claude_config` 文件
+2. 添加MCP配置内容
+
+### Trae AI配置
+1. 打开Trae AI设置
+2. 找到MCP集成选项
+3. 导入配置文件
+
+> **📚 详细手动配置教程**：查看 [MCP详细配置指南](MCP-DETAILED-CONFIG-GUIDE.md) 获取完整的手动配置步骤
+
+## ✅ 配置完成后的使用步骤
+
+### 第一步：让AI读取规则
+**重要：完成MCP配置后，需要让AI读取项目规则**
+
+在AI工具中输入以下任一命令：
+```
+请读取项目规则
+```
+或使用具体的工作流命令：
+```
+/frontend-dev    # 前端开发工作流
+/backend-dev     # 后端开发工作流
+/feedback        # 智能反馈功能
+```
+
+### 第二步：测试MCP功能
+
+**测试反馈功能：**
+```
+请使用反馈功能询问我的项目需求
+```
+
+如果配置正确，应该会：
+1. 弹出反馈界面（网页或桌面应用）
+2. 显示AI的问题和选项
+3. 可以进行交互式对话
+
+**测试文件操作：**
+```
+请列出我的项目目录结构
+```
+
+如果配置正确，AI应该能够：
+1. 读取你指定的项目目录
+2. 显示文件和文件夹列表
+3. 提供文件操作建议
+
+> **💡 重要提示**：如果AI没有自动读取规则或MCP工具不工作，请：
+> 1. 重启AI工具
+> 2. 主动要求AI读取项目规则文件
+> 3. 检查MCP配置文件路径是否正确
+
+## 🚨 常见问题快速解决
+
+### 问题1：找不到mcp-feedback-enhanced
+**解决方案**: 这是正常现象，Python包不会显示在文件夹中
+```bash
+# 验证是否安装成功
+uvx mcp-feedback-enhanced@latest version
+```
+
+### 问题2：反馈界面打不开
+**解决方案**: 检查端口占用
+```bash
+# 检查8765端口
+netstat -an | findstr :8765
+
+# 如果被占用，修改配置中的端口号
+"MCP_WEB_PORT": "8766"
+```
+
+### 问题3：GitHub功能不工作
+**解决方案**: 检查Token权限
+1. 访问 GitHub Settings > Developer settings > Personal access tokens
+2. 创建新Token，勾选 `repo`, `user`, `workflow` 权限
+3. 复制Token到配置文件中
 
 ## 📚 下一步
 
-配置完成后，你可以：
+配置完成后，建议阅读：
+- 📖 [MCP工具详细功能参考](MCP-TOOLS-REFERENCE.md) - 了解每个工具的具体功能
+- 🧠 [MCP智能使用策略](MCP-INTELLIGENT-USAGE-STRATEGY.md) - 学习高效使用技巧
+- 🔧 [MCP故障排除指南](MCP-TROUBLESHOOTING-GUIDE.md) - 解决使用中的问题
 
-1. **查看详细配置指南**：[MCP详细配置指南](MCP-DETAILED-CONFIG-GUIDE.md)
-2. **学习智能使用策略**：[MCP智能使用策略](MCP-INTELLIGENT-USAGE-STRATEGY.md)
-3. **解决常见问题**：[MCP故障排除指南](MCP-TROUBLESHOOTING-GUIDE.md)
+## 🎯 记住
 
----
+- ✅ **安装简单**: 一键脚本，自动完成
+- ✅ **配置清晰**: 只需修改2-3个关键参数
+- ✅ **验证容易**: 简单命令即可确认
+- ✅ **问题好解决**: 大部分问题都有标准解决方案
 
-**🎉 恭喜！** 你已经成功配置了MCP工具，现在可以享受更强大的AI助手功能了！
+**🚀 开始享受智能AI助手带来的高效开发体验吧！**

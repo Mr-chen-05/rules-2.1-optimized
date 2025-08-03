@@ -26,6 +26,7 @@ desktop.ini
 *.sublime-workspace
 .atom/
 .brackets.json
+.codebuddy
 
 # Node.js (如果有MCP工具相关)
 node_modules/

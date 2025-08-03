@@ -319,8 +319,10 @@ taskkill /PID 1234 /F
 ## 📞 获取帮助
 
 ### 自助资源
-- 📚 [MCP快速入门指南](MCP-QUICK-START-GUIDE.md)
+- 🚀 [MCP快速入门指南](MCP-QUICK-START-GUIDE.md)
 - 🔧 [MCP详细配置指南](MCP-DETAILED-CONFIG-GUIDE.md)
+- 🛠️ [MCP工具功能参考](MCP-TOOLS-REFERENCE.md)
+- 🧠 [MCP智能使用策略](MCP-INTELLIGENT-USAGE-STRATEGY.md)
 - 📖 [项目说明](../README.md)
 
 ### 社区支持
