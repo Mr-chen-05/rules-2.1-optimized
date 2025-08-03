@@ -16,41 +16,58 @@
 >
 > **💡 适合**：新手用户、快速体验、标准配置需求
 
-### 📋 脚本版本选择
+> **⚠️ 重要提醒**：使用脚本安装前，建议先阅读 **[📋 安装脚本使用说明](../mcp-scripts/安装脚本使用说明.md)**，了解详细的安装方法和注意事项。
 
-项目提供两个功能完全相同的安装脚本，**仅界面提示语言不同**：
+### 📋 推荐安装方法
 
-| 脚本文件 | 界面提示语言 | 特点 | 推荐用户 |
-|---------|-------------|------|----------|
-| `install-mcp-tools-enhanced.bat` | **纯英文提示** | 简洁专业，国际化标准 | 开发者、英文用户 |
-| `install-mcp-tools-enhanced-final.bat` | **中文提示** | 友好易懂，本土化 | 中文用户、新手 |
+我们提供了经过优化的安装脚本，完美解决了编码问题和执行策略问题：
 
-> **💡 重要说明**：两个脚本的**功能完全相同**，都会自动安装5个MCP工具并生成配置文件，区别仅在于安装过程中的提示信息语言
+| 安装方法 | 文件 | 特点 | 推荐程度 |
+|---------|------|------|----------|
+| **方法一（推荐）** | `run-powershell-installer.bat` | 双击运行，自动处理所有问题 | ⭐⭐⭐⭐⭐ |
+| **方法二（高级）** | 手动PowerShell执行 | 完全控制安装过程 | ⭐⭐⭐⭐ |
 
-### 步骤1：运行安装脚本
+> **💡 重要说明**：
+> - **方法一**最简单：双击 `run-powershell-installer.bat` 即可完成安装，会自动在MCP-Tools文件夹下生成 `mcp-config.json` 配置文件
+> - **方法二**适合高级用户：手动在PowerShell中执行脚本
+> - 详细步骤请查看 **[📋 安装脚本使用说明](../mcp-scripts/安装脚本使用说明.md)**
+
+### 步骤1：选择安装方法并执行
 
 **选择英文版本：**
 ```bash
 # 方法1：双击运行（最简单）
-# 在文件管理器中找到 mcp-scripts/install-mcp-tools-enhanced.bat，双击运行
+# 详细步骤：
+# 1. 按 Win + E 打开文件资源管理器
+# 2. 导航到 mcp-scripts 文件夹路径
+# 3. 找到 install-mcp-tools-enhanced.bat 文件
+# 4. 双击该文件执行（不要右键，直接双击）
 
 # 方法2：命令行运行
-cd mcp-scripts
+# 注意：如果项目在非C盘，需要先切换盘符
+E:                                    # 先切换到E盘（根据你的实际盘符）
+cd E:\AgentRules\English\rules-2.1-optimized-2.2.1\mcp-scripts
 .\install-mcp-tools-enhanced.bat
 ```
 
 **选择中文版本：**
 ```bash
 # 方法1：双击运行（最简单）
-# 在文件管理器中找到 mcp-scripts/install-mcp-tools-enhanced-final.bat，双击运行
+# 详细步骤：
+# 1. 按 Win + E 打开文件资源管理器
+# 2. 导航到 mcp-scripts 文件夹路径
+# 3. 找到 install-mcp-tools-enhanced-final.bat 文件
+# 4. 双击该文件执行（不要右键，直接双击）
 
 # 方法2：命令行运行
-cd mcp-scripts
+# 注意：如果项目在非C盘，需要先切换盘符
+E:                                    # 先切换到E盘（根据你的实际盘符）
+cd E:\AgentRules\English\rules-2.1-optimized-2.2.1\mcp-scripts
 .\install-mcp-tools-enhanced-final.bat
 ```
 
 > **⚠️ 重要提示**：
-> - 在Windows命令行中执行.bat脚本时，必须加上 `.\` 前缀，否则可能无法正确执行
+> - 在Windows命令行中执行.bat脚本时，建议加上 `.\` 前缀，以确保正确执行
 > - **Web界面默认关闭**：生成的配置文件中 `MCP_NO_BROWSER=true`，如需启用Web反馈界面，请手动修改为 `false`
 
 ### 步骤2：选择安装选项
@@ -144,7 +161,7 @@ uvx mcp-feedback-enhanced@latest version
 }
 ```
 
-### 步骤3：必须修改的内容
+### 步骤3：需要修改的内容
 1. **项目路径**: 将 `"你的项目路径"` 改为实际项目目录
 2. **GitHub令牌**: 将 `"你的GitHub令牌"` 改为真实Token（可选）
 

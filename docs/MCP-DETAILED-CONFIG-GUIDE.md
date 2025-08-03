@@ -21,17 +21,20 @@
 | **自动配置** | 新手、快速体验 | 3-5分钟 | ⭐ 简单 | 🔧 标准配置 |
 | **手动配置** | 高级用户、企业级 | 10-15分钟 | ⭐⭐⭐ 复杂 | 🔧🔧🔧 完全自定义 |
 
-> **💡 建议**：新手用户建议先尝试 [MCP快速入门指南](MCP-QUICK-START-GUIDE.md) 中的自动配置方式
+> **💡 建议**：
+> - 新手用户建议先尝试 [MCP快速入门指南](MCP-QUICK-START-GUIDE.md) 中的自动配置方式
+> - **使用脚本安装前，建议先阅读** **[📋 安装脚本使用说明](../mcp-scripts/安装脚本使用说明.md)**
 
 **🚀 快速开始：**
 - 📁 **找不到MCP工具？** 运行 `.\docs\find-mcp-installation-en.bat` 自动查找
 - 📋 **配置模板在哪？** 查看 `project-rules/mcp-intelligent-strategy.mdc` 文件获取MCP配置模板
+- 📝 **自动生成配置：** 使用MCP安装脚本会在MCP-Tools文件夹下自动生成 `mcp-config.json` 配置文件
 - 🔧 **配置失败？** 跳转到 [故障排除部分](#第五步常见问题解决)
 
 ## 🚨 重要提醒
 
-**配置文件是模板，必须修改！**
-- ❌ 直接复制粘贴模板 → 100%失败
+**配置文件是模板，需要修改！**
+- ❌ 直接复制粘贴模板 → 无法正常工作
 - ✅ 根据实际情况修改 → 100%成功
 
 ## 📁 第一步：确定你的安装路径
@@ -274,6 +277,7 @@ pause
 
 2. **运行脚本**：
    - 双击 `find-mcp.bat` 文件
+     - 详细步骤：按Win+E打开文件管理器 → 导航到docs文件夹 → 找到find-mcp.bat → 双击执行
    - 脚本会自动搜索所有可能的MCP工具位置
 
 </details>
@@ -288,7 +292,7 @@ pause
 - 🚀 **执行项目操作** - 运行测试、构建项目等
 
 **⚠️ 重要提醒：**
-- 这个路径必须是**你实际项目的根目录**
+- 这个路径应该是**你实际项目的根目录**
 - 不是随便一个文件夹，而是包含你代码的文件夹
 - 比如包含 `package.json`、`src/`、`README.md` 等文件的文件夹
 
@@ -471,33 +475,33 @@ F:\work\company-website
 {
   "mcpServers": {
     "filesystem": {
-      "command": "node",
+      "command": "npx",
       "args": [
-        "C:\\MCP-Tools\\node_modules\\@modelcontextprotocol\\server-filesystem\\dist\\index.js",
+        "@modelcontextprotocol/server-filesystem",
         "D:\\我的项目"
       ],
       "env": {}
     },
     "memory": {
-      "command": "node",
+      "command": "npx",
       "args": [
-        "C:\\MCP-Tools\\node_modules\\@modelcontextprotocol\\server-memory\\dist\\index.js"
+        "@modelcontextprotocol/server-memory"
       ],
       "env": {}
     },
     "github": {
-      "command": "node",
+      "command": "npx",
       "args": [
-        "C:\\MCP-Tools\\node_modules\\@modelcontextprotocol\\server-github\\dist\\index.js"
+        "@modelcontextprotocol/server-github"
       ],
       "env": {
         "GITHUB_PERSONAL_ACCESS_TOKEN": "ghp_xxxxxxxxxxxxxxxxxxxx"
       }
     },
     "everything": {
-      "command": "node",
+      "command": "npx",
       "args": [
-        "C:\\MCP-Tools\\node_modules\\@modelcontextprotocol\\server-everything\\dist\\index.js"
+        "@modelcontextprotocol/server-everything"
       ],
       "env": {}
     },
@@ -507,8 +511,7 @@ F:\work\company-website
       "timeout": 600,
       "env": {
         "MCP_WEB_PORT": "8765",
-        "MCP_DESKTOP_MODE": "false",
-        "MCP_DEBUG": "false"
+        "MCP_DESKTOP_MODE": "true"
       },
       "autoApprove": ["interactive_feedback"]
     }
@@ -516,10 +519,14 @@ F:\work\company-website
 }
 ```
 
-**🔧 必须修改的地方：**
-1. `C:\\MCP-Tools` → 你的MCP安装路径
-2. `D:\\我的项目` → 你的项目路径
-3. `ghp_xxxxxxxxxxxxxxxxxxxx` → 你的GitHub Token
+**🔧 需要修改的地方：**
+1. `D:\\我的项目` → 你的实际项目路径
+2. `ghp_xxxxxxxxxxxxxxxxxxxx` → 你的GitHub Personal Access Token
+
+**💡 重要说明：**
+- 使用 `npx` 命令会自动查找全局安装的MCP工具，无需指定完整路径
+- 这与自动化安装脚本生成的配置文件格式完全一致
+- 如果你使用了自动化脚本安装，生成的配置文件就是这种格式
 
 ### **2.2 多项目配置（推荐高级用户）**
 
@@ -529,40 +536,40 @@ F:\work\company-website
 {
   "mcpServers": {
     "前端项目": {
-      "command": "node",
+      "command": "npx",
       "args": [
-        "C:\\MCP-Tools\\node_modules\\@modelcontextprotocol\\server-filesystem\\dist\\index.js",
+        "@modelcontextprotocol/server-filesystem",
         "D:\\前端\\Vue项目"
       ],
       "env": {}
     },
     "后端项目": {
-      "command": "node",
+      "command": "npx",
       "args": [
-        "C:\\MCP-Tools\\node_modules\\@modelcontextprotocol\\server-filesystem\\dist\\index.js",
+        "@modelcontextprotocol/server-filesystem",
         "E:\\后端\\SpringBoot"
       ],
       "env": {}
     },
     "学习项目": {
-      "command": "node",
+      "command": "npx",
       "args": [
-        "C:\\MCP-Tools\\node_modules\\@modelcontextprotocol\\server-filesystem\\dist\\index.js",
+        "@modelcontextprotocol/server-filesystem",
         "C:\\Users\\用户名\\Desktop\\学习"
       ],
       "env": {}
     },
     "memory": {
-      "command": "node",
+      "command": "npx",
       "args": [
-        "C:\\MCP-Tools\\node_modules\\@modelcontextprotocol\\server-memory\\dist\\index.js"
+        "@modelcontextprotocol/server-memory"
       ],
       "env": {}
     },
     "github": {
-      "command": "node",
+      "command": "npx",
       "args": [
-        "C:\\MCP-Tools\\node_modules\\@modelcontextprotocol\\server-github\\dist\\index.js"
+        "@modelcontextprotocol/server-github"
       ],
       "env": {
         "GITHUB_PERSONAL_ACCESS_TOKEN": "ghp_xxxxxxxxxxxxxxxxxxxx"

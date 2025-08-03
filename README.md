@@ -1,19 +1,17 @@
 # 🎯 Rules 2.2.2 Optimized - 企业级AI助手规则体系
 
-> **[🇨🇳 查看完全中文版](https://github.com/Mr-chen-05/rules-2.1-optimized-zh) | [国内镜像](https://gitee.com/czsuccess/rules-2.1-optimized-zh)**
-
 > **🏆 PERFECT (A++)评级** | **✅ 100%测试通过** | **🚀 生产就绪** | **💬 完整MCP支持**
 
 ## 📖 项目简介
 
-基于 [steipete/agent-rules](https://github.com/steipete/agent-rules) 优化扩展，专为中国开发者打造：
+基于 [steipete/agent-rules](https://github.com/steipete/agent-rules) 优化扩展，为中文开发者提供完整解决方案：
 
 ### ✨ 核心特色
-- **🧠 MCP智能策略集成** - AI自动优先使用MCP工具，效率提升50%+
+- **🧠 MCP智能策略集成** - AI自动优先使用MCP工具，显著提升开发效率
 - **🚀 完整MCP工具链** - 反馈增强、文件系统、GitHub集成等5大工具
 - **🎯 支持四大AI工具** - Augment、Cursor、Claude Code、Trae AI一键配置
 - **📚 企业级标准** - 100%测试通过，PERFECT (A++)评级，生产就绪
-- **📝 完整中文文档** - 5分钟快速上手，从入门到故障排除的全套指南
+- **📝 完整中文文档** - 快速上手指南，从入门到故障排除的全套指南
 
 ### 📚 文档导航（按学习顺序）
 
@@ -34,7 +32,7 @@
 
 ### 步骤2️⃣：一键安装到项目
 
-**🎯 支持PowerShell和CMD两种命令行，功能完全一致：**
+**🎯 支持PowerShell和CMD两种命令行：**
 
 **PowerShell（推荐）**：
 ```powershell
@@ -49,7 +47,8 @@ install-scripts\install-all.bat "你的项目目录路径" fullstack  # 全栈�
 
 **CMD命令提示符**：
 ```cmd
-# 进入规则目录（替换为你的实际路径）
+# 注意：如果规则目录在非C盘，需要先切换盘符
+E:                                    # 先切换到E盘（根据你的实际盘符）
 cd "你的rules-2.1-optimized目录路径"
 
 # 一键安装所有AI工具支持（选择一个）
@@ -57,8 +56,6 @@ install-scripts\install-all.bat "你的项目目录路径" frontend   # 前端�
 install-scripts\install-all.bat "你的项目目录路径" backend    # 后端项目
 install-scripts\install-all.bat "你的项目目录路径" fullstack  # 全栈项目
 ```
-
-**💡 重要提示**：两种命令行窗口都完全支持，安装结果完全相同！
 
 ### 步骤3️⃣：验证安装
 ```cmd
@@ -100,21 +97,20 @@ dir "你的项目目录路径\.trae\rules\"        # Trae AI规则
 ## 📁 项目结构
 
 ```
-rules-2.1-optimized/
+rules-2.1-optimized-2.2.1/
 ├── 📚 核心教程和文档
 │   ├── tutorials/                          # 🔥 核心使用教程（必看！）
 │   │   ├── frontend-rules-2.1-使用指南.md  # 前端开发完整指南
 │   │   └── backend-rules-2.1-使用指南.md   # 后端开发完整指南
 │   ├── docs/                               # 📖 参考文档
-│   │   ├── frontend-guide.md               # 前端开发指南
-│   │   ├── backend-guide.md                # 后端开发指南
 │   │   ├── MCP-DETAILED-CONFIG-GUIDE.md    # MCP工具详细配置
 │   │   ├── MCP-QUICK-START-GUIDE.md        # MCP快速入门指南
 │   │   ├── MCP-INTELLIGENT-USAGE-STRATEGY.md  # 🧠 MCP智能使用策略
 │   │   ├── MCP-TOOLS-REFERENCE.md          # 🛠️ MCP工具功能详细参考
 │   │   ├── MCP-TROUBLESHOOTING-GUIDE.md    # MCP故障排除指南
 │   │   └── find-mcp-installation-en.bat    # 🔍 MCP工具自动查找脚本
-│   └── USAGE.md                            # 详细使用指南
+│   ├── USAGE.md                            # 详细使用指南
+│   └── COMMANDS-REFERENCE.md               # 完整命令参考
 │
 ├── 🚀 安装脚本（企业级测试通过）
 │   ├── install-scripts/
@@ -128,6 +124,10 @@ rules-2.1-optimized/
 │   │   ├── trae-frontend.bat               # Trae AI 前端规则安装
 │   │   ├── trae-backend.bat                # Trae AI 后端规则安装
 │   │   └── INSTALL-GUIDE.md                # 📚 傻瓜式安装教程
+│   └── mcp-scripts/                        # 🧠 MCP工具安装脚本
+│       ├── run-powershell-installer.bat    # 🔥 一键MCP工具安装
+│       ├── install-mcp-tools-enhanced-final.ps1  # PowerShell安装脚本
+│       └── 安装脚本使用说明.md              # 📚 MCP安装详细说明
 │
 ├── 📝 规则文件
 │   ├── global-rules/                       # 全局规则文件
@@ -148,7 +148,10 @@ rules-2.1-optimized/
 │
 └── 📊 测试报告
     └── enterprise-test-reports/            # 企业级测试报告
-        └── FINAL-TEST-REPORT.md            # 最终测试报告
+        ├── FINAL-TEST-REPORT.md            # 最终测试报告
+        ├── MCP-DOCS-UPDATE-TEST-REPORT.md  # MCP文档更新测试
+        ├── TEST-SUMMARY-2025-08-01.md      # 测试总结报告
+        └── [其他测试报告...]               # 详细测试记录
 ```
 
 
@@ -183,20 +186,34 @@ rules-2.1-optimized/
 - **🛠️ 通用工具** - 基础操作和测试验证
 
 **自动安装（推荐）：**
-```bash
-# 进入脚本目录
-cd mcp-scripts
 
-# 选择脚本版本执行
-.\install-mcp-tools-enhanced.bat      # 纯英文提示版
-.\install-mcp-tools-enhanced-final.bat # 中文提示版
+> **⚠️ 重要提醒**：使用MCP工具安装脚本前，请务必先阅读 **[📋 安装脚本使用说明](mcp-scripts/安装脚本使用说明.md)** 了解详细的安装方法和注意事项。
+
+> **💻 系统要求**：如果你的系统没有PowerShell，请先下载安装：
+> - **Windows 10/11用户**：系统自带PowerShell，无需额外安装
+> - **Windows 7/8用户**：请访问 [PowerShell官方下载页面](https://github.com/PowerShell/PowerShell/releases) 下载最新版本
+
+```bash
+# 推荐方法：双击运行（最简单）
+# 详细步骤：
+# 1. 按 Win + E 打开文件资源管理器
+# 2. 导航到项目的 mcp-scripts 文件夹
+# 3. 找到 run-powershell-installer.bat 文件
+# 4. 双击该文件执行（不要右键，直接双击）
+
+双击运行: mcp-scripts/run-powershell-installer.bat
+
+# 或者手动在PowerShell中执行
+powershell -ExecutionPolicy Bypass -File "install-mcp-tools-enhanced-final.ps1的绝对路径"
 ```
 
 > **🔧 配置方式**：
 > - **自动配置**：脚本自动安装+生成配置文件（推荐新手）
 > - **手动配置**：完全自定义配置（适合高级用户）
 >
-> **📚 详细教程**: [MCP快速入门指南](docs/MCP-QUICK-START-GUIDE.md) | **🌐 Web界面**: 默认关闭，需手动启用
+> **📚 详细教程**: [MCP快速入门指南](docs/MCP-QUICK-START-GUIDE.md) | **📋 安装说明**: [安装脚本使用说明](mcp-scripts/安装脚本使用说明.md) | **🔧 配置指南**: [MCP详细配置指南](docs/MCP-DETAILED-CONFIG-GUIDE.md) | **🌐 Web界面**: 默认关闭，需手动启用
+
+> **🚨 重要提醒**：执行MCP安装脚本后，会在MCP-Tools文件夹下自动生成 `mcp-config.json` 配置文件，然后**必须完整阅读** [📋 MCP工具详细配置指南](docs/MCP-DETAILED-CONFIG-GUIDE.md) 才能正常使用MCP功能！
 
 ## 🏆 项目质量认证
 
@@ -216,7 +233,7 @@ cd mcp-scripts
 
 ## 📋 项目信息
 
-**Rules 2.2.2 Optimized (Enterprise Edition)** | 发布：2025年8月3日 | 质量：PERFECT (A++)
+**Rules 2.2.2 Optimized (Enterprise Edition)** | 发布：2025年8月4日 | 质量：PERFECT (A++)
 
 基于 [steipete/agent-rules](https://github.com/steipete/agent-rules) 优化扩展 | 博客作者：m0_73635308 | 邮箱：3553952458@qq.com
 

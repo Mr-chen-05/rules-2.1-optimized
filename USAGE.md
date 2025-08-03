@@ -14,6 +14,10 @@
 
 ### 精确安装（单工具）
 ```cmd
+# 注意：如果规则目录在非C盘，需要先切换盘符
+E:                                    # 先切换到E盘（根据你的实际盘符）
+cd "你的rules-2.1-optimized目录路径"
+
 # 只安装特定AI工具和开发类型
 install-scripts\augment-frontend.bat "项目路径"    # Augment 前端专用
 install-scripts\cursor-backend.bat "项目路径"     # Cursor 后端专用
@@ -22,6 +26,10 @@ install-scripts\claude-fullstack.bat "项目路径"   # Claude 全栈开发
 
 ### 自定义安装路径
 ```cmd
+# 注意：如果规则目录在非C盘，需要先切换盘符
+E:                                    # 先切换到E盘（根据你的实际盘符）
+cd "你的rules-2.1-optimized目录路径"
+
 # 支持相对路径和绝对路径
 install-scripts\install-all.bat ..\my-project frontend
 install-scripts\install-all.bat "C:\Dev\MyApp" backend
@@ -30,6 +38,10 @@ install-scripts\install-all.bat "D:\Projects\Web App" fullstack
 
 ### 批量部署（企业级）
 ```cmd
+# 注意：如果规则目录在非C盘，需要先切换盘符
+E:                                    # 先切换到E盘（根据你的实际盘符）
+cd "你的rules-2.1-optimized目录路径"
+
 # 为多个项目批量安装
 for /d %%i in (C:\Projects\*) do (
     install-scripts\install-all.bat "%%i" fullstack
@@ -67,8 +79,16 @@ for /d %%i in (C:\Projects\*) do (
 
 **配置方式选择：**
 - **自动配置**：使用安装脚本（推荐新手）
-  - 英文提示版：`.\mcp-scripts\install-mcp-tools-enhanced.bat`
-  - 中文提示版：`.\mcp-scripts\install-mcp-tools-enhanced-final.bat`
+  
+  > **⚠️ 重要提醒**：使用MCP工具安装脚本前，建议先阅读 **[📋 安装脚本使用说明](mcp-scripts/安装脚本使用说明.md)** 了解详细的安装方法和注意事项。
+  
+  - 推荐方法：双击运行 `mcp-scripts/run-powershell-installer.bat`
+    - 详细步骤：1) 按Win+E打开文件管理器 → 2) 导航到mcp-scripts文件夹 → 3) 找到run-powershell-installer.bat → 4) 双击执行
+    - 自动生成：脚本会在MCP-Tools文件夹下自动生成 `mcp-config.json` 配置文件
+  - 手动执行：在PowerShell中运行 `install-mcp-tools-enhanced-final.ps1`
+  
+  > **🚨 安装后重要**：执行MCP安装脚本后，**强烈建议完整阅读** [📋 MCP工具详细配置指南](docs/MCP-DETAILED-CONFIG-GUIDE.md) 以确保MCP功能正常使用！
+
 - **手动配置**：完全自定义（适合高级用户）
   - 参考：[MCP详细配置指南](docs/MCP-DETAILED-CONFIG-GUIDE.md)
 

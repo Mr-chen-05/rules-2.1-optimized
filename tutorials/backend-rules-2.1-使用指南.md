@@ -45,7 +45,13 @@
 >
 > **📚 详细安装**: 参考 [傻瓜式安装指南](../install-scripts/INSTALL-GUIDE.md)
 >
-> **🎯 安装命令**: `install-scripts\install-all.bat ..\你的项目目录 backend`
+> **🎯 安装命令**: 
+> ```cmd
+> # 注意：如果规则目录在非C盘，需要先切换盘符
+> E:                                    # 先切换到E盘（根据你的实际盘符）
+> cd "你的rules-2.1-optimized目录路径"
+> install-scripts\install-all.bat ..\你的项目目录 backend
+> ```
 
 ## 🔧 第二步：环境要求检查
 
@@ -88,7 +94,7 @@ python --version  # 应显示 3.8+
 
 #### **🚀 NVM 保姆级安装教程**
 
-**⚠️ 重要：安装 NVM 前必须先卸载已有 Node.js！**
+**⚠️ 重要：安装 NVM 前建议先卸载已有 Node.js！**
 
 **为什么要卸载？**
 如果你的电脑已经安装了 Node.js，直接安装 NVM 会导致冲突，NVM 无法正常工作。
@@ -271,7 +277,12 @@ npm config set registry https://registry.npmmirror.com
 
 **恢复官方镜像：**
 ```bash
+# 恢复npm官方镜像源
 npm config set registry https://registry.npmjs.org/
+
+# 验证切换成功
+npm config get registry
+# 应该显示：https://registry.npmjs.org/
 ```
 
 **🎯 后端开发镜像源选择建议**
@@ -401,25 +412,27 @@ python -c "import requests; print('Python works!')"
 
 ### **3.1 一键自动安装（推荐）**
 
+> **⚠️ 重要提醒**：使用MCP工具安装脚本前，建议先阅读 **[📋 安装脚本使用说明](../mcp-scripts/安装脚本使用说明.md)** 了解详细的安装方法和注意事项。
+
 **使用自动安装脚本：**
 ```bash
-# 方法1：双击运行（推荐）
-# 在文件管理器中找到 mcp-scripts/install-mcp-tools-enhanced.bat，双击运行
+# 推荐方法：双击运行（最简单）
+双击运行: mcp-scripts/run-powershell-installer.bat
 
-# 方法2：命令行运行
-cd mcp-scripts
-.\install-mcp-tools-enhanced.bat
+# 或者手动在PowerShell中执行
+powershell -ExecutionPolicy Bypass -File "install-mcp-tools-enhanced-final.ps1的绝对路径"
 ```
 
 **📚 详细配置指南**：如需更详细的MCP配置说明，请参考 [MCP快速入门指南](../docs/MCP-QUICK-START-GUIDE.md) 或 [MCP详细配置指南](../docs/MCP-DETAILED-CONFIG-GUIDE.md)
 
+> **🚨 安装后重要**：执行MCP安装脚本后，会在MCP-Tools文件夹下自动生成 `mcp-config.json` 配置文件，然后**强烈建议**完整阅读 **[📋 MCP工具详细配置指南](../docs/MCP-DETAILED-CONFIG-GUIDE.md)** 以确保MCP功能正常使用！生成的配置文件是模板，需要根据你的实际情况修改！
+
 **脚本功能：**
-- ✅ 让用户选择安装路径（默认：C:\MCP-Tools）
-- ✅ 自动检查Node.js和Python环境
-- ✅ 自动创建MCP工具目录
-- ✅ 自动安装所有MCP工具
+- ✅ 自动检测系统环境
+- ✅ 自动安装5个核心MCP工具
+- ✅ 生成基础配置文件（**注意：是模板，需要修改**）
+- ✅ 验证安装结果
 - ✅ 提供详细的安装进度和结果报告
-- ✅ 显示最终安装路径
 
 ### **3.2 手动安装（备选）**
 
@@ -457,7 +470,7 @@ uvx mcp-feedback-enhanced@latest version
 
 **📝 完整MCP配置模板：**
 
-**⚠️ 重要提醒：** 下面的配置文件是**模板**，你必须根据自己的实际情况修改，否则无法正常工作！
+**⚠️ 重要提醒：** 下面的配置文件是**模板**，你需要根据自己的实际情况修改，否则可能无法正常工作！
 
 创建 `mcp-config.json`：
 ```json
@@ -509,7 +522,7 @@ uvx mcp-feedback-enhanced@latest version
 }
 ```
 
-**🚨 必须修改的内容：**
+**🚨 需要修改的内容：**
 1. **MCP工具路径**：将 `C:\\MCP-Tools` 改为你的实际MCP安装路径
 2. **后端项目路径**：将 `C:\\your-backend-projects` 改为实际路径
 3. **GitHub Token**：将 `your_github_token_here` 改为真实Token
@@ -708,7 +721,7 @@ AI响应：[模式：数据建模] [角色：数据库工程师]
 
 ## 📚 更多资源
 
-- **详细文档**：查看 `docs/backend-guide.md`
+- **详细文档**：查看 `docs/MCP-QUICK-START-GUIDE.md` 和 `docs/MCP-DETAILED-CONFIG-GUIDE.md`
 - **项目规则**：浏览 `project-rules/` 目录
 - **全局规则**：参考 `global-rules/` 目录
 - **MCP配置**：详见 `docs/MCP-DETAILED-CONFIG-GUIDE.md`
@@ -716,7 +729,7 @@ AI响应：[模式：数据建模] [角色：数据库工程师]
 ## 📋 版本信息
 
 - **版本**：Backend Rules v2.2.2 Optimized (Enterprise Edition)
-- **发布日期**：2025年8月3日
+- **发布日期**：2025年8月4日
 - **质量等级**：企业级生产就绪，PERFECT (A++)评级
 - **测试状态**：100%通过率，所有MCP工具验证可用
 - **优化重点**：MCP智能策略 + 企业级标准 + 完整文档

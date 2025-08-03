@@ -165,47 +165,80 @@ install-scripts\install-all.bat ..\demo-project backend
 
 **全栈开发**（前端+后端）：
 ```cmd
+# 注意：如果规则目录在非C盘，需要先切换盘符
+E:                                    # 先切换到E盘（根据你的实际盘符）
+cd "你的rules-2.1-optimized目录路径"
+install-scripts\augment-frontend.bat ..\demo-project
+```
+
+```cmd
+# 注意：如果规则目录在非C盘，需要先切换盘符
+E:                                    # 先切换到E盘（根据你的实际盘符）
+cd "你的rules-2.1-optimized目录路径"
+install-scripts\augment-backend.bat ..\demo-project
+```
+
+```cmd
+# 注意：如果规则目录在非C盘，需要先切换盘符
+E:                                    # 先切换到E盘（根据你的实际盘符）
+cd "你的rules-2.1-optimized目录路径"
+install-scripts\cursor-frontend.bat ..\demo-project
+```
+
+```cmd
+# 注意：如果规则目录在非C盘，需要先切换盘符
+E:                                    # 先切换到E盘（根据你的实际盘符）
+cd "你的rules-2.1-optimized目录路径"
+install-scripts\cursor-backend.bat ..\demo-project
+```
+
+```cmd
+# 注意：如果规则目录在非C盘，需要先切换盘符
+E:                                    # 先切换到E盘（根据你的实际盘符）
+cd "你的rules-2.1-optimized目录路径"
+install-scripts\claude-frontend.bat ..\demo-project
+```
+
+```cmd
+# 注意：如果规则目录在非C盘，需要先切换盘符
+E:                                    # 先切换到E盘（根据你的实际盘符）
+cd "你的rules-2.1-optimized目录路径"
+install-scripts\claude-backend.bat ..\demo-project
+```
+
+```cmd
+# 注意：如果规则目录在非C盘，需要先切换盘符
+E:                                    # 先切换到E盘（根据你的实际盘符）
+cd "你的rules-2.1-optimized目录路径"
+install-scripts\trae-frontend.bat ..\demo-project
+```
+
+```cmd
+# 注意：如果规则目录在非C盘，需要先切换盘符
+E:                                    # 先切换到E盘（根据你的实际盘符）
+cd "你的rules-2.1-optimized目录路径"
+install-scripts\trae-backend.bat ..\demo-project
+```
+
+```cmd
+# 注意：如果规则目录在非C盘，需要先切换盘符
+E:                                    # 先切换到E盘（根据你的实际盘符）
+cd "你的rules-2.1-optimized目录路径"
+install-scripts\install-all.bat ..\demo-project frontend
+```
+
+```cmd
+# 注意：如果规则目录在非C盘，需要先切换盘符
+E:                                    # 先切换到E盘（根据你的实际盘符）
+cd "你的rules-2.1-optimized目录路径"
+install-scripts\install-all.bat ..\demo-project backend
+```
+
+```cmd
+# 注意：如果规则目录在非C盘，需要先切换盘符
+E:                                    # 先切换到E盘（根据你的实际盘符）
+cd "你的rules-2.1-optimized目录路径"
 install-scripts\install-all.bat ..\demo-project fullstack
-```
-
-**🤔 这个命令是什么意思？**
-- `install-scripts\install-all.bat` = 运行一键安装脚本
-- `..\demo-project` = 你的项目文件夹位置（把这个改成你的项目路径）
-- `frontend` = 安装前端规则
-- `backend` = 安装后端规则
-- `fullstack` = 安装前端+后端完整规则（推荐全栈开发者使用）
-
-**🎯 安装后的效果**：你的项目会同时支持 Augment、Cursor、Claude Code、Trae AI 四个AI工具！用任何一个打开项目都能自动加载规则。
-
-**替换说明**：
-- 把 `..\demo-project` 改成你的项目文件夹路径
-- 根据你的开发类型选择：
-  - `frontend` - 纯前端开发
-  - `backend` - 纯后端开发
-  - `fullstack` - 全栈开发（包含前端和后端所有规则）
-
-## 🎉 如何知道安装成功了？
-
-### ✅ 成功的标志
-
-运行命令后，你会看到这样的输出：
-```
-========================================
- Augment Frontend Rules Installer
-========================================
-Installing Augment Frontend Rules to: ..\demo-project
-
-Creating complete frontend rules file...
-Augment Frontend Rules installed successfully!
-
-Available commands:
-  /frontend-dev, /component, /ui-design
-  /commit, /code-review, /bug-fix
-  /mermaid, /create-docs, /implement-task
-
-Rules file: ..\demo-project\.augment\rules\frontend-complete.md
-
-Installation completed!
 ```
 
 **看到 "installed successfully!" 就是成功了！** 🎉

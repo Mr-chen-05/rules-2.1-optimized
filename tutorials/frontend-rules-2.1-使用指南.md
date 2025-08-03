@@ -44,7 +44,13 @@
 >
 > **📚 详细安装**: 参考 [傻瓜式安装指南](../install-scripts/INSTALL-GUIDE.md)
 >
-> **🎯 安装命令**: `install-scripts\install-all.bat ..\你的项目目录 frontend`
+> **🎯 安装命令**: 
+> ```cmd
+> # 注意：如果规则目录在非C盘，需要先切换盘符
+> E:                                    # 先切换到E盘（根据你的实际盘符）
+> cd "你的rules-2.1-optimized目录路径"
+> install-scripts\install-all.bat ..\你的项目目录 frontend
+> ```
 
 **💡 单工具安装**: 如需安装特定AI工具，请参考 [USAGE.md](../USAGE.md) 中的单工具安装选项。
 
@@ -84,7 +90,7 @@ npm --version   # 应显示 6.0.0+
 
 #### **🚀 NVM 保姆级安装教程**
 
-**⚠️ 重要：安装 NVM 前必须先卸载已有 Node.js！**
+**⚠️ 重要：安装 NVM 前建议先卸载已有 Node.js！**
 
 **为什么要卸载？**
 如果你的电脑已经安装了 Node.js，直接安装 NVM 会导致冲突，NVM 无法正常工作。
@@ -93,8 +99,14 @@ npm --version   # 应显示 6.0.0+
 
 **步骤 1：检查是否已安装 Node.js**
 ```bash
-# 打开命令提示符，输入：
-node --version
+# 推荐方法：双击运行（最简单）
+# 详细步骤：
+# 1. 按 Win + E 打开文件资源管理器
+# 2. 导航到项目的 mcp-scripts 文件夹
+# 3. 找到 run-powershell-installer.bat 文件
+# 4. 双击该文件执行（不要右键，直接双击）
+
+双击运行: mcp-scripts/run-powershell-installer.bat
 ```
 - ✅ 如果显示"不是内部或外部命令"，说明没安装，可以直接安装 NVM
 - ❌ 如果显示版本号（如 v18.19.0），说明已安装，需要先卸载
@@ -267,7 +279,12 @@ npm config set registry https://registry.npmmirror.com
 
 **恢复官方镜像：**
 ```bash
+# 恢复npm官方镜像源
 npm config set registry https://registry.npmjs.org/
+
+# 验证切换成功
+npm config get registry
+# 应该显示：https://registry.npmjs.org/
 ```
 
 **🎯 前端开发镜像源选择建议**
@@ -300,25 +317,27 @@ npm config set registry https://registry.npmjs.org/
 
 ### **3.1 一键自动安装（推荐）**
 
+> **⚠️ 重要提醒**：使用MCP工具安装脚本前，建议先阅读 **[📋 安装脚本使用说明](../mcp-scripts/安装脚本使用说明.md)** 了解详细的安装方法和注意事项。
+
 **使用自动安装脚本：**
 ```bash
-# 方法1：双击运行（推荐）
-# 在文件管理器中找到 mcp-scripts/install-mcp-tools-enhanced.bat，双击运行
+# 推荐方法：双击运行（最简单）
+双击运行: mcp-scripts/run-powershell-installer.bat
 
-# 方法2：命令行运行
-cd mcp-scripts
-.\install-mcp-tools-enhanced.bat
+# 或者手动在PowerShell中执行
+powershell -ExecutionPolicy Bypass -File "install-mcp-tools-enhanced-final.ps1的绝对路径"
 ```
 
 **📚 详细配置指南**：如需更详细的MCP配置说明，请参考 [MCP快速入门指南](../docs/MCP-QUICK-START-GUIDE.md) 或 [MCP详细配置指南](../docs/MCP-DETAILED-CONFIG-GUIDE.md)
 
+> **🚨 安装后重要**：执行MCP安装脚本后，会在MCP-Tools文件夹下自动生成 `mcp-config.json` 配置文件，然后**强烈建议**完整阅读 **[📋 MCP工具详细配置指南](../docs/MCP-DETAILED-CONFIG-GUIDE.md)** 以确保MCP功能正常使用！生成的配置文件是模板，需要根据你的实际情况修改！
+
 **脚本功能：**
-- ✅ 让用户选择安装路径（默认：C:\MCP-Tools）
-- ✅ 自动检查Node.js和Python环境
-- ✅ 自动创建MCP工具目录
-- ✅ 自动安装所有MCP工具
+- ✅ 自动检测系统环境
+- ✅ 自动安装5个核心MCP工具
+- ✅ 生成基础配置文件（**注意：是模板，需要修改**）
+- ✅ 验证安装结果
 - ✅ 提供详细的安装进度和结果报告
-- ✅ 显示最终安装路径
 
 ### **3.2 手动安装（备选）**
 
@@ -345,7 +364,7 @@ pip install uv
 
 ### **3.3 配置文件**
 
-**⚠️ 重要提醒：** 下面的配置文件是**模板**，你必须根据自己的实际情况修改，否则无法正常工作！
+**⚠️ 重要提醒：** 下面的配置文件是**模板**，你需要根据自己的实际情况修改，否则可能无法正常工作！
 
 创建 `mcp-config.json`：
 ```json
@@ -397,7 +416,7 @@ pip install uv
 }
 ```
 
-**🚨 必须修改的内容：**
+**🚨 需要修改的内容：**
 1. **MCP工具路径**：将 `C:\\MCP-Tools` 改为你的实际MCP安装路径
 2. **前端项目路径**：将 `C:\\your-frontend-projects` 改为实际路径
 3. **GitHub Token**：将 `your_github_token_here` 改为真实Token
@@ -598,7 +617,7 @@ AI响应：[模式：优化] [角色：前端性能工程师]
 
 ## 📚 更多资源
 
-- **详细文档**：查看 `docs/frontend-guide.md`
+- **详细文档**：查看 `docs/MCP-QUICK-START-GUIDE.md` 和 `docs/MCP-DETAILED-CONFIG-GUIDE.md`
 - **项目规则**：浏览 `project-rules/` 目录
 - **全局规则**：参考 `global-rules/` 目录
 - **问题反馈**：遇到问题请及时反馈
@@ -606,7 +625,7 @@ AI响应：[模式：优化] [角色：前端性能工程师]
 ## 📋 版本信息
 
 - **版本**：Frontend Rules v2.2.2 Optimized (Enterprise Edition)
-- **发布日期**：2025年1月1日
+- **发布日期**：2025年8月4日
 - **质量等级**：企业级生产就绪，PERFECT (A++)评级
 - **测试状态**：100%通过率，所有MCP工具验证可用
 - **优化重点**：MCP智能策略 + 企业级标准 + 完整文档

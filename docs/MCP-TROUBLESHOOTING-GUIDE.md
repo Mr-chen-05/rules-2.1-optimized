@@ -4,12 +4,29 @@
 > **📱 适用**: 所有AI开发工具和操作系统  
 > **⏱️ 解决时间**: 大部分问题1-3分钟内解决  
 
+> **⚠️ 安装问题？** 如果您遇到MCP工具安装问题，请先查看 **[📋 安装脚本使用说明](../mcp-scripts/安装脚本使用说明.md)** 获取详细的安装指导。
+
 ## 🚨 紧急问题快速解决
 
-### 问题0: 找不到mcp-feedback-enhanced工具
-**症状**: 在文件夹中看不到mcp-feedback-enhanced，怀疑安装失败
+### 问题0: MCP工具安装失败或找不到工具
 
-**🔥 一键解决方案**:
+**症状**: 
+- 安装脚本报错
+- 找不到已安装的MCP工具
+- 在文件夹中看不到mcp-feedback-enhanced
+
+**🔥 推荐解决方案**:
+
+> **📋 完整安装教程**: 请查看 **[安装脚本使用说明](../mcp-scripts/安装脚本使用说明.md)** 获取详细的安装方法
+
+**快速重新安装**:
+1. 双击运行 `mcp-scripts/run-powershell-installer.bat`
+   - 详细步骤：按Win+E打开文件管理器 → 导航到mcp-scripts文件夹 → 找到run-powershell-installer.bat → 双击执行
+   - 自动生成：脚本会在MCP-Tools文件夹下自动生成 `mcp-config.json` 配置文件
+2. 按提示完成安装
+3. 验证安装结果
+
+**验证安装是否成功**:
 ```powershell
 # 验证mcp-feedback-enhanced是否安装（这是正确的验证方式）
 uvx mcp-feedback-enhanced@latest version
@@ -249,7 +266,7 @@ python -m json.tool your-config.json
 #### 问题: Claude Code找不到配置文件
 **解决方案**:
 1. 确保配置文件在项目根目录
-2. 文件名必须是 `.claude_config` 或 `CLAUDE.md`
+2. 文件名应该是 `.claude_config` 或 `CLAUDE.md`
 3. 检查文件权限
 
 ### Trae AI问题
