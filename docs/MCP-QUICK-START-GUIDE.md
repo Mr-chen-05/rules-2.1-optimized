@@ -1,5 +1,7 @@
 # 🚀 MCP工具快速入门指南
 
+> **🎯 新手必读**: 如果您还不了解MCP工具的价值和作用，请先阅读 **[🎯 什么是MCP工具？为什么要使用它们？](MCP-TOOLS-INTRODUCTION.md)**
+>
 > **🎯 目标**: 5分钟内完成MCP工具配置，立即开始使用智能反馈功能
 >
 > **📱 适用**: 所有AI开发工具（Augment、Cursor、Claude Code、Trae AI等）
@@ -40,14 +42,14 @@
 # 详细步骤：
 # 1. 按 Win + E 打开文件资源管理器
 # 2. 导航到 mcp-scripts 文件夹路径
-# 3. 找到 install-mcp-tools-enhanced.bat 文件
+# 3. 找到 run-powershell-installer.bat 文件
 # 4. 双击该文件执行（不要右键，直接双击）
 
 # 方法2：命令行运行
 # 注意：如果项目在非C盘，需要先切换盘符
 E:                                    # 先切换到E盘（根据你的实际盘符）
 cd E:\AgentRules\English\rules-2.1-optimized-2.2.1\mcp-scripts
-.\install-mcp-tools-enhanced.bat
+.\run-powershell-installer.bat
 ```
 
 **选择中文版本：**
@@ -324,7 +326,6 @@ netstat -an | findstr :8765
 ## 📚 下一步
 
 配置完成后，建议阅读：
-- 📖 [MCP工具详细功能参考](MCP-TOOLS-REFERENCE.md) - 了解每个工具的具体功能
 - 🧠 [MCP智能使用策略](MCP-INTELLIGENT-USAGE-STRATEGY.md) - 学习高效使用技巧
 - 🔧 [MCP故障排除指南](MCP-TROUBLESHOOTING-GUIDE.md) - 解决使用中的问题
 

@@ -1,5 +1,7 @@
 # 📋 MCP工具详细配置指南
 
+> **🎯 新手必读**: 如果您还不了解MCP工具的价值和作用，请先阅读 **[🎯 什么是MCP工具？为什么要使用它们？](MCP-TOOLS-INTRODUCTION.md)**
+>
 > **🎯 目标**：手把手教你正确配置MCP工具，避免常见错误，确保100%可用
 >
 > **📅 更新日期**: 2024年8月3日
@@ -27,7 +29,6 @@
 
 **🚀 快速开始：**
 - 📁 **找不到MCP工具？** 运行 `.\docs\find-mcp-installation-en.bat` 自动查找
-- 📋 **配置模板在哪？** 查看 `project-rules/mcp-intelligent-strategy.mdc` 文件获取MCP配置模板
 - 📝 **自动生成配置：** 使用MCP安装脚本会在MCP-Tools文件夹下自动生成 `mcp-config.json` 配置文件
 - 🔧 **配置失败？** 跳转到 [故障排除部分](#第五步常见问题解决)
 
@@ -507,13 +508,17 @@ F:\work\company-website
     },
     "mcp-feedback-enhanced": {
       "command": "uvx",
-      "args": ["mcp-feedback-enhanced@latest"],
-      "timeout": 600,
+      "args": [
+        "mcp-feedback-enhanced@latest"
+      ],
       "env": {
-        "MCP_WEB_PORT": "8765",
+        "PYTHONUNBUFFERED": "1",
+        "MCP_FEEDBACK_TIMEOUT": "3600",
+        "MCP_FEEDBACK_MAX_SIZE": "10485760",
+        "MCP_WINDOW_MODE": "desktop",
+        "MCP_NO_BROWSER": "true",
         "MCP_DESKTOP_MODE": "true"
-      },
-      "autoApprove": ["interactive_feedback"]
+      }
     }
   }
 }
@@ -577,13 +582,17 @@ F:\work\company-website
     },
     "mcp-feedback-enhanced": {
       "command": "uvx",
-      "args": ["mcp-feedback-enhanced@latest"],
-      "timeout": 600,
+      "args": [
+        "mcp-feedback-enhanced@latest"
+      ],
       "env": {
-        "MCP_WEB_PORT": "8765",
-        "MCP_DESKTOP_MODE": "false"
-      },
-      "autoApprove": ["interactive_feedback"]
+        "PYTHONUNBUFFERED": "1",
+        "MCP_FEEDBACK_TIMEOUT": "3600",
+        "MCP_FEEDBACK_MAX_SIZE": "10485760",
+        "MCP_WINDOW_MODE": "desktop",
+        "MCP_NO_BROWSER": "true",
+        "MCP_DESKTOP_MODE": "true"
+      }
     }
   }
 }
@@ -755,14 +764,18 @@ F:\work\company-website
       }
     },
     "mcp-feedback-enhanced": {
-      "command": "uvx",
-      "args": ["mcp-feedback-enhanced@latest"],
-      "timeout": 600,
+       "command": "uvx",
+      "args": [
+        "mcp-feedback-enhanced@latest"
+      ],
       "env": {
-        "MCP_WEB_PORT": "8765",
-        "MCP_DESKTOP_MODE": "false"
-      },
-      "autoApprove": ["interactive_feedback"]
+        "PYTHONUNBUFFERED": "1",
+        "MCP_FEEDBACK_TIMEOUT": "3600",
+        "MCP_FEEDBACK_MAX_SIZE": "10485760",
+        "MCP_WINDOW_MODE": "desktop",
+        "MCP_NO_BROWSER": "true",
+        "MCP_DESKTOP_MODE": "true"
+      }
     }
   }
 }
@@ -806,13 +819,17 @@ F:\work\company-website
     },
     "mcp-feedback-enhanced": {
       "command": "uvx",
-      "args": ["mcp-feedback-enhanced@latest"],
-      "timeout": 600,
+      "args": [
+        "mcp-feedback-enhanced@latest"
+      ],
       "env": {
-        "MCP_WEB_PORT": "8765",
-        "MCP_DESKTOP_MODE": "false"
-      },
-      "autoApprove": ["interactive_feedback"]
+        "PYTHONUNBUFFERED": "1",
+        "MCP_FEEDBACK_TIMEOUT": "3600",
+        "MCP_FEEDBACK_MAX_SIZE": "10485760",
+        "MCP_WINDOW_MODE": "desktop",
+        "MCP_NO_BROWSER": "true",
+        "MCP_DESKTOP_MODE": "true"
+      }
     }
   }
 }

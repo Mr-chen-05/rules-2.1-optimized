@@ -38,7 +38,7 @@
 ```diff
 ### 自动部署机制
 这个策略已经集成到所有安装脚本中：
-- ✅ **MCP工具安装**: `mcp-scripts/install-mcp-tools-enhanced.bat`
+- ✅ **MCP工具安装**: `mcp-scripts/run-powershell-installer.bat`
 - ✅ **前端开发指南**: `tutorials/frontend-rules-2.1-使用指南.md`
 - ✅ **后端开发指南**: `tutorials/backend-rules-2.1-使用指南.md`
 + ✅ **快速入门指南**: `docs/MCP-QUICK-START-GUIDE.md`

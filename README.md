@@ -92,7 +92,7 @@ dir "你的项目目录路径\.trae\rules\"        # Trae AI规则
 
 **📚 遇到问题？**
 - 🔍 **找不到MCP工具？** → 运行 `docs/find-mcp-installation-en.bat` 自动查找
-- 📖 **详细安装教程** → [install-scripts/INSTALL-GUIDE.md](install-scripts/INSTALL-GUIDE.md)
+- 📖 **详细安装教程** → [mcp-scripts/安装脚本使用说明.md](mcp-scripts/安装脚本使用说明.md)
 - 🆘 **故障排除** → [docs/MCP-TROUBLESHOOTING-GUIDE.md](docs/MCP-TROUBLESHOOTING-GUIDE.md)
 ## 📁 项目结构
 
@@ -106,7 +106,6 @@ rules-2.1-optimized-2.2.1/
 │   │   ├── MCP-DETAILED-CONFIG-GUIDE.md    # MCP工具详细配置
 │   │   ├── MCP-QUICK-START-GUIDE.md        # MCP快速入门指南
 │   │   ├── MCP-INTELLIGENT-USAGE-STRATEGY.md  # 🧠 MCP智能使用策略
-│   │   ├── MCP-TOOLS-REFERENCE.md          # 🛠️ MCP工具功能详细参考
 │   │   ├── MCP-TROUBLESHOOTING-GUIDE.md    # MCP故障排除指南
 │   │   └── find-mcp-installation-en.bat    # 🔍 MCP工具自动查找脚本
 │   ├── USAGE.md                            # 详细使用指南
@@ -187,7 +186,9 @@ rules-2.1-optimized-2.2.1/
 
 **自动安装（推荐）：**
 
-> **⚠️ 重要提醒**：使用MCP工具安装脚本前，请务必先阅读 **[📋 安装脚本使用说明](mcp-scripts/安装脚本使用说明.md)** 了解详细的安装方法和注意事项。
+> **🚀 新手必读**：安装MCP工具前，请先阅读 **[🎯 什么是MCP工具？为什么要使用它们？](docs/MCP-TOOLS-INTRODUCTION.md)** 了解这些工具的价值和作用
+
+> **⚠️ 安装指南**：了解MCP价值后，请阅读 **[📋 安装脚本使用说明](mcp-scripts/安装脚本使用说明.md)** 了解详细的安装方法和注意事项
 
 > **💻 系统要求**：如果你的系统没有PowerShell，请先下载安装：
 > - **Windows 10/11用户**：系统自带PowerShell，无需额外安装
@@ -211,7 +212,7 @@ powershell -ExecutionPolicy Bypass -File "install-mcp-tools-enhanced-final.ps1�
 > - **自动配置**：脚本自动安装+生成配置文件（推荐新手）
 > - **手动配置**：完全自定义配置（适合高级用户）
 >
-> **📚 详细教程**: [MCP快速入门指南](docs/MCP-QUICK-START-GUIDE.md) | **📋 安装说明**: [安装脚本使用说明](mcp-scripts/安装脚本使用说明.md) | **🔧 配置指南**: [MCP详细配置指南](docs/MCP-DETAILED-CONFIG-GUIDE.md) | **🌐 Web界面**: 默认关闭，需手动启用
+> **📚 学习路径**: [🎯 MCP工具介绍](docs/MCP-TOOLS-INTRODUCTION.md) → [📋 安装说明](mcp-scripts/安装脚本使用说明.md) → [🚀 快速入门](docs/MCP-QUICK-START-GUIDE.md) → [🔧 详细配置](docs/MCP-DETAILED-CONFIG-GUIDE.md) | **🌐 Web界面**: 默认关闭，需手动启用
 
 > **🚨 重要提醒**：执行MCP安装脚本后，会在MCP-Tools文件夹下自动生成 `mcp-config.json` 配置文件，然后**必须完整阅读** [📋 MCP工具详细配置指南](docs/MCP-DETAILED-CONFIG-GUIDE.md) 才能正常使用MCP功能！
 
