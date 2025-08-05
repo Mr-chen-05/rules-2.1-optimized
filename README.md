@@ -1,4 +1,4 @@
-# 🎯 Rules 2.3.0 Optimized - 企业级AI助手规则体系
+# 🎯 Rules 2.3.1 Optimized - 企业级AI助手规则体系
 
 > **🏆 PERFECT (A++)评级** | **✅ 100%测试通过** | **🚀 生产就绪** | **💬 完整MCP支持**
 
@@ -90,7 +90,7 @@ node --version && npm --version
 #### 🚀 PowerShell安装（推荐）
 ```powershell
 # 🎯 步骤1：进入规则目录
-cd "你的rules-2.3.0-optimized目录路径"
+cd "你的rules-2.3.1-optimized目录路径"
 
 # 🎯 步骤2：选择项目类型安装（三选一）
 install-scripts\install-all.bat "你的项目目录路径" frontend   # 🎨 前端项目
@@ -113,7 +113,7 @@ install-scripts\install-all.bat "你的项目目录路径" fullstack  # 🌟 全
 #### 💡 实际安装示例
 ```powershell
 # 示例1：前端项目安装
-cd "E:\AgentRules\English\rules-2.3.0-optimized"
+cd "E:\AgentRules\English\rules-2.3.1-optimized"
 install-scripts\install-all.bat "D:\MyProjects\vue-app" frontend
 
 # 示例2：后端项目安装  
@@ -153,7 +153,7 @@ install-scripts\install-all.bat "D:\Projects\full-stack-app" fullstack
 #### 🎯 成功标志
 
 看到以下任一响应即表示安装成功：
-- ✅ "Rules 2.3.0 系统已激活"
+- ✅ "Rules 2.3.1 系统已激活"
 - ✅ "智能开发助手已就绪"
 - ✅ "超级大脑系统已启动"
 - ✅ 显示详细的系统状态信息
@@ -206,7 +206,7 @@ dir "你的项目目录路径\.trae\rules\"        # Trae AI规则
 ## 📁 项目结构
 
 ```
-rules-2.3.0-optimized/
+rules-2.3.1-optimized/
 ├── 📚 核心教程和文档
 │   ├── tutorials/                          # 🔥 核心使用教程（必看！）
 │   │   ├── frontend-rules-2.1-使用指南.md  # 前端开发完整指南
@@ -355,7 +355,7 @@ powershell -ExecutionPolicy Bypass -File "install-mcp-tools-enhanced-final.ps1�
 
 ## 📋 项目信息
 
-**Rules 2.3.0 Optimized (Enterprise Edition)** | 发布：2025年8月5日 | 质量：PERFECT (A++)
+**Rules 2.3.1 Optimized (Enterprise Edition)** | 发布：2025年8月5日 | 质量：PERFECT (A++)
 
 基于 [steipete/agent-rules](https://github.com/steipete/agent-rules) 优化扩展 | 博客作者：m0_73635308 | 邮箱：3553952458@qq.com
 

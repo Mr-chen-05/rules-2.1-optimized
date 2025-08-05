@@ -147,7 +147,7 @@ if errorlevel 1 (
 )
 echo. >> "%PROJECT_PATH%\.augment\rules\frontend-complete.md"
 
-REM Append new AI intelligence rules (v2.3.0)
+REM Append new AI intelligence rules (v2.3.1)
 type "%RULES_DIR%\global-rules\ai-agent-intelligence-core.md" >> "%PROJECT_PATH%\.augment\rules\frontend-complete.md"
 if errorlevel 1 (
     echo ERROR: File operation failed
@@ -219,7 +219,7 @@ if errorlevel 1 (
 )
 echo. >> "%PROJECT_PATH%\.augment\rules\frontend-complete.md"
 
-REM Append new project rules (v2.3.0)
+REM Append new project rules (v2.3.1)
 type "%RULES_DIR%\project-rules\ai-powered-code-review.mdc" >> "%PROJECT_PATH%\.augment\rules\frontend-complete.md"
 if errorlevel 1 (
     echo ERROR: File operation failed

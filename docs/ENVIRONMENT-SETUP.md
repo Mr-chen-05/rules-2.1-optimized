@@ -1,6 +1,6 @@
 # 🔧 环境配置指南
 
-> **🎯 目标**: 为Rules 2.3.0系统配置完整的开发环境  
+> **🎯 目标**: 为Rules 2.3.1系统配置完整的开发环境  
 > **⏱️ 预计用时**: 10-15分钟  
 > **✅ 适用范围**: 所有AI开发工具和项目类型  
 
@@ -431,7 +431,7 @@ pip install --proxy http://proxy.company.com:8080 package_name
 
 ```powershell
 # 保存为 verify-environment.ps1
-Write-Host "🚀 Rules 2.3.0 环境验证" -ForegroundColor Cyan
+Write-Host "🚀 Rules 2.3.1 环境验证" -ForegroundColor Cyan
 Write-Host "=" * 50 -ForegroundColor Gray
 
 $checks = @()
@@ -492,7 +492,7 @@ $nodeOk = $checks | Where-Object { $_ -like "*Node.js*符合要求*" }
 $npmOk = $checks | Where-Object { $_ -like "*npm*功能正常*" }
 
 if ($nodeOk -and $npmOk) {
-    Write-Host "🎉 环境配置完美！可以开始使用Rules 2.3.0" -ForegroundColor Green
+    Write-Host "🎉 环境配置完美！可以开始使用Rules 2.3.1" -ForegroundColor Green
 } else {
     Write-Host "⚠️ 环境配置不完整，请先安装必需组件" -ForegroundColor Yellow
 }

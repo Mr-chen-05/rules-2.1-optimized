@@ -1,4 +1,4 @@
-# 🚀 Rules 2.3.0 Optimized - 傻瓜式安装教程
+# 🚀 Rules 2.3.1 Optimized - 傻瓜式安装教程
 
 > **📢 重要提示**：这是一个完全傻瓜式的教程，即使是编程新手也能100%成功安装！
 >
@@ -7,7 +7,7 @@
 
 ## 🎯 这个教程能帮你做什么？
 
-安装 Rules 2.3.0 Optimized 到你的AI开发工具中，让你的AI助手变得超级智能：
+安装 Rules 2.3.1 Optimized 到你的AI开发工具中，让你的AI助手变得超级智能：
 - 🎨 **前端开发**：Vue、React、TypeScript 专业开发
 - 🔧 **后端开发**：Node.js、Python、Java 等后端技术
 - 📝 **代码管理**：标准化提交、代码审查、Bug修复
