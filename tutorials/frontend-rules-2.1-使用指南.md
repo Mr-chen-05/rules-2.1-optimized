@@ -30,7 +30,7 @@
 4. **🎯 多AI工具支持** - 同时支持Augment、Cursor、Claude Code、Trae AI
 
 ### 🎯 你将获得什么能力？
-前端规则 v2.3.1 是专门为 Vue/React/TypeScript 开发优化的 AI 助手规则，包含：
+前端规则是专门为 Vue/React/TypeScript 开发优化的 AI 助手规则，包含：
 
 - 🎨 **UI 设计模式** - 界面和交互设计
 - ⚡ **组件开发模式** - Vue/React 组件实现

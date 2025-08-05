@@ -20,7 +20,7 @@ npm --version   # 必需: ≥8.0.0
 
 ## 📖 什么是MCP工具？
 
-MCP (Model Context Protocol) 工具是Rules 2.3.1的**智能核心**，为AI开发提供：
+MCP (Model Context Protocol) 工具是Rules的**智能核心**，为AI开发提供：
 
 | 核心功能 | 具体作用 | 使用场景 | 环境要求 |
 |---------|----------|----------|----------|

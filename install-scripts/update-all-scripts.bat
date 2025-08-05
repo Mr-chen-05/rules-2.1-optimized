@@ -3,7 +3,7 @@ chcp 65001 >nul
 setlocal enabledelayedexpansion
 
 echo ========================================
-echo  批量更新所有安装脚本 - Rules 2.3.1
+echo  批量更新所有安装脚本 - Rules
 echo ========================================
 echo.
 echo 正在更新所有AI工具的安装脚本以包含最新规则...
@@ -30,7 +30,7 @@ echo   - claude-frontend.bat
 echo   - claude-backend.bat
 echo   - claude-fullstack.bat
 echo.
-echo 📋 新增的规则文件 (v2.3.1):
+echo 📋 新增的规则文件:
 echo.
 echo 🌐 全局规则:
 for %%f in (%NEW_GLOBAL_RULES%) do (

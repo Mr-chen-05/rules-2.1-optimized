@@ -113,7 +113,7 @@ if errorlevel 1 (
     exit /b 1
 )
 
-REM Copy new AI intelligence rules (v2.3.1)
+REM Copy new AI intelligence rules
 copy /Y "%RULES_DIR%\global-rules\ai-agent-intelligence-core.md" "%PROJECT_PATH%\.cursor\rules\" >nul
 if errorlevel 1 (
     echo ERROR: Operation failed
@@ -177,7 +177,7 @@ if errorlevel 1 (
     exit /b 1
 )
 
-REM Copy new project rules (v2.3.1)
+REM Copy new project rules
 copy /Y "%RULES_DIR%\project-rules\ai-powered-code-review.mdc" "%PROJECT_PATH%\.cursor\rules\" >nul
 if errorlevel 1 (
     echo ERROR: Operation failed
