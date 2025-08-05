@@ -2,7 +2,7 @@
 
 > **目标**：让所有AI实例都具备智能的MCP工具使用能力，实现效率最大化
 >
-> **📅 更新日期**: 2024年8月3日
+> **📅 更新日期**: 2025年8月3日
 >
 > **📚 相关文档**: [MCP工具介绍](MCP-TOOLS-INTRODUCTION.md) - 了解每个工具的价值和使用场景
 >
@@ -31,14 +31,14 @@
 ### 文件操作类任务
 | 场景 | 首选工具 | 触发条件 | 备选方案 |
 |------|----------|----------|----------|
-| 读取文件 | `server-filesystem` 或已配置的文件MCP工具 | 任何文件读取需求 | 通用文件读取 |
+| 读取文件 | `npx @modelcontextprotocol/server-filesystem` 或已配置的文件MCP工具 | 任何文件读取需求 | 通用文件读取 |
 | 批量文件操作 | 文件系统MCP工具 | 需要操作多个文件 | 逐个文件操作 |
 | 目录遍历 | 文件系统MCP工具 | 需要查看目录结构 | 手动列举 |
 
 **动态检测策略**：
-- 扫描所有可用的文件操作MCP工具（如 `d-frontend-files`, `e-vue-projects`, `server-filesystem` 等）
+- 扫描所有可用的文件操作MCP工具（如 `d-frontend-files`, `e-vue-projects`, `npx @modelcontextprotocol/server-filesystem` 等）
 - 优先选择功能最完整、最适合当前任务的工具
-- 如果没有专用MCP工具，建议用户配置 `@modelcontextprotocol/server-filesystem`
+- 如果没有专用MCP工具，建议用户配置 `npx @modelcontextprotocol/server-filesystem`
 
 ### GitHub操作类任务
 | 场景 | 首选工具 | 触发条件 | 备选方案 |
@@ -58,9 +58,9 @@
 ### 用户交互类任务
 | 场景 | 首选工具 | 触发条件 | 备选方案 |
 |------|----------|----------|----------|
-| 用户反馈收集 | `mcp-feedback-enhanced` | 需要用户确认或反馈 | 简单询问 |
-| 进度报告 | `mcp-feedback-enhanced` | 复杂任务进度汇报 | 文本描述 |
-| 交互式配置 | `mcp-feedback-enhanced` | 需要用户参与配置 | 问答式配置 |
+| 用户反馈收集 | `uvx mcp-feedback-enhanced` | 需要用户确认或反馈 | 简单询问 |
+| 进度报告 | `uvx mcp-feedback-enhanced` | 复杂任务进度汇报 | 文本描述 |
+| 交互式配置 | `uvx mcp-feedback-enhanced` | 需要用户参与配置 | 问答式配置 |
 
 ### 记忆管理类任务
 | 场景 | 首选工具 | 触发条件 | 备选方案 |
@@ -72,10 +72,10 @@
 ### 通用工具类任务
 | 场景 | 首选工具 | 触发条件 | 备选方案 |
 |------|----------|----------|----------|
-| 基础计算 | `server-everything` | 简单数学运算 | 手动计算 |
-| 功能测试 | `server-everything` | 验证工具可用性 | 手动测试 |
-| 演示操作 | `server-everything` | 展示功能示例 | 文字描述 |
-| 开发调试 | `server-everything` | 辅助开发验证 | 复杂调试工具 |
+| 基础计算 | `npx @modelcontextprotocol/server-everything` | 简单数学运算 | 手动计算 |
+| 功能测试 | `npx @modelcontextprotocol/server-everything` | 验证工具可用性 | 手动测试 |
+| 演示操作 | `npx @modelcontextprotocol/server-everything` | 展示功能示例 | 文字描述 |
+| 开发调试 | `npx @modelcontextprotocol/server-everything` | 辅助开发验证 | 复杂调试工具 |
 
 ## 🔄 智能决策流程
 

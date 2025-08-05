@@ -17,7 +17,7 @@
 
 **⏱️ 预计时间：** 30-60 分钟（取决于网络速度和电脑配置）
 
-## 🎯 什么是前端规则 v2.2.2？
+## 🎯 什么是前端规则 v2.2.3？
 
 **⚠️ 新手必读：** 在开始之前，请先了解这个项目能为你做什么！
 
@@ -30,7 +30,7 @@
 4. **🎯 多AI工具支持** - 同时支持Augment、Cursor、Claude Code、Trae AI
 
 ### 🎯 你将获得什么能力？
-前端规则 v2.2.2 是专门为 Vue/React/TypeScript 开发优化的 AI 助手规则，包含：
+前端规则 v2.3.0 是专门为 Vue/React/TypeScript 开发优化的 AI 助手规则，包含：
 
 - 🎨 **UI 设计模式** - 界面和交互设计
 - ⚡ **组件开发模式** - Vue/React 组件实现
@@ -54,262 +54,67 @@
 
 **💡 单工具安装**: 如需安装特定AI工具，请参考 [USAGE.md](../USAGE.md) 中的单工具安装选项。
 
-## 🔧 第二步：环境要求检查
+## 🔧 第二步：环境配置
 
-### **2.1 系统环境要求**
+> **📋 环境要求**: 请先完成基础环境配置，确保Node.js和npm已正确安装
 
-#### **必需环境：**
-- 🖥️ **操作系统**：Windows 10/11, macOS 10.15+, Ubuntu 18.04+
-- 📦 **Node.js**：v16.0.0 或更高版本
-- 💾 **内存**：至少 4GB RAM（推荐 8GB+）
-- 💿 **存储空间**：至少 2GB 可用空间
+### ✅ 环境检查
 
-#### **环境检查命令：**
 ```bash
-# 检查Node.js版本
-node --version  # 应显示 v16.0.0+
-
-# 检查npm版本
-npm --version   # 应显示 6.0.0+
+# 检查必需环境
+node --version  # 应显示 ≥16.0.0
+npm --version   # 应显示 ≥8.0.0
 ```
 
-### **2.2 Node.js 安装详细教程**
+**环境状态**:
+- ✅ **已就绪**: 版本符合要求，可以继续前端开发配置
+- ❌ **需要配置**: 请先完成 [环境配置指南](../docs/ENVIRONMENT-SETUP.md)
 
-#### **🤔 选择安装方式：**
+### 🛠️ 前端专用工具配置
 
-**方式 1：直接安装 Node.js（推荐新手）**
-- ✅ **优点**：简单直接，一次安装终身使用
-- ❌ **缺点**：无法切换 Node.js 版本
-- 🔗 **下载地址**：https://nodejs.org
-- 📝 **选择版本**：点击左侧绿色按钮下载 LTS 版本（如 v18.19.0）
+#### VS Code（推荐）
+1. 下载：https://code.visualstudio.com/
+2. 安装推荐插件：
+   - Vue Language Features (Volar)
+   - TypeScript Vue Plugin (Volar)
+   - ESLint
+   - Prettier
+   - Auto Rename Tag
+   - Bracket Pair Colorizer
 
-**方式 2：使用 NVM 管理 Node.js（推荐开发者）**
-- ✅ **优点**：可以安装和切换多个 Node.js 版本
-- ❌ **缺点**：配置稍微复杂一些
-- 🎯 **适合人群**：需要在不同项目间切换 Node.js 版本的开发者
+#### WebStorm
+- 专业的JavaScript IDE
+- 内置Vue、React支持
+- 强大的调试功能
 
-#### **🚀 NVM 保姆级安装教程**
+### 📦 包管理器优化
 
-**⚠️ 重要：安装 NVM 前建议先卸载已有 Node.js！**
-
-**为什么要卸载？**
-如果你的电脑已经安装了 Node.js，直接安装 NVM 会导致冲突，NVM 无法正常工作。
-
-**🗑️ 卸载已有 Node.js 的详细步骤：**
-
-**步骤 1：检查是否已安装 Node.js**
+#### npm镜像配置（提升下载速度）
 ```bash
-# 推荐方法：双击运行（最简单）
-# 详细步骤：
-# 1. 按 Win + E 打开文件资源管理器
-# 2. 导航到项目的 mcp-scripts 文件夹
-# 3. 找到 run-powershell-installer.bat 文件
-# 4. 双击该文件执行（不要右键，直接双击）
+# 设置淘宝镜像
+npm config set registry https://registry.npmmirror.com
 
-双击运行: mcp-scripts/run-powershell-installer.bat
-```
-- ✅ 如果显示"不是内部或外部命令"，说明没安装，可以直接安装 NVM
-- ❌ 如果显示版本号（如 v18.19.0），说明已安装，需要先卸载
-
-**步骤 2：卸载 Node.js（Windows）**
-1. 按`Win + R`，输入`appwiz.cpl`，按回车
-2. 在程序列表中找到"Node.js"
-3. 右键点击"Node.js" → 选择"卸载"
-4. 按照提示完成卸载
-
-**步骤 3：清理残留文件**
-```bash
-# 删除npm缓存目录
-rmdir /s "C:\Users\%USERNAME%\AppData\Roaming\npm"
-
-# 删除npm-cache目录
-rmdir /s "C:\Users\%USERNAME%\AppData\Roaming\npm-cache"
-
-# 删除Node.js安装目录（如果存在）
-rmdir /s "C:\Program Files\nodejs"
+# 验证配置
+npm config get registry
 ```
 
-**步骤 4：验证卸载完成**
+#### yarn（推荐用于大型项目）
 ```bash
-# 重新打开命令提示符，输入：
-node --version
-npm --version
-```
-- ✅ 如果都显示"不是内部或外部命令"，说明卸载成功
-- ❌ 如果还显示版本号，需要重启电脑后再次检查
-
-**🔽 NVM 安装步骤：**
-
-**步骤 1：下载 NVM**
-1. 访问：https://github.com/coreybutler/nvm-windows/releases
-2. 找到最新版本（如 v1.1.11）
-3. 下载`nvm-setup.exe`文件（约 2MB）
-
-**步骤 2：安装 NVM**
-1. **右键以管理员身份运行**`nvm-setup.exe`
-2. 安装路径选择：
-   - ✅ **推荐路径**：`C:\nvm`（默认）
-   - ❌ **避免路径**：包含中文、空格的路径
-3. Node.js 符号链接路径：
-   - ✅ **推荐路径**：`C:\Program Files\nodejs`（默认）
-4. 一路点击"Next"完成安装
-
-**步骤 3：验证安装**
-1. 按`Win + R`，输入`cmd`，按回车
-2. 在黑色窗口中输入：`nvm version`
-3. 如果显示版本号（如 1.1.11），说明安装成功
-
-**步骤 4：安装 Node.js**
-```bash
-# 查看可安装的Node.js版本
-nvm list available
-
-# 安装最新LTS版本（推荐）
-nvm install 18.19.0
-
-# 使用指定版本
-nvm use 18.19.0
+# 安装yarn
+npm install -g yarn
 
 # 验证安装
-node --version
-npm --version
+yarn --version
 ```
 
-#### **🚨 常见问题和解决方案**
-
-**问题 1：提示"nvm 不是内部或外部命令"**
+#### pnpm（高性能选择）
 ```bash
-解决方案：
-1. 重新打开命令提示符（关闭后重新打开）
-2. 检查环境变量：
-   - 按Win + R，输入sysdm.cpl
-   - 点击"环境变量"
-   - 在"系统变量"中找到Path
-   - 确认包含：C:\nvm
+# 安装pnpm
+npm install -g pnpm
+
+# 验证安装
+pnpm --version
 ```
-
-**问题 2：安装 Node.js 时提示权限错误**
-```bash
-解决方案：
-1. 以管理员身份运行命令提示符
-2. 或者重新以管理员身份安装NVM
-```
-
-**问题 3：切换版本后 npm 命令失效**
-```bash
-解决方案：
-1. 重新安装npm：npm install -g npm
-2. 或者重新安装Node.js：nvm install 18.19.0
-```
-
-**问题 4：npm 安装速度慢**
-```bash
-解决方案：切换到国内镜像源
-详细教程见下方"npm镜像源切换教程"
-```
-
-#### **🎯 NVM 常用命令速查表**
-```bash
-# 查看已安装的Node.js版本
-nvm list
-
-# 查看可安装的版本
-nvm list available
-
-# 安装指定版本
-nvm install 18.19.0
-
-# 使用指定版本
-nvm use 18.19.0
-
-# 卸载指定版本
-nvm uninstall 16.20.0
-
-# 设置默认版本
-nvm alias default 18.19.0
-```
-
-#### **🚀 npm 镜像源切换教程（解决后端依赖安装慢问题）**
-
-**🤔 为什么前端开发更需要切换镜像源？**
-
-- 📦 **依赖包多** - 前端项目通常依赖包更多，下载时间长
-- 🏗️ **微服务架构** - 多个服务需要频繁安装依赖
-- 🛠️ **开发工具** - 需要安装各种开发和构建工具
-- 🚀 **CI/CD 流程** - 自动化部署需要快速安装依赖
-
-**🔥 方法 1：使用小满 zs 工具包（推荐）**
-
-感谢：本教程基于哔哩哔哩小满 zs 的工具包，原创教程来源于小满 zs。
-
-**步骤 1：安装小满 zs 工具包**
-```bash
-# 全局安装小满zs工具包
-npm i xmzs -g
-```
-
-**步骤 2：使用 mmp 命令管理镜像源**
-```bash
-# 安装完成后，会生成一个mmp命令
-mmp
-```
-
-**步骤 3：选择淘宝镜像源**
-运行 `mmp` 命令后，会显示镜像源列表：
-
-- 使用方向键选择 **taobao（淘宝镜像）**
-- 按回车键确认选择
-
-**步骤 4：验证切换成功**
-```bash
-# 查看当前镜像源
-npm config get registry
-
-# 应该显示：https://registry.npmmirror.com/
-# 注意：这是淘宝镜像的新域名，旧域名 registry.npm.taobao.org 已停用
-```
-
-**🔧 方法 2：手动切换镜像源**
-
-**切换到淘宝镜像（推荐前端开发）：**
-```bash
-# 淘宝镜像新域名（推荐）
-npm config set registry https://registry.npmmirror.com
-```
-
-**恢复官方镜像：**
-```bash
-# 恢复npm官方镜像源
-npm config set registry https://registry.npmjs.org/
-
-# 验证切换成功
-npm config get registry
-# 应该显示：https://registry.npmjs.org/
-```
-
-**🎯 前端开发镜像源选择建议**
-
-| 场景 | 推荐镜像源 | 原因 |
-|------|------------|------|
-| 🏗️ **微服务开发** | 淘宝镜像 | 速度快，稳定性好 |
-| 🛠️ **工具安装** | 淘宝镜像 | 工具包多，下载快 |
-| 🚀 **生产部署** | 官方镜像 | 最新版本，安全性高 |
-| 📦 **依赖管理** | 华为镜像 | 企业级稳定性 |
-
-**✅ 前端开发切换成功标志**
-
-- 🚀 **Express/Koa 安装** - 从几分钟缩短到1秒钟
-- 📦 **Spring Boot 工具** - Java 相关 npm 工具安装加速
-- 🐍 **Python 工具** - node-gyp 等编译工具安装加速
-- 🛠️ **开发工具** - nodemon、pm2 等工具快速安装
-- 🎨 **前端框架** - Vue CLI、Create React App 等脚手架快速安装
-- 📱 **移动端工具** - React Native CLI、Ionic CLI 等工具加速
-- 🔧 **构建工具** - Webpack、Vite、Rollup 等构建工具快速安装
-- 📊 **测试工具** - Jest、Cypress、Playwright 等测试框架加速
-
-#### **其他环境安装：**
-- **Git 安装**：访问 https://git-scm.com 下载对应版本
-- **VSCode 推荐**：访问 https://code.visualstudio.com
 
 ## 🔧 第三步：MCP工具配置（可选）
 
@@ -371,44 +176,48 @@ pip install uv
 {
   "mcpServers": {
     "filesystem": {
-      "command": "node",
+      "command": "npx",
       "args": [
-        "C:\\MCP-Tools\\node_modules\\@modelcontextprotocol\\server-filesystem\\dist\\index.js",
+        "@modelcontextprotocol/server-filesystem",
         "C:\\your-frontend-projects"
       ],
       "env": {}
     },
     "memory": {
-      "command": "node",
+      "command": "npx",
       "args": [
-        "C:\\MCP-Tools\\node_modules\\@modelcontextprotocol\\server-memory\\dist\\index.js"
+        "@modelcontextprotocol/server-memory"
       ],
       "env": {}
     },
     "github": {
-      "command": "node",
+      "command": "npx",
       "args": [
-        "C:\\MCP-Tools\\node_modules\\@modelcontextprotocol\\server-github\\dist\\index.js"
+        "@modelcontextprotocol/server-github"
       ],
       "env": {
         "GITHUB_PERSONAL_ACCESS_TOKEN": "your_github_token_here"
       }
     },
     "everything": {
-      "command": "node",
+      "command": "npx",
       "args": [
-        "C:\\MCP-Tools\\node_modules\\@modelcontextprotocol\\server-everything\\dist\\index.js"
+        "@modelcontextprotocol/server-everything"
       ],
       "env": {}
     },
     "mcp-feedback-enhanced": {
       "command": "uvx",
-      "args": ["mcp-feedback-enhanced@latest"],
-      "timeout": 600,
+      "args": [
+        "mcp-feedback-enhanced@latest"
+      ],
       "env": {
-        "MCP_WEB_PORT": "8765",
-        "MCP_DESKTOP_MODE": "false",
-        "MCP_DEBUG": "false"
+        "PYTHONUNBUFFERED": "1",
+        "MCP_FEEDBACK_TIMEOUT": "3600",
+        "MCP_FEEDBACK_MAX_SIZE": "10485760",
+        "MCP_WINDOW_MODE": "desktop",
+        "MCP_NO_BROWSER": "true",
+        "MCP_DESKTOP_MODE": "true"
       },
       "autoApprove": ["interactive_feedback"]
     }
@@ -417,9 +226,8 @@ pip install uv
 ```
 
 **🚨 需要修改的内容：**
-1. **MCP工具路径**：将 `C:\\MCP-Tools` 改为你的实际MCP安装路径
-2. **前端项目路径**：将 `C:\\your-frontend-projects` 改为实际路径
-3. **GitHub Token**：将 `your_github_token_here` 改为真实Token
+1. **前端项目路径**：将 `C:\\your-frontend-projects` 改为实际路径
+2. **GitHub Token**：将 `your_github_token_here` 改为真实Token
 
 **📂 前端项目路径示例：**
 ```json
@@ -443,23 +251,17 @@ pip install uv
 2. 文件名：`mcp-config.json`
 3. 复制上面的模板内容到文件中
 
-**步骤 2：修改MCP工具路径**
-1. 找到所有包含 `C:\\MCP-Tools` 的行
-2. 替换为你的实际MCP工具安装路径
-3. 注意使用双反斜杠格式
-
-**步骤 3：修改前端项目路径**
+**步骤 2：修改前端项目路径**
 1. 找到 `"C:\\your-frontend-projects"` 这一行
 2. 替换为你的实际前端项目路径
 3. 注意使用双反斜杠：`"D:\\前端\\项目"`
 
-**步骤 4：修改 GitHub Token**
+**步骤 3：修改 GitHub Token**
 1. 找到 `"your_github_token_here"` 这一行
 2. 替换为你的实际 GitHub Token
 3. 保持双引号格式
 
 **✅ 配置完成检查清单：**
-- [ ] MCP工具路径已改为实际安装路径
 - [ ] 前端项目路径已改为实际项目路径
 - [ ] GitHub Token 已替换为真实 Token
 - [ ] 所有路径使用双反斜杠格式
@@ -624,8 +426,8 @@ AI响应：[模式：优化] [角色：前端性能工程师]
 
 ## 📋 版本信息
 
-- **版本**：Frontend Rules v2.2.2 Optimized (Enterprise Edition)
-- **发布日期**：2025年8月4日
+- **版本**：Frontend Rules v2.2.3 Optimized (Enterprise Edition)
+- **发布日期**：2025年8月5日
 - **质量等级**：企业级生产就绪，PERFECT (A++)评级
 - **测试状态**：100%通过率，所有MCP工具验证可用
 - **优化重点**：MCP智能策略 + 企业级标准 + 完整文档

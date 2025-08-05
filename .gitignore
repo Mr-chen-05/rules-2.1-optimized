@@ -27,6 +27,7 @@ desktop.ini
 .atom/
 .brackets.json
 .codebuddy
+.enterprise-test-reports/
 
 # Node.js (如果有MCP工具相关)
 node_modules/

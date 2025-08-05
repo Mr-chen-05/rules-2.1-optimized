@@ -51,6 +51,17 @@ if exist "%PROJECT_PATH%\CLAUDE.md" (
     )
 )
 
+REM Add file generation safety rules first (HIGHEST PRIORITY)
+type "%RULES_DIR%\global-rules\file-generation-safety-rules.md" >> "%PROJECT_PATH%\CLAUDE.md"
+if errorlevel 1 (
+    echo ERROR: Failed to add file generation safety rules
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\CLAUDE.md"
+echo ========================================== >> "%PROJECT_PATH%\CLAUDE.md"
+echo. >> "%PROJECT_PATH%\CLAUDE.md"
+
 type "%RULES_DIR%\global-rules\backend-rules-2.1.md" >> "%PROJECT_PATH%\CLAUDE.md"
 if errorlevel 1 (
     echo ERROR: Failed to append backend-rules-2.1.md
@@ -131,6 +142,97 @@ if errorlevel 1 (
     pause
     exit /b 1
 )
+echo. >> "%PROJECT_PATH%\CLAUDE.md"
+
+REM Append new global rules (AI Intelligence Core)
+type "%RULES_DIR%\global-rules\ai-agent-intelligence-core.md" >> "%PROJECT_PATH%\CLAUDE.md"
+if errorlevel 1 (
+    echo ERROR: Failed to append ai-agent-intelligence-core.md
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\CLAUDE.md"
+
+type "%RULES_DIR%\global-rules\complete-workflow-integration.mdc" >> "%PROJECT_PATH%\CLAUDE.md"
+if errorlevel 1 (
+    echo ERROR: Failed to append complete-workflow-integration.mdc
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\CLAUDE.md"
+
+type "%RULES_DIR%\global-rules\intelligent-recommendation-engine.mdc" >> "%PROJECT_PATH%\CLAUDE.md"
+if errorlevel 1 (
+    echo ERROR: Failed to append intelligent-recommendation-engine.mdc
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\CLAUDE.md"
+
+type "%RULES_DIR%\global-rules\memory-system-integration.mdc" >> "%PROJECT_PATH%\CLAUDE.md"
+if errorlevel 1 (
+    echo ERROR: Failed to append memory-system-integration.mdc
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\CLAUDE.md"
+
+type "%RULES_DIR%\global-rules\super-brain-system.mdc" >> "%PROJECT_PATH%\CLAUDE.md"
+if errorlevel 1 (
+    echo ERROR: Failed to append super-brain-system.mdc
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\CLAUDE.md"
+
+type "%RULES_DIR%\global-rules\system-integration-config.mdc" >> "%PROJECT_PATH%\CLAUDE.md"
+if errorlevel 1 (
+    echo ERROR: Failed to append system-integration-config.mdc
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\CLAUDE.md"
+
+type "%RULES_DIR%\global-rules\rule-conflict-resolution.mdc" >> "%PROJECT_PATH%\CLAUDE.md"
+if errorlevel 1 (
+    echo ERROR: Failed to append rule-conflict-resolution.mdc
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\CLAUDE.md"
+
+type "%RULES_DIR%\global-rules\rule-redundancy-optimization.mdc" >> "%PROJECT_PATH%\CLAUDE.md"
+if errorlevel 1 (
+    echo ERROR: Failed to append rule-redundancy-optimization.mdc
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\CLAUDE.md"
+
+REM Append new project rules
+type "%RULES_DIR%\project-rules\ai-powered-code-review.mdc" >> "%PROJECT_PATH%\CLAUDE.md"
+if errorlevel 1 (
+    echo ERROR: Failed to append ai-powered-code-review.mdc
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\CLAUDE.md"
+
+type "%RULES_DIR%\project-rules\intelligent-project-management.mdc" >> "%PROJECT_PATH%\CLAUDE.md"
+if errorlevel 1 (
+    echo ERROR: Failed to append intelligent-project-management.mdc
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\CLAUDE.md"
+
+type "%RULES_DIR%\project-rules\intelligent-workflow-orchestration.mdc" >> "%PROJECT_PATH%\CLAUDE.md"
+if errorlevel 1 (
+    echo ERROR: Failed to append intelligent-workflow-orchestration.mdc
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\CLAUDE.md"
 
 echo.
 echo Claude Code Backend Rules installed successfully!

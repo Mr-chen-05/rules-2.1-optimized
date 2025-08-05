@@ -151,6 +151,97 @@ if errorlevel 1 (
     pause
     exit /b 1
 )
+echo. >> "%PROJECT_PATH%\CLAUDE.md"
+
+REM Append new global rules (AI Intelligence Core)
+type "%RULES_DIR%\global-rules\ai-agent-intelligence-core.md" >> "%PROJECT_PATH%\CLAUDE.md"
+if errorlevel 1 (
+    echo ERROR: File operation failed
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\CLAUDE.md"
+
+type "%RULES_DIR%\global-rules\complete-workflow-integration.mdc" >> "%PROJECT_PATH%\CLAUDE.md"
+if errorlevel 1 (
+    echo ERROR: File operation failed
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\CLAUDE.md"
+
+type "%RULES_DIR%\global-rules\intelligent-recommendation-engine.mdc" >> "%PROJECT_PATH%\CLAUDE.md"
+if errorlevel 1 (
+    echo ERROR: File operation failed
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\CLAUDE.md"
+
+type "%RULES_DIR%\global-rules\memory-system-integration.mdc" >> "%PROJECT_PATH%\CLAUDE.md"
+if errorlevel 1 (
+    echo ERROR: File operation failed
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\CLAUDE.md"
+
+type "%RULES_DIR%\global-rules\super-brain-system.mdc" >> "%PROJECT_PATH%\CLAUDE.md"
+if errorlevel 1 (
+    echo ERROR: File operation failed
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\CLAUDE.md"
+
+type "%RULES_DIR%\global-rules\system-integration-config.mdc" >> "%PROJECT_PATH%\CLAUDE.md"
+if errorlevel 1 (
+    echo ERROR: File operation failed
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\CLAUDE.md"
+
+type "%RULES_DIR%\global-rules\rule-conflict-resolution.mdc" >> "%PROJECT_PATH%\CLAUDE.md"
+if errorlevel 1 (
+    echo ERROR: File operation failed
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\CLAUDE.md"
+
+type "%RULES_DIR%\global-rules\rule-redundancy-optimization.mdc" >> "%PROJECT_PATH%\CLAUDE.md"
+if errorlevel 1 (
+    echo ERROR: File operation failed
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\CLAUDE.md"
+
+REM Append new project rules
+type "%RULES_DIR%\project-rules\ai-powered-code-review.mdc" >> "%PROJECT_PATH%\CLAUDE.md"
+if errorlevel 1 (
+    echo ERROR: File operation failed
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\CLAUDE.md"
+
+type "%RULES_DIR%\project-rules\intelligent-project-management.mdc" >> "%PROJECT_PATH%\CLAUDE.md"
+if errorlevel 1 (
+    echo ERROR: File operation failed
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\CLAUDE.md"
+
+type "%RULES_DIR%\project-rules\intelligent-workflow-orchestration.mdc" >> "%PROJECT_PATH%\CLAUDE.md"
+if errorlevel 1 (
+    echo ERROR: File operation failed
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\CLAUDE.md"
 
 echo.
 echo Claude Code Fullstack Rules installed successfully!

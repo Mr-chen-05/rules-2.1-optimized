@@ -1,62 +1,178 @@
 ---
-description: "MCP工具智能使用强制策略 - 确保所有AI实例都具备高效工具使用能力"
+type: "project_rule"
+description: "MCP工具智能使用策略 - 专注于MCP工具的自主选择和高效使用"
 globs: ["**/*"]
-alwaysApply: true
+priority: 950
 ---
 
-# 🚨 MCP工具智能使用强制策略
+# 🧠 MCP工具智能使用策略
 
-**⚠️ 重要：这是核心策略规则，建议所有AI实例遵循！**
+## 🎯 核心原则 <mcreference link="https://www.ibm.com/think/insights/ai-agents-2025-expectations-vs-reality" index="1">1</mcreference>
 
-## 🎯 核心强制原则
+**核心原则**: AI助手必须优先使用MCP工具，实现高效的工具选择和使用模式。
 
-### 1. 任务开始时建议执行的检查
+## 🎯 核心策略原则
+
+### 智能系统集成优先
+```yaml
+系统协同策略:
+  超级大脑系统:
+    - 统一的智能管理入口和决策支持
+    - 项目状态感知和上下文分析
+    - 自动化工作流编排和优化
+    - 持续学习和性能改进
+  
+  项目管理集成:
+    - 五阶段生命周期严格管理
+    - 阶段约束和切换条件检查
+    - 完整工作流和质量保证
+    - 成功指标和效果评估
+  
+  记忆系统协同:
+    - 多层次记忆架构和智能检索
+    - 自动记录和上下文感知
+    - 经验积累和知识管理
+    - 个性化服务和预测分析
+  
+  推荐引擎集成:
+    - 多维度智能推荐算法
+    - 关键词匹配和语义理解
+    - 学习优化和反馈循环
+    - 个性化定制和效果评估
 ```
-每个任务开始时，AI建议：
+
+### 效率优先原则
+```yaml
+工具选择策略:
+  智能编排优先:
+    1. 基于项目阶段的自动工具选择
+    2. 上下文感知的工具组合优化
+    3. 历史成功模式的智能复用
+    4. 实时性能监控和动态调整
+  
+  传统优先级:
+    1. 高效率工具组合 (减少调用次数)
+    2. 专用工具优于通用工具
+    3. 批量操作优于单次操作
+    4. 缓存结果优于重复查询
+  
+  避免策略:
+    - 重复的文件读取操作
+    - 不必要的搜索和检索
+    - 过度细分的工具调用
+    - 低效的工具组合使用
+    - 忽略智能系统的推荐和优化
+```
+
+## 🎯 MCP工具优先使用原则
+
+### 1. 任务开始时的强制检查
+```
+每个任务开始时，必须执行：
 1. 立即扫描所有可用的MCP工具
-2. 识别任务类型和复杂度
-3. 评估MCP工具vs通用方法的效率
-4. 选择最优方案执行
+2. 识别任务类型和最适合的MCP工具
+3. 评估MCP工具vs通用方法的效率差异
+4. 优先选择MCP工具方案执行
 ```
 
-### 2. 强制性工具优先级
-```
-优先级排序（建议按此顺序考虑）：
-1. 专用MCP工具（如github、memory、codebase-retrieval）
-2. 通用MCP工具（如文件操作工具）
-3. 通用方法（仅作为最后备选）
+### 2. MCP工具选择策略 <mcreference link="https://github.com/microsoft/autogen" index="4">4</mcreference>
+
+**选择原则**: 基于任务特性和工具能力进行最优MCP工具选择。
+
+```yaml
+MCP工具选择矩阵:
+  任务类型匹配:
+    文件操作:
+      - 首选: server-filesystem
+      - 适用: 所有文件读写、目录操作
+      - 优势: 高性能、批量操作
+    
+    代码检索:
+      - 首选: codebase-retrieval
+      - 适用: 语义搜索、代码分析
+      - 优势: 智能理解、精确匹配
+    
+    GitHub操作:
+      - 首选: server-github
+      - 适用: 仓库管理、PR、Issue
+      - 优势: 原生API、完整功能
+    
+    用户交互:
+      - 首选: mcp-feedback-enhanced
+      - 适用: 复杂决策、确认操作
+      - 优势: 结构化反馈、超时处理
+    
+    知识管理:
+      - 首选: server-memory
+      - 适用: 信息存储、上下文保持
+      - 优势: 语义检索、持久化
+    
+    备选方案:
+      - 通用工具: MCP工具不可用时
+      - 手动操作: 一次性简单任务
+      - 混合方案: 复杂场景需要多工具配合
 ```
 
-### 3. 强制性切换触发条件
-```
-以下情况建议重新评估工具选择：
-- 通用方法连续失败2次以上
-- 发现任务复杂度超出当前方法能力
-- 识别到更优的MCP工具
-- 用户反馈当前方法效率低下
+### 3. MCP工具使用流程 <mcreference link="https://github.com/langchain-ai/langchain" index="5">5</mcreference>
+
+```yaml
+标准使用流程:
+  1. 任务分析:
+     - 识别任务类型
+     - 确定所需功能
+     - 评估复杂程度
+  
+  2. 工具选择:
+     - 扫描可用MCP工具
+     - 匹配工具能力
+     - 选择最适合的工具
+  
+  3. 执行监控:
+     - 监控工具性能
+     - 检测异常情况
+     - 必要时切换方案
+  
+  4. 结果验证:
+     - 验证执行结果
+     - 记录重要信息
+     - 总结经验教训
 ```
 
-### 4. 缺失工具的强制处理
-```
-当识别到需要但缺失的MCP工具时，建议：
-1. 明确告知用户缺少的工具
-2. 说明工具的具体价值和效率提升
-3. 提供详细的配置指导
-4. 主动协助用户完成配置
+### 4. MCP工具故障处理 <mcreference link="https://www.ibm.com/think/prompt-engineering" index="3">3</mcreference>
+
+```yaml
+故障检测:
+  常见问题:
+    - 工具响应超时
+    - 连接失败
+    - 权限不足
+    - 配置错误
+  
+  处理策略:
+    - 自动重试(最多3次)
+    - 切换到备用方案
+    - 提示用户检查配置
+    - 记录错误信息供后续分析
+
+恢复机制:
+  1. 立即重试: 网络临时问题
+  2. 延迟重试: 服务暂时不可用
+  3. 降级处理: 使用通用方法完成任务
+  4. 用户介入: 需要手动配置或授权
 ```
 
 ## 📋 强制性工具映射表
 
 | 任务类型 | 建议首选的MCP工具 | 不推荐的低效方法 |
 |----------|-------------------|----------------|
-| 文件操作 | `server-filesystem` 或文件系统MCP工具 | 逐个手动操作 |
-| GitHub操作 | `server-github` 或GitHub MCP工具 | web-fetch抓取HTML |
+| 文件操作 | `npx @modelcontextprotocol/server-filesystem` 或文件系统MCP工具 | 逐个手动操作 |
+| GitHub操作 | `npx @modelcontextprotocol/server-github` 或GitHub MCP工具 | web-fetch抓取HTML |
 | 代码检索 | `codebase-retrieval` 或代码检索MCP工具 | 盲目搜索文件 |
-| 用户反馈 | `mcp-feedback-enhanced` 或反馈MCP工具 | 简单文本询问 |
-| 记忆管理 | `server-memory` 或记忆MCP工具 | 临时变量存储 |
-| 数据库操作 | `server-postgres`, `server-mysql` 等 | 手动SQL操作 |
-| 通用工具操作 | `server-everything` 或通用MCP工具 | 手动执行基础操作 |
-| 测试和演示 | `server-everything` 或通用MCP工具 | 复杂的手动验证 |
+| 用户反馈 | `uvx mcp-feedback-enhanced` 或反馈MCP工具 | 简单文本询问 |
+| 记忆管理 | `npx @modelcontextprotocol/server-memory` 或记忆MCP工具 | 临时变量存储 |
+| 数据库操作 | `npx @modelcontextprotocol/server-postgres`, `npx @modelcontextprotocol/server-mysql` 等 | 手动SQL操作 |
+| 通用工具操作 | `npx @modelcontextprotocol/server-everything` 或通用MCP工具 | 手动执行基础操作 |
+| 测试和演示 | `npx @modelcontextprotocol/server-everything` 或通用MCP工具 | 复杂的手动验证 |
 
 ## 🧠 强制性Memory自动记录机制
 
@@ -115,7 +231,7 @@ AI建议在以下情况自动调用memory工具记录信息：
 ### 文件操作任务
 ```
 IF 任务涉及文件读写 THEN
-  首选：server-filesystem 或已配置的文件系统MCP工具
+  首选：npx @modelcontextprotocol/server-filesystem 或已配置的文件系统MCP工具
   检测：扫描可用的文件操作MCP工具（如 d-frontend-files, e-vue-projects 等）
   禁止：直接使用通用文件操作
   切换条件：MCP工具不可用或功能不足

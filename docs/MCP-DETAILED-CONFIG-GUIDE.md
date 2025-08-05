@@ -28,260 +28,55 @@
 > - **使用脚本安装前，建议先阅读** **[📋 安装脚本使用说明](../mcp-scripts/安装脚本使用说明.md)**
 
 **🚀 快速开始：**
-- 📁 **找不到MCP工具？** 运行 `.\docs\find-mcp-installation-en.bat` 自动查找
 - 📝 **自动生成配置：** 使用MCP安装脚本会在MCP-Tools文件夹下自动生成 `mcp-config.json` 配置文件
 - 🔧 **配置失败？** 跳转到 [故障排除部分](#第五步常见问题解决)
+- 💡 **使用npx：** 现在使用npx命令，无需复杂的路径配置
 
 ## 🚨 重要提醒
 
 **配置文件是模板，需要修改！**
 - ❌ 直接复制粘贴模板 → 无法正常工作
-- ✅ 根据实际情况修改 → 100%成功
+- ✅ 根据实际情况修改项目路径和Token → 100%成功
+- 💡 **好消息**：使用npx后，无需配置复杂的MCP工具路径
 
-## 📁 第一步：确定你的安装路径
+## 📁 第一步：确认MCP工具安装
 
-### **1.1 找到MCP工具安装路径**
+### **1.1 使用npx简化配置**
 
-#### **🚀 推荐方法：使用自动查找脚本（最简单）**
+**🎉 好消息！** 现在使用npx命令，无需复杂的路径配置：
 
-我们为您准备了一个自动查找脚本，一键找到所有MCP工具的安装位置：
+- ✅ **npx自动查找**：npx会自动找到已安装的MCP工具
+- ✅ **无需路径配置**：不用手动指定复杂的node_modules路径
+- ✅ **简化维护**：工具更新时配置无需修改
 
+**验证MCP工具是否已安装：**
 ```bash
-# 运行MCP工具查找脚本
-.\docs\find-mcp-installation-en.bat
+# 检查Node.js MCP工具（应该显示版本信息）
+npx @modelcontextprotocol/server-filesystem --version
+npx @modelcontextprotocol/server-memory --version
+npx @modelcontextprotocol/server-github --version
+npx @modelcontextprotocol/server-everything --version
+
+# 检查Python MCP工具
+uvx mcp-feedback-enhanced@latest version
 ```
 
-**脚本功能：**
-- 🔍 自动搜索npm全局包中的MCP工具
-- 🔍 检查常见安装位置
-- 🔍 查找Python版本的MCP工具
-- 📍 显示具体的安装路径
-- 💡 提供重新安装建议
-
----
-
-#### **🔧 手动查找方法（备选）**
-
-**方法1：检查安装目录**
+**如果MCP工具未安装，请先安装：**
 ```bash
-# 如果你按照教程安装，通常在：
-C:\MCP-Tools\
+# 使用自动安装脚本（推荐）
+.\mcp-scripts\run-powershell-installer.bat
 
-# 检查是否存在以下文件夹：
-C:\MCP-Tools\node_modules\@modelcontextprotocol\
-```
-
-**方法2：使用命令查找**
-```bash
-# 在命令行中执行
-where node
-# 查看Node.js安装路径，MCP工具通常在附近
-```
-
-**方法3：全局搜索**
-```bash
-# 搜索MCP相关文件夹
-dir /s /b C:\ | findstr "modelcontextprotocol"
-```
-
-#### **🚨 找不到MCP工具？完整解决方案**
-
-<details>
-<summary>🔍 <strong>系统性查找MCP工具位置</strong>（点击展开）</summary>
-
-**如果上面的方法都找不到MCP工具，按以下步骤系统性查找：**
-
-**步骤1：全面搜索**
-```powershell
-# 在PowerShell中执行以下命令
-Write-Host "正在搜索MCP工具..." -ForegroundColor Yellow
-
-# 搜索MCP相关文件夹
-Write-Host "搜索MCP文件夹..." -ForegroundColor Green
-Get-ChildItem -Path C:\ -Recurse -Directory -Name "*modelcontextprotocol*" -ErrorAction SilentlyContinue
-
-# 搜索MCP服务器文件
-Write-Host "搜索MCP服务器文件..." -ForegroundColor Green
-Get-ChildItem -Path C:\ -Recurse -Name "*server-filesystem*" -ErrorAction SilentlyContinue
-
-# 搜索包含MCP的所有文件夹
-Write-Host "搜索包含MCP的文件夹..." -ForegroundColor Green
-Get-ChildItem -Path C:\ -Recurse -Directory -Name "*mcp*" -ErrorAction SilentlyContinue
-```
-
-**步骤2：检查npm全局包**
-```bash
-# 查看所有全局安装的包
-npm list -g --depth=0
-
-# 查看npm全局安装路径
-npm root -g
-
-# 如果看到@modelcontextprotocol相关包，记下路径！
-```
-
-**步骤3：检查常见安装位置**
-```bash
-# 检查用户目录下的npm包
-dir "%APPDATA%\npm\node_modules" | findstr "modelcontextprotocol"
-
-# 检查Program Files下的Node.js
-dir "C:\Program Files\nodejs\node_modules" | findstr "modelcontextprotocol"
-
-# 检查可能的自定义安装路径
-dir "C:\MCP-Tools" 2>nul
-dir "C:\tools" | findstr "mcp" 2>nul
-```
-
-**步骤4：通过Node.js路径推断**
-```bash
-# 查看Node.js安装位置
-where node
-# 输出示例：C:\Program Files\nodejs\node.exe
-
-# 基于Node.js位置查找MCP工具
-# 通常在：C:\Program Files\nodejs\node_modules\@modelcontextprotocol\
-```
-
-**步骤5：检查其他包管理器**
-```bash
-# 检查yarn全局包
-yarn global list
-
-# 检查pnpm全局包
-pnpm list -g
-
-# 检查Python包（某些MCP工具是Python包）
-pip list | findstr mcp
-```
-
-</details>
-
-<details>
-<summary>🔧 <strong>如果完全找不到，重新安装MCP工具</strong>（点击展开）</summary>
-
-**可能的情况：MCP工具没有正确安装**
-
-**重新安装所有MCP工具：**
-```bash
-# 安装核心MCP服务器
+# 或手动安装
 npm install -g @modelcontextprotocol/server-filesystem
 npm install -g @modelcontextprotocol/server-memory
 npm install -g @modelcontextprotocol/server-github
 npm install -g @modelcontextprotocol/server-everything
-
-# 安装Python MCP工具
-pip install uv
-# 或者
-uvx mcp-feedback-enhanced@latest
+pip install uv  # 用于Python工具
 ```
 
-**验证安装：**
+### **1.2 项目路径配置**
 
-⚠️ **重要说明：** MCP工具分为两种类型，验证方式不同！
-
-**Node.js MCP工具（4个）- 可在文件夹中看到：**
-```bash
-# 检查安装是否成功
-npm list -g --depth=0 | findstr "modelcontextprotocol"
-
-# 查看安装路径
-npm root -g
-
-# 检查本地安装（根据你选择的安装路径）
-# 默认路径（选项1）
-dir "C:\MCP-Tools\node_modules\@modelcontextprotocol"
-# D盘路径（选项2）
-dir "D:\MCP-Tools\node_modules\@modelcontextprotocol"
-# 自定义路径（选项3，替换为你的实际路径）
-dir "你的安装路径\node_modules\@modelcontextprotocol"
-```
-
-**Python MCP工具（1个）- 无法在文件夹中看到：**
-```bash
-# 验证mcp-feedback-enhanced（Python包）
-uvx mcp-feedback-enhanced@latest version
-
-# 应该显示类似：
-# MCP Feedback Enhanced Enhanced v2.6.0
-# 作者: Minidoracat
-# GitHub: https://github.com/Minidoracat/mcp-feedback-enhanced
-```
-
-**📋 完整验证清单：**
-- ✅ **4个Node.js包** - 在node_modules文件夹中可见
-- ✅ **1个Python包** - 通过uvx命令验证，不在文件夹中
-- ✅ **总计5个MCP工具** - 全部安装成功
-
-**安装到指定目录（推荐）：**
-```bash
-# 创建专门的MCP工具目录
-mkdir C:\MCP-Tools
-cd C:\MCP-Tools
-
-# 初始化npm项目
-npm init -y
-
-# 安装MCP工具到当前目录
-npm install @modelcontextprotocol/server-filesystem
-npm install @modelcontextprotocol/server-memory
-npm install @modelcontextprotocol/server-github
-npm install @modelcontextprotocol/server-everything
-
-# 这样MCP工具就安装在：C:\MCP-Tools\node_modules\@modelcontextprotocol\
-```
-
-</details>
-
-<details>
-<summary>🎯 <strong>一键查找脚本</strong>（点击展开）</summary>
-
-**创建自动查找脚本：**
-
-1. **创建文件** `find-mcp.bat`：
-```batch
-@echo off
-chcp 65001 >nul
-echo 🔍 正在查找MCP工具安装位置...
-echo.
-
-echo [1/5] 检查npm全局包...
-npm list -g --depth=0 | findstr "modelcontextprotocol"
-echo.
-
-echo [2/5] 查看npm全局路径...
-npm root -g
-echo.
-
-echo [3/5] 搜索MCP文件夹...
-dir /s /b C:\ | findstr "modelcontextprotocol" 2>nul
-echo.
-
-echo [4/5] 检查常见位置...
-if exist "%APPDATA%\npm\node_modules\@modelcontextprotocol" (
-    echo ✅ 找到：%APPDATA%\npm\node_modules\@modelcontextprotocol
-)
-if exist "C:\Program Files\nodejs\node_modules\@modelcontextprotocol" (
-    echo ✅ 找到：C:\Program Files\nodejs\node_modules\@modelcontextprotocol
-)
-if exist "C:\MCP-Tools\node_modules\@modelcontextprotocol" (
-    echo ✅ 找到：C:\MCP-Tools\node_modules\@modelcontextprotocol
-)
-
-echo [5/5] 检查Node.js位置...
-where node
-
-echo.
-echo 🎉 查找完成！请查看上面的输出结果。
-pause
-```
-
-2. **运行脚本**：
-   - 双击 `find-mcp.bat` 文件
-     - 详细步骤：按Win+E打开文件管理器 → 导航到docs文件夹 → 找到find-mcp.bat → 双击执行
-   - 脚本会自动搜索所有可能的MCP工具位置
-
-</details>
+**💡 重要说明**：使用npx后，只需要配置项目路径，无需复杂的MCP工具路径配置。
 
 ### **1.2 找到你的项目路径**
 
@@ -606,13 +401,13 @@ F:\work\company-website
 1. 在MCP工具目录下创建 `mcp-config.json`
 2. 复制上面的模板内容
 
-**步骤2：修改MCP工具路径**
+**步骤2：修改项目路径**
 ```json
 // 找到这样的行：
-"C:\\MCP-Tools\\node_modules\\..."
+"C:\\your-frontend-projects"
 
-// 替换为你的实际路径：
-"D:\\MyMCP\\node_modules\\..."
+// 替换为你的实际项目路径：
+"D:\\我的前端项目"
 ```
 
 **步骤3：修改项目路径**
@@ -659,7 +454,6 @@ F:\work\company-website
 - [ ] JSON格式正确（括号、逗号完整）
 
 **路径检查：**
-- [ ] MCP工具路径存在且正确
 - [ ] 项目路径存在且可访问
 - [ ] 所有路径使用正确格式
 
@@ -682,30 +476,32 @@ F:\work\company-website
 
 ## 🐛 第五步：常见问题解决
 
-### **5.0 找不到MCP工具？**
+### **5.0 MCP工具未安装？**
 
-**问题：** 不知道MCP工具安装在哪里，配置路径时无从下手
+**问题：** MCP工具未正确安装或无法找到
 **解决方案：**
 ```bash
-# 🚀 使用自动查找脚本（推荐）
-.\docs\find-mcp-installation-en.bat
+# 🚀 使用自动安装脚本（推荐）
+.\mcp-scripts\run-powershell-installer.bat
+
+# 或验证现有安装
+npx @modelcontextprotocol/server-filesystem --version
+uvx mcp-feedback-enhanced@latest version
 ```
 
-**脚本会自动：**
-- 🔍 搜索npm全局包中的MCP工具
-- 🔍 检查Python版本的MCP工具
-- 📍 显示具体的安装路径
-- 💡 提供重新安装建议
+**使用npx的优势：**
+- ✅ 自动查找已安装的工具
+- ✅ 无需配置复杂路径
+- ✅ 简化维护和更新
 
 ### **5.1 路径问题**
 
 **问题：** `cannot find module` 或路径相关错误
 **解决方案：**
-- 🚀 **首先运行** `.\docs\find-mcp-installation-en.bat` 确认MCP工具位置
-- 确保路径中没有中文字符（如果可能）
-- 使用双反斜杠：`"C:\\MCP-Tools\\..."`
-- 或使用正斜杠：`"C:/MCP-Tools/..."`
-- 检查路径是否真实存在
+- 确保项目路径中没有中文字符（如果可能）
+- 使用双反斜杠：`"C:\\your-projects\\..."`
+- 或使用正斜杠：`"C:/your-projects/..."`
+- 检查项目路径是否真实存在
 
 ### **5.2 JSON格式错误**
 
@@ -732,32 +528,32 @@ F:\work\company-website
 {
   "mcpServers": {
     "vue项目": {
-      "command": "node",
+      "command": "npx",
       "args": [
-        "C:\\MCP-Tools\\node_modules\\@modelcontextprotocol\\server-filesystem\\dist\\index.js",
+        "@modelcontextprotocol/server-filesystem",
         "D:\\前端\\Vue3项目"
       ],
       "env": {}
     },
     "react项目": {
-      "command": "node", 
+      "command": "npx",
       "args": [
-        "C:\\MCP-Tools\\node_modules\\@modelcontextprotocol\\server-filesystem\\dist\\index.js",
+        "@modelcontextprotocol/server-filesystem",
         "D:\\前端\\React项目"
       ],
       "env": {}
     },
     "memory": {
-      "command": "node",
+      "command": "npx",
       "args": [
-        "C:\\MCP-Tools\\node_modules\\@modelcontextprotocol\\server-memory\\dist\\index.js"
+        "@modelcontextprotocol/server-memory"
       ],
       "env": {}
     },
     "github": {
-      "command": "node",
+      "command": "npx",
       "args": [
-        "C:\\MCP-Tools\\node_modules\\@modelcontextprotocol\\server-github\\dist\\index.js"
+        "@modelcontextprotocol/server-github"
       ],
       "env": {
         "GITHUB_PERSONAL_ACCESS_TOKEN": "ghp_xxxxxxxxxxxxxxxxxxxx"
@@ -786,32 +582,32 @@ F:\work\company-website
 {
   "mcpServers": {
     "java项目": {
-      "command": "node",
+      "command": "npx",
       "args": [
-        "C:\\MCP-Tools\\node_modules\\@modelcontextprotocol\\server-filesystem\\dist\\index.js",
+        "@modelcontextprotocol/server-filesystem",
         "E:\\Java\\SpringBoot项目"
       ],
       "env": {}
     },
     "python项目": {
-      "command": "node",
+      "command": "npx",
       "args": [
-        "C:\\MCP-Tools\\node_modules\\@modelcontextprotocol\\server-filesystem\\dist\\index.js",
+        "@modelcontextprotocol/server-filesystem",
         "E:\\Python\\FastAPI项目"
       ],
       "env": {}
     },
     "memory": {
-      "command": "node",
+      "command": "npx",
       "args": [
-        "C:\\MCP-Tools\\node_modules\\@modelcontextprotocol\\server-memory\\dist\\index.js"
+        "@modelcontextprotocol/server-memory"
       ],
       "env": {}
     },
     "github": {
-      "command": "node",
+      "command": "npx",
       "args": [
-        "C:\\MCP-Tools\\node_modules\\@modelcontextprotocol\\server-github\\dist\\index.js"
+        "@modelcontextprotocol/server-github"
       ],
       "env": {
         "GITHUB_PERSONAL_ACCESS_TOKEN": "ghp_xxxxxxxxxxxxxxxxxxxx"

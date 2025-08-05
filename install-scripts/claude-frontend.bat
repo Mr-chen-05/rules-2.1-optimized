@@ -1,6 +1,6 @@
-﻿@echo off
+@echo off
 chcp 65001 >nul
-setlocal
+setlocal enabledelayedexpansion
 
 REM Get the directory where this script is located
 set "SCRIPT_DIR=%~dp0"
@@ -40,6 +40,17 @@ if exist "%PROJECT_PATH%\CLAUDE.md" (
     echo # Claude Code Frontend Rules > "%PROJECT_PATH%\CLAUDE.md"
     echo. >> "%PROJECT_PATH%\CLAUDE.md"
 )
+
+REM Add file generation safety rules first (HIGHEST PRIORITY)
+type "%RULES_DIR%\global-rules\file-generation-safety-rules.md" >> "%PROJECT_PATH%\CLAUDE.md"
+if errorlevel 1 (
+    echo ERROR: Failed to add file generation safety rules
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\CLAUDE.md"
+echo ========================================== >> "%PROJECT_PATH%\CLAUDE.md"
+echo. >> "%PROJECT_PATH%\CLAUDE.md"
 
 type "%RULES_DIR%\global-rules\frontend-rules-2.1.md" >> "%PROJECT_PATH%\CLAUDE.md"
 if errorlevel 1 (
@@ -121,6 +132,97 @@ if errorlevel 1 (
     pause
     exit /b 1
 )
+echo. >> "%PROJECT_PATH%\CLAUDE.md"
+
+REM Append new global rules (AI Intelligence Core)
+type "%RULES_DIR%\global-rules\ai-agent-intelligence-core.md" >> "%PROJECT_PATH%\CLAUDE.md"
+if errorlevel 1 (
+    echo ERROR: File operation failed
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\CLAUDE.md"
+
+type "%RULES_DIR%\global-rules\complete-workflow-integration.mdc" >> "%PROJECT_PATH%\CLAUDE.md"
+if errorlevel 1 (
+    echo ERROR: File operation failed
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\CLAUDE.md"
+
+type "%RULES_DIR%\global-rules\intelligent-recommendation-engine.mdc" >> "%PROJECT_PATH%\CLAUDE.md"
+if errorlevel 1 (
+    echo ERROR: File operation failed
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\CLAUDE.md"
+
+type "%RULES_DIR%\global-rules\memory-system-integration.mdc" >> "%PROJECT_PATH%\CLAUDE.md"
+if errorlevel 1 (
+    echo ERROR: File operation failed
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\CLAUDE.md"
+
+type "%RULES_DIR%\global-rules\super-brain-system.mdc" >> "%PROJECT_PATH%\CLAUDE.md"
+if errorlevel 1 (
+    echo ERROR: File operation failed
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\CLAUDE.md"
+
+type "%RULES_DIR%\global-rules\system-integration-config.mdc" >> "%PROJECT_PATH%\CLAUDE.md"
+if errorlevel 1 (
+    echo ERROR: File operation failed
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\CLAUDE.md"
+
+type "%RULES_DIR%\global-rules\rule-conflict-resolution.mdc" >> "%PROJECT_PATH%\CLAUDE.md"
+if errorlevel 1 (
+    echo ERROR: File operation failed
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\CLAUDE.md"
+
+type "%RULES_DIR%\global-rules\rule-redundancy-optimization.mdc" >> "%PROJECT_PATH%\CLAUDE.md"
+if errorlevel 1 (
+    echo ERROR: File operation failed
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\CLAUDE.md"
+
+REM Append new project rules
+type "%RULES_DIR%\project-rules\ai-powered-code-review.mdc" >> "%PROJECT_PATH%\CLAUDE.md"
+if errorlevel 1 (
+    echo ERROR: File operation failed
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\CLAUDE.md"
+
+type "%RULES_DIR%\project-rules\intelligent-project-management.mdc" >> "%PROJECT_PATH%\CLAUDE.md"
+if errorlevel 1 (
+    echo ERROR: File operation failed
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\CLAUDE.md"
+
+type "%RULES_DIR%\project-rules\intelligent-workflow-orchestration.mdc" >> "%PROJECT_PATH%\CLAUDE.md"
+if errorlevel 1 (
+    echo ERROR: File operation failed
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\CLAUDE.md"
 
 echo.
 echo Claude Code Frontend Rules installed successfully!

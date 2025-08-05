@@ -8,12 +8,12 @@
 
 **MCP (Model Context Protocol)** 是一个让AI助手能够使用外部工具的协议。简单来说：
 
-- **没有MCP**: AI只能聊天，无法操作文件、访问GitHub、记住信息
-- **有了MCP**: AI变成了超级助手，可以帮您编程、管理项目、记录知识
+- **没有MCP**: AI可以生成代码和提供建议，但无法直接操作文件系统、访问GitHub、持久化记住信息
+- **有了MCP**: AI不仅能生成代码，还能直接操作外部工具，帮您自动化文件管理、项目操作、知识记录等任务
 
 ## 🎯 5个MCP工具能为您做什么？
 
-### 1️⃣ **server-filesystem** - 文件管理专家
+### 1️⃣ **npx @modelcontextprotocol/server-filesystem** - 文件管理专家
 **🔍 它是什么？** 让AI能够读写您电脑上的文件
 
 **💡 实际用途：**
@@ -28,7 +28,7 @@
 ✅ 使用后：告诉AI"创建一个React组件"，AI直接生成文件
 ```
 
-### 2️⃣ **server-memory** - 智能记忆助手
+### 2️⃣ **npx @modelcontextprotocol/server-memory** - 智能记忆助手
 **🔍 它是什么？** 让AI能够记住重要信息，建立知识库
 
 **💡 实际用途：**
@@ -43,7 +43,7 @@
 ✅ 使用后：AI记住项目信息，直接基于历史继续工作
 ```
 
-### 3️⃣ **server-github** - GitHub操作专家
+### 3️⃣ **npx @modelcontextprotocol/server-github** - GitHub操作专家
 **🔍 它是什么？** 让AI能够直接操作GitHub仓库
 
 **💡 实际用途：**
@@ -73,7 +73,7 @@
 ✅ 使用后：AI在关键节点询问您的意见，确保结果符合预期
 ```
 
-### 5️⃣ **server-everything** - 通用工具箱
+### 5️⃣ **npx @modelcontextprotocol/server-everything** - 通用工具箱
 **🔍 它是什么？** 提供各种基础功能和测试工具
 
 **💡 实际用途：**
@@ -95,10 +95,10 @@
 ### 📋 场景1：创建新项目
 ```
 🔥 组合威力：
-1. server-filesystem → 创建项目文件结构
-2. server-memory → 记录项目配置和决策
-3. mcp-feedback-enhanced → 确认技术选型
-4. server-github → 创建仓库并推送初始代码
+1. npx @modelcontextprotocol/server-filesystem → 创建项目文件结构
+2. npx @modelcontextprotocol/server-memory → 记录项目配置和决策
+3. uvx mcp-feedback-enhanced → 确认技术选型
+4. npx @modelcontextprotocol/server-github → 创建仓库并推送初始代码
 
 结果：从想法到GitHub仓库，一气呵成！
 ```
@@ -106,10 +106,10 @@
 ### 📋 场景2：解决技术问题
 ```
 🔥 组合威力：
-1. server-memory → 查询历史解决方案
-2. server-filesystem → 检查相关代码文件
-3. mcp-feedback-enhanced → 确认修复方案
-4. server-github → 提交修复并创建PR
+1. npx @modelcontextprotocol/server-memory → 查询历史解决方案
+2. npx @modelcontextprotocol/server-filesystem → 检查相关代码文件
+3. uvx mcp-feedback-enhanced → 确认修复方案
+4. npx @modelcontextprotocol/server-github → 提交修复并创建PR
 
 结果：从问题发现到解决提交，全程AI协助！
 ```

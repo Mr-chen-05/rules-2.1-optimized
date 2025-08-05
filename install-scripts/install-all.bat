@@ -27,10 +27,57 @@ if "%~1"=="" (
     goto :eof
 )
 
+REM Clean the project path to remove any Unicode control characters
 set "PROJECT_PATH=%~1"
+REM Remove Unicode control characters (like RTL mark ‪)
+for /f "delims=" %%i in ('echo %PROJECT_PATH%') do set "PROJECT_PATH=%%i"
+REM Remove quotes if present
+set "PROJECT_PATH=%PROJECT_PATH:"=%"
+
 set "INSTALL_TYPE=%~2"
 
 if "%INSTALL_TYPE%"=="" set "INSTALL_TYPE=frontend"
+
+REM Validate project path
+if not exist "%PROJECT_PATH%" (
+    echo Creating project directory: %PROJECT_PATH%
+    mkdir "%PROJECT_PATH%" 2>nul
+    if not exist "%PROJECT_PATH%" (
+        echo ERROR: Cannot create or access project directory: %PROJECT_PATH%
+        echo Please check the path and try again.
+        pause
+        exit /b 1
+    )
+)
+@echo off
+chcp 65001 >nul
+setlocal
+
+echo ========================================
+echo  Rules 2.1 Optimized - All Tools Installer
+echo ========================================
+
+REM Detect script directory structure for cross-version compatibility
+set "SCRIPT_DIR=%~dp0"
+set "INSTALL_SCRIPTS_DIR=%SCRIPT_DIR%"
+
+if "%~1"=="" (
+    echo.
+    echo Usage: install-all.bat [project-path] [type]
+    echo.
+    echo Install Types:
+    echo   frontend   - Install frontend rules for all AI tools
+    echo   backend    - Install backend rules for all AI tools
+    echo   fullstack  - Install both frontend and backend rules
+    echo.
+    echo Examples:
+    echo   install-all.bat ..\my-project frontend
+    echo   install-all.bat C:\projects\demo backend
+    echo   install-all.bat . fullstack
+    echo.
+    goto :eof
+)
+
 
 echo Installing Rules 2.1 Optimized for ALL AI tools
 echo Project Path: %PROJECT_PATH%

@@ -1,6 +1,6 @@
-﻿@echo off
-setlocal enabledelayedexpansion
+@echo off
 chcp 65001 >nul
+setlocal enabledelayedexpansion
 
 REM Get the directory where this script is located
 set "SCRIPT_DIR=%~dp0"
@@ -33,10 +33,21 @@ if not exist "%PROJECT_PATH%\.trae\rules" mkdir "%PROJECT_PATH%\.trae\rules"
 REM Create combined backend rules file
 echo Creating complete backend rules file...
 
-REM Start with global backend rules
-copy /Y "%RULES_DIR%\global-rules\backend-rules-2.1.md" "%PROJECT_PATH%\.trae\rules\backend-complete.md" >nul
+REM Start with file generation safety rules (HIGHEST PRIORITY)
+copy /Y "%RULES_DIR%\global-rules\file-generation-safety-rules.md" "%PROJECT_PATH%\.trae\rules\backend-complete.md" >nul
 if errorlevel 1 (
-    echo ERROR: Operation failed
+    echo ERROR: Failed to copy file generation safety rules
+    pause
+    exit /b 1
+)
+
+REM Append global backend rules
+echo. >> "%PROJECT_PATH%\.trae\rules\backend-complete.md"
+echo ========================================== >> "%PROJECT_PATH%\.trae\rules\backend-complete.md"
+echo. >> "%PROJECT_PATH%\.trae\rules\backend-complete.md"
+type "%RULES_DIR%\global-rules\backend-rules-2.1.md" >> "%PROJECT_PATH%\.trae\rules\backend-complete.md"
+if errorlevel 1 (
+    echo ERROR: Failed to append backend rules
     pause
     exit /b 1
 )
@@ -88,6 +99,114 @@ echo. >> "%PROJECT_PATH%\.trae\rules\backend-complete.md"
 
 REM Append MCP intelligent strategy rules (CRITICAL FOR AI EFFICIENCY)
 type "%RULES_DIR%\project-rules\mcp-intelligent-strategy.mdc" >> "%PROJECT_PATH%\.trae\rules\backend-complete.md"
+if errorlevel 1 (
+    echo ERROR: File operation failed
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\.trae\rules\backend-complete.md"
+
+REM Append new AI intelligence rules (v2.3.0)
+type "%RULES_DIR%\global-rules\ai-agent-intelligence-core.md" >> "%PROJECT_PATH%\.trae\rules\backend-complete.md"
+if errorlevel 1 (
+    echo ERROR: File operation failed
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\.trae\rules\backend-complete.md"
+
+REM Append workflow integration rules
+type "%RULES_DIR%\global-rules\complete-workflow-integration.mdc" >> "%PROJECT_PATH%\.trae\rules\backend-complete.md"
+if errorlevel 1 (
+    echo ERROR: File operation failed
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\.trae\rules\backend-complete.md"
+
+REM Append intelligent recommendation engine
+type "%RULES_DIR%\global-rules\intelligent-recommendation-engine.mdc" >> "%PROJECT_PATH%\.trae\rules\backend-complete.md"
+if errorlevel 1 (
+    echo ERROR: File operation failed
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\.trae\rules\backend-complete.md"
+
+REM Append memory system integration
+type "%RULES_DIR%\global-rules\memory-system-integration.mdc" >> "%PROJECT_PATH%\.trae\rules\backend-complete.md"
+if errorlevel 1 (
+    echo ERROR: File operation failed
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\.trae\rules\backend-complete.md"
+
+REM Append super brain system
+type "%RULES_DIR%\global-rules\super-brain-system.mdc" >> "%PROJECT_PATH%\.trae\rules\backend-complete.md"
+if errorlevel 1 (
+    echo ERROR: File operation failed
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\.trae\rules\backend-complete.md"
+
+REM Append system integration config
+type "%RULES_DIR%\global-rules\system-integration-config.mdc" >> "%PROJECT_PATH%\.trae\rules\backend-complete.md"
+if errorlevel 1 (
+    echo ERROR: File operation failed
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\.trae\rules\backend-complete.md"
+
+REM Append rule conflict resolution
+type "%RULES_DIR%\global-rules\rule-conflict-resolution.mdc" >> "%PROJECT_PATH%\.trae\rules\backend-complete.md"
+if errorlevel 1 (
+    echo ERROR: File operation failed
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\.trae\rules\backend-complete.md"
+
+REM Append rule redundancy optimization
+type "%RULES_DIR%\global-rules\rule-redundancy-optimization.mdc" >> "%PROJECT_PATH%\.trae\rules\backend-complete.md"
+if errorlevel 1 (
+    echo ERROR: File operation failed
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\.trae\rules\backend-complete.md"
+
+REM Append new project rules (v2.3.0)
+type "%RULES_DIR%\project-rules\ai-powered-code-review.mdc" >> "%PROJECT_PATH%\.trae\rules\backend-complete.md"
+if errorlevel 1 (
+    echo ERROR: File operation failed
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\.trae\rules\backend-complete.md"
+
+REM Append intelligent project management
+type "%RULES_DIR%\project-rules\intelligent-project-management.mdc" >> "%PROJECT_PATH%\.trae\rules\backend-complete.md"
+if errorlevel 1 (
+    echo ERROR: File operation failed
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\.trae\rules\backend-complete.md"
+
+REM Append intelligent workflow orchestration
+type "%RULES_DIR%\project-rules\intelligent-workflow-orchestration.mdc" >> "%PROJECT_PATH%\.trae\rules\backend-complete.md"
+if errorlevel 1 (
+    echo ERROR: File operation failed
+    pause
+    exit /b 1
+)
+echo. >> "%PROJECT_PATH%\.trae\rules\backend-complete.md"
+
+REM Append backend development rules
+type "%RULES_DIR%\project-rules\backend-dev.mdc" >> "%PROJECT_PATH%\.trae\rules\backend-complete.md"
 if errorlevel 1 (
     echo ERROR: File operation failed
     pause

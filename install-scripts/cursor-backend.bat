@@ -1,4 +1,4 @@
-﻿@echo off
+﻿﻿@echo off
 chcp 65001 >nul
 setlocal
 
@@ -32,6 +32,14 @@ if not exist "%PROJECT_PATH%\.cursor\rules" mkdir "%PROJECT_PATH%\.cursor\rules"
 
 REM Copy global and project rule files for Cursor
 echo Copying backend rule files...
+
+REM Copy file generation safety rules first (HIGHEST PRIORITY)
+copy /Y "%RULES_DIR%\global-rules\file-generation-safety-rules.md" "%PROJECT_PATH%\.cursor\rules\" >nul
+if errorlevel 1 (
+    echo ERROR: Failed to copy file generation safety rules
+    pause
+    exit /b 1
+)
 
 copy /Y "%RULES_DIR%\global-rules\backend-rules-2.1.md" "%PROJECT_PATH%\.cursor\rules\" >nul
 if errorlevel 1 (
@@ -91,6 +99,76 @@ if errorlevel 1 (
 
 REM Copy MCP intelligent strategy rules (CRITICAL FOR AI EFFICIENCY)
 copy /Y "%RULES_DIR%\project-rules\mcp-intelligent-strategy.mdc" "%PROJECT_PATH%\.cursor\rules\" >nul
+if errorlevel 1 (
+    echo ERROR: Operation failed
+    pause
+    exit /b 1
+)
+
+REM Copy new global rules (AI Intelligence Core)
+copy /Y "%RULES_DIR%\global-rules\ai-agent-intelligence-core.md" "%PROJECT_PATH%\.cursor\rules\" >nul
+if errorlevel 1 (
+    echo ERROR: Operation failed
+    pause
+    exit /b 1
+)
+copy /Y "%RULES_DIR%\global-rules\complete-workflow-integration.mdc" "%PROJECT_PATH%\.cursor\rules\" >nul
+if errorlevel 1 (
+    echo ERROR: Operation failed
+    pause
+    exit /b 1
+)
+copy /Y "%RULES_DIR%\global-rules\intelligent-recommendation-engine.mdc" "%PROJECT_PATH%\.cursor\rules\" >nul
+if errorlevel 1 (
+    echo ERROR: Operation failed
+    pause
+    exit /b 1
+)
+copy /Y "%RULES_DIR%\global-rules\memory-system-integration.mdc" "%PROJECT_PATH%\.cursor\rules\" >nul
+if errorlevel 1 (
+    echo ERROR: Operation failed
+    pause
+    exit /b 1
+)
+copy /Y "%RULES_DIR%\global-rules\super-brain-system.mdc" "%PROJECT_PATH%\.cursor\rules\" >nul
+if errorlevel 1 (
+    echo ERROR: Operation failed
+    pause
+    exit /b 1
+)
+copy /Y "%RULES_DIR%\global-rules\system-integration-config.mdc" "%PROJECT_PATH%\.cursor\rules\" >nul
+if errorlevel 1 (
+    echo ERROR: Operation failed
+    pause
+    exit /b 1
+)
+copy /Y "%RULES_DIR%\global-rules\rule-conflict-resolution.mdc" "%PROJECT_PATH%\.cursor\rules\" >nul
+if errorlevel 1 (
+    echo ERROR: Operation failed
+    pause
+    exit /b 1
+)
+copy /Y "%RULES_DIR%\global-rules\rule-redundancy-optimization.mdc" "%PROJECT_PATH%\.cursor\rules\" >nul
+if errorlevel 1 (
+    echo ERROR: Operation failed
+    pause
+    exit /b 1
+)
+
+REM Copy new project rules
+copy /Y "%RULES_DIR%\project-rules\ai-powered-code-review.mdc" "%PROJECT_PATH%\.cursor\rules\" >nul
+if errorlevel 1 (
+    echo ERROR: Operation failed
+    pause
+    exit /b 1
+)
+copy /Y "%RULES_DIR%\project-rules\intelligent-project-management.mdc" "%PROJECT_PATH%\.cursor\rules\" >nul
+if errorlevel 1 (
+    echo ERROR: Operation failed
+    pause
+    exit /b 1
+)
+copy /Y "%RULES_DIR%\project-rules\intelligent-workflow-orchestration.mdc" "%PROJECT_PATH%\.cursor\rules\" >nul
 if errorlevel 1 (
     echo ERROR: Operation failed
     pause

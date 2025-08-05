@@ -1,8 +1,17 @@
-# 📚 Rules 2.2.2 - 高级使用指南
+# 🚀 Rules 2.3.0 - 高级使用指南
 
 > **🎯 适用对象**: 已完成基础安装，需要高级配置和深度使用的用户
 >
 > **📖 前置要求**: 请先完成 [README.md](README.md) 中的快速开始部分
+
+## 📖 文档导航
+
+- [🔧 高级安装选项](#高级安装选项)
+- [📁 自定义路径配置](#自定义路径配置)
+- [🚀 批量部署方案](#批量部署方案)
+- [⚙️ 环境变量配置](#环境变量配置)
+- [🔍 故障排除指南](#故障排除指南)
+- [💡 最佳实践建议](#最佳实践建议)
 
 ## 📋 本文档内容
 
@@ -10,42 +19,87 @@
 - 🎯 不同使用场景的最佳实践
 - 🛠️ 企业级部署和团队协作
 - 🆘 高级故障排除和性能优化
+
 ## 🔧 高级安装选项
 
-### 精确安装（单工具）
-```cmd
-# 注意：如果规则目录在非C盘，需要先切换盘符
-E:                                    # 先切换到E盘（根据你的实际盘符）
-cd "你的rules-2.1-optimized目录路径"
+> **📖 完整安装教程**: 详细的安装脚本使用方法请参考 👉 **[📋 完整安装指南](install-scripts/INSTALL-GUIDE.md)**
 
-# 只安装特定AI工具和开发类型
-install-scripts\augment-frontend.bat "项目路径"    # Augment 前端专用
-install-scripts\cursor-backend.bat "项目路径"     # Cursor 后端专用
-install-scripts\claude-fullstack.bat "项目路径"   # Claude 全栈开发
+### 🎯 快速参考
+
+| AI工具类型 | 推荐场景 | 快速命令 |
+|-----------|----------|----------|
+| **前端专用** | React/Vue项目 | `install-scripts\[工具名]-frontend.bat "项目路径"` |
+| **后端专用** | API开发、数据库 | `install-scripts\[工具名]-backend.bat "项目路径"` |
+| **全栈支持** | 复杂业务逻辑 | `install-scripts\install-all.bat "项目路径" fullstack` |
+
+## 📁 自定义路径配置
+
+> **📖 详细路径配置**: 完整的路径配置方法请参考 👉 **[📋 完整安装指南](install-scripts/INSTALL-GUIDE.md)**
+
+### 🎯 路径类型概览
+
+| 路径类型 | 使用场景 | 格式示例 |
+|----------|----------|----------|
+| **相对路径** | rules目录和项目在同一磁盘 | `..\my-project` |
+| **绝对路径** | 跨磁盘或固定位置 | `"C:\Dev\MyApp"` |
+| **网络路径** | 企业共享环境 | `"\\server\shared\project"` |
+
+> **💡 提示**: 路径包含空格时必须使用双引号
+
+## 🚀 批量部署方案
+
+> **🏢 企业场景**: 适合团队统一配置、多项目管理
+
+### 📖 详细安装教程
+
+**完整的批量安装脚本和企业级部署方案，请参考：**
+
+👉 **[📋 完整安装指南](install-scripts/INSTALL-GUIDE.md)**
+
+该指南包含：
+- 🔧 **傻瓜式安装教程** - 5-10分钟完成安装
+- 🏢 **企业级批量部署** - 多项目统一配置
+- 🛡️ **安全检查脚本** - 自动检测项目类型
+- ✅ **实测验证结果** - 所有脚本100%通过测试
+- 🎯 **按项目类型分类安装** - 前端/后端/全栈自动识别
+
+### 🚀 快速批量安装
+
+```cmd
+# 一键安装到单个项目
+install-scripts\install-all.bat "你的项目路径" fullstack
+
+# 批量安装到多个项目（详细脚本见完整指南）
+# 支持自动检测项目类型和智能配置
 ```
 
-### 自定义安装路径
-```cmd
-# 注意：如果规则目录在非C盘，需要先切换盘符
-E:                                    # 先切换到E盘（根据你的实际盘符）
-cd "你的rules-2.1-optimized目录路径"
+## ⚙️ 环境变量配置
 
-# 支持相对路径和绝对路径
-install-scripts\install-all.bat ..\my-project frontend
-install-scripts\install-all.bat "C:\Dev\MyApp" backend
-install-scripts\install-all.bat "D:\Projects\Web App" fullstack
-```
+> **🔧 高级配置**: 通过环境变量自定义AI规则行为和性能
 
-### 批量部署（企业级）
-```cmd
-# 注意：如果规则目录在非C盘，需要先切换盘符
-E:                                    # 先切换到E盘（根据你的实际盘符）
-cd "你的rules-2.1-optimized目录路径"
+### 🎯 核心环境变量
 
-# 为多个项目批量安装
-for /d %%i in (C:\Projects\*) do (
-    install-scripts\install-all.bat "%%i" fullstack
-)
+| 变量名 | 默认值 | 说明 | 示例 |
+|--------|--------|------|------|
+| `AI_RULES_PATH` | `.ai-rules` | 规则文件存储路径 | `D:\MyRules` |
+| `AI_RULES_LANG` | `zh-CN` | 默认语言设置 | `en-US`, `zh-CN` |
+| `AI_RULES_MODE` | `standard` | 运行模式 | `debug`, `standard`, `enterprise` |
+| `AI_RULES_CACHE` | `true` | 启用缓存加速 | `true`, `false` |
+
+### 🔧 配置方法
+
+> **📖 详细配置教程**: 完整的环境变量配置方法请参考 👉 **[🔧 环境配置指南](ENVIRONMENT-SETUP.md)**
+
+| 配置方式 | 适用场景 | 快速示例 |
+|----------|----------|----------|
+| **PowerShell临时** | 当前会话测试 | `$env:AI_RULES_PATH = "路径"` |
+| **PowerShell永久** | 用户级配置 | `[Environment]::SetEnvironmentVariable(...)` |
+| **CMD方式** | 传统命令行 | `setx AI_RULES_PATH "路径"` |
+
+### ✅ 快速验证
+```powershell
+# 检查当前配置
+echo $env:AI_RULES_PATH
 ```
 
 ## 🛠️ 核心功能
@@ -121,6 +175,42 @@ install-scripts\install-all.bat ..\你的项目目录 fullstack
 # 支持前端、后端、全栈开发，统一的企业级标准
 ```
 
+## 💡 最佳实践建议
+
+### 🎯 项目组织最佳实践
+
+**📁 目录结构建议**
+```
+项目根目录/
+├── .ai-rules/          # AI规则配置
+├── docs/              # 项目文档
+├── src/               # 源代码
+├── tests/             # 测试文件
+└── package.json       # 项目配置
+```
+
+**🔧 开发工作流建议**
+- 使用 `/commit` 命令生成规范的提交信息
+- 定期使用 `/review` 进行代码审查
+- 项目启动前运行环境检查脚本
+
+**👥 团队协作建议**
+- 统一使用相同的AI规则版本
+- 建立代码规范和最佳实践文档
+- 定期同步规则更新
+
+### 🚀 性能优化建议
+
+**⚡ 提升响应速度**
+- 使用本地npm镜像源
+- 配置合适的Node.js版本
+- 定期清理npm缓存
+
+**💾 资源管理**
+- 避免在大型项目根目录安装
+- 使用项目特定的配置文件
+- 定期备份重要配置
+
 ## 🏆 质量保证
 
 ### ✅ 测试认证
@@ -133,7 +223,7 @@ install-scripts\install-all.bat ..\你的项目目录 fullstack
 - UTF-8编码支持、完善错误处理
 - 路径安全处理、变量隔离保护
 
-## 🆘 故障排除
+## 🔍 故障排除指南
 
 ### 常见问题
 1. **命令不识别** → 检查规则文件位置
