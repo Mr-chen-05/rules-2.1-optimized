@@ -1,0 +1,225 @@
+---
+description: "Multi-role pull request review checklist - 多角色拉取请求审查清单"
+globs: ["**/*"]
+alwaysApply: false
+---
+
+# 🔍 Code Review Workflow - 代码审查工作流
+
+多角色拉取请求审查清单，确保代码质量和团队协作。
+
+## 🚀 Commands - 命令
+
+- `/code-review` - 启动代码审查流程
+- `/review-checklist` - 显示审查清单
+- `/security-review` - 安全审查
+- `/performance-review` - 性能审查
+
+## 👥 Review Roles - 审查角色
+
+### 🧑‍💻 Developer Review - 开发者审查
+**关注点：代码逻辑、可读性、最佳实践**
+
+#### Checklist - 检查清单
+- [ ] **代码逻辑正确** - 实现符合需求，逻辑清晰
+- [ ] **命名规范** - 变量、函数、类名有意义且一致
+- [ ] **代码复用** - 避免重复代码，合理抽象
+- [ ] **错误处理** - 适当的异常处理和边界条件
+- [ ] **注释质量** - 复杂逻辑有清晰注释
+- [ ] **代码风格** - 遵循项目编码规范
+
+#### Questions to Ask - 审查问题
+- 这段代码是否易于理解和维护？
+- 是否有更简洁的实现方式？
+- 错误处理是否充分？
+- 是否遵循了SOLID原则？
+
+### 🏗️ Architecture Review - 架构审查
+**关注点：设计模式、系统架构、扩展性**
+
+#### Checklist - 检查清单
+- [ ] **设计模式** - 使用合适的设计模式
+- [ ] **模块划分** - 职责分离，模块边界清晰
+- [ ] **依赖管理** - 依赖注入，避免循环依赖
+- [ ] **接口设计** - API设计合理，向后兼容
+- [ ] **扩展性** - 代码易于扩展和修改
+- [ ] **性能考虑** - 算法复杂度合理
+
+#### Questions to Ask - 审查问题
+- 这个设计是否符合系统整体架构？
+- 是否引入了不必要的复杂性？
+- 如何处理未来的需求变更？
+- 是否有潜在的性能瓶颈？
+
+### 🔒 Security Review - 安全审查
+**关注点：安全漏洞、数据保护、权限控制**
+
+#### Checklist - 检查清单
+- [ ] **输入验证** - 所有用户输入都经过验证
+- [ ] **SQL注入防护** - 使用参数化查询
+- [ ] **XSS防护** - 输出编码，CSP配置
+- [ ] **认证授权** - 权限检查完整
+- [ ] **敏感数据** - 密码、token等安全存储
+- [ ] **HTTPS使用** - 敏感操作使用HTTPS
+
+#### Questions to Ask - 审查问题
+- 是否存在潜在的安全漏洞？
+- 敏感数据是否得到适当保护？
+- 权限控制是否足够严格？
+- 是否遵循了安全最佳实践？
+
+### ⚡ Performance Review - 性能审查
+**关注点：性能优化、资源使用、扩展性**
+
+#### Checklist - 检查清单
+- [ ] **算法效率** - 时间和空间复杂度合理
+- [ ] **数据库查询** - 查询优化，避免N+1问题
+- [ ] **缓存策略** - 合理使用缓存
+- [ ] **资源管理** - 内存泄漏，连接池管理
+- [ ] **并发处理** - 线程安全，死锁预防
+- [ ] **监控指标** - 关键性能指标监控
+
+#### Questions to Ask - 审查问题
+- 这段代码在高负载下表现如何？
+- 是否有性能优化的空间？
+- 资源使用是否合理？
+- 如何监控和调试性能问题？
+
+## 📋 Review Process - 审查流程
+
+### 1. Pre-Review Preparation - 审查前准备
+```bash
+# 检查PR信息
+- PR标题和描述清晰
+- 关联相关Issue
+- 包含测试用例
+- CI/CD检查通过
+```
+
+### 2. Code Review Steps - 代码审查步骤
+
+#### Step 1: Overview - 概览
+- 理解PR的目的和范围
+- 检查文件变更列表
+- 评估变更的影响范围
+
+#### Step 2: Detailed Review - 详细审查
+- 逐文件审查代码变更
+- 应用相应角色的检查清单
+- 标记问题和改进建议
+
+#### Step 3: Testing Review - 测试审查
+- 检查测试覆盖率
+- 验证测试用例质量
+- 确认边界条件测试
+
+#### Step 4: Documentation Review - 文档审查
+- API文档更新
+- README和使用指南
+- 代码注释完整性
+
+### 3. Feedback Guidelines - 反馈指南
+
+#### 反馈分类
+- **🚨 Critical** - 重要问题建议修复
+- **💡 Suggestion** - 改进建议
+- **❓ Question** - 需要澄清的问题
+- **👍 Praise** - 好的实践值得表扬
+
+#### 反馈示例
+```markdown
+🚨 Must Fix: 这里存在SQL注入风险
+建议使用参数化查询：`SELECT * FROM users WHERE id = ?`
+
+💡 Suggestion: 考虑使用工厂模式来创建不同类型的处理器
+这样可以提高代码的可扩展性
+
+❓ Question: 为什么选择这种算法？
+是否考虑过时间复杂度的影响？
+
+👍 Praise: 错误处理很完善，边界条件考虑周全
+```
+
+## 🛠️ Tools Integration - 工具集成
+
+### Automated Checks - 自动化检查
+```yaml
+# GitHub Actions 示例
+name: Code Review Automation
+on: [pull_request]
+jobs:
+  code-quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run ESLint
+        run: npm run lint
+      - name: Run Tests
+        run: npm test
+      - name: Security Scan
+        run: npm audit
+      - name: Performance Test
+        run: npm run perf-test
+```
+
+### Review Templates - 审查模板
+```markdown
+## Code Review Checklist
+
+### Developer Review
+- [ ] Code logic is correct
+- [ ] Naming conventions followed
+- [ ] Error handling appropriate
+- [ ] Code is readable and maintainable
+
+### Security Review
+- [ ] Input validation implemented
+- [ ] No SQL injection vulnerabilities
+- [ ] Authentication/authorization proper
+- [ ] Sensitive data protected
+
+### Performance Review
+- [ ] Algorithm efficiency acceptable
+- [ ] Database queries optimized
+- [ ] Resource usage reasonable
+- [ ] Monitoring in place
+```
+
+## 📊 Review Metrics - 审查指标
+
+### Quality Metrics - 质量指标
+- **Review Coverage** - 审查覆盖率
+- **Defect Detection Rate** - 缺陷检出率
+- **Review Turnaround Time** - 审查周转时间
+- **Rework Rate** - 返工率
+
+### Tracking Template - 跟踪模板
+```markdown
+## Review Summary
+- **Reviewer**: @username
+- **Review Time**: 30 minutes
+- **Issues Found**: 3 must-fix, 2 suggestions
+- **Security Issues**: 1
+- **Performance Issues**: 0
+- **Overall Rating**: Approve with changes
+```
+
+## ✅ Best Practices - 最佳实践
+
+### For Reviewers - 审查者
+- **及时审查** - 在24小时内完成审查
+- **建设性反馈** - 提供具体的改进建议
+- **平衡严格性** - 既要保证质量，也要考虑效率
+- **学习心态** - 从代码中学习新的技术和方法
+
+### For Authors - 作者
+- **小而频繁** - 保持PR大小合理（<400行）
+- **清晰描述** - 详细说明变更内容和原因
+- **自我审查** - 提交前先自己审查一遍
+- **积极响应** - 及时回应审查意见
+
+### For Teams - 团队
+- **审查文化** - 建立积极的代码审查文化
+- **知识分享** - 通过审查分享最佳实践
+- **持续改进** - 定期回顾和改进审查流程
+- **工具支持** - 使用合适的工具提高效率

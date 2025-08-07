@@ -5,6 +5,8 @@
 > **💡 使用提示**: 命令支持自然语言输入，无需严格按照格式
 >
 > **📚 前置步骤**: [README快速开始](README.md) → [选择教程](tutorials/) → [MCP配置](docs/MCP-QUICK-START-GUIDE.md) → **命令参考**
+>
+> **🔥 核心特性**: 所有AI工具（Augment、Cursor、Claude、Trae）现在使用**统一规则创建逻辑**，功能完全一致
 
 ## 📖 文档导航
 
@@ -279,8 +281,8 @@
 
 - **详细使用指南**: [USAGE.md](USAGE.md)
 - **安装指南**: [install-scripts/INSTALL-GUIDE.md](install-scripts/INSTALL-GUIDE.md)
-- **前端开发指南**: [tutorials/frontend-rules-2.1-使用指南.md](tutorials/frontend-rules-2.1-使用指南.md)
-- **后端开发指南**: [tutorials/backend-rules-2.1-使用指南.md](tutorials/backend-rules-2.1-使用指南.md)
+- **前端开发指南**: [前端开发指南](tutorials/frontend-rules-2.1-使用指南.md)
+- **后端开发指南**: [后端开发指南](tutorials/backend-rules-2.1-使用指南.md)
 - **MCP智能策略**: [docs/MCP-INTELLIGENT-USAGE-STRATEGY.md](docs/MCP-INTELLIGENT-USAGE-STRATEGY.md)
 
 ---

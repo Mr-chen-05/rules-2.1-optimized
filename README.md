@@ -1,6 +1,6 @@
-# 🎯 Rules 2.3.1 Optimized - 企业级AI助手规则体系
+# 🎯 Rules 2.3.2 Optimized - 企业级AI助手规则体系
 
-> **🏆 PERFECT (A++)评级** | **✅ 100%测试通过** | **🚀 生产就绪** | **💬 完整MCP支持**
+> **🏆 PERFECT (A++)评级** | **✅ 100%测试通过** | **🚀 生产就绪** | **💬 完整MCP支持** | **🔄 统一规则创建逻辑**
 
 ## 📖 项目简介
 
@@ -73,8 +73,8 @@ node --version && npm --version
 
 | 技术栈 | 详细教程 | 主要内容 | 使用建议 |
 |--------|----------|----------|----------|
-| 🎨 前端开发 | [前端开发指南](tutorials/frontend-rules-2.1-使用指南.md) | Vue/React环境配置详解 | 需要深入了解前端环境时参考 |
-| 🔧 后端开发 | [后端开发指南](tutorials/backend-rules-2.1-使用指南.md) | Java/Python/Node.js配置 | 需要多语言环境配置时参考 |
+| 🎨 前端开发 | [前端开发指南](tutorials/frontend-rules-使用指南.md) | Vue/React环境配置详解 | 需要深入了解前端环境时参考 |
+| 🔧 后端开发 | [后端开发指南](tutorials/backend-rules-使用指南.md) | Java/Python/Node.js配置 | 需要多语言环境配置时参考 |
 
 ### 🔧 步骤2：一键安装到项目
 
@@ -90,19 +90,19 @@ node --version && npm --version
 #### 🚀 PowerShell安装（推荐）
 ```powershell
 # 🎯 步骤1：进入规则目录
-cd "你的rules-2.3.1-optimized目录路径"
+cd "你的rules-2.1-optimized-2.2.3目录路径"
 
 # 🎯 步骤2：选择项目类型安装（三选一）
-install-scripts\install-all.bat "你的项目目录路径" frontend   # 🎨 前端项目
-install-scripts\install-all.bat "你的项目目录路径" backend    # 🔧 后端项目  
-install-scripts\install-all.bat "你的项目目录路径" fullstack  # 🌟 全栈项目
+install-scripts\install-ultra.bat "你的项目目录路径" frontend   # 🎨 前端项目
+install-scripts\install-ultra.bat "你的项目目录路径" backend    # 🔧 后端项目
+install-scripts\install-ultra.bat "你的项目目录路径" fullstack  # 🌟 全栈项目
 ```
 
 #### 💻 CMD安装
 ```cmd
 # ⚠️ 重要：非C盘需要先切换盘符
 E:                                    # 切换到对应盘符（如E盘）
-cd "你的rules-2.3.0-optimized目录路径"
+cd "你的rules-2.1-optimized-2.2.3目录路径"
 
 # 🎯 选择项目类型安装（三选一）
 install-scripts\install-all.bat "你的项目目录路径" frontend   # 🎨 前端项目
@@ -113,15 +113,15 @@ install-scripts\install-all.bat "你的项目目录路径" fullstack  # 🌟 全
 #### 💡 实际安装示例
 ```powershell
 # 示例1：前端项目安装
-cd "E:\AgentRules\English\rules-2.3.1-optimized"
+cd "E:\AgentRules\English\rules-2.1-optimized-2.2.3"
 install-scripts\install-all.bat "D:\MyProjects\vue-app" frontend
 
 # 示例2：后端项目安装  
-cd "E:\AgentRules\English\rules-2.3.0-optimized"
+cd "E:\AgentRules\English\rules-2.1-optimized-2.2.3"
 install-scripts\install-all.bat "C:\Dev\api-server" backend
 
 # 示例3：全栈项目安装
-cd "E:\AgentRules\English\rules-2.3.0-optimized"
+cd "E:\AgentRules\English\rules-2.1-optimized-2.2.3"
 install-scripts\install-all.bat "D:\Projects\full-stack-app" fullstack
 ```
 
@@ -206,11 +206,12 @@ dir "你的项目目录路径\.trae\rules\"        # Trae AI规则
 ## 📁 项目结构
 
 ```
-rules-2.3.1-optimized/
+rules-2.1-optimized-2.2.3/
 ├── 📚 核心教程和文档
 │   ├── tutorials/                          # 🔥 核心使用教程（必看！）
 │   │   ├── frontend-rules-2.1-使用指南.md  # 前端开发完整指南
-│   │   └── backend-rules-2.1-使用指南.md   # 后端开发完整指南
+│   │   ├── backend-rules-2.1-使用指南.md   # 后端开发完整指南
+│   │   └── super-brain-system-usage-guide.md # 超级大脑系统使用指南
 │   ├── docs/                               # 📖 参考文档
 │   │   ├── MCP-DETAILED-CONFIG-GUIDE.md    # MCP工具详细配置
 │   │   ├── MCP-QUICK-START-GUIDE.md        # MCP快速入门指南
@@ -223,21 +224,16 @@ rules-2.3.1-optimized/
 │   │   └── intelligent-system/             # 🧠 智能系统文档
 │   ├── USAGE.md                            # 详细使用指南
 │   ├── COMMANDS-REFERENCE.md               # 完整命令参考
-│   ├── DOCUMENTATION-OPTIMIZATION-REPORT.md # 📊 文档优化报告
+│   ├── DOCUMENTATION-ANALYSIS.md           # 📊 文档体系分析报告
 │   └── SYSTEM-STATUS-FINAL.md              # 系统状态报告
 │
 ├── 🚀 安装脚本（企业级测试通过）
 │   ├── install-scripts/
-│   │   ├── install-all.bat                 # 🔥 一键安装所有工具
-│   │   ├── augment-frontend.bat            # Augment 前端规则安装
-│   │   ├── augment-backend.bat             # Augment 后端规则安装
-│   │   ├── cursor-frontend.bat             # Cursor 前端规则安装
-│   │   ├── cursor-backend.bat              # Cursor 后端规则安装
-│   │   ├── claude-frontend.bat             # Claude Code 前端规则安装
-│   │   ├── claude-backend.bat              # Claude Code 后端规则安装
-│   │   ├── trae-frontend.bat               # Trae AI 前端规则安装
-│   │   ├── trae-backend.bat                # Trae AI 后端规则安装
-│   │   └── INSTALL-GUIDE.md                # 📚 傻瓜式安装教程
+│   │   ├── install-ultra.bat               # 🔥 超级安装脚本
+│   │   ├── INSTALL-GUIDE.md                # 📚 傻瓜式安装教程
+│   │   └── test-scripts/                   # 测试脚本目录
+│   │       ├── test-ultra.bat              # 超级安装测试
+│   │       └── README.md                   # 测试说明
 │   └── mcp-scripts/                        # 🧠 MCP工具安装脚本
 │       ├── run-powershell-installer.bat    # 🔥 一键MCP工具安装
 │       ├── install-mcp-tools-enhanced-final.ps1  # PowerShell安装脚本
@@ -284,10 +280,10 @@ rules-2.3.1-optimized/
 
 ### ⚡ 核心命令预览
 ```bash
-/frontend-dev    # 前端开发工作流
-/backend-dev     # 后端开发工作流
-/commit          # 标准化提交
-/feedback        # 智能反馈
+# 🎯 选择项目类型安装（三选一）
+install-scripts\install-ultra.bat "你的项目目录路径" frontend   # 🎨 前端项目
+install-scripts\install-ultra.bat "你的项目目录路径" backend    # 🔧 后端项目
+install-scripts\install-ultra.bat "你的项目目录路径" fullstack  # 🌟 全栈项目
 ```
 
 ## 🎯 支持的AI工具
@@ -321,17 +317,17 @@ rules-2.3.1-optimized/
 > - **Windows 7/8用户**：请访问 [PowerShell官方下载页面](https://github.com/PowerShell/PowerShell/releases) 下载最新版本
 
 ```bash
-# 推荐方法：双击运行（最简单）
-# 详细步骤：
-# 1. 按 Win + E 打开文件资源管理器
-# 2. 导航到项目的 mcp-scripts 文件夹
-# 3. 找到 run-powershell-installer.bat 文件
-# 4. 双击该文件执行（不要右键，直接双击）
+# 示例1：前端项目安装
+cd "E:\AgentRules\English\rules-2.1-optimized-2.2.3"
+install-scripts\install-ultra.bat "D:\MyProjects\vue-app" frontend
 
-双击运行: mcp-scripts/run-powershell-installer.bat
+# 示例2：后端项目安装
+cd "E:\AgentRules\English\rules-2.1-optimized-2.2.3"
+install-scripts\install-ultra.bat "C:\Dev\api-server" backend
 
-# 或者手动在PowerShell中执行
-powershell -ExecutionPolicy Bypass -File "install-mcp-tools-enhanced-final.ps1的绝对路径"
+# 示例3：全栈项目安装
+cd "E:\AgentRules\English\rules-2.1-optimized-2.2.3"
+install-scripts\install-ultra.bat "D:\Projects\full-stack-app" fullstack
 ```
 
 > **🔧 配置方式**：
@@ -355,7 +351,7 @@ powershell -ExecutionPolicy Bypass -File "install-mcp-tools-enhanced-final.ps1�
 
 ## 📋 项目信息
 
-**Rules 2.3.1 Optimized (Enterprise Edition)** | 发布：2025年8月5日 | 质量：PERFECT (A++)
+**Rules 2.3.2 Optimized (Enterprise Edition)** | 发布：2025年8月7日 | 质量：PERFECT (A++)
 
 基于 [steipete/agent-rules](https://github.com/steipete/agent-rules) 优化扩展 | 博客作者：m0_73635308 | 邮箱：3553952458@qq.com
 

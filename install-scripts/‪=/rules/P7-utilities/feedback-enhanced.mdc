@@ -1,0 +1,335 @@
+---
+description: "Enhanced feedback mechanism with 1-hour timeout - 增强反馈机制，1小时超时"
+globs: ["**/*"]
+alwaysApply: true
+---
+
+# 🤖 Enhanced Feedback Mechanism - 增强反馈机制
+
+专为复杂开发任务设计的智能反馈系统，支持1小时超时的深度交互。
+
+## 🚀 Commands - 命令
+
+- `/feedback` - 手动触发反馈
+- `/feedback-config` - 配置反馈设置
+- `/feedback-history` - 查看反馈历史
+- `/feedback-summary` - 生成工作摘要
+
+## ✨ Features - 功能特性
+
+### 🕐 Extended Timeout - 扩展超时
+- **1小时超时** - 充足时间进行复杂架构讨论
+- **自动保存** - 防止长时间讨论中的数据丢失
+- **断点续传** - 支持中断后继续讨论
+
+### 📝 Rich Text Support - 富文本支持
+- **代码片段** - 语法高亮的代码展示
+- **架构图** - Mermaid图表支持
+- **配置文件** - 格式化的配置展示
+- **截图支持** - 图片和截图集成
+
+### 🔄 Real-time Interaction - 实时交互
+- **双向沟通** - AI与用户的实时对话
+- **进度跟踪** - 任务进度实时更新
+- **决策记录** - 重要决策自动记录
+
+## 📋 Trigger Conditions - 触发条件
+
+### 🔍 详细模式特殊规则
+```
+触发条件: 用户设置了详细模式 (/设置详细模式)
+行为变化: 每次会话开始时自动调用反馈增强界面
+目的: 确保用户对每个开发步骤都有充分的参与和确认
+实现方式: 
+- 会话开始时自动触发 interactive_feedback
+- 提供当前任务概览和需要确认的要点
+- 收集用户的详细需求和偏好设置
+- 建立完整的沟通和反馈机制
+
+### 🔧 图片处理修复
+```
+技术修复要点:
+• 移除 fastmcp.utilities.types.Image 导入
+• 使用 mcp.types.ImageContent 替代
+• 确保图片内容正确序列化为JSON格式
+• 避免在反馈工具中直接传递Image对象
+```
+```
+
+### 自动触发场景
+
+#### 🔍 需求不明确
+```
+触发条件: 用户描述模糊或存在歧义
+示例: "帮我做个网站" (缺少具体需求)
+反馈内容: 
+- 项目类型和规模
+- 技术栈偏好
+- 功能需求清单
+- 时间和预算约束
+```
+
+#### 🎯 重大决策
+```
+触发条件: 架构选择、技术栈选型等关键决策
+示例: 微服务 vs 单体架构选择
+反馈内容:
+- 项目规模和团队大小
+- 性能和扩展性要求
+- 运维能力和经验
+- 长期维护考虑
+```
+
+#### ✅ 方案完成
+```
+触发条件: 技术方案设计完成，需用户确认
+示例: 数据库设计方案完成
+反馈内容:
+- 表结构设计审查
+- 索引策略确认
+- 性能预期评估
+- 扩展性考虑
+```
+
+#### 🎉 执行完成
+```
+触发条件: 代码实现完成，需用户验收
+示例: API接口开发完成
+反馈内容:
+- 功能测试结果
+- 性能指标达成
+- 安全检查通过
+- 文档完整性
+```
+
+#### 🚨 错误发生
+```
+触发条件: 遇到无法自动解决的问题
+示例: 依赖冲突或环境问题
+反馈内容:
+- 错误详细信息
+- 可能的解决方案
+- 需要的用户操作
+- 替代方案建议
+```
+
+## 🎯 Specialized Feedback Scenarios - 专业反馈场景
+
+### 🏗️ 架构设计确认
+```markdown
+## 系统架构方案确认
+
+### 当前方案
+- **架构模式**: 微服务架构
+- **技术栈**: Spring Boot + Docker + Kubernetes
+- **数据库**: PostgreSQL + Redis
+- **消息队列**: RabbitMQ
+
+### 需要确认的要点
+1. **服务拆分粒度** - 是否合理？
+2. **数据一致性** - 如何处理分布式事务？
+3. **服务通信** - REST vs gRPC选择？
+4. **监控策略** - 日志和指标收集方案？
+
+### 请提供反馈
+- 团队规模和技术水平
+- 预期并发量和数据量
+- 运维能力和基础设施
+- 项目时间线和里程碑
+```
+
+### ⚡ API设计确认
+```markdown
+## API接口设计完成
+
+### 接口概览
+- **用户管理**: 15个接口
+- **认证授权**: 8个接口  
+- **数据操作**: 23个接口
+- **文件处理**: 6个接口
+
+### 设计特点
+- RESTful风格，统一响应格式
+- JWT认证 + RBAC权限控制
+- 请求限流和参数验证
+- 完整的错误处理机制
+
+### 需要确认
+1. **接口粒度** - 是否符合业务需求？
+2. **权限设计** - 角色和权限划分是否合理？
+3. **性能考虑** - 是否需要缓存和优化？
+4. **版本管理** - API版本策略是否合适？
+```
+
+### 🗄️ 数据库设计确认
+```markdown
+## 数据库表结构设计
+
+### 核心表设计
+- **users**: 用户基础信息 (12字段)
+- **roles**: 角色权限管理 (8字段)
+- **products**: 产品信息 (15字段)
+- **orders**: 订单数据 (18字段)
+
+### 关系设计
+- 用户-角色: 多对多关系
+- 产品-分类: 一对多关系
+- 订单-产品: 多对多关系
+
+### 索引策略
+- 主键索引: 所有表
+- 唯一索引: email, phone
+- 复合索引: (user_id, created_at)
+- 全文索引: product_name, description
+
+### 需要确认
+1. **数据类型** - 字段类型选择是否合适？
+2. **索引设计** - 查询性能是否满足要求？
+3. **扩展性** - 是否考虑了未来的数据增长？
+4. **备份策略** - 数据备份和恢复方案？
+```
+
+## 🔧 Configuration - 配置
+
+### Environment Variables - 环境变量
+```bash
+# 反馈超时设置 (秒)
+FEEDBACK_TIMEOUT=3600
+
+# 日志级别
+FEEDBACK_LOG_LEVEL=info
+
+# 存储路径
+FEEDBACK_STORAGE_PATH=./feedback-logs
+
+# 自动保存间隔 (秒)
+FEEDBACK_AUTOSAVE_INTERVAL=300
+
+# 最大历史记录数
+FEEDBACK_MAX_HISTORY=100
+```
+
+### Advanced Settings - 高级设置
+```json
+{
+  "feedback": {
+    "timeout": 3600,
+    "autoSave": true,
+    "saveInterval": 300,
+    "maxHistory": 100,
+    "enableRichText": true,
+    "enableScreenshots": true,
+    "enableMermaid": true,
+    "logLevel": "info"
+  }
+}
+```
+
+## 📊 Feedback Analytics - 反馈分析
+
+### Metrics Tracking - 指标跟踪
+```javascript
+// 反馈会话统计
+{
+  "sessionId": "fb-2025-01-31-001",
+  "startTime": "2025-01-31T10:00:00Z",
+  "endTime": "2025-01-31T10:45:00Z",
+  "duration": 2700, // 45分钟
+  "messageCount": 15,
+  "decisionPoints": 3,
+  "issuesResolved": 2,
+  "userSatisfaction": 4.5
+}
+```
+
+### Quality Metrics - 质量指标
+- **响应时间** - AI响应的平均时间
+- **解决率** - 问题解决的成功率
+- **用户满意度** - 反馈质量评分
+- **会话完成率** - 完整完成的会话比例
+
+## 🛠️ Integration Examples - 集成示例
+
+### Frontend Integration - 前端集成
+```javascript
+// Vue.js组件中使用反馈
+export default {
+  methods: {
+    async requestFeedback(context) {
+      const feedback = await this.$mcp.feedback({
+        type: 'architecture-review',
+        context: context,
+        timeout: 3600000 // 1小时
+      });
+      
+      return feedback;
+    }
+  }
+}
+```
+
+### Backend Integration - 后端集成
+```python
+# Python中使用反馈机制
+from mcp_feedback import FeedbackClient
+
+async def design_review(design_doc):
+    client = FeedbackClient(timeout=3600)
+    
+    feedback = await client.request_feedback(
+        type="database-design",
+        content=design_doc,
+        questions=[
+            "表结构设计是否合理？",
+            "索引策略是否优化？",
+            "扩展性如何保证？"
+        ]
+    )
+    
+    return feedback
+```
+
+## ✅ Best Practices - 最佳实践
+
+### For AI Assistants - AI助手
+- **及时触发** - 在关键决策点主动请求反馈
+- **清晰描述** - 详细说明当前状态和需要确认的内容
+- **结构化输出** - 使用清晰的格式和标记
+- **保存记录** - 重要决策和反馈要保存记录
+
+### For Users - 用户
+- **详细反馈** - 提供具体、详细的反馈信息
+- **及时响应** - 在超时前及时回复
+- **明确决策** - 清楚表达决策和偏好
+- **记录原因** - 说明决策的原因和考虑
+
+### For Teams - 团队
+- **统一标准** - 建立团队反馈标准和流程
+- **知识共享** - 分享反馈经验和最佳实践
+- **持续改进** - 定期回顾和优化反馈机制
+- **工具集成** - 与现有工具和流程集成
+
+## 📋 Troubleshooting - 故障排除
+
+### Common Issues - 常见问题
+
+#### 超时问题
+```
+问题: 反馈会话超时
+原因: 网络不稳定或服务器负载高
+解决: 检查网络连接，重新发起反馈
+```
+
+#### 保存失败
+```
+问题: 反馈内容保存失败
+原因: 存储空间不足或权限问题
+解决: 检查磁盘空间和文件权限
+```
+
+#### 格式错误
+```
+问题: 富文本格式显示异常
+原因: Markdown解析错误
+解决: 检查Markdown语法，使用标准格式
+```
