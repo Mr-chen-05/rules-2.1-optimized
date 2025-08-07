@@ -2,6 +2,7 @@
 
 > **🏆 PERFECT (A++)评级** | **✅ 100%测试通过** | **🚀 生产就绪** | **💬 完整MCP支持** | **🔄 统一规则创建逻辑**
 
+
 ## 📖 项目简介
 
 基于 [steipete/agent-rules](https://github.com/steipete/agent-rules) 优化扩展，为中文开发者提供**智能化AI助手解决方案**：
@@ -90,7 +91,7 @@ node --version && npm --version
 #### 🚀 PowerShell安装（推荐）
 ```powershell
 # 🎯 步骤1：进入规则目录
-cd "你的rules-2.1-optimized-2.2.3目录路径"
+cd "你的rules-2.3.2-optimized目录路径"
 
 # 🎯 步骤2：选择项目类型安装（三选一）
 install-scripts\install-ultra.bat "你的项目目录路径" frontend   # 🎨 前端项目
@@ -102,27 +103,27 @@ install-scripts\install-ultra.bat "你的项目目录路径" fullstack  # 🌟 �
 ```cmd
 # ⚠️ 重要：非C盘需要先切换盘符
 E:                                    # 切换到对应盘符（如E盘）
-cd "你的rules-2.1-optimized-2.2.3目录路径"
+cd "你的rules-2.3.2-optimized目录路径"
 
 # 🎯 选择项目类型安装（三选一）
-install-scripts\install-all.bat "你的项目目录路径" frontend   # 🎨 前端项目
-install-scripts\install-all.bat "你的项目目录路径" backend    # 🔧 后端项目
-install-scripts\install-all.bat "你的项目目录路径" fullstack  # 🌟 全栈项目
+install-scripts\install-ultra.bat "你的项目目录路径" frontend   # 🎨 前端项目
+install-scripts\install-ultra.bat "你的项目目录路径" backend    # 🔧 后端项目
+install-scripts\install-ultra.bat "你的项目目录路径" fullstack  # 🌟 全栈项目
 ```
 
 #### 💡 实际安装示例
 ```powershell
 # 示例1：前端项目安装
-cd "E:\AgentRules\English\rules-2.1-optimized-2.2.3"
-install-scripts\install-all.bat "D:\MyProjects\vue-app" frontend
+cd "E:\AgentRules\English\rules-2.3.2-optimized"
+install-scripts\install-ultra.bat "D:\MyProjects\vue-app" frontend
 
 # 示例2：后端项目安装  
-cd "E:\AgentRules\English\rules-2.1-optimized-2.2.3"
-install-scripts\install-all.bat "C:\Dev\api-server" backend
+cd "E:\AgentRules\English\rules-2.3.2-optimized"
+install-scripts\install-ultra.bat "C:\Dev\api-server" backend
 
 # 示例3：全栈项目安装
-cd "E:\AgentRules\English\rules-2.1-optimized-2.2.3"
-install-scripts\install-all.bat "D:\Projects\full-stack-app" fullstack
+cd "E:\AgentRules\English\rules-2.3.2-optimized"
+install-scripts\install-ultra.bat "D:\Projects\full-stack-app" fullstack
 ```
 
 ### ✅ 步骤3：验证安装 & 激活规则
@@ -206,7 +207,7 @@ dir "你的项目目录路径\.trae\rules\"        # Trae AI规则
 ## 📁 项目结构
 
 ```
-rules-2.1-optimized-2.2.3/
+rules-2.3.2-optimized/
 ├── 📚 核心教程和文档
 │   ├── tutorials/                          # 🔥 核心使用教程（必看！）
 │   │   ├── frontend-rules-2.1-使用指南.md  # 前端开发完整指南
@@ -288,14 +289,14 @@ install-scripts\install-ultra.bat "你的项目目录路径" fullstack  # 🌟 �
 
 ## 🎯 支持的AI工具
 
-| AI工具 | 前端 | 后端 | MCP | 安装命令 |
-|--------|------|------|-----|----------|
-| **Augment** | ✅ | ✅ | ✅ | `augment-frontend.bat` |
-| **Cursor** | ✅ | ✅ | ✅ | `cursor-frontend.bat` |
-| **Claude Code** | ✅ | ✅ | ✅ | `claude-frontend.bat` |
-| **Trae AI** | ✅ | ✅ | ✅ | `trae-frontend.bat` |
+| 开发模式 | 前端 | 后端 | MCP | 安装命令 |
+|----------|------|------|-----|-----------|
+| **前端开发** | ✅ | ❌ | ✅ | `install-scripts\install-ultra.bat "项目路径" frontend` |
+| **后端开发** | ❌ | ✅ | ✅ | `install-scripts\install-ultra.bat "项目路径" backend` |
+| **全栈开发** | ✅ | ✅ | ✅ | `install-scripts\install-ultra.bat "项目路径" fullstack` |
+| **默认模式** | ✅ | ✅ | ✅ | `install-scripts\install-ultra.bat "项目路径"` |
 
-> **💡 提示**：所有工具均支持前端/后端/全栈模式，100%测试通过
+> **💡 提示**：统一安装脚本 `install-ultra.bat` 适配所有AI工具（Augment、Cursor、Claude、Trae AI等），支持前端/后端/全栈三种开发模式，100%测试通过
 
 ### 🔧 MCP智能工具集成
 
@@ -318,15 +319,15 @@ install-scripts\install-ultra.bat "你的项目目录路径" fullstack  # 🌟 �
 
 ```bash
 # 示例1：前端项目安装
-cd "E:\AgentRules\English\rules-2.1-optimized-2.2.3"
+cd "E:\AgentRules\English\rules-2.3.2-optimized"
 install-scripts\install-ultra.bat "D:\MyProjects\vue-app" frontend
 
 # 示例2：后端项目安装
-cd "E:\AgentRules\English\rules-2.1-optimized-2.2.3"
+cd "E:\AgentRules\English\rules-2.3.2-optimized"
 install-scripts\install-ultra.bat "C:\Dev\api-server" backend
 
 # 示例3：全栈项目安装
-cd "E:\AgentRules\English\rules-2.1-optimized-2.2.3"
+cd "E:\AgentRules\English\rules-2.3.2-optimized"
 install-scripts\install-ultra.bat "D:\Projects\full-stack-app" fullstack
 ```
 
@@ -354,5 +355,7 @@ install-scripts\install-ultra.bat "D:\Projects\full-stack-app" fullstack
 **Rules 2.3.2 Optimized (Enterprise Edition)** | 发布：2025年8月7日 | 质量：PERFECT (A++)
 
 基于 [steipete/agent-rules](https://github.com/steipete/agent-rules) 优化扩展 | 博客作者：m0_73635308 | 邮箱：3553952458@qq.com
+
+**📦 仓库地址**: [GitHub](https://github.com/Mr-chen-05/rules-2.1-optimized) | [Gitee](https://gitee.com/czsuccess/rules-2.1-optimized)
 
 **🚀 立即开始**: [MCP快速入门指南](docs/MCP-QUICK-START-GUIDE.md) | [安装教程](install-scripts/INSTALL-GUIDE.md)

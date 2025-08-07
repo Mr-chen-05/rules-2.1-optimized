@@ -7,7 +7,7 @@
 ### 📁 文档分布
 
 ```
-rules-2.1-optimized-2.2.3/
+rules-2.3.2-optimized/
 ├── README.md                    # 主入口文档
 ├── USAGE.md                     # 高级使用指南
 ├── COMMANDS-REFERENCE.md        # 命令参考

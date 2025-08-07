@@ -98,7 +98,7 @@ run-powershell-installer.bat
 # 方法2：命令行运行
 # 注意：如果项目在非C盘，需要先切换盘符
 E:                                    # 先切换到E盘（根据你的实际盘符）
-cd E:\AgentRules\English\rules-2.2.3-optimized\mcp-scripts
+cd E:\AgentRules\English\rules-2.3.2-optimized\mcp-scripts
 .\run-powershell-installer.bat
 ```
 
@@ -114,7 +114,7 @@ cd E:\AgentRules\English\rules-2.2.3-optimized\mcp-scripts
 # 方法2：命令行运行
 # 注意：如果项目在非C盘，需要先切换盘符
 E:                                    # 先切换到E盘（根据你的实际盘符）
-cd E:\AgentRules\English\rules-2.2.3-optimized\mcp-scripts
+cd E:\AgentRules\English\rules-2.3.2-optimized\mcp-scripts
 .\install-mcp-tools-enhanced-final.bat
 ```
 

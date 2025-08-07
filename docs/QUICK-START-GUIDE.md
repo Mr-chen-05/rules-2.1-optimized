@@ -27,7 +27,7 @@
 2. **导航到文档目录**
 
    ```powershell
-   cd "E:\AgentRules\English\rules-2.1-optimized-2.2.1\docs"
+   cd "E:\AgentRules\English\rules-2.3.2-optimized\docs"
    ```
 
 3. **执行自动部署脚本**

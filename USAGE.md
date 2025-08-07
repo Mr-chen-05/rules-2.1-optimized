@@ -178,7 +178,7 @@ echo $env:AI_RULES_PATH
 
 ```cmd
 # 选择单个AI工具
-install-scripts\augment-frontend.bat ..\你的项目目录
+install-scripts\install-ultra.bat "..\你的项目目录" frontend
 # 使用: /frontend-dev, /component, /commit
 ```
 
