@@ -94,29 +94,29 @@
 #### Augment 用户
 ```cmd
 # 检查安全规则文件
-type .augment\rules\frontend-complete.md | findstr "文件生成安全规则"
-type .augment\rules\backend-complete.md | findstr "文件生成安全规则"
+type rules\P3-professional-dev\frontend-rules-2.1.md | findstr "文件生成安全规则"
+type rules\P3-professional-dev\backend-rules-2.1.md | findstr "文件生成安全规则"
 ```
 
 #### Cursor 用户
 ```cmd
 # 检查安全规则文件
-dir .cursor\rules\file-generation-safety-rules.md
-type .cursor\rules\file-generation-safety-rules.md | findstr "绝对禁止规则"
+dir rules\P0-core-safety\file-generation-safety-rules.md
+type rules\P0-core-safety\file-generation-safety-rules.md | findstr "绝对禁止规则"
 ```
 
 #### Claude Code 用户
 ```cmd
 # 检查安全规则文件
-type CLAUDE.md | findstr "文件生成安全规则"
-type CLAUDE.md | findstr "绝对禁止规则"
+type rules\P0-core-safety\file-generation-safety-rules.md | findstr "文件生成安全规则"
+type rules\P0-core-safety\file-generation-safety-rules.md | findstr "绝对禁止规则"
 ```
 
 #### Trae AI 用户
 ```cmd
 # 检查安全规则文件
-type .trae\rules\frontend-complete.md | findstr "文件生成安全规则"
-type .trae\rules\backend-complete.md | findstr "文件生成安全规则"
+type rules\P3-professional-dev\frontend-rules-2.1.md | findstr "文件生成安全规则"
+type rules\P3-professional-dev\backend-rules-2.1.md | findstr "文件生成安全规则"
 ```
 
 ## 🎉 预期效果
