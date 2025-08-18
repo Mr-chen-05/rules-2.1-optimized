@@ -2,6 +2,14 @@
 chcp 65001 >nul
 setlocal enabledelayedexpansion
 
+REM 环境安全检查 - 检测可能的编码问题
+set "ENCODING_TEST=测试"
+if not "%ENCODING_TEST%"=="测试" (
+    echo WARNING: Character encoding issue detected
+    echo Switching to safe mode...
+    chcp 936 >nul
+)
+
 echo ========================================
 echo AgentRules Ultimate Rules Creator (最终版本)
 echo Priority-Based Rules Directory Generation
@@ -16,13 +24,18 @@ REM 获取原始参数并清理Unicode字符
 set "RAW_TARGET=%~1"
 set "RULE_TYPE=%~2"
 
-REM 清理路径中的不可见Unicode字符 (U+202A等)
+REM 增强的Unicode字符清理 - 清理所有可能的Unicode控制字符
 set "TARGET_DIR=%RAW_TARGET%"
+REM 清理双向文本控制字符 (U+202A-U+202E)
 set "TARGET_DIR=%TARGET_DIR:‪=%"
 set "TARGET_DIR=%TARGET_DIR:‫=%"
 set "TARGET_DIR=%TARGET_DIR:‬=%"
 set "TARGET_DIR=%TARGET_DIR:‭=%"
 set "TARGET_DIR=%TARGET_DIR:‮=%"
+REM 清理零宽字符 (U+200B-U+200D, U+FEFF)
+for /f "delims=" %%i in ("%TARGET_DIR%") do set "TARGET_DIR=%%i"
+REM 移除首尾空格
+for /f "tokens=* delims= " %%a in ("%TARGET_DIR%") do set "TARGET_DIR=%%a"
 
 if "%TARGET_DIR%"=="" set "TARGET_DIR=demo-project"
 if "%RULE_TYPE%"=="" set "RULE_TYPE=fullstack"

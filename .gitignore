@@ -82,6 +82,9 @@ test-project/
 demo-project/
 temp-install/
 .test-*
+DOCUMENTATION-ANALYSIS.md
 
 #工具脚本
 tools/
+releases/** 
+enterprise-test-reports/**

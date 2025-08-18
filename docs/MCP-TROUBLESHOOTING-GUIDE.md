@@ -342,7 +342,7 @@ taskkill /PID 1234 /F
 - 📖 [项目说明](../README.md)
 
 ### 社区支持
-- 💬 GitHub Issues: [提交问题](https://github.com/Mr-chen-05/rules-2.1-optimized/issues)
+- 💬 GitHub Issues: [提交问题](https://github.com/Mr-chen-05/rules-2.3.3-optimized/issues)
 - 📧 邮箱联系: 3553952458@qq.com
 
 ### 紧急联系

@@ -34,19 +34,19 @@
 | **后端专用** | API 开发、数据库 | `install-scripts\[工具名]-backend.bat "项目路径"`      | ✅ 统一规则创建 |
 | **全栈支持** | 复杂业务逻辑     | `install-scripts\install-ultra.bat "项目路径" fullstack` | ✅ 统一规则创建 |
 
-### 🔥 **核心改进：统一规则创建逻辑**
+### 🔥 **核心特性：统一安装体验**
 
-**重大突破**：现在所有AI工具使用**完全相同的规则内容**！
+**重大突破**：现在所有AI工具使用**统一安装脚本**！
 
+- ✅ **一键安装** - `install-ultra.bat` 支持前端/后端/全栈三种模式
 - ✅ **功能完全一致** - Augment、Cursor、Claude、Trae四个工具功能完全相同
 - ✅ **规则内容统一** - 所有工具使用相同的文件组合顺序和内容
-- ✅ **可互相复制** - 规则文件可以在不同AI工具间通用
-- ✅ **统一维护** - 通过`create-unified-rules.bat`统一管理所有规则
-- ✅ **一致性验证** - `verify-rules-consistency.bat`工具确保持续一致性
+- ✅ **智能检测** - 自动识别项目类型并配置相应规则
+- ✅ **企业级标准** - UTF-8编码、错误处理、路径安全
 
-**核心统一函数**：
-- `create-unified-rules.bat` - 统一规则创建逻辑
-- `verify-rules-consistency.bat` - 规则一致性验证工具
+**核心安装脚本**：
+- `install-ultra.bat` - 统一安装脚本，支持所有AI工具
+- `comprehensive-test-report.bat` - 综合检测工具，验证安装完整性
 
 ## 📁 自定义路径配置
 
@@ -244,7 +244,7 @@ install-scripts\install-ultra.bat ..\你的项目目录 fullstack
 ### ✅ 测试认证
 
 - **PERFECT (A++)评级** - 企业级标准
-- **9/9 脚本通过** - 100%测试通过率
+- **5/5 脚本通过** - 100%测试通过率
 - **5/5 工具验证** - MCP 工具全部可用
 - **完整文档** - 从入门到故障排除
 

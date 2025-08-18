@@ -28,8 +28,7 @@
 - ✅ **功能完全一致** - 四个AI工具提供相同的前端开发功能
 - ✅ **规则内容统一** - 所有工具使用相同的文件组合顺序（约184KB）
 - ✅ **可互相复制** - 规则文件可以在不同AI工具间通用
-- ✅ **统一维护** - 通过`create-unified-rules.bat`统一管理
-- ✅ **一致性验证** - `verify-rules-consistency.bat`确保持续一致
+- ✅ **一致性验证** - `comprehensive-test-report.bat`确保持续一致
 
 ### 📋 项目核心功能
 本项目会为你的开发环境安装以下组件：
@@ -59,7 +58,7 @@
 > ```cmd
 > # 注意：如果规则目录在非C盘，需要先切换盘符
 > E:                                    # 先切换到E盘（根据你的实际盘符）
-> cd "你的rules-2.1-optimized目录路径"
+> cd "你的rules-2.3.3-optimized目录路径"
 > install-scripts\install-ultra.bat ..\你的项目目录 frontend
 > ```
 
@@ -443,8 +442,7 @@ AI响应：[模式：优化] [角色：前端性能工程师]
 - ✅ **统一规则创建逻辑** - 所有AI工具使用相同的规则内容
 - ✅ **规则一致性保证** - 四个AI工具功能完全一致
 - ✅ **自动目录创建** - 解决路径不存在问题
-- ✅ **验证工具** - `verify-rules-consistency.bat`确保一致性
-- ✅ **核心统一函数** - `create-unified-rules.bat`统一管理
+- ✅ **验证工具** - `comprehensive-test-report.bat`确保一致性
 
 ### 👨‍💻 作者信息
 - **博客ID**：m0_73635308

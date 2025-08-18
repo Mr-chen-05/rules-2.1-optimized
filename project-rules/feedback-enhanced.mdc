@@ -46,16 +46,6 @@ alwaysApply: true
 - 收集用户的详细需求和偏好设置
 - 建立完整的沟通和反馈机制
 
-### 🔧 图片处理修复
-```
-技术修复要点:
-• 移除 fastmcp.utilities.types.Image 导入
-• 使用 mcp.types.ImageContent 替代
-• 确保图片内容正确序列化为JSON格式
-• 避免在反馈工具中直接传递Image对象
-```
-```
-
 ### 自动触发场景
 
 #### 🔍 需求不明确

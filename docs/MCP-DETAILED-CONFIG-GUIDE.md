@@ -494,6 +494,101 @@ uvx mcp-feedback-enhanced@latest version
 - ✅ 无需配置复杂路径
 - ✅ 简化维护和更新
 
+### **5.0.1 mcp-feedback-enhanced 安装卡住问题**
+
+**🚨 常见问题：** 脚本在安装 `mcp-feedback-enhanced` 时卡住，其他4个MCP工具已安装成功
+
+**问题现象：**
+- 前4个MCP工具（filesystem、memory、github、everything）安装成功
+- 脚本在最后一个 `mcp-feedback-enhanced` 处卡住不动
+- 脚本暂停导致 `mcp-config.json` 配置文件未生成
+
+**🔧 解决方案：**
+
+**步骤1：手动安装 mcp-feedback-enhanced**
+```bash
+# 暂停脚本（Ctrl+C），然后执行以下命令
+uvx --index-url https://pypi.tuna.tsinghua.edu.cn/simple mcp-feedback-enhanced@latest
+```
+
+**步骤2：手动创建配置文件**
+由于脚本暂停，需要手动创建 `mcp-config.json` 配置文件。
+
+1. **找到MCP工具目录**（通常在用户目录下的 `MCP-Tools` 文件夹）
+2. **创建 `mcp-config.json` 文件**
+3. **复制以下配置内容**：
+
+```json
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "@modelcontextprotocol/server-filesystem",
+        "你的项目路径"
+      ],
+      "env": {}
+    },
+    "memory": {
+      "command": "npx",
+      "args": [
+        "@modelcontextprotocol/server-memory"
+      ],
+      "env": {}
+    },
+    "github": {
+      "command": "npx",
+      "args": [
+        "@modelcontextprotocol/server-github"
+      ],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "你的GitHub_Token"
+      }
+    },
+    "everything": {
+      "command": "npx",
+      "args": [
+        "@modelcontextprotocol/server-everything"
+      ],
+      "env": {}
+    },
+    "mcp-feedback-enhanced": {
+      "command": "uvx",
+      "args": [
+        "mcp-feedback-enhanced@latest"
+      ],
+      "env": {
+        "PYTHONUNBUFFERED": "1",
+        "MCP_FEEDBACK_TIMEOUT": "3600",
+        "MCP_FEEDBACK_MAX_SIZE": "10485760",
+        "MCP_WINDOW_MODE": "desktop",
+        "MCP_NO_BROWSER": "true",
+        "MCP_DESKTOP_MODE": "true"
+      }
+    }
+  }
+}
+```
+
+**步骤3：修改配置文件**
+- 将 `"你的项目路径"` 替换为实际项目路径（如：`"D:\\我的项目"`）
+- 将 `"你的GitHub_Token"` 替换为实际的GitHub Personal Access Token
+
+**💡 为什么会卡住？**
+- 网络连接问题导致Python包下载缓慢
+- 使用清华大学镜像源可以显著提高下载速度
+- `uvx --index-url https://pypi.tuna.tsinghua.edu.cn/simple` 指定使用国内镜像源
+
+**✅ 验证安装成功：**
+```bash
+# 验证所有MCP工具是否正常工作
+npx @modelcontextprotocol/server-filesystem --version
+npx @modelcontextprotocol/server-memory --version
+npx @modelcontextprotocol/server-github --version
+npx @modelcontextprotocol/server-everything --version
+uvx mcp-feedback-enhanced@latest version
+```
+
 ### **5.1 路径问题**
 
 **问题：** `cannot find module` 或路径相关错误
@@ -523,7 +618,7 @@ uvx mcp-feedback-enhanced@latest version
 
 ## 📚 附录：完整示例
 
-### **A.1 前端开发者配置示例**
+### **A.1 通用开发者配置示例**
 ```json
 {
   "mcpServers": {
@@ -561,60 +656,6 @@ uvx mcp-feedback-enhanced@latest version
     },
     "mcp-feedback-enhanced": {
        "command": "uvx",
-      "args": [
-        "mcp-feedback-enhanced@latest"
-      ],
-      "env": {
-        "PYTHONUNBUFFERED": "1",
-        "MCP_FEEDBACK_TIMEOUT": "3600",
-        "MCP_FEEDBACK_MAX_SIZE": "10485760",
-        "MCP_WINDOW_MODE": "desktop",
-        "MCP_NO_BROWSER": "true",
-        "MCP_DESKTOP_MODE": "true"
-      }
-    }
-  }
-}
-```
-
-### **A.2 后端开发者配置示例**
-```json
-{
-  "mcpServers": {
-    "java项目": {
-      "command": "npx",
-      "args": [
-        "@modelcontextprotocol/server-filesystem",
-        "E:\\Java\\SpringBoot项目"
-      ],
-      "env": {}
-    },
-    "python项目": {
-      "command": "npx",
-      "args": [
-        "@modelcontextprotocol/server-filesystem",
-        "E:\\Python\\FastAPI项目"
-      ],
-      "env": {}
-    },
-    "memory": {
-      "command": "npx",
-      "args": [
-        "@modelcontextprotocol/server-memory"
-      ],
-      "env": {}
-    },
-    "github": {
-      "command": "npx",
-      "args": [
-        "@modelcontextprotocol/server-github"
-      ],
-      "env": {
-        "GITHUB_PERSONAL_ACCESS_TOKEN": "ghp_xxxxxxxxxxxxxxxxxxxx"
-      }
-    },
-    "mcp-feedback-enhanced": {
-      "command": "uvx",
       "args": [
         "mcp-feedback-enhanced@latest"
       ],
