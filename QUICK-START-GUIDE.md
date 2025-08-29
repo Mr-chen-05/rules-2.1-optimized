@@ -1,6 +1,7 @@
-# 🚀 AgentRules 5分钟快速开始指南
+# 🚀 AgentRules 2.4.1 Intelligent - 5分钟智能化快速开始指南
 
-> **目标**: 让你在5分钟内完成安装并体验核心功能
+> **目标**: 让你在5分钟内完成安装并体验下一代智能化AI助手的核心功能
+> **智能特色**: 🧠 智能需求理解 | 💬 深度讨论框架 | ⚡ 开发效率优化引擎
 
 ## ⚡ 快速检查清单
 
@@ -20,47 +21,87 @@ npm --version
 
 1. **下载项目**:
    ```bash
-   git clone https://github.com/your-repo/AgentRules.git
-   cd AgentRules
+   # 下载到本地目录
+   # 解压到你的工作目录，例如：E:\AgentRules\English\rules-2.1-optimized-2.2.1
+   cd "你的rules目录路径"
    ```
 
 2. **运行安装脚本**:
    ```bash
    # 推荐：智能模式（自动检测并安装所需组件）
-   install-scripts\install-ultra.bat 
+   install-scripts\install-ultra.bat "你的项目路径"
    
-   # 或者：完整模式（安装所有功能）
-   install-scripts\install-ultra.bat fullstack
+   # 或者：指定项目类型
+   install-scripts\install-ultra.bat "你的项目路径" frontend   # 前端项目
+   install-scripts\install-ultra.bat "你的项目路径" backend    # 后端项目
+   install-scripts\install-ultra.bat "你的项目路径" fullstack  # 全栈项目
    ```
 
-### 🧠 第3步: 激活超级大脑系统 (1分钟)
+### 🧠 第3步: 激活智能化系统 (1分钟)
 
-安装完成后，系统会自动激活。验证安装：
+安装完成后，智能系统会自动激活。验证安装：
 
 ```bash
-# 检查系统状态
+# 检查智能系统状态
 install-scripts\test-scripts\comprehensive-test-report.bat
 ```
 
-### 🎯 第4步: 第一个示例 (1分钟)
-
-**前端项目示例**:
+**🎯 智能化验证命令**:
 ```bash
-# 使用前端规则创建React项目
-use_rule "创建一个现代化的React项目，包含TypeScript和Tailwind CSS"
+# 激活智能需求理解引擎
+启动超级大脑系统
+
+# 测试深度讨论框架
+我需要开发一个项目，但需求还不够清晰
+
+# 体验开发效率优化
+帮我创建一个高效的开发工作流
 ```
 
-**后端项目示例**:
+### 🎯 第4步: 智能化项目示例 (1分钟)
+
+**🧠 智能需求理解示例**:
 ```bash
-# 使用后端规则创建Node.js API
-use_rule "创建一个RESTful API项目，使用Express和MongoDB"
+# 模糊需求智能澄清
+"我想做一个网站，但不知道用什么技术"
+# 系统会智能分析并提供技术选型建议
 ```
 
-## 🎉 完成！你现在可以：
+**💬 深度讨论框架示例**:
+```bash
+# 复杂决策支持
+"我需要选择前端框架，项目是电商平台"
+# 系统会进行多维度分析和结构化讨论
+```
 
-- ✅ 使用智能代码生成
-- ✅ 享受自动化工作流
-- ✅ 体验MCP工具增强功能
+**⚡ 开发效率优化示例**:
+```bash
+# 智能代码生成
+"创建一个现代化的React项目，包含TypeScript、Tailwind CSS和最佳实践"
+# 系统会自动生成完整项目结构和配置
+```
+
+## 🎉 完成！你现在可以体验下一代智能化功能：
+
+### 🧠 智能需求理解引擎
+- ✅ 深度理解模糊需求并智能澄清
+- ✅ 自动识别项目类型和技术需求
+- ✅ 提供精准的解决方案建议
+
+### 💬 深度讨论框架
+- ✅ 结构化决策支持和多维度分析
+- ✅ 智能知识提取和经验积累
+- ✅ 复杂问题的系统性解决方案
+
+### ⚡ 开发效率优化引擎
+- ✅ 智能代码生成和自动化工作流
+- ✅ 全方位开发效率提升(40-60%)
+- ✅ MCP工具智能编排和优化
+
+### 🎯 超级大脑系统
+- ✅ L4级完全自主模式
+- ✅ 端到端智能决策和执行
+- ✅ 持续学习和个性化服务
 
 ## 📚 下一步学习路径
 
@@ -105,7 +146,8 @@ mcp-scripts\run-powershell-installer.bat
 
 - 📖 [完整故障排除指南](docs/MCP-TROUBLESHOOTING-GUIDE.md)
 - 🔧 [详细安装指南](install-scripts/INSTALL-GUIDE.md)
-- 📧 技术支持: 3553952458@qq.com
+- 📚 [项目文档](README.md) - 完整使用说明
+- 🔧 [配置指南](docs/) - 详细配置文档
 
 ---
 

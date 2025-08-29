@@ -1,4 +1,8 @@
-# Rules 2.1 Optimized - Git忽略文件
+# Rules 2.4.1 Optimized - Git忽略文件
+
+# 企业测试报告和发布文件夹
+enterprise-test-reports/
+releases/
 
 # 临时文件
 *.tmp

@@ -2,7 +2,7 @@
 type: "global_rule"
 description: "超级大脑系统 - 智能项目管理激活机制和核心功能"
 globs: ["**/*"]
-priority: 970
+priority: 800
 ---
 
 # 🧠 超级大脑系统

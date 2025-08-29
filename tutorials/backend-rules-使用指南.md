@@ -59,7 +59,7 @@
 > ```cmd
 > # 注意：如果规则目录在非C盘，需要先切换盘符
 > E:                                    # 先切换到E盘（根据你的实际盘符）
-> cd "你的rules-2.3.3-optimized目录路径"
+> cd "你的rules-2.4.1-optimized目录路径"
 > install-scripts\install-ultra.bat ..\你的项目目录 backend
 > ```
 

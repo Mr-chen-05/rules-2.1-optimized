@@ -37,7 +37,20 @@ for /f "delims=" %%i in ("%TARGET_DIR%") do set "TARGET_DIR=%%i"
 REM 移除首尾空格
 for /f "tokens=* delims= " %%a in ("%TARGET_DIR%") do set "TARGET_DIR=%%a"
 
-if "%TARGET_DIR%"=="" set "TARGET_DIR=demo-project"
+REM 检查清理后的目录是否为空或只包含特殊字符
+if "%TARGET_DIR%"=="" goto :use_default
+if "%TARGET_DIR%"=="=" goto :use_default
+if "%TARGET_DIR%"=="‪" goto :use_default
+if "%TARGET_DIR%"=="‪=" goto :use_default
+goto :target_dir_ok
+
+:use_default
+REM 如果没有指定目标目录或包含无效字符，默认在桌面创建agent文件夹
+set "DESKTOP_PATH=%USERPROFILE%\Desktop"
+set "TARGET_DIR=%DESKTOP_PATH%\agent"
+echo INFO: No valid target directory specified, using default desktop location: !TARGET_DIR!
+
+:target_dir_ok
 if "%RULE_TYPE%"=="" set "RULE_TYPE=fullstack"
 
 echo Creating %RULE_TYPE% rules directory: %TARGET_DIR%
@@ -65,6 +78,28 @@ if not exist "%PARENT_DIR%" (
     exit /b 1
 )
 
+REM 检查目标目录是否已存在规则文件，避免重复执行
+set "RULES_DIR=%TARGET_DIR%\.rules"
+if exist "%RULES_DIR%\main.md" (
+    echo.
+    echo ========================================
+    echo NOTICE: Rules already exist in target directory!
+    echo ========================================
+    echo Target directory: %TARGET_DIR%
+    echo Rules directory: %RULES_DIR%
+    echo.
+    echo The AgentRules have already been installed in this location.
+    echo To avoid duplicate installation, the script will exit.
+    echo.
+    echo If you want to reinstall, please:
+    echo 1. Delete the existing .rules folder
+    echo 2. Run this script again
+    echo.
+    echo Press any key to exit...
+    pause >nul
+    exit /b 0
+)
+
 REM 创建项目目录
 echo Creating target directory: %TARGET_DIR%
 if not exist "%TARGET_DIR%" (
@@ -72,23 +107,30 @@ if not exist "%TARGET_DIR%" (
     if errorlevel 1 (
         echo ERROR: Failed to create directory: %TARGET_DIR%
         echo Please check the path and permissions.
-        pause
+        echo.
+        echo Press any key to exit...
+        pause >nul
         exit /b 1
     )
 )
 
 REM 创建rules子目录
-set "RULES_DIR=%TARGET_DIR%\rules"
 echo Creating rules directory: %RULES_DIR%
 if not exist "%RULES_DIR%" (
     mkdir "%RULES_DIR%" 2>nul
     if errorlevel 1 (
         echo ERROR: Failed to create rules directory: %RULES_DIR%
         echo Please check the path and permissions.
-        pause
+        echo.
+        echo Press any key to exit...
+        pause >nul
         exit /b 1
     )
 )
+
+REM 初始化错误状态变量
+set "COPY_ERRORS=0"
+set "MISSING_FILES=0"
 
 REM 创建主规则文件
 set "MAIN_RULES=%RULES_DIR%\main.md"
@@ -97,7 +139,9 @@ echo # AgentRules %RULE_TYPE% Rules > "%MAIN_RULES%"
 if errorlevel 1 (
     echo ERROR: Failed to create main.md file
     echo Please check write permissions for: %RULES_DIR%
-    pause
+    echo.
+    echo Press any key to exit...
+    pause >nul
     exit /b 1
 )
 
@@ -114,18 +158,37 @@ echo Creating P0 Level - Core Safety Rules...
 mkdir "%RULES_DIR%\P0-core-safety" 2>nul
 if exist "%GLOBAL_RULES_DIR%\file-generation-safety-rules.md" (
     copy "%GLOBAL_RULES_DIR%\file-generation-safety-rules.md" "%RULES_DIR%\P0-core-safety\" >nul 2>&1
-    if errorlevel 1 echo WARNING: Failed to copy file-generation-safety-rules.md
+    if errorlevel 1 (
+        echo ERROR: Failed to copy file-generation-safety-rules.md
+        set "COPY_ERRORS=1"
+    )
 ) else (
-    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\file-generation-safety-rules.md
+    echo ERROR: Critical file missing: file-generation-safety-rules.md
+    set "MISSING_FILES=1"
+)
+if exist "%GLOBAL_RULES_DIR%\ai-ethical-boundaries.md" (
+    copy "%GLOBAL_RULES_DIR%\ai-ethical-boundaries.md" "%RULES_DIR%\P0-core-safety\" >nul 2>&1
+    if errorlevel 1 (
+        echo ERROR: Failed to copy ai-ethical-boundaries.md
+        set "COPY_ERRORS=1"
+    )
+) else (
+    echo ERROR: Critical file missing: ai-ethical-boundaries.md
+    set "MISSING_FILES=1"
 )
 if exist "%GLOBAL_RULES_DIR%\rule-conflict-resolution.mdc" (
     copy "%GLOBAL_RULES_DIR%\rule-conflict-resolution.mdc" "%RULES_DIR%\P0-core-safety\" >nul 2>&1
-    if errorlevel 1 echo WARNING: Failed to copy rule-conflict-resolution.mdc
+    if errorlevel 1 (
+        echo ERROR: Failed to copy rule-conflict-resolution.mdc
+        set "COPY_ERRORS=1"
+    )
 ) else (
-    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\rule-conflict-resolution.mdc
+    echo ERROR: Critical file missing: rule-conflict-resolution.mdc
+    set "MISSING_FILES=1"
 )
 echo - P0-core-safety/ (Priority: 1000) >> "%MAIN_RULES%"
 echo   - file-generation-safety-rules.md >> "%MAIN_RULES%"
+echo   - ai-ethical-boundaries.md >> "%MAIN_RULES%"
 echo   - rule-conflict-resolution.mdc >> "%MAIN_RULES%"
 echo. >> "%MAIN_RULES%"
 
@@ -134,19 +197,38 @@ echo Creating P1 Level - Core Identity Rules...
 mkdir "%RULES_DIR%\P1-core-identity" 2>nul
 if exist "%GLOBAL_RULES_DIR%\unified-rules-base.md" (
     copy "%GLOBAL_RULES_DIR%\unified-rules-base.md" "%RULES_DIR%\P1-core-identity\" >nul 2>&1
-    if errorlevel 1 echo WARNING: Failed to copy unified-rules-base.md
+    if errorlevel 1 (
+        echo ERROR: Failed to copy unified-rules-base.md
+        set "COPY_ERRORS=1"
+    )
 ) else (
-    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\unified-rules-base.md
+    echo ERROR: Critical file missing: unified-rules-base.md
+    set "MISSING_FILES=1"
 )
 if exist "%GLOBAL_RULES_DIR%\ai-agent-intelligence-core.md" (
     copy "%GLOBAL_RULES_DIR%\ai-agent-intelligence-core.md" "%RULES_DIR%\P1-core-identity\" >nul 2>&1
-    if errorlevel 1 echo WARNING: Failed to copy ai-agent-intelligence-core.md
+    if errorlevel 1 (
+        echo ERROR: Failed to copy ai-agent-intelligence-core.md
+        set "COPY_ERRORS=1"
+    )
 ) else (
-    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\ai-agent-intelligence-core.md
+    echo ERROR: Critical file missing: ai-agent-intelligence-core.md
+    set "MISSING_FILES=1"
+)
+if exist "%GLOBAL_RULES_DIR%\ai-thinking-protocol.md" (
+    copy "%GLOBAL_RULES_DIR%\ai-thinking-protocol.md" "%RULES_DIR%\P1-core-identity\" >nul 2>&1
+    if errorlevel 1 (
+        echo ERROR: Failed to copy ai-thinking-protocol.md
+        set "COPY_ERRORS=1"
+    )
+) else (
+    echo ERROR: Critical file missing: ai-thinking-protocol.md
+    set "MISSING_FILES=1"
 )
 echo - P1-core-identity/ (Priority: 900) >> "%MAIN_RULES%"
 echo   - unified-rules-base.md >> "%MAIN_RULES%"
 echo   - ai-agent-intelligence-core.md >> "%MAIN_RULES%"
+echo   - ai-thinking-protocol.md >> "%MAIN_RULES%"
 echo. >> "%MAIN_RULES%"
 
 REM P2 Level - Intelligent System Rules (所有类型都需要)
@@ -157,6 +239,12 @@ if exist "%GLOBAL_RULES_DIR%\super-brain-system.mdc" (
     if errorlevel 1 echo WARNING: Failed to copy super-brain-system.mdc
 ) else (
     echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\super-brain-system.mdc
+)
+if exist "%GLOBAL_RULES_DIR%\dynamic-thinking-depth-regulation.md" (
+    copy "%GLOBAL_RULES_DIR%\dynamic-thinking-depth-regulation.md" "%RULES_DIR%\P2-intelligent-system\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy dynamic-thinking-depth-regulation.md
+) else (
+    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\dynamic-thinking-depth-regulation.md
 )
 if exist "%GLOBAL_RULES_DIR%\memory-system-integration.mdc" (
     copy "%GLOBAL_RULES_DIR%\memory-system-integration.mdc" "%RULES_DIR%\P2-intelligent-system\" >nul 2>&1
@@ -172,6 +260,7 @@ if exist "%GLOBAL_RULES_DIR%\intelligent-recommendation-engine.mdc" (
 )
 echo - P2-intelligent-system/ (Priority: 800) >> "%MAIN_RULES%"
 echo   - super-brain-system.mdc >> "%MAIN_RULES%"
+echo   - dynamic-thinking-depth-regulation.md >> "%MAIN_RULES%"
 echo   - memory-system-integration.mdc >> "%MAIN_RULES%"
 echo   - intelligent-recommendation-engine.mdc >> "%MAIN_RULES%"
 echo. >> "%MAIN_RULES%"
@@ -179,6 +268,26 @@ echo. >> "%MAIN_RULES%"
 REM P3 Level - Professional Development Rules (根据类型选择)
 echo Creating P3 Level - Professional Development Rules...
 mkdir "%RULES_DIR%\P3-professional-dev" 2>nul
+
+REM 添加通用的专业开发规则
+if exist "%GLOBAL_RULES_DIR%\multimodal-interaction-framework.md" (
+    copy "%GLOBAL_RULES_DIR%\multimodal-interaction-framework.md" "%RULES_DIR%\P3-professional-dev\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy multimodal-interaction-framework.md
+) else (
+    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\multimodal-interaction-framework.md
+)
+if exist "%GLOBAL_RULES_DIR%\human-ai-collaboration-optimization.md" (
+    copy "%GLOBAL_RULES_DIR%\human-ai-collaboration-optimization.md" "%RULES_DIR%\P3-professional-dev\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy human-ai-collaboration-optimization.md
+) else (
+    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\human-ai-collaboration-optimization.md
+)
+if exist "%GLOBAL_RULES_DIR%\knowledge-creation-discovery-framework.md" (
+    copy "%GLOBAL_RULES_DIR%\knowledge-creation-discovery-framework.md" "%RULES_DIR%\P3-professional-dev\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy knowledge-creation-discovery-framework.md
+) else (
+    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\knowledge-creation-discovery-framework.md
+)
 
 REM 使用goto来确保条件判断正确执行
 if /i "%RULE_TYPE%"=="frontend" goto :frontend_p3
@@ -201,6 +310,9 @@ if exist "%GLOBAL_RULES_DIR%\complete-workflow-integration.mdc" (
     echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\complete-workflow-integration.mdc
 )
 echo - P3-professional-dev/ (Priority: 700) >> "%MAIN_RULES%"
+echo   - multimodal-interaction-framework.md >> "%MAIN_RULES%"
+echo   - human-ai-collaboration-optimization.md >> "%MAIN_RULES%"
+echo   - knowledge-creation-discovery-framework.md >> "%MAIN_RULES%"
 echo   - frontend-rules-2.1.md >> "%MAIN_RULES%"
 echo   - complete-workflow-integration.mdc >> "%MAIN_RULES%"
 goto :p3_done
@@ -221,6 +333,9 @@ if exist "%GLOBAL_RULES_DIR%\complete-workflow-integration.mdc" (
     echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\complete-workflow-integration.mdc
 )
 echo - P3-professional-dev/ (Priority: 700) >> "%MAIN_RULES%"
+echo   - multimodal-interaction-framework.md >> "%MAIN_RULES%"
+echo   - human-ai-collaboration-optimization.md >> "%MAIN_RULES%"
+echo   - knowledge-creation-discovery-framework.md >> "%MAIN_RULES%"
 echo   - backend-rules-2.1.md >> "%MAIN_RULES%"
 echo   - complete-workflow-integration.mdc >> "%MAIN_RULES%"
 goto :p3_done
@@ -247,6 +362,9 @@ if exist "%GLOBAL_RULES_DIR%\complete-workflow-integration.mdc" (
     echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\complete-workflow-integration.mdc
 )
 echo - P3-professional-dev/ (Priority: 700) >> "%MAIN_RULES%"
+echo   - multimodal-interaction-framework.md >> "%MAIN_RULES%"
+echo   - human-ai-collaboration-optimization.md >> "%MAIN_RULES%"
+echo   - knowledge-creation-discovery-framework.md >> "%MAIN_RULES%"
 echo   - frontend-rules-2.1.md >> "%MAIN_RULES%"
 echo   - backend-rules-2.1.md >> "%MAIN_RULES%"
 echo   - complete-workflow-integration.mdc >> "%MAIN_RULES%"
@@ -480,11 +598,76 @@ echo       └── P7-utilities/
 echo.
 echo 最终版本: 增强的错误处理和路径验证功能!
 echo.
+echo ========================================
+echo FINAL OUTPUT PATH (最终输出路径):
+echo ========================================
+echo %TARGET_DIR%
+echo ========================================
+echo.
+echo You can now navigate to the above path to access your AgentRules!
+echo 您现在可以导航到上述路径来访问您的AgentRules！
+echo.
 
 if %TOTAL_FILES% EQU 0 (
-    echo WARNING: No files were copied! Please check:
+    echo.
+    echo ========================================
+    echo WARNING: Installation Issue Detected!
+    echo ========================================
+    echo.
+    echo No files were copied! Please check:
     echo 1. Source directories exist: %GLOBAL_RULES_DIR% and %PROJECT_RULES_DIR%
     echo 2. Target directory permissions: %RULES_DIR%
     echo 3. Path contains no invalid characters
-    pause
+    echo.
+    echo Press ENTER to exit...
+    pause >nul
+    exit /b 1
 )
+
+echo.
+echo ========================================
+echo AgentRules %RULE_TYPE% Installation Complete!
+echo ========================================
+echo.
+
+REM 检查安装状态
+if "%MISSING_FILES%"=="1" (
+    echo ⚠️  WARNING: Some critical files were missing during installation
+    echo    This may affect system functionality. Please check source files.
+) else if "%COPY_ERRORS%"=="1" (
+    echo ⚠️  WARNING: Some files failed to copy during installation
+    echo    Installation completed with errors. Please check permissions.
+) else (
+    echo ✓ Installation completed successfully!
+)
+
+echo ✓ Total files installed: %TOTAL_FILES%
+echo ✓ Priority levels: P0-P7 (8 levels)
+echo ✓ Target location: %TARGET_DIR%
+echo.
+echo You can now use these rules with your AI development tools.
+echo The rules are organized by priority for optimal AI understanding.
+echo.
+echo ========================================
+echo Installation Summary:
+echo ========================================
+echo Rule Type: %RULE_TYPE%
+echo Files Copied: %TOTAL_FILES%
+echo Target Path: %TARGET_DIR%
+echo Rules Path: %RULES_DIR%
+if "%MISSING_FILES%"=="1" echo Status: WARNING - Missing critical files
+if "%COPY_ERRORS%"=="1" echo Status: WARNING - Copy errors occurred
+if "%MISSING_FILES%"=="0" if "%COPY_ERRORS%"=="0" echo Status: SUCCESS - All files installed correctly
+echo ========================================
+echo.
+echo 🎉 Happy coding with AgentRules Ultimate!
+echo.
+echo Press ENTER to exit...
+pause >nul
+echo.
+echo Thank you for using AgentRules Ultimate!
+
+REM 根据错误状态设置退出代码
+if "%MISSING_FILES%"=="1" exit /b 2
+if "%COPY_ERRORS%"=="1" exit /b 1
+exit /b 0

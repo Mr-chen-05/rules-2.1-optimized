@@ -4,6 +4,7 @@
 >
 > **⏱️ 预计用时**：3-5分钟 | **✅ 成功率**：按步骤操作100%成功
 > **🔥 最新版本**：install-ultra.bat (最终版本) - 支持所有AI工具的统一解决方案
+**🎯 超级简化**：现在支持双击运行，自动在桌面创建agent文件夹！
 
 ## 🎯 这个教程能帮你做什么？
 
@@ -24,6 +25,7 @@
 - 🌐 **Unicode字符支持**：完美处理中文路径和特殊字符
 - 🔄 **三种开发模式**：frontend、backend、fullstack
 - 💬 **中文友好**：全面支持中文开发体验
+- 🖱️ **双击即用**：支持直接双击运行，零配置安装
 
 ## ✅ 脚本状态
 
@@ -37,19 +39,48 @@
 - ✅ **优先级系统** - P0-P7 八层架构，AI理解度提升200%
 - ✅ **标准化结构** - 规则文件统一放在 `rules/` 子目录
 - ✅ **完美兼容** - 支持所有主流AI开发工具
+- ✅ **双击安装** - 支持直接双击脚本，自动创建桌面agent项目
 
 ## 📋 开始前的准备（必读！）
 
 ### ✅ 安装前检查清单
 - [ ] **操作系统**：Windows 10/11（必需）
 - [ ] **AI工具**：任意AI开发工具（Augment、Cursor、Claude、Trae等）
-- [ ] **规则文件**：已下载 `rules-2.3.3-optimized` 文件夹
+- [ ] **规则文件**：已下载 `rules-2.4.1-optimized` 文件夹
 - [ ] **项目目录**：已有项目文件夹或准备创建一个
 
 ### 📚 文件准备
-1. 将 `rules-2.3.3-optimized` 文件夹放在易于访问的位置（如桌面）
+1. 将 `rules-2.4.1-optimized` 文件夹放在易于访问的位置（如桌面）
 2. 确保你有一个项目文件夹（如果没有，安装过程会自动创建）
 3. 确保你有管理员权限（某些操作可能需要）
+
+### 🎯 快速开始提示
+**💡 新手推荐**：如果你不确定安装到哪里，可以直接运行脚本不带任何参数，系统会自动在桌面创建 `agent` 文件夹作为项目目录。
+
+## 🖱️ 超级简单：双击安装法（推荐！）
+
+**🚀 最简单的方式 - 适合所有用户**：
+
+1. **找到脚本文件**：进入 `install-scripts` 文件夹
+2. **双击运行**：直接双击 `install-ultra.bat` 文件
+3. **自动完成**：脚本会自动在桌面创建 `agent` 文件夹并安装所有fullstack规则
+
+**✨ 双击安装的优势**：
+- 🎯 **零配置**：无需输入任何命令或参数
+- 🏠 **固定位置**：统一在桌面创建 `agent` 文件夹，便于管理
+- 📦 **完整功能**：自动安装fullstack模式，包含所有前端+后端规则
+- ⚡ **即开即用**：安装完成后立即可以在任何AI工具中使用
+- 🛡️ **智能检测**：自动检测是否已安装，避免重复执行
+- 🔍 **结果可见**：执行完成后会暂停显示结果，按回车键退出
+
+**📍 安装位置**：`C:\Users\你的用户名\Desktop\agent`
+
+**💡 适用场景**：
+- 🆕 **新手用户**：不熟悉命令行操作
+- ⚡ **快速体验**：想要快速体验AgentRules功能
+- 🎯 **标准安装**：需要完整的fullstack开发环境
+- 🏠 **统一管理**：希望所有项目都在桌面统一位置
+- 🔄 **重复安装保护**：已安装的项目不会被重复覆盖
 
 ## ⚠️ 非C盘用户必读（重要！）
 
@@ -58,22 +89,43 @@
 ### 📌 CMD用户（黑色命令窗口）
 ```
 D:                                    # 步骤1：输入你的盘符加冒号(D:、E:等)
-cd "你的rules-2.3.3-optimized目录路径"  # 步骤2：切换到具体目录
+cd "你的rules-2.4.1-optimized目录路径"  # 步骤2：切换到具体目录
 ```
 
 ### 📌 PowerShell用户（蓝色命令窗口）
 ```
 # 方式1：两步走（与CMD相同）
 D:                                    # 步骤1：输入你的盘符加冒号
-cd "你的rules-2.3.3-optimized目录路径"  # 步骤2：切换到具体目录
+cd "你的rules-2.4.1-optimized目录路径"  # 步骤2：切换到具体目录
 
 # 方式2：一步到位（PowerShell专属）
-cd D:\你的rules-2.3.3-optimized目录路径  # 直接切换到目标目录
+cd D:\你的rules-2.4.1-optimized目录路径  # 直接切换到目标目录
 ```
 
-## 🚀 超级简单的3步安装法
+## 🚀 两种安装方法任你选择
 
-### 🥇 第1步：打开命令行（超简单）
+### 🥇 方法1：双击安装（推荐新手）
+
+**🎯 最简单的方式，无需任何技术基础**：
+
+1. **进入文件夹**：打开 `install-scripts` 文件夹
+2. **双击脚本**：找到 `install-ultra.bat` 文件，双击运行
+3. **等待完成**：看到 "SUCCESS: Rules Directory Created!" 就成功了
+
+**✅ 完成后你会得到**：
+- 📁 桌面上的 `agent` 文件夹
+- 📦 完整的fullstack开发规则（33个文件）
+- 🚀 立即可用的AI助手增强功能
+- 📋 详细的安装摘要信息（文件数量、优先级、目标位置）
+- ⚠️ 智能重复安装提醒（如果规则已存在）
+
+---
+
+### 🥈 方法2：命令行安装（高级用户）
+
+**🎯 适合需要自定义安装位置或开发模式的用户**：
+
+#### 第1步：打开命令行
 
 **⚠️ 重要提醒：建议以管理员身份运行，避免权限问题！**
 
@@ -96,11 +148,11 @@ cd D:\你的rules-2.3.3-optimized目录路径  # 直接切换到目标目录
 6. **看到黑色窗口就成功了！**
 
 
-### 🥈 第2步：进入正确目录
+#### 第2步：进入正确目录
 
 **复制粘贴这个命令**（把 `luo20` 改成你的用户名）：
 ```
-cd c:\Users\luo20\Desktop\rules-2.3.3-optimized
+cd c:\Users\luo20\Desktop\rules-2.4.1-optimized
 ```
 
 **检查是否成功**：
@@ -112,12 +164,17 @@ dir
 - `project-rules` ✅  
 - `global-rules` ✅
 
-### 🥉 第3步：选择你的开发模式
+#### 第3步：选择你的开发模式
 
 **🤔 不知道选什么？看这里：**
 - **做网页、APP界面** → 选择 `frontend`
 - **做服务器、API** → 选择 `backend`
 - **全栈开发（推荐）** → 选择 `fullstack`
+
+**💡 没有指定安装目录？**
+- **不指定任何参数**：脚本会自动在桌面创建 `agent` 文件夹
+- **只指定开发模式**：同样会在桌面创建 `agent` 文件夹
+- **示例**：直接运行 `install-scripts\install-ultra.bat` 会在 `C:\Users\你的用户名\Desktop\agent` 创建项目
 
 ## 🎯 一键安装命令（复制粘贴即可）
 
@@ -181,16 +238,21 @@ install-scripts\install-ultra.bat ..\demo-project fullstack
 - **⚠️ 注意**：请使用完整的模式名称，如 `frontend` 而不是 `front`
 
 **参数省略规则**：
-- 不指定任何参数：创建 `demo-project` 目录，使用 `fullstack` 模式
-- 只指定第一个参数：使用指定目录，默认 `fullstack` 模式
+- 不指定任何参数：在桌面创建 `agent` 目录，使用 `fullstack` 模式
+- 只指定开发模式：在桌面创建 `agent` 目录，使用指定模式
+- 只指定目录路径：使用指定目录，默认 `fullstack` 模式
 - 指定两个参数：使用指定目录和指定模式
 
 ### 💡 简化命令示例
 
 ```bash
-# 如果你想快速测试，可以省略参数：
+# 🚀 最简单的方式：不指定任何参数（推荐新手）
 install-scripts\install-ultra.bat
-# 等同于：install-scripts\install-ultra.bat demo-project fullstack
+# 效果：在桌面创建 C:\Users\你的用户名\Desktop\agent 文件夹，使用fullstack模式
+
+# 只指定开发模式，使用桌面默认位置：
+install-scripts\install-ultra.bat frontend
+# 效果：在桌面创建 C:\Users\你的用户名\Desktop\agent 文件夹，使用frontend模式
 
 # 只指定目录，使用默认fullstack模式：
 install-scripts\install-ultra.bat C:\my-project
@@ -209,18 +271,24 @@ install-scripts\install-ultra.bat C:\my-project
     ├── main.md                     ← 规则目录指南
     ├── P0-core-safety/             ← 核心安全规则 (优先级1000)
     │   ├── file-generation-safety-rules.md
-    │   └── rule-conflict-resolution.mdc
+    │   ├── rule-conflict-resolution.mdc
+    │   └── ai-ethical-boundaries.md        ← 🆕 AI伦理边界规则
     ├── P1-core-identity/           ← 核心身份规则 (优先级900)
     │   ├── unified-rules-base.md
-    │   └── ai-agent-intelligence-core.md
+    │   ├── ai-agent-intelligence-core.md
+    │   └── ai-thinking-protocol.md         ← 🆕 AI思维协议规则
     ├── P2-intelligent-system/      ← 智能系统规则 (优先级800)
     │   ├── super-brain-system.mdc
     │   ├── memory-system-integration.mdc
-    │   └── intelligent-recommendation-engine.mdc
+    │   ├── intelligent-recommendation-engine.mdc
+    │   └── dynamic-thinking-depth-regulation.md ← 🆕 动态思维深度调节
     ├── P3-professional-dev/        ← 专业开发规则 (优先级700)
     │   ├── frontend-rules-2.1.md   ← 根据模式不同
     │   ├── backend-rules-2.1.md    ← 根据模式不同
-    │   └── complete-workflow-integration.mdc
+    │   ├── complete-workflow-integration.mdc
+    │   ├── multimodal-interaction-framework.md     ← 🆕 多模态交互框架
+    │   ├── human-ai-collaboration-optimization.md  ← 🆕 人机协作优化
+    │   └── knowledge-creation-discovery-framework.md ← 🆕 知识创建发现框架
     ├── P4-project-workflow/        ← 项目工作流规则 (优先级600)
     │   ├── frontend-dev.mdc        ← 根据模式不同
     │   ├── backend-dev.mdc         ← 根据模式不同
@@ -247,9 +315,9 @@ install-scripts\install-ultra.bat C:\my-project
 
 | 模式 | 文件数量 | 包含内容 |
 |------|----------|----------|
-| **Frontend** | 25个文件 | 前端规则 + mermaid图表支持 |
-| **Backend** | 24个文件 | 后端规则（不含mermaid） |
-| **Fullstack** | 27个文件 | 前端 + 后端完整规则 |
+| **Frontend** | 31个文件 | 前端规则 + mermaid图表支持 + 6个新增核心智能规则 |
+| **Backend** | 30个文件 | 后端规则（不含mermaid）+ 6个新增核心智能规则 |
+| **Fullstack** | 33个文件 | 前端 + 后端完整规则 + 6个新增核心智能规则 |
 
 ## 🔍 验证安装是否成功
 
@@ -267,8 +335,9 @@ dir 你的项目目录\rules /s *.md *.mdc
 
 **预期结果**：
 - ✅ 看到 8个 P0-P7 优先级目录
-- ✅ 看到对应数量的规则文件（25/24/27个）
+- ✅ 看到对应数量的规则文件（31/30/33个）
 - ✅ 看到 `main.md` 目录指南文件
+- ✅ 看到新增的6个核心智能规则文件
 
 ## 🎮 如何使用安装的规则？
 
@@ -331,7 +400,7 @@ AI会按照以下优先级顺序理解和执行规则：
 ```
 **✅ 解决**：确保在正确的目录下
 ```
-cd c:\Users\luo20\Desktop\rules-2.3.3-optimized
+cd c:\Users\luo20\Desktop\rules-2.4.1-optimized
 ```
 
 **❌ 问题2：路径包含特殊字符**
@@ -387,9 +456,9 @@ install-scripts\install-ultra.bat C:\my-project fullstack  # 全栈开发
 dir 你的项目目录\rules /s *.md *.mdc
 
 # 预期结果：
-# frontend: 25个文件（包含mermaid.mdc）
-# backend:  24个文件（不含mermaid.mdc）
-# fullstack: 27个文件（包含前端+后端+mermaid.mdc）
+# frontend: 31个文件（包含mermaid.mdc + 6个新增核心智能规则）
+# backend:  30个文件（不含mermaid.mdc + 6个新增核心智能规则）
+# fullstack: 33个文件（包含前端+后端+mermaid.mdc + 6个新增核心智能规则）
 
 # 如果文件数量不对，说明参数可能有误
 ```
@@ -428,12 +497,12 @@ cd install-scripts\test-scripts
 ### 💾 磁盘空间优化
 
 **规则文件大小**：
-- Frontend: ~25个文件，总计约150KB
-- Backend: ~24个文件，总计约140KB  
-- Fullstack: ~27个文件，总计约160KB
+- Frontend: ~31个文件，总计约185KB
+- Backend: ~30个文件，总计约175KB  
+- Fullstack: ~33个文件，总计约195KB
 
 **空间需求**：
-- 单个项目：约150-160KB
+- 单个项目：约170-190KB
 - 建议预留：1MB空间
 
 ### ⚡ 加载速度优化
@@ -452,17 +521,29 @@ cd install-scripts\test-scripts
 
 ## 🎉 总结
 
-**🎯 现在你只需要记住一个命令**：
-```bash
-install-scripts\install-ultra.bat [项目路径] [模式]
+**🖱️ 最简单的方式（推荐所有用户）**：
+```
+直接双击 install-scripts\install-ultra.bat
+自动在桌面创建 agent 文件夹，包含完整fullstack规则
 ```
 
-**🚀 三种模式任你选择**：
-- `frontend` - 前端开发
-- `backend` - 后端开发  
-- `fullstack` - 全栈开发（推荐）
+**⌨️ 命令行方式（高级用户）**：
+```bash
+# 完整格式
+install-scripts\install-ultra.bat [项目路径] [模式]
+
+# 快速命令
+install-scripts\install-ultra.bat
+# 同样在桌面创建 agent 文件夹
+```
+
+**🚀 三种开发模式**：
+- `frontend` - 前端开发（31个文件）
+- `backend` - 后端开发（30个文件）
+- `fullstack` - 全栈开发（33个文件，推荐）
 
 **✅ 一次安装，所有AI工具都能用！**
+**🎯 双击即用，零技术门槛！**
 
 ---
 

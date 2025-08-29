@@ -1,17 +1,55 @@
-# 🚀 MCP工具快速入门指南
+# 🚀 MCP工具快速入门指南 v2.4.1
 
-> **🎯 5分钟上手**: 从零开始配置MCP智能工具，提升AI开发体验
+> **🎯 5分钟上手**: 从零开始配置MCP智能工具，解锁AI驱动的下一代开发体验
+> 
+> **🆕 2.4.1新特性**: 增强的反馈机制、智能项目识别、个性化配置系统
 
 ## ⚙️ 环境依赖检查
 
 > **🔴 重要**: MCP工具需要Node.js环境支持
 
-### ✅ 快速验证
+### 快速环境检查脚本
 
-```powershell
-# 检查MCP工具依赖
-node --version  # 必需: ≥16.0.0
-npm --version   # 必需: ≥8.0.0
+```bash
+# Windows PowerShell
+Write-Host "=== MCP 环境检查 ===" -ForegroundColor Green
+Write-Host "Node.js 版本:" -NoNewline; node --version
+Write-Host "npm 版本:" -NoNewline; npm --version
+Write-Host "Python 版本:" -NoNewline; python --version
+Write-Host "Git 版本:" -NoNewline; git --version
+```
+
+### 详细版本要求
+
+| 组件 | 最低版本 | 推荐版本 | 检查命令 | 说明 |
+|------|----------|----------|----------|------|
+| Node.js | 18.0.0+ | 20.0.0+ | `node --version` | 支持ES2022特性 |
+| npm | 9.0.0+ | 10.0.0+ | `npm --version` | 包管理器 |
+| Python | 3.8+ | 3.11+ | `python --version` | MCP服务器运行时 |
+| Git | 2.30+ | 2.40+ | `git --version` | 版本控制 |
+
+### 常见问题解决
+
+**Node.js 版本过低**
+```bash
+# 使用 nvm 升级 Node.js (推荐)
+nvm install 20
+nvm use 20
+
+# 或直接从官网下载: https://nodejs.org/
+```
+
+**Python 未安装或版本过低**
+```bash
+# Windows: 从 Microsoft Store 安装
+# 或访问: https://www.python.org/downloads/
+```
+
+**权限问题**
+```bash
+# Windows: 以管理员身份运行 PowerShell
+# 设置执行策略
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
 
 **状态检查**:
@@ -28,6 +66,63 @@ MCP (Model Context Protocol) 工具是Rules的**智能核心**，为AI开发提�
 | 🔍 **上下文感知** | 基于项目历史提供精准建议 | 功能开发、问题排查 | Node.js |
 | 🚀 **效率提升** | 减少重复工作，加速开发流程 | 日常编码、项目管理 | Node.js |
 | 🎯 **智能推荐** | 基于最佳实践提供解决方案 | 技术选型、代码优化 | Node.js |
+
+## 🚀 MCP 工具概述
+
+### 🚀 核心功能详解
+
+**智能反馈系统 (mcp-feedback-enhanced)**
+- 实时收集用户反馈，优化AI响应质量
+- 支持多种反馈模式：文本、评分、建议
+- 自动学习用户偏好，个性化AI行为
+- 提供反馈统计和分析报告
+
+**GitHub集成 (server-github)**
+- 无缝连接GitHub仓库，支持完整的代码管理流程
+- 自动化Pull Request创建和管理
+- 智能代码审查和问题跟踪
+- 支持多仓库协作和分支管理
+
+**内存管理系统 (server-memory)**
+- 智能存储和检索对话历史
+- 上下文感知的信息关联
+- 支持长期记忆和短期记忆管理
+- 自动清理和优化存储空间
+
+**多功能工具集 (server-everything)**
+- 提供丰富的开发辅助功能
+- 支持文件操作、系统信息获取
+- 集成常用开发工具和命令
+- 可扩展的插件架构
+
+### 🎯 适用场景
+
+| 场景类型 | 具体应用 | 推荐工具组合 |
+|----------|----------|-------------|
+| **前端开发** | React/Vue项目开发、组件设计 | feedback + github + memory |
+| **后端开发** | API设计、数据库操作 | github + everything + memory |
+| **代码审查** | Pull Request审查、代码质量检查 | github + feedback |
+| **项目管理** | 文档管理、任务跟踪 | everything + memory + github |
+| **团队协作** | 知识共享、经验传承 | memory + feedback + github |
+
+### 🔧 环境要求
+
+**基础环境**
+- Node.js 18.0.0+ (推荐 20.0.0+)
+- npm 9.0.0+ (推荐 10.0.0+)
+- Python 3.8+ (部分MCP服务器需要)
+
+**支持的AI工具**
+- ✅ Augment (完全支持)
+- ✅ Cursor (完全支持)
+- ✅ Claude Code (完全支持)
+- ✅ Trae AI (完全支持)
+- ✅ 其他支持MCP协议的AI工具
+
+**操作系统兼容性**
+- Windows 10/11 (推荐)
+- macOS 10.15+
+- Linux (Ubuntu 20.04+)
 
 ## 🎯 适用人群
 
@@ -68,6 +163,39 @@ run-powershell-installer.bat
 | ✅ **详细日志** | 提供完整的安装过程记录 | 便于问题排查和验证 |
 | ✅ **错误恢复** | 自动处理常见安装问题 | 提高安装成功率 |
 
+#### 🔧 安装脚本功能详解
+
+我们的安装脚本会自动执行以下操作：
+
+| 功能 | 描述 | 状态检查 |
+|------|------|----------|
+| **环境检测** | 检查Node.js、npm、Python版本 | ✅ 自动验证 |
+| **权限设置** | 配置PowerShell执行策略 | ✅ 自动处理 |
+| **依赖安装** | 安装所有MCP工具包 | ✅ 错误重试 |
+| **配置生成** | 创建mcp-config.json模板 | ✅ 智能生成 |
+| **路径配置** | 设置工具路径和环境变量 | ✅ 自动配置 |
+| **功能测试** | 验证工具是否正常工作 | ✅ 完整测试 |
+
+#### ⚡ 安装前准备
+
+**获取安装脚本**
+```bash
+# 方式1: 克隆完整仓库
+git clone https://github.com/your-repo/AgentRules.git
+cd AgentRules/mcp-scripts
+
+# 方式2: 仅下载安装脚本
+curl -O https://raw.githubusercontent.com/your-repo/AgentRules/main/mcp-scripts/install-mcp-tools-enhanced-final.ps1
+```
+
+**环境预检查**
+```bash
+# 检查必要环境
+node --version    # 应显示 v18.0.0 或更高
+npm --version     # 应显示 9.0.0 或更高
+python --version  # 应显示 3.8.0 或更高
+```
+
 > **⚠️ 重要提醒**：使用脚本安装前，建议先阅读 **[📋 安装脚本使用说明](../mcp-scripts/安装脚本使用说明.md)**，了解详细的安装方法和注意事项。
 
 ### 📋 推荐安装方法
@@ -86,41 +214,44 @@ run-powershell-installer.bat
 
 ### 步骤1：选择安装方法并执行
 
-**选择英文版本：**
-```bash
-# 方法1：双击运行（最简单）
-# 详细步骤：
-# 1. 按 Win + E 打开文件资源管理器
-# 2. 导航到 mcp-scripts 文件夹路径
-# 3. 找到 run-powershell-installer.bat 文件
-# 4. 双击该文件执行（不要右键，直接双击）
+#### 🎯 方法1：双击运行（最简单，推荐）
 
-# 方法2：命令行运行
+**详细步骤：**
+1. 按 `Win + E` 打开文件资源管理器
+2. 导航到 `mcp-scripts` 文件夹路径
+3. 找到 `run-powershell-installer.bat` 文件
+4. **直接双击**该文件执行（不要右键，直接双击）
+5. 如果出现安全提示，选择「运行」或「是」
+
+#### 🎯 方法2：命令行运行（高级用户）
+
+```bash
+# PowerShell方式（推荐）
+cd "你的项目路径\mcp-scripts"
+.\run-powershell-installer.bat
+
+# CMD方式（需要切换盘符）
 # 注意：如果项目在非C盘，需要先切换盘符
 E:                                    # 先切换到E盘（根据你的实际盘符）
-cd E:\AgentRules\English\rules-2.3.3-optimized\mcp-scripts
+cd E:\AgentRules\English\rules-2.4.1-optimized\mcp-scripts
 .\run-powershell-installer.bat
 ```
 
-**选择中文版本：**
-```bash
-# 方法1：双击运行（最简单）
-# 详细步骤：
-# 1. 按 Win + E 打开文件资源管理器
-# 2. 导航到 mcp-scripts 文件夹路径
-# 3. 找到 install-mcp-tools-enhanced-final.bat 文件
-# 4. 双击该文件执行（不要右键，直接双击）
+#### 🛠️ 故障排除
 
-# 方法2：命令行运行
-# 注意：如果项目在非C盘，需要先切换盘符
-E:                                    # 先切换到E盘（根据你的实际盘符）
-cd E:\AgentRules\English\rules-2.3.3-optimized\mcp-scripts
-.\install-mcp-tools-enhanced-final.bat
-```
+**常见问题及解决方案：**
+
+| 问题 | 解决方案 |
+|------|----------|
+| **执行策略错误** | 以管理员身份运行PowerShell，执行 `Set-ExecutionPolicy RemoteSigned` |
+| **权限不足** | 右键PowerShell选择「以管理员身份运行」 |
+| **脚本无法运行** | 检查文件路径是否包含中文或特殊字符 |
+| **网络连接问题** | 检查网络连接，或使用VPN |
 
 > **⚠️ 重要提示**：
-> - 在Windows命令行中执行.bat脚本时，建议加上 `.\` 前缀，以确保正确执行
+> - 在Windows命令行中执行.bat脚本时，建议加上 `.\ ` 前缀，以确保正确执行
 > - **Web界面默认关闭**：生成的配置文件中 `MCP_NO_BROWSER=true`，如需启用Web反馈界面，请手动修改为 `false`
+> - **首次运行可能较慢**：需要下载和安装多个包，请耐心等待
 
 ### 步骤2：选择安装选项
 脚本会自动检测你的系统环境，并提供以下选项：
@@ -128,46 +259,125 @@ cd E:\AgentRules\English\rules-2.3.3-optimized\mcp-scripts
 ```
 === MCP Tools Enhanced Installer v3.2 ===
 
-检测到的可用驱动器:
-1. C:\ (系统盘)
-2. D:\ (数据盘)
-3. E:\ (扩展盘)
+🔍 系统环境检测:
+✅ Node.js: v20.10.0 (满足要求)
+✅ npm: v10.2.3 (满足要求)
+✅ Python: v3.11.5 (满足要求)
+✅ PowerShell: v5.1 (满足要求)
+
+📁 检测到的可用驱动器:
+1. C:\ (系统盘) - 可用空间: 45.2 GB
+2. D:\ (数据盘) - 可用空间: 128.7 GB
+3. E:\ (扩展盘) - 可用空间: 256.1 GB
 
 请选择安装驱动器 [1-3]: 1
 
-安装路径将为: C:\MCP-Tools
+📍 安装路径将为: C:\MCP-Tools
+💾 预计占用空间: ~150 MB
 是否确认? [Y/N]: Y
+
+🚀 开始安装...
 ```
 
-### 步骤3：等待安装完成
-脚本会自动完成以下操作：
-- ✅ 检查Node.js和Python环境
-- ✅ 创建MCP工具目录
-- ✅ 安装4个Node.js MCP工具
-- ✅ 安装1个Python MCP工具
-- ✅ 生成配置文件模板
+### 步骤3：监控安装进度
+脚本会显示详细的安装进度：
+
+```
+[1/6] 🔧 准备安装环境...
+[2/6] 📦 安装 @modelcontextprotocol/server-filesystem... ✅
+[3/6] 📦 安装 @modelcontextprotocol/server-memory... ✅
+[4/6] 📦 安装 @modelcontextprotocol/server-github... ✅
+[5/6] 📦 安装 @modelcontextprotocol/server-everything... ✅
+[6/6] 🐍 安装 mcp-feedback-enhanced (Python)... ✅
+
+📝 生成配置文件模板... ✅
+🧪 运行安装验证测试... ✅
+
+🎉 安装完成！配置文件已生成: C:\MCP-Tools\mcp-config.json
+```
+
+### 步骤4：安装完成验证
+脚本会自动完成以下操作并显示结果：
+
+| 安装步骤 | 描述 | 预计时间 |
+|----------|------|----------|
+| ✅ **环境检查** | 检查Node.js和Python环境 | 10秒 |
+| ✅ **目录创建** | 创建MCP工具目录 | 5秒 |
+| ✅ **Node.js工具** | 安装4个Node.js MCP工具 | 60-120秒 |
+| ✅ **Python工具** | 安装1个Python MCP工具 | 30-60秒 |
+| ✅ **配置生成** | 生成配置文件模板 | 5秒 |
+| ✅ **功能测试** | 验证所有工具正常工作 | 15秒 |
 
 ## 📋 安装验证
 
-### 验证Node.js工具（4个）
+### 🔍 自动验证（推荐）
+安装脚本会自动运行验证测试，如果看到以下输出说明安装成功：
+
+```
+🧪 运行安装验证测试...
+
+✅ Node.js MCP工具验证:
+  ├── @modelcontextprotocol/server-filesystem ✅
+  ├── @modelcontextprotocol/server-memory ✅
+  ├── @modelcontextprotocol/server-github ✅
+  └── @modelcontextprotocol/server-everything ✅
+
+✅ Python MCP工具验证:
+  └── mcp-feedback-enhanced v2.6.0 ✅
+
+✅ 配置文件验证:
+  └── mcp-config.json 格式正确 ✅
+
+🎉 所有验证通过！MCP工具已准备就绪。
+```
+
+### 🔧 手动验证（可选）
+
+**验证Node.js工具（4个）**
 ```bash
-# 检查安装目录（根据你选择的路径）
+# 方法1: 检查全局安装
+npm list -g --depth=0 | findstr modelcontextprotocol
+
+# 方法2: 检查安装目录（根据你选择的路径）
 dir "C:\MCP-Tools\node_modules\@modelcontextprotocol"
 
 # 应该看到以下4个工具：
-# - server-filesystem
-# - server-memory  
-# - server-github
-# - server-everything
+# ├── server-filesystem@1.0.0
+# ├── server-memory@1.0.0
+# ├── server-github@1.0.0
+# └── server-everything@1.0.0
 ```
 
-### 验证Python工具（1个）
+**验证Python工具（1个）**
 ```bash
 # 验证mcp-feedback-enhanced（这是Python包，不在文件夹中）
 uvx mcp-feedback-enhanced@latest version
 
 # 应该显示：MCP Feedback Enhanced v2.6.0
+
+# 或者测试运行
+uvx mcp-feedback-enhanced@latest --help
 ```
+
+**验证配置文件**
+```bash
+# 检查配置文件是否存在
+dir "C:\MCP-Tools\mcp-config.json"
+
+# 查看配置文件内容
+type "C:\MCP-Tools\mcp-config.json"
+```
+
+### ❌ 验证失败处理
+
+如果验证失败，请检查以下项目：
+
+| 问题类型 | 检查项目 | 解决方案 |
+|----------|----------|----------|
+| **Node.js工具缺失** | npm全局包列表 | 重新运行安装脚本 |
+| **Python工具缺失** | uvx是否安装 | 安装uv: `pip install uv` |
+| **配置文件错误** | JSON格式是否正确 | 重新生成配置文件 |
+| **权限问题** | 是否以管理员运行 | 以管理员身份重新运行 |
 
 ## ⚙️ 配置文件设置
 
@@ -351,27 +561,86 @@ uvx install mcp-feedback-enhanced@latest
 ## 🚨 常见问题快速解决
 
 ### 问题1：找不到mcp-feedback-enhanced
+**现象**: 在文件夹中找不到mcp-feedback-enhanced
 **解决方案**: 这是正常现象，Python包不会显示在文件夹中
 ```bash
 # 验证是否安装成功
 uvx mcp-feedback-enhanced@latest version
+
+# 如果提示uvx未找到，先安装uv
+pip install uv
+
+# 然后重新验证
+uvx mcp-feedback-enhanced@latest version
 ```
 
-### 问题2：反馈界面打不开
-**解决方案**: 检查端口占用
+### 问题2：PowerShell执行策略错误
+**现象**: 提示"无法加载文件，因为在此系统上禁止运行脚本"
+**解决方案**: 修改PowerShell执行策略
 ```bash
-# 检查8765端口
+# 以管理员身份运行PowerShell，然后执行：
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+# 确认更改
+Y
+
+# 验证策略已更改
+Get-ExecutionPolicy
+```
+
+### 问题3：反馈界面打不开
+**现象**: 使用反馈功能时界面无法打开
+**解决方案**: 检查端口占用和配置
+```bash
+# 检查8765端口是否被占用
 netstat -an | findstr :8765
 
 # 如果被占用，修改配置中的端口号
 "MCP_WEB_PORT": "8766"
+
+# 或者关闭占用端口的程序
+taskkill /F /PID <进程ID>
 ```
 
-### 问题3：GitHub功能不工作
-**解决方案**: 检查Token权限
-1. 访问 GitHub Settings > Developer settings > Personal access tokens
-2. 创建新Token，勾选 `repo`, `user`, `workflow` 权限
+### 问题4：GitHub功能不工作
+**现象**: GitHub相关功能无法使用
+**解决方案**: 检查Token权限和配置
+1. 访问 [GitHub Settings > Developer settings > Personal access tokens](https://github.com/settings/tokens)
+2. 创建新Token，勾选以下权限：
+   - ✅ `repo` (完整仓库访问)
+   - ✅ `user` (用户信息读取)
+   - ✅ `workflow` (GitHub Actions)
+   - ✅ `read:org` (组织信息)
 3. 复制Token到配置文件中
+4. 重启AI工具使配置生效
+
+### 问题5：npm安装失败
+**现象**: npm install过程中出现错误
+**解决方案**: 清理缓存并重试
+```bash
+# 清理npm缓存
+npm cache clean --force
+
+# 更新npm到最新版本
+npm install -g npm@latest
+
+# 重新运行安装脚本
+.\run-powershell-installer.bat
+```
+
+### 问题6：网络连接问题
+**现象**: 下载包时网络超时或连接失败
+**解决方案**: 配置npm镜像源
+```bash
+# 使用淘宝镜像源
+npm config set registry https://registry.npmmirror.com/
+
+# 验证配置
+npm config get registry
+
+# 重新运行安装
+.\run-powershell-installer.bat
+```
 
 ## 📚 下一步
 

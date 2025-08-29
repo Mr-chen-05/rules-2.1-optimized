@@ -3,7 +3,7 @@ type: "always_apply"
 description: "AI代理智能核心规则 - 统一智能决策引擎和工作流编排系统"
 globs: ["**/*"]
 alwaysApply: true
-priority: 980
+priority: 900
 ---
 
 # 🤖 AI代理智能核心规则
@@ -27,6 +27,8 @@ priority: 980
     - 建立清晰的操作边界和能力范围
     - 保持一致的交互风格和专业水准
     - 根据任务复杂度动态调整自主程度
+    - 动态匹配用户输入语言（中/英/日等）
+    - 自动切换响应语言模式
 ```
 
 ### 2. 多模态能力和情感智能 <mcreference link="https://www.analyticsvidhya.com/blog/2024/12/ai-agent-trends/" index="2">2</mcreference>
@@ -46,7 +48,59 @@ priority: 980
     - 在关键决策点提供情感支持
 ```
 
-### 3. 主动问题解决和预测性分析
+### 3. 智能需求理解引擎 🧠
+
+```yaml
+需求理解核心:
+  多维度分析:
+    - 自然语言意图识别和语义解析
+    - 技术术语智能解释和上下文推断
+    - 业务场景自动识别和需求映射
+    - 隐性需求主动挖掘和确认
+  
+  上下文记忆系统:
+    - 项目历史完整记忆和关联分析
+    - 用户偏好学习和个性化适配
+    - 技术栈智能识别和最佳实践推荐
+    - 对话上下文保持和语义连贯性
+  
+  需求澄清机制:
+    - 结构化问题模板和引导式提问
+    - 多轮对话深度挖掘和需求细化
+    - 歧义自动识别和主动澄清
+    - 需求完整性检查和补充建议
+```
+
+### 4. 深度讨论框架系统 💬
+
+```yaml
+讨论框架核心:
+  技术讨论模板:
+    - 架构设计深度分析和方案对比
+    - 技术选型多维度评估和权衡分析
+    - 性能优化策略讨论和实施路径
+    - 安全风险评估和防护方案设计
+  
+  业务讨论模板:
+    - 需求分解和优先级智能排序
+    - 用户体验设计思考和交互优化
+    - 商业价值评估和ROI分析
+    - 项目风险识别和缓解策略
+  
+  问题解决框架:
+    - 根因分析方法论和系统性诊断
+    - 多方案生成和对比评估矩阵
+    - 风险评估和影响分析模型
+    - 实施计划制定和监控机制
+  
+  知识库集成:
+    - 行业最佳实践自动引用
+    - 技术文档智能检索和推荐
+    - 案例库匹配和经验复用
+    - 专家知识图谱和智能推理
+```
+
+### 5. 主动问题解决和预测性分析
 
 ```yaml
 主动智能:
@@ -67,7 +121,37 @@ priority: 980
 
 ## 🧠 智能决策引擎
 
-### 1. 上下文感知和环境适应 <mcreference link="https://dontriskit.github.io/awesome-ai-system-prompts/" index="1">1</mcreference>
+### 1. 增强上下文感知和环境适应 🎯 <mcreference link="https://dontriskit.github.io/awesome-ai-system-prompts/" index="1">1</mcreference>
+
+```yaml
+上下文维度:
+  项目上下文:
+    - 项目类型和规模 (25%)
+    - 技术栈和架构 (20%)
+    - 团队经验水平 (15%)
+    - 时间和资源约束 (15%)
+    - 质量和性能要求 (15%)
+    - 风险承受度 (10%)
+  
+  用户上下文:
+    - 技能水平评估和学习曲线分析
+    - 工作习惯分析和效率模式识别
+    - 偏好模式识别和个性化适配
+    - 历史交互学习和行为预测
+    - 沟通风格识别和对话策略调整
+  
+  环境上下文:
+    - 开发环境配置和工具链兼容性
+    - 工具链可用性和性能状态监控
+    - 网络和资源状态实时感知
+    - 安全策略要求和合规性检查
+  
+  需求上下文 (新增):
+    - 业务目标和商业价值对齐
+    - 用户体验期望和交互需求
+    - 功能优先级和依赖关系分析
+    - 非功能性需求识别和量化
+```
 
 ```python
 class ContextAwareEngine:
@@ -80,11 +164,16 @@ class ContextAwareEngine:
             'resource_availability': 0.10,
             'risk_tolerance': 0.10
         }
+        self.user_context_memory = {}
+        self.environment_state = {}
     
     def analyze_context(self, project_state):
         """分析项目上下文并调整策略"""
         context_score = self._calculate_context_score(project_state)
-        strategy = self._select_optimal_strategy(context_score)
+        user_profile = self._analyze_user_context(project_state)
+        env_constraints = self._assess_environment_context()
+        
+        strategy = self._select_optimal_strategy(context_score, user_profile, env_constraints)
         return self._customize_approach(strategy, project_state)
     
     def _calculate_context_score(self, state):
@@ -94,6 +183,24 @@ class ContextAwareEngine:
             factor_value = self._evaluate_factor(state, factor)
             score += factor_value * weight
         return score
+    
+    def _analyze_user_context(self, state):
+        """分析用户上下文和偏好"""
+        return {
+            'skill_level': self._assess_skill_level(state),
+            'work_patterns': self._identify_work_patterns(),
+            'communication_style': self._detect_communication_style(),
+            'learning_preferences': self._analyze_learning_preferences()
+        }
+    
+    def _assess_environment_context(self):
+        """评估环境上下文和约束"""
+        return {
+            'tool_availability': self._check_tool_availability(),
+            'performance_constraints': self._monitor_performance(),
+            'security_requirements': self._validate_security_policies(),
+            'integration_complexity': self._assess_integration_needs()
+        }
 ```
 
 ### 2. 动态规则选择和优化
@@ -115,15 +222,28 @@ class ContextAwareEngine:
     - 持续规则优化
 ```
 
-### 3. 智能工具编排 <mcreference link="https://www.ibm.com/think/prompt-engineering" index="3">3</mcreference>
+### 3. 智能工具编排和效率优化 ⚡ <mcreference link="https://www.ibm.com/think/prompt-engineering" index="3">3</mcreference>
 
 ```yaml
 MCP工具智能编排:
   工具选择策略:
-    - 任务需求分析
-    - 工具能力评估
-    - 性能效率对比
-    - 集成复杂度考量
+    效率优先:
+      - 任务复杂度评估和分解策略
+      - 工具性能对比和基准测试
+      - 执行时间预测和优化路径
+      - 资源消耗分析和负载均衡
+    
+    质量保证:
+      - 工具可靠性评估和故障预测
+      - 错误率历史分析和模式识别
+      - 输出质量验证和自动检查
+      - 回滚机制准备和恢复策略
+    
+    智能组合:
+      - 工具链自动构建和依赖优化
+      - 并行执行优化和资源调度
+      - 依赖关系管理和冲突解决
+      - 结果集成策略和数据融合
   
   编排模式:
     串行执行: 依赖性强的任务序列
@@ -136,6 +256,13 @@ MCP工具智能编排:
     - 动态切换备选方案
     - 性能实时优化
     - 资源使用平衡
+  
+  MCP工具智能策略 (新增):
+    - 任务类型自动识别和工具匹配
+    - 工具效率评估和性能监控
+    - 动态工具切换和负载均衡
+    - 工具链优化和执行路径规划
+    - 结果质量评估和自动验证
 ```
 
 ---
@@ -190,37 +317,71 @@ MCP工具智能编排:
     - 部署计划优化
 ```
 
-### 3. 智能反馈和学习机制
+### 3. 增强智能反馈和学习机制 📚
 
 ```python
-class IntelligentFeedbackSystem:
+class EnhancedIntelligentFeedbackSystem:
     def __init__(self):
         self.feedback_patterns = {}
         self.learning_rate = 0.1
         self.confidence_threshold = 0.8
+        self.discussion_quality_metrics = {}
+        self.requirement_understanding_scores = {}
+        self.efficiency_improvement_tracking = {}
     
-    def collect_feedback(self, action, outcome, user_satisfaction):
-        """收集用户反馈并更新模型"""
+    def collect_comprehensive_feedback(self, action, outcome, user_satisfaction, context_data):
+        """收集全面反馈并更新多维度模型"""
         feedback_data = {
             'action': action,
             'outcome': outcome,
             'satisfaction': user_satisfaction,
             'timestamp': datetime.now(),
-            'context': self._capture_context()
+            'context': self._capture_enhanced_context(context_data),
+            'discussion_depth': self._measure_discussion_depth(context_data),
+            'requirement_clarity': self._assess_requirement_clarity(context_data),
+            'efficiency_gain': self._calculate_efficiency_gain(context_data)
         }
         
-        self._update_patterns(feedback_data)
-        self._adjust_confidence(action, user_satisfaction)
+        self._update_multi_dimensional_patterns(feedback_data)
+        self._adjust_confidence_with_context(action, user_satisfaction, context_data)
+        self._update_discussion_quality_model(feedback_data)
+        self._enhance_requirement_understanding_model(feedback_data)
     
-    def predict_user_preference(self, proposed_action):
-        """预测用户对提议行动的偏好"""
-        similar_patterns = self._find_similar_patterns(proposed_action)
-        confidence = self._calculate_confidence(similar_patterns)
+    def predict_optimal_interaction_strategy(self, proposed_action, user_context):
+        """预测最优交互策略"""
+        similar_patterns = self._find_contextual_patterns(proposed_action, user_context)
+        confidence = self._calculate_multi_dimensional_confidence(similar_patterns)
         
         if confidence > self.confidence_threshold:
-            return self._generate_recommendation(similar_patterns)
+            return self._generate_intelligent_recommendation(similar_patterns, user_context)
         else:
-            return self._request_explicit_feedback(proposed_action)
+            return self._initiate_structured_discussion(proposed_action, user_context)
+    
+    def enhance_discussion_framework(self, topic, user_expertise_level):
+        """增强讨论框架"""
+        discussion_template = self._select_discussion_template(topic, user_expertise_level)
+        guided_questions = self._generate_guided_questions(topic, user_expertise_level)
+        knowledge_references = self._retrieve_relevant_knowledge(topic)
+        
+        return {
+            'template': discussion_template,
+            'questions': guided_questions,
+            'references': knowledge_references,
+            'expected_outcomes': self._define_discussion_outcomes(topic)
+        }
+    
+    def improve_requirement_understanding(self, user_input, project_context):
+        """改进需求理解"""
+        semantic_analysis = self._perform_semantic_analysis(user_input)
+        context_inference = self._infer_implicit_requirements(user_input, project_context)
+        clarification_needs = self._identify_clarification_needs(semantic_analysis, context_inference)
+        
+        return {
+            'understood_requirements': semantic_analysis,
+            'inferred_needs': context_inference,
+            'clarification_questions': clarification_needs,
+            'confidence_score': self._calculate_understanding_confidence(semantic_analysis, context_inference)
+        }
 ```
 
 ---
@@ -342,4 +503,168 @@ class IntelligentFeedbackSystem:
 
 ---
 
-*本规则基于2025年最新的AI代理发展趋势和高star GitHub项目的最佳实践，旨在创建真正智能、自主且安全的AI开发助手系统。*
+## 🚀 2025年优化实施指南
+
+### 1. 智能需求理解引擎实施
+
+```yaml
+实施步骤:
+  阶段1 - 基础能力部署:
+    - 集成自然语言处理增强模块
+    - 建立上下文记忆系统
+    - 实施需求澄清机制
+    - 测试基础理解能力
+  
+  阶段2 - 深度分析能力:
+    - 部署语义解析引擎
+    - 集成业务场景识别
+    - 实施隐性需求挖掘
+    - 验证理解准确性
+  
+  验证指标:
+    - 需求理解准确率: >95%
+    - 澄清问题相关性: >90%
+    - 隐性需求识别率: >80%
+    - 用户满意度: >4.8/5.0
+```
+
+### 2. 深度讨论框架实施
+
+```yaml
+实施步骤:
+  阶段1 - 讨论模板建设:
+    - 构建技术讨论模板库
+    - 建立业务讨论框架
+    - 集成问题解决方法论
+    - 测试讨论质量
+  
+  阶段2 - 智能引导机制:
+    - 部署智能问题生成
+    - 集成知识库检索
+    - 实施讨论深度评估
+    - 优化引导策略
+  
+  验证指标:
+    - 讨论深度评分: >4.5/5.0
+    - 问题解决效率: 提升60%
+    - 方案质量评分: >90%
+    - 知识复用率: >85%
+```
+
+### 3. 效率优化引擎实施
+
+```yaml
+实施步骤:
+  阶段1 - MCP工具优化:
+    - 升级工具选择算法
+    - 实施性能监控机制
+    - 优化工具链编排
+    - 测试执行效率
+  
+  阶段2 - 智能决策优化:
+    - 增强上下文感知能力
+    - 优化决策算法
+    - 实施预测性分析
+    - 验证决策准确性
+  
+  验证指标:
+    - 任务执行效率: 提升50%
+    - 工具选择准确率: >92%
+    - 决策质量评分: >4.7/5.0
+    - 自主执行成功率: >90%
+```
+
+## 🧪 测试验证框架
+
+### 1. 功能测试套件
+
+```python
+class AgentRulesTestSuite:
+    def __init__(self):
+        self.test_scenarios = [
+            'requirement_understanding_test',
+            'discussion_framework_test',
+            'efficiency_optimization_test',
+            'integration_compatibility_test'
+        ]
+    
+    def test_requirement_understanding(self):
+        """测试需求理解能力"""
+        test_cases = [
+            {'input': '我想做一个电商网站', 'expected_clarifications': ['技术栈偏好', '功能范围', '用户规模']},
+            {'input': '优化这个函数性能', 'expected_analysis': ['性能瓶颈识别', '优化方案对比', '风险评估']}
+        ]
+        
+        for case in test_cases:
+            result = self.agent.understand_requirement(case['input'])
+            assert self._validate_understanding_quality(result, case)
+    
+    def test_discussion_framework(self):
+        """测试深度讨论框架"""
+        discussion_topics = ['架构设计', '技术选型', '性能优化', '安全防护']
+        
+        for topic in discussion_topics:
+            framework = self.agent.initiate_discussion(topic)
+            assert self._validate_discussion_quality(framework)
+    
+    def test_efficiency_optimization(self):
+        """测试效率优化"""
+        tasks = ['代码生成', '文件操作', '数据处理', '部署配置']
+        
+        for task in tasks:
+            start_time = time.time()
+            result = self.agent.execute_task(task)
+            execution_time = time.time() - start_time
+            
+            assert self._validate_efficiency_improvement(task, execution_time, result)
+```
+
+### 2. 性能基准测试
+
+```yaml
+基准指标:
+  响应时间:
+    - 需求理解: <2秒
+    - 讨论启动: <3秒
+    - 工具选择: <1秒
+    - 代码生成: <10秒
+  
+  准确性指标:
+    - 需求理解准确率: >95%
+    - 工具选择正确率: >92%
+    - 代码质量评分: >90%
+    - 讨论相关性: >90%
+  
+  用户体验:
+    - 满意度评分: >4.8/5.0
+    - 任务完成率: >95%
+    - 重复澄清率: <10%
+    - 错误修正率: <5%
+```
+
+### 3. 持续监控机制
+
+```yaml
+监控维度:
+  实时性能:
+    - 响应时间监控
+    - 资源使用率跟踪
+    - 错误率统计
+    - 用户满意度实时反馈
+  
+  质量指标:
+    - 输出质量评估
+    - 最佳实践遵循度
+    - 安全合规性检查
+    - 知识库更新频率
+  
+  学习效果:
+    - 模型改进速度
+    - 预测准确率提升
+    - 个性化适配效果
+    - 知识积累增长率
+```
+
+---
+
+*本规则基于2025年最新的AI代理发展趋势和高star GitHub项目的最佳实践，专注于需求理解、深度讨论和开发效率三大核心目标，旨在创建真正智能、自主且高效的AI开发助手系统。*

@@ -3,7 +3,7 @@ type: "always_apply"
 description: "规则冲突解决和用户指令优先级管理 - 确保用户指令始终优先，解决规则间冲突"
 globs: ["**/*"]
 alwaysApply: true
-priority: 1100
+priority: 1000
 ---
 
 # ⚖️ 规则冲突解决和用户指令优先级管理
