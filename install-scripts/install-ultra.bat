@@ -156,24 +156,24 @@ echo. >> "%MAIN_RULES%"
 REM P0 Level - Core Safety Rules (所有类型都需要)
 echo Creating P0 Level - Core Safety Rules...
 mkdir "%RULES_DIR%\P0-core-safety" 2>nul
-if exist "%GLOBAL_RULES_DIR%\file-generation-safety-rules.md" (
-    copy "%GLOBAL_RULES_DIR%\file-generation-safety-rules.md" "%RULES_DIR%\P0-core-safety\" >nul 2>&1
+if exist "%GLOBAL_RULES_DIR%\file-generation-safety-rules.mdc" (
+    copy "%GLOBAL_RULES_DIR%\file-generation-safety-rules.mdc" "%RULES_DIR%\P0-core-safety\" >nul 2>&1
     if errorlevel 1 (
-        echo ERROR: Failed to copy file-generation-safety-rules.md
+        echo ERROR: Failed to copy file-generation-safety-rules.mdc
         set "COPY_ERRORS=1"
     )
 ) else (
-    echo ERROR: Critical file missing: file-generation-safety-rules.md
+    echo ERROR: Critical file missing: file-generation-safety-rules.mdc
     set "MISSING_FILES=1"
 )
-if exist "%GLOBAL_RULES_DIR%\ai-ethical-boundaries.md" (
-    copy "%GLOBAL_RULES_DIR%\ai-ethical-boundaries.md" "%RULES_DIR%\P0-core-safety\" >nul 2>&1
+if exist "%GLOBAL_RULES_DIR%\ai-ethical-boundaries.mdc" (
+    copy "%GLOBAL_RULES_DIR%\ai-ethical-boundaries.mdc" "%RULES_DIR%\P0-core-safety\" >nul 2>&1
     if errorlevel 1 (
-        echo ERROR: Failed to copy ai-ethical-boundaries.md
+        echo ERROR: Failed to copy ai-ethical-boundaries.mdc
         set "COPY_ERRORS=1"
     )
 ) else (
-    echo ERROR: Critical file missing: ai-ethical-boundaries.md
+    echo ERROR: Critical file missing: ai-ethical-boundaries.mdc
     set "MISSING_FILES=1"
 )
 if exist "%GLOBAL_RULES_DIR%\rule-conflict-resolution.mdc" (
@@ -187,48 +187,48 @@ if exist "%GLOBAL_RULES_DIR%\rule-conflict-resolution.mdc" (
     set "MISSING_FILES=1"
 )
 echo - P0-core-safety/ (Priority: 1000) >> "%MAIN_RULES%"
-echo   - file-generation-safety-rules.md >> "%MAIN_RULES%"
-echo   - ai-ethical-boundaries.md >> "%MAIN_RULES%"
+echo   - file-generation-safety-rules.mdc >> "%MAIN_RULES%"
+echo   - ai-ethical-boundaries.mdc >> "%MAIN_RULES%"
 echo   - rule-conflict-resolution.mdc >> "%MAIN_RULES%"
 echo. >> "%MAIN_RULES%"
 
 REM P1 Level - Core Identity Rules (所有类型都需要)
 echo Creating P1 Level - Core Identity Rules...
 mkdir "%RULES_DIR%\P1-core-identity" 2>nul
-if exist "%GLOBAL_RULES_DIR%\unified-rules-base.md" (
-    copy "%GLOBAL_RULES_DIR%\unified-rules-base.md" "%RULES_DIR%\P1-core-identity\" >nul 2>&1
+if exist "%GLOBAL_RULES_DIR%\unified-rules-base.mdc" (
+    copy "%GLOBAL_RULES_DIR%\unified-rules-base.mdc" "%RULES_DIR%\P1-core-identity\" >nul 2>&1
     if errorlevel 1 (
-        echo ERROR: Failed to copy unified-rules-base.md
+        echo ERROR: Failed to copy unified-rules-base.mdc
         set "COPY_ERRORS=1"
     )
 ) else (
-    echo ERROR: Critical file missing: unified-rules-base.md
+    echo ERROR: Critical file missing: unified-rules-base.mdc
     set "MISSING_FILES=1"
 )
-if exist "%GLOBAL_RULES_DIR%\ai-agent-intelligence-core.md" (
-    copy "%GLOBAL_RULES_DIR%\ai-agent-intelligence-core.md" "%RULES_DIR%\P1-core-identity\" >nul 2>&1
+if exist "%GLOBAL_RULES_DIR%\ai-agent-intelligence-core.mdc" (
+    copy "%GLOBAL_RULES_DIR%\ai-agent-intelligence-core.mdc" "%RULES_DIR%\P1-core-identity\" >nul 2>&1
     if errorlevel 1 (
-        echo ERROR: Failed to copy ai-agent-intelligence-core.md
+        echo ERROR: Failed to copy ai-agent-intelligence-core.mdc
         set "COPY_ERRORS=1"
     )
 ) else (
-    echo ERROR: Critical file missing: ai-agent-intelligence-core.md
+    echo ERROR: Critical file missing: ai-agent-intelligence-core.mdc
     set "MISSING_FILES=1"
 )
-if exist "%GLOBAL_RULES_DIR%\ai-thinking-protocol.md" (
-    copy "%GLOBAL_RULES_DIR%\ai-thinking-protocol.md" "%RULES_DIR%\P1-core-identity\" >nul 2>&1
+if exist "%GLOBAL_RULES_DIR%\ai-thinking-protocol.mdc" (
+    copy "%GLOBAL_RULES_DIR%\ai-thinking-protocol.mdc" "%RULES_DIR%\P1-core-identity\" >nul 2>&1
     if errorlevel 1 (
-        echo ERROR: Failed to copy ai-thinking-protocol.md
+        echo ERROR: Failed to copy ai-thinking-protocol.mdc
         set "COPY_ERRORS=1"
     )
 ) else (
-    echo ERROR: Critical file missing: ai-thinking-protocol.md
+    echo ERROR: Critical file missing: ai-thinking-protocol.mdc
     set "MISSING_FILES=1"
 )
 echo - P1-core-identity/ (Priority: 900) >> "%MAIN_RULES%"
-echo   - unified-rules-base.md >> "%MAIN_RULES%"
-echo   - ai-agent-intelligence-core.md >> "%MAIN_RULES%"
-echo   - ai-thinking-protocol.md >> "%MAIN_RULES%"
+echo   - unified-rules-base.mdc >> "%MAIN_RULES%"
+echo   - ai-agent-intelligence-core.mdc >> "%MAIN_RULES%"
+echo   - ai-thinking-protocol.mdc >> "%MAIN_RULES%"
 echo. >> "%MAIN_RULES%"
 
 REM P2 Level - Intelligent System Rules (所有类型都需要)
@@ -240,11 +240,11 @@ if exist "%GLOBAL_RULES_DIR%\super-brain-system.mdc" (
 ) else (
     echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\super-brain-system.mdc
 )
-if exist "%GLOBAL_RULES_DIR%\dynamic-thinking-depth-regulation.md" (
-    copy "%GLOBAL_RULES_DIR%\dynamic-thinking-depth-regulation.md" "%RULES_DIR%\P2-intelligent-system\" >nul 2>&1
-    if errorlevel 1 echo WARNING: Failed to copy dynamic-thinking-depth-regulation.md
+if exist "%GLOBAL_RULES_DIR%\dynamic-thinking-depth-regulation.mdc" (
+    copy "%GLOBAL_RULES_DIR%\dynamic-thinking-depth-regulation.mdc" "%RULES_DIR%\P2-intelligent-system\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy dynamic-thinking-depth-regulation.mdc
 ) else (
-    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\dynamic-thinking-depth-regulation.md
+    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\dynamic-thinking-depth-regulation.mdc
 )
 if exist "%GLOBAL_RULES_DIR%\memory-system-integration.mdc" (
     copy "%GLOBAL_RULES_DIR%\memory-system-integration.mdc" "%RULES_DIR%\P2-intelligent-system\" >nul 2>&1
@@ -260,7 +260,7 @@ if exist "%GLOBAL_RULES_DIR%\intelligent-recommendation-engine.mdc" (
 )
 echo - P2-intelligent-system/ (Priority: 800) >> "%MAIN_RULES%"
 echo   - super-brain-system.mdc >> "%MAIN_RULES%"
-echo   - dynamic-thinking-depth-regulation.md >> "%MAIN_RULES%"
+echo   - dynamic-thinking-depth-regulation.mdc >> "%MAIN_RULES%"
 echo   - memory-system-integration.mdc >> "%MAIN_RULES%"
 echo   - intelligent-recommendation-engine.mdc >> "%MAIN_RULES%"
 echo. >> "%MAIN_RULES%"
@@ -270,23 +270,23 @@ echo Creating P3 Level - Professional Development Rules...
 mkdir "%RULES_DIR%\P3-professional-dev" 2>nul
 
 REM 添加通用的专业开发规则
-if exist "%GLOBAL_RULES_DIR%\multimodal-interaction-framework.md" (
-    copy "%GLOBAL_RULES_DIR%\multimodal-interaction-framework.md" "%RULES_DIR%\P3-professional-dev\" >nul 2>&1
-    if errorlevel 1 echo WARNING: Failed to copy multimodal-interaction-framework.md
+if exist "%GLOBAL_RULES_DIR%\multimodal-interaction-framework.mdc" (
+    copy "%GLOBAL_RULES_DIR%\multimodal-interaction-framework.mdc" "%RULES_DIR%\P3-professional-dev\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy multimodal-interaction-framework.mdc
 ) else (
-    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\multimodal-interaction-framework.md
+    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\multimodal-interaction-framework.mdc
 )
-if exist "%GLOBAL_RULES_DIR%\human-ai-collaboration-optimization.md" (
-    copy "%GLOBAL_RULES_DIR%\human-ai-collaboration-optimization.md" "%RULES_DIR%\P3-professional-dev\" >nul 2>&1
-    if errorlevel 1 echo WARNING: Failed to copy human-ai-collaboration-optimization.md
+if exist "%GLOBAL_RULES_DIR%\human-ai-collaboration-optimization.mdc" (
+    copy "%GLOBAL_RULES_DIR%\human-ai-collaboration-optimization.mdc" "%RULES_DIR%\P3-professional-dev\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy human-ai-collaboration-optimization.mdc
 ) else (
-    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\human-ai-collaboration-optimization.md
+    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\human-ai-collaboration-optimization.mdc
 )
-if exist "%GLOBAL_RULES_DIR%\knowledge-creation-discovery-framework.md" (
-    copy "%GLOBAL_RULES_DIR%\knowledge-creation-discovery-framework.md" "%RULES_DIR%\P3-professional-dev\" >nul 2>&1
-    if errorlevel 1 echo WARNING: Failed to copy knowledge-creation-discovery-framework.md
+if exist "%GLOBAL_RULES_DIR%\knowledge-creation-discovery-framework.mdc" (
+    copy "%GLOBAL_RULES_DIR%\knowledge-creation-discovery-framework.mdc" "%RULES_DIR%\P3-professional-dev\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy knowledge-creation-discovery-framework.mdc
 ) else (
-    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\knowledge-creation-discovery-framework.md
+    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\knowledge-creation-discovery-framework.mdc
 )
 
 REM 使用goto来确保条件判断正确执行
@@ -297,11 +297,11 @@ goto :fullstack_p3
 :frontend_p3
 echo DEBUG: Processing frontend P3 rules
 echo ## Frontend Development Rules >> "%MAIN_RULES%"
-if exist "%GLOBAL_RULES_DIR%\frontend-rules-2.1.md" (
-    copy "%GLOBAL_RULES_DIR%\frontend-rules-2.1.md" "%RULES_DIR%\P3-professional-dev\" >nul 2>&1
-    if errorlevel 1 echo WARNING: Failed to copy frontend-rules-2.1.md
+if exist "%GLOBAL_RULES_DIR%\frontend-rules.mdc" (
+    copy "%GLOBAL_RULES_DIR%\frontend-rules.mdc" "%RULES_DIR%\P3-professional-dev\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy frontend-rules.mdc
 ) else (
-    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\frontend-rules-2.1.md
+    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\frontend-rules.mdc
 )
 if exist "%GLOBAL_RULES_DIR%\complete-workflow-integration.mdc" (
     copy "%GLOBAL_RULES_DIR%\complete-workflow-integration.mdc" "%RULES_DIR%\P3-professional-dev\" >nul 2>&1
@@ -310,21 +310,21 @@ if exist "%GLOBAL_RULES_DIR%\complete-workflow-integration.mdc" (
     echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\complete-workflow-integration.mdc
 )
 echo - P3-professional-dev/ (Priority: 700) >> "%MAIN_RULES%"
-echo   - multimodal-interaction-framework.md >> "%MAIN_RULES%"
-echo   - human-ai-collaboration-optimization.md >> "%MAIN_RULES%"
-echo   - knowledge-creation-discovery-framework.md >> "%MAIN_RULES%"
-echo   - frontend-rules-2.1.md >> "%MAIN_RULES%"
+echo   - multimodal-interaction-framework.mdc >> "%MAIN_RULES%"
+echo   - human-ai-collaboration-optimization.mdc >> "%MAIN_RULES%"
+echo   - knowledge-creation-discovery-framework.mdc >> "%MAIN_RULES%"
+echo   - frontend-rules.mdc >> "%MAIN_RULES%"
 echo   - complete-workflow-integration.mdc >> "%MAIN_RULES%"
 goto :p3_done
 
 :backend_p3
 echo DEBUG: Processing backend P3 rules
 echo ## Backend Development Rules >> "%MAIN_RULES%"
-if exist "%GLOBAL_RULES_DIR%\backend-rules-2.1.md" (
-    copy "%GLOBAL_RULES_DIR%\backend-rules-2.1.md" "%RULES_DIR%\P3-professional-dev\" >nul 2>&1
-    if errorlevel 1 echo WARNING: Failed to copy backend-rules-2.1.md
+if exist "%GLOBAL_RULES_DIR%\backend-rules.mdc" (
+    copy "%GLOBAL_RULES_DIR%\backend-rules.mdc" "%RULES_DIR%\P3-professional-dev\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy backend-rules.mdc
 ) else (
-    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\backend-rules-2.1.md
+    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\backend-rules.mdc
 )
 if exist "%GLOBAL_RULES_DIR%\complete-workflow-integration.mdc" (
     copy "%GLOBAL_RULES_DIR%\complete-workflow-integration.mdc" "%RULES_DIR%\P3-professional-dev\" >nul 2>&1
@@ -333,27 +333,27 @@ if exist "%GLOBAL_RULES_DIR%\complete-workflow-integration.mdc" (
     echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\complete-workflow-integration.mdc
 )
 echo - P3-professional-dev/ (Priority: 700) >> "%MAIN_RULES%"
-echo   - multimodal-interaction-framework.md >> "%MAIN_RULES%"
-echo   - human-ai-collaboration-optimization.md >> "%MAIN_RULES%"
-echo   - knowledge-creation-discovery-framework.md >> "%MAIN_RULES%"
-echo   - backend-rules-2.1.md >> "%MAIN_RULES%"
+echo   - multimodal-interaction-framework.mdc >> "%MAIN_RULES%"
+echo   - human-ai-collaboration-optimization.mdc >> "%MAIN_RULES%"
+echo   - knowledge-creation-discovery-framework.mdc >> "%MAIN_RULES%"
+echo   - backend-rules.mdc >> "%MAIN_RULES%"
 echo   - complete-workflow-integration.mdc >> "%MAIN_RULES%"
 goto :p3_done
 
 :fullstack_p3
 echo DEBUG: Processing fullstack P3 rules
 echo ## Fullstack Development Rules >> "%MAIN_RULES%"
-if exist "%GLOBAL_RULES_DIR%\frontend-rules-2.1.md" (
-    copy "%GLOBAL_RULES_DIR%\frontend-rules-2.1.md" "%RULES_DIR%\P3-professional-dev\" >nul 2>&1
-    if errorlevel 1 echo WARNING: Failed to copy frontend-rules-2.1.md
+if exist "%GLOBAL_RULES_DIR%\frontend-rules.mdc" (
+    copy "%GLOBAL_RULES_DIR%\frontend-rules.mdc" "%RULES_DIR%\P3-professional-dev\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy frontend-rules.mdc
 ) else (
-    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\frontend-rules-2.1.md
+    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\frontend-rules.mdc
 )
-if exist "%GLOBAL_RULES_DIR%\backend-rules-2.1.md" (
-    copy "%GLOBAL_RULES_DIR%\backend-rules-2.1.md" "%RULES_DIR%\P3-professional-dev\" >nul 2>&1
-    if errorlevel 1 echo WARNING: Failed to copy backend-rules-2.1.md
+if exist "%GLOBAL_RULES_DIR%\backend-rules.mdc" (
+    copy "%GLOBAL_RULES_DIR%\backend-rules.mdc" "%RULES_DIR%\P3-professional-dev\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy backend-rules.mdc
 ) else (
-    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\backend-rules-2.1.md
+    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\backend-rules.mdc
 )
 if exist "%GLOBAL_RULES_DIR%\complete-workflow-integration.mdc" (
     copy "%GLOBAL_RULES_DIR%\complete-workflow-integration.mdc" "%RULES_DIR%\P3-professional-dev\" >nul 2>&1
@@ -362,11 +362,11 @@ if exist "%GLOBAL_RULES_DIR%\complete-workflow-integration.mdc" (
     echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\complete-workflow-integration.mdc
 )
 echo - P3-professional-dev/ (Priority: 700) >> "%MAIN_RULES%"
-echo   - multimodal-interaction-framework.md >> "%MAIN_RULES%"
-echo   - human-ai-collaboration-optimization.md >> "%MAIN_RULES%"
-echo   - knowledge-creation-discovery-framework.md >> "%MAIN_RULES%"
-echo   - frontend-rules-2.1.md >> "%MAIN_RULES%"
-echo   - backend-rules-2.1.md >> "%MAIN_RULES%"
+echo   - multimodal-interaction-framework.mdc >> "%MAIN_RULES%"
+echo   - human-ai-collaboration-optimization.mdc >> "%MAIN_RULES%"
+echo   - knowledge-creation-discovery-framework.mdc >> "%MAIN_RULES%"
+echo   - frontend-rules.mdc >> "%MAIN_RULES%"
+echo   - backend-rules.mdc >> "%MAIN_RULES%"
 echo   - complete-workflow-integration.mdc >> "%MAIN_RULES%"
 
 :p3_done
