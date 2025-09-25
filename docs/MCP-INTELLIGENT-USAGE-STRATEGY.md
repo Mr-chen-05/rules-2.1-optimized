@@ -186,7 +186,7 @@ flowchart TD
 
 ### 规则文件位置
 - **项目规则**: `project-rules/mcp-intelligent-strategy.mdc`
-- **全局规则**: 已集成到 `global-rules/frontend-rules-2.1.md` 和 `global-rules/backend-rules-2.1.md`
+- **全局规则**: 已集成到 `global-rules/frontend-rules.mdc` 和 `global-rules/backend-rules.mdc`
 - **详细指南**: `docs/MCP-INTELLIGENT-USAGE-STRATEGY.md`
 
 ### 确保传播效果

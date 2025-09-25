@@ -3,6 +3,7 @@
 # 企业测试报告和发布文件夹
 enterprise-test-reports/
 releases/
+test-report/
 
 # 临时文件
 *.tmp

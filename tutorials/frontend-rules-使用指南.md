@@ -997,7 +997,7 @@ Get-Counter "\Process(node)\% Processor Time"
 ## 📚 学习资源与文档
 
 ### **📖 核心文档：**
-- 📘 [前端规则文档](../global-rules/frontend-rules-2.1.md) - 深入了解规则系统
+- 📘 [前端规则文档](../global-rules/frontend-rules.mdc) - 深入了解规则系统
 - 🛠️ [MCP详细配置指南](../docs/MCP-DETAILED-CONFIG-GUIDE.md) - 高级配置选项
 - 🔧 [环境设置指南](../docs/ENVIRONMENT-SETUP.md) - 开发环境优化
 - 🎯 [智能使用策略](../docs/MCP-INTELLIGENT-USAGE-STRATEGY.md) - 专业开发建议
