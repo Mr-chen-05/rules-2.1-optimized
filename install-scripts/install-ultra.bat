@@ -434,6 +434,13 @@ if exist "%PROJECT_RULES_DIR%\commit.mdc" (
 ) else (
     echo WARNING: Source file not found: %PROJECT_RULES_DIR%\commit.mdc
 )
+if exist "%PROJECT_RULES_DIR%\commit-fast.mdc" (
+    copy "%PROJECT_RULES_DIR%\commit-fast.mdc" "%RULES_DIR%\P4-project-workflow\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy commit-fast.mdc
+    echo   - commit-fast.mdc >> "%MAIN_RULES%"
+) else (
+    echo WARNING: Source file not found: %PROJECT_RULES_DIR%\commit-fast.mdc
+)
 if exist "%PROJECT_RULES_DIR%\code-review.mdc" (
     copy "%PROJECT_RULES_DIR%\code-review.mdc" "%RULES_DIR%\P4-project-workflow\" >nul 2>&1
     if errorlevel 1 echo WARNING: Failed to copy code-review.mdc
@@ -441,12 +448,26 @@ if exist "%PROJECT_RULES_DIR%\code-review.mdc" (
 ) else (
     echo WARNING: Source file not found: %PROJECT_RULES_DIR%\code-review.mdc
 )
+if exist "%PROJECT_RULES_DIR%\code-quality-check.mdc" (
+    copy "%PROJECT_RULES_DIR%\code-quality-check.mdc" "%RULES_DIR%\P4-project-workflow\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy code-quality-check.mdc
+    echo   - code-quality-check.mdc >> "%MAIN_RULES%"
+) else (
+    echo WARNING: Source file not found: %PROJECT_RULES_DIR%\code-quality-check.mdc
+)
 if exist "%PROJECT_RULES_DIR%\bug-fix.mdc" (
     copy "%PROJECT_RULES_DIR%\bug-fix.mdc" "%RULES_DIR%\P4-project-workflow\" >nul 2>&1
     if errorlevel 1 echo WARNING: Failed to copy bug-fix.mdc
     echo   - bug-fix.mdc >> "%MAIN_RULES%"
 ) else (
     echo WARNING: Source file not found: %PROJECT_RULES_DIR%\bug-fix.mdc
+)
+if exist "%PROJECT_RULES_DIR%\changelog-management.mdc" (
+    copy "%PROJECT_RULES_DIR%\changelog-management.mdc" "%RULES_DIR%\P4-project-workflow\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy changelog-management.mdc
+    echo   - changelog-management.mdc >> "%MAIN_RULES%"
+) else (
+    echo WARNING: Source file not found: %PROJECT_RULES_DIR%\changelog-management.mdc
 )
 echo. >> "%MAIN_RULES%"
 
@@ -476,6 +497,41 @@ if exist "%PROJECT_RULES_DIR%\ai-powered-code-review.mdc" (
     if errorlevel 1 echo WARNING: Failed to copy ai-powered-code-review.mdc
 ) else (
     echo WARNING: Source file not found: %PROJECT_RULES_DIR%\ai-powered-code-review.mdc
+)
+if exist "%PROJECT_RULES_DIR%\mcp-debugging-enhanced.mdc" (
+    copy "%PROJECT_RULES_DIR%\mcp-debugging-enhanced.mdc" "%RULES_DIR%\P5-advanced-features\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy mcp-debugging-enhanced.mdc
+    echo   - mcp-debugging-enhanced.mdc >> "%MAIN_RULES%"
+) else (
+    echo WARNING: Source file not found: %PROJECT_RULES_DIR%\mcp-debugging-enhanced.mdc
+)
+if exist "%PROJECT_RULES_DIR%\systematic-debugging.mdc" (
+    copy "%PROJECT_RULES_DIR%\systematic-debugging.mdc" "%RULES_DIR%\P5-advanced-features\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy systematic-debugging.mdc
+    echo   - systematic-debugging.mdc >> "%MAIN_RULES%"
+) else (
+    echo WARNING: Source file not found: %PROJECT_RULES_DIR%\systematic-debugging.mdc
+)
+if exist "%PROJECT_RULES_DIR%\root-cause-analysis.mdc" (
+    copy "%PROJECT_RULES_DIR%\root-cause-analysis.mdc" "%RULES_DIR%\P5-advanced-features\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy root-cause-analysis.mdc
+    echo   - root-cause-analysis.mdc >> "%MAIN_RULES%"
+) else (
+    echo WARNING: Source file not found: %PROJECT_RULES_DIR%\root-cause-analysis.mdc
+)
+if exist "%PROJECT_RULES_DIR%\context-loader.mdc" (
+    copy "%PROJECT_RULES_DIR%\context-loader.mdc" "%RULES_DIR%\P5-advanced-features\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy context-loader.mdc
+    echo   - context-loader.mdc >> "%MAIN_RULES%"
+) else (
+    echo WARNING: Source file not found: %PROJECT_RULES_DIR%\context-loader.mdc
+)
+if exist "%PROJECT_RULES_DIR%\custom-command-builder.mdc" (
+    copy "%PROJECT_RULES_DIR%\custom-command-builder.mdc" "%RULES_DIR%\P5-advanced-features\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy custom-command-builder.mdc
+    echo   - custom-command-builder.mdc >> "%MAIN_RULES%"
+) else (
+    echo WARNING: Source file not found: %PROJECT_RULES_DIR%\custom-command-builder.mdc
 )
 if exist "%PROJECT_RULES_DIR%\mcp-unified-management.mdc" (
     copy "%PROJECT_RULES_DIR%\mcp-unified-management.mdc" "%RULES_DIR%\P5-advanced-features\" >nul 2>&1
