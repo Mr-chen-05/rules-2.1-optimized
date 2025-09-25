@@ -19,7 +19,7 @@
 
 ## 🚀 快速开始
 - **📚 MCP快速入门**: [MCP快速入门指南](docs/MCP-QUICK-START-GUIDE.md)
-- **📖 安装教程**: [安装教程](install-scripts/INSTALL-GUIDE.md) | [中文版](install-scripts/INSTALL-GUIDE-CN.md)
+- **📖 安装教程**: [英文版](install-scripts/INSTALL-GUIDE.md) | [中文版](install-scripts/INSTALL-GUIDE-CN.md)
 - **⚡ 3分钟上手**: [快速开始指南](#️⃣-步骤2一键安装到项目)
 
 ## ⚙️ 环境要求
