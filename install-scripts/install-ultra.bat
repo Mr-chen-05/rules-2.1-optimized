@@ -571,6 +571,33 @@ if exist "%PROJECT_RULES_DIR%\mermaid.mdc" (
 :skip_mermaid
 echo. >> "%MAIN_RULES%"
 
+REM Create MCP Tools directory and copy management scripts
+echo Creating MCP Tools directory and copying management scripts...
+set "MCP_TOOLS_DIR=%TARGET_DIR%\mcp-tools"
+mkdir "%MCP_TOOLS_DIR%" 2>nul
+
+REM Copy MCP cross-platform sync script for AI to use
+set "MCP_SCRIPTS_DIR=%BASE_DIR%\mcp-scripts"
+if exist "%MCP_SCRIPTS_DIR%\mcp-cross-platform-sync.ps1" (
+    copy "%MCP_SCRIPTS_DIR%\mcp-cross-platform-sync.ps1" "%MCP_TOOLS_DIR%\" >nul 2>&1
+    if errorlevel 1 (
+        echo WARNING: Failed to copy mcp-cross-platform-sync.ps1
+    ) else (
+        echo   MCP management script installed: mcp-cross-platform-sync.ps1
+    )
+) else (
+    echo WARNING: Source file not found: %MCP_SCRIPTS_DIR%\mcp-cross-platform-sync.ps1
+)
+
+REM Add MCP tools information to main.md
+echo ## MCP Tools Directory >> "%MAIN_RULES%"
+echo. >> "%MAIN_RULES%"
+echo The mcp-tools/ directory contains management scripts for AI to use: >> "%MAIN_RULES%"
+echo - mcp-cross-platform-sync.ps1 - Cross-platform MCP configuration sync >> "%MAIN_RULES%"
+echo. >> "%MAIN_RULES%"
+echo AI can directly call these scripts for MCP management and orchestration. >> "%MAIN_RULES%"
+echo. >> "%MAIN_RULES%"
+
 echo ## Priority Levels for AI Understanding >> "%MAIN_RULES%"
 echo. >> "%MAIN_RULES%"
 echo **AI should follow rules in this priority order:** >> "%MAIN_RULES%"
