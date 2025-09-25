@@ -320,18 +320,13 @@ if exist "%GLOBAL_RULES_DIR%\frontend-rules.mdc" (
 ) else (
     echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\frontend-rules.mdc
 )
-if exist "%GLOBAL_RULES_DIR%\complete-workflow-integration.mdc" (
-    copy "%GLOBAL_RULES_DIR%\complete-workflow-integration.mdc" "%RULES_DIR%\P3-professional-dev\" >nul 2>&1
-    if errorlevel 1 echo WARNING: Failed to copy complete-workflow-integration.mdc
-) else (
-    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\complete-workflow-integration.mdc
-)
+REM complete-workflow-integration.mdc has been integrated into intelligent-project-management.mdc
+REM No longer needed as a separate file
 echo - P3-professional-dev/ (Priority: 700) >> "%MAIN_RULES%"
 echo   - multimodal-interaction-framework.mdc >> "%MAIN_RULES%"
 echo   - human-ai-collaboration-optimization.mdc >> "%MAIN_RULES%"
 echo   - knowledge-creation-discovery-framework.mdc >> "%MAIN_RULES%"
 echo   - frontend-rules.mdc >> "%MAIN_RULES%"
-echo   - complete-workflow-integration.mdc >> "%MAIN_RULES%"
 goto :p3_done
 
 :backend_p3
@@ -343,18 +338,13 @@ if exist "%GLOBAL_RULES_DIR%\backend-rules.mdc" (
 ) else (
     echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\backend-rules.mdc
 )
-if exist "%GLOBAL_RULES_DIR%\complete-workflow-integration.mdc" (
-    copy "%GLOBAL_RULES_DIR%\complete-workflow-integration.mdc" "%RULES_DIR%\P3-professional-dev\" >nul 2>&1
-    if errorlevel 1 echo WARNING: Failed to copy complete-workflow-integration.mdc
-) else (
-    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\complete-workflow-integration.mdc
-)
+REM complete-workflow-integration.mdc has been integrated into intelligent-project-management.mdc
+REM No longer needed as a separate file
 echo - P3-professional-dev/ (Priority: 700) >> "%MAIN_RULES%"
 echo   - multimodal-interaction-framework.mdc >> "%MAIN_RULES%"
 echo   - human-ai-collaboration-optimization.mdc >> "%MAIN_RULES%"
 echo   - knowledge-creation-discovery-framework.mdc >> "%MAIN_RULES%"
 echo   - backend-rules.mdc >> "%MAIN_RULES%"
-echo   - complete-workflow-integration.mdc >> "%MAIN_RULES%"
 goto :p3_done
 
 :fullstack_p3
@@ -372,19 +362,14 @@ if exist "%GLOBAL_RULES_DIR%\backend-rules.mdc" (
 ) else (
     echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\backend-rules.mdc
 )
-if exist "%GLOBAL_RULES_DIR%\complete-workflow-integration.mdc" (
-    copy "%GLOBAL_RULES_DIR%\complete-workflow-integration.mdc" "%RULES_DIR%\P3-professional-dev\" >nul 2>&1
-    if errorlevel 1 echo WARNING: Failed to copy complete-workflow-integration.mdc
-) else (
-    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\complete-workflow-integration.mdc
-)
+REM complete-workflow-integration.mdc has been integrated into intelligent-project-management.mdc
+REM No longer needed as a separate file
 echo - P3-professional-dev/ (Priority: 700) >> "%MAIN_RULES%"
 echo   - multimodal-interaction-framework.mdc >> "%MAIN_RULES%"
 echo   - human-ai-collaboration-optimization.mdc >> "%MAIN_RULES%"
 echo   - knowledge-creation-discovery-framework.mdc >> "%MAIN_RULES%"
 echo   - frontend-rules.mdc >> "%MAIN_RULES%"
 echo   - backend-rules.mdc >> "%MAIN_RULES%"
-echo   - complete-workflow-integration.mdc >> "%MAIN_RULES%"
 
 :p3_done
 echo. >> "%MAIN_RULES%"
@@ -492,11 +477,25 @@ if exist "%PROJECT_RULES_DIR%\ai-powered-code-review.mdc" (
 ) else (
     echo WARNING: Source file not found: %PROJECT_RULES_DIR%\ai-powered-code-review.mdc
 )
+if exist "%PROJECT_RULES_DIR%\mcp-unified-management.mdc" (
+    copy "%PROJECT_RULES_DIR%\mcp-unified-management.mdc" "%RULES_DIR%\P5-advanced-features\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy mcp-unified-management.mdc
+) else (
+    echo WARNING: Source file not found: %PROJECT_RULES_DIR%\mcp-unified-management.mdc
+)
+if exist "%PROJECT_RULES_DIR%\mcp-zero-config-detection.mdc" (
+    copy "%PROJECT_RULES_DIR%\mcp-zero-config-detection.mdc" "%RULES_DIR%\P5-advanced-features\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy mcp-zero-config-detection.mdc
+) else (
+    echo WARNING: Source file not found: %PROJECT_RULES_DIR%\mcp-zero-config-detection.mdc
+)
 echo - P5-advanced-features/ (Priority: 500) >> "%MAIN_RULES%"
 echo   - intelligent-project-management.mdc >> "%MAIN_RULES%"
 echo   - intelligent-workflow-orchestration.mdc >> "%MAIN_RULES%"
 echo   - mcp-intelligent-strategy.mdc >> "%MAIN_RULES%"
 echo   - ai-powered-code-review.mdc >> "%MAIN_RULES%"
+echo   - mcp-unified-management.mdc >> "%MAIN_RULES%"
+echo   - mcp-zero-config-detection.mdc >> "%MAIN_RULES%"
 echo. >> "%MAIN_RULES%"
 
 REM P6 Level - System Optimization Rules (required for all types)
