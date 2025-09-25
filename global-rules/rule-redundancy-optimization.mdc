@@ -3,7 +3,7 @@ type: "always_apply"
 description: "规则冗余优化和功能整合 - 消除重复功能，明确职责分工，提升系统效率"
 globs: ["**/*"]
 alwaysApply: true
-priority: 1050
+priority: 1000
 ---
 
 # 🔧 规则冗余优化和功能整合

@@ -3,7 +3,7 @@ type: "always_apply"
 description: "知识创造与发现框架 - 从信息检索向主动知识创造转变"
 globs: ["**/*"]
 alwaysApply: true
-priority: 1140
+priority: 1000
 ---
 
 # 🔬 知识创造与发现框架 (Knowledge Creation and Discovery Framework)

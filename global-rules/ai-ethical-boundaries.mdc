@@ -3,7 +3,7 @@ type: "always_apply"
 description: "AI伦理边界规则 - 动态伦理判断框架和透明度管理机制"
 globs: ["**/*"]
 alwaysApply: true
-priority: 1150
+priority: 1000
 ---
 
 # 🛡️ AI伦理边界规则 (AI Ethical Boundaries)

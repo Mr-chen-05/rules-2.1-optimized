@@ -3,7 +3,7 @@ type: "always_apply"
 description: "多模态交互框架 - 跨模态认知整合和交互扩展接口"
 globs: ["**/*"]
 alwaysApply: true
-priority: 1160
+priority: 1000
 ---
 
 # 🌐 多模态交互框架 (Multimodal Interaction Framework)
