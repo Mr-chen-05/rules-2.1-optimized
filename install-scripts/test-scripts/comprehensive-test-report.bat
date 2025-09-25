@@ -129,18 +129,18 @@ if exist "%RULES_PATH%\P4-project-workflow\backend-dev.mdc" (
     echo   MISSING backend-dev.mdc - No backend workflow
 )
 
-if exist "%RULES_PATH%\P3-professional-dev\frontend-rules-2.1.md" (
+if exist "%RULES_PATH%\P3-professional-dev\frontend-rules.mdc" (
     set "HAS_FRONTEND_RULES=1"
-    echo   OK frontend-rules-2.1.md - Frontend rules
+    echo   OK frontend-rules.mdc - Frontend rules
 ) else (
-    echo   MISSING frontend-rules-2.1.md - No frontend rules
+    echo   MISSING frontend-rules.mdc - No frontend rules
 )
 
-if exist "%RULES_PATH%\P3-professional-dev\backend-rules-2.1.md" (
+if exist "%RULES_PATH%\P3-professional-dev\backend-rules.mdc" (
     set "HAS_BACKEND_RULES=1"
-    echo   OK backend-rules-2.1.md - Backend rules
+    echo   OK backend-rules.mdc - Backend rules
 ) else (
-    echo   MISSING backend-rules-2.1.md - No backend rules
+    echo   MISSING backend-rules.mdc - No backend rules
 )
 
 echo.

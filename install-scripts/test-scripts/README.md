@@ -52,8 +52,8 @@ Key File Detection:
   OK mermaid.mdc - Chart support
   OK frontend-dev.mdc - Frontend workflow
   OK backend-dev.mdc - Backend workflow
-  OK frontend-rules-2.1.md - Frontend rules
-  OK backend-rules-2.1.md - Backend rules
+  OK frontend-rules.mdc - Frontend rules
+  OK backend-rules.mdc - Backend rules
 
 Mode Detection Results:
   Detected: FULLSTACK mode (Full-stack development)
