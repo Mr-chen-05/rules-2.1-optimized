@@ -69,7 +69,7 @@ mcp --version
 3. **本文档** - 深度使用技巧
 
 ### 🔧 配置指南（进阶）
-- **[INSTALL-GUIDE.md](../docs/INSTALL-GUIDE.md)** - 完整安装配置流程
+- **[INSTALL-GUIDE.md](../install-scripts/INSTALL-GUIDE.md)** - 完整安装配置流程 | [中文版](../install-scripts/INSTALL-GUIDE-CN.md)
 - **[MCP-QUICK-START-GUIDE.md](../docs/MCP-QUICK-START-GUIDE.md)** - MCP工具集成配置
 - **[ENVIRONMENT-SETUP.md](../docs/ENVIRONMENT-SETUP.md)** - 环境配置详解
 

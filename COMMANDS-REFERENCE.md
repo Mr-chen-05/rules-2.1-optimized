@@ -236,7 +236,7 @@
 ## 🔗 相关文档
 
 - **详细使用指南**: [USAGE.md](USAGE.md)
-- **安装指南**: [install-scripts/INSTALL-GUIDE.md](install-scripts/INSTALL-GUIDE.md)
+- **安装指南**: [install-scripts/INSTALL-GUIDE.md](install-scripts/INSTALL-GUIDE.md) | [中文版](install-scripts/INSTALL-GUIDE-CN.md)
 - **前端开发指南**: [前端开发指南](tutorials/frontend-rules-使用指南.md)
 - **后端开发指南**: [后端开发指南](tutorials/backend-rules-使用指南.md)
 - **MCP智能策略**: [docs/MCP-INTELLIGENT-USAGE-STRATEGY.md](docs/MCP-INTELLIGENT-USAGE-STRATEGY.md)

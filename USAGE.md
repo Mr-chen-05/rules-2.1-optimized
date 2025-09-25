@@ -22,7 +22,7 @@
 
 ## 🔧 高级安装选项
 
-> **📖 完整安装教程**: 详细的安装脚本使用方法请参考 👉 **[📋 完整安装指南](install-scripts/INSTALL-GUIDE.md)**
+> **📖 完整安装教程**: 详细的安装脚本使用方法请参考 👉 **[📋 完整安装指南](install-scripts/INSTALL-GUIDE.md)** | **[中文版](install-scripts/INSTALL-GUIDE-CN.md)**
 >
 > **🔥 核心特性**: 所有安装脚本现在使用**统一规则创建逻辑**，确保四个AI工具（Augment、Cursor、Claude、Trae）功能完全一致
 
@@ -48,7 +48,7 @@
 
 ## 📁 自定义路径配置
 
-> **📖 详细路径配置**: 完整的路径配置方法请参考 👉 **[📋 完整安装指南](install-scripts/INSTALL-GUIDE.md)**
+> **📖 详细路径配置**: 完整的路径配置方法请参考 👉 **[📋 完整安装指南](install-scripts/INSTALL-GUIDE.md)** | **[中文版](install-scripts/INSTALL-GUIDE-CN.md)**
 
 ### 🎯 路径类型概览
 
@@ -68,7 +68,7 @@
 
 **完整的批量安装脚本和企业级部署方案，请参考：**
 
-👉 **[📋 完整安装指南](install-scripts/INSTALL-GUIDE.md)**
+👉 **[📋 完整安装指南](install-scripts/INSTALL-GUIDE.md)** | **[中文版](install-scripts/INSTALL-GUIDE-CN.md)**
 
 该指南包含：
 

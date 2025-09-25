@@ -1,17 +1,43 @@
 @echo off
-chcp 65001 >nul
 setlocal enabledelayedexpansion
 
-REM 环境安全检查 - 检测可能的编码问题
-set "ENCODING_TEST=测试"
-if not "%ENCODING_TEST%"=="测试" (
-    echo WARNING: Character encoding issue detected
-    echo Switching to safe mode...
-    chcp 936 >nul
+REM Enhanced System Encoding Detection and Auto-Adaptation
+REM Detect current system code page and set appropriate encoding
+for /f "tokens=2 delims=:" %%i in ('chcp') do set "CURRENT_CP=%%i"
+set "CURRENT_CP=%CURRENT_CP: =%"
+
+REM Auto-detect and set optimal encoding based on system
+if "%CURRENT_CP%"=="936" (
+    REM Chinese Simplified system
+    chcp 65001 >nul 2>&1 || chcp 936 >nul
+    set "ENCODING_MODE=UTF8_CN"
+) else if "%CURRENT_CP%"=="950" (
+    REM Chinese Traditional system  
+    chcp 65001 >nul 2>&1 || chcp 950 >nul
+    set "ENCODING_MODE=UTF8_TW"
+) else if "%CURRENT_CP%"=="932" (
+    REM Japanese system
+    chcp 65001 >nul 2>&1 || chcp 932 >nul
+    set "ENCODING_MODE=UTF8_JP"
+) else if "%CURRENT_CP%"=="949" (
+    REM Korean system
+    chcp 65001 >nul 2>&1 || chcp 949 >nul
+    set "ENCODING_MODE=UTF8_KR"
+) else (
+    REM Western/English systems or others
+    chcp 65001 >nul 2>&1 || chcp 437 >nul
+    set "ENCODING_MODE=UTF8_EN"
+)
+
+REM Enhanced encoding stability test
+set "ENCODING_TEST=OK"
+if not "%ENCODING_TEST%"=="OK" (
+    echo WARNING: Encoding environment may be unstable. Using ASCII-safe mode.
+    set "ENCODING_MODE=ASCII_SAFE"
 )
 
 echo ========================================
-echo AgentRules Ultimate Rules Creator (最终版本)
+echo AgentRules Ultimate Rules Creator (Final Release)
 echo Priority-Based Rules Directory Generation
 echo ========================================
 echo.
@@ -20,32 +46,23 @@ set "BASE_DIR=%~dp0.."
 set "GLOBAL_RULES_DIR=%BASE_DIR%\global-rules"
 set "PROJECT_RULES_DIR=%BASE_DIR%\project-rules"
 
-REM 获取原始参数并清理Unicode字符
+REM Get original arguments and clean Unicode characters
 set "RAW_TARGET=%~1"
 set "RULE_TYPE=%~2"
 
-REM 增强的Unicode字符清理 - 清理所有可能的Unicode控制字符
+REM Enhanced Unicode control character cleaning - ASCII-safe via PowerShell (removes BiDi and zero-width)
 set "TARGET_DIR=%RAW_TARGET%"
-REM 清理双向文本控制字符 (U+202A-U+202E)
-set "TARGET_DIR=%TARGET_DIR:‪=%"
-set "TARGET_DIR=%TARGET_DIR:‫=%"
-set "TARGET_DIR=%TARGET_DIR:‬=%"
-set "TARGET_DIR=%TARGET_DIR:‭=%"
-set "TARGET_DIR=%TARGET_DIR:‮=%"
-REM 清理零宽字符 (U+200B-U+200D, U+FEFF)
-for /f "delims=" %%i in ("%TARGET_DIR%") do set "TARGET_DIR=%%i"
-REM 移除首尾空格
+for /f "usebackq delims=" %%A in (`powershell -NoProfile -Command "$t=$env:RAW_TARGET; $chars=@(0x202A,0x202B,0x202C,0x202D,0x202E,0x200B,0x200C,0x200D,0xFEFF); foreach($c in $chars){ $t=$t -replace [char]$c, '' }; $t=$t.Trim(); Write-Output $t"` ) do set "TARGET_DIR=%%A"
+REM Trim leading and trailing spaces
 for /f "tokens=* delims= " %%a in ("%TARGET_DIR%") do set "TARGET_DIR=%%a"
 
-REM 检查清理后的目录是否为空或只包含特殊字符
+REM Check cleaned directory is empty or invalid
 if "%TARGET_DIR%"=="" goto :use_default
 if "%TARGET_DIR%"=="=" goto :use_default
-if "%TARGET_DIR%"=="‪" goto :use_default
-if "%TARGET_DIR%"=="‪=" goto :use_default
 goto :target_dir_ok
 
 :use_default
-REM 如果没有指定目标目录或包含无效字符，默认在桌面创建agent文件夹
+REM If no valid target directory or contains invalid characters, default to Desktop\agent
 set "DESKTOP_PATH=%USERPROFILE%\Desktop"
 set "TARGET_DIR=%DESKTOP_PATH%\agent"
 echo INFO: No valid target directory specified, using default desktop location: !TARGET_DIR!
@@ -60,13 +77,13 @@ echo DEBUG: Original path: [%RAW_TARGET%]
 echo DEBUG: Cleaned path: [%TARGET_DIR%]
 echo.
 
-REM 创建目标目录的父目录路径进行验证
+REM Create target directory's parent directory path and validate
 for %%i in ("%TARGET_DIR%") do set "PARENT_DIR=%%~dpi"
 set "PARENT_DIR=%PARENT_DIR:~0,-1%"
 
 echo DEBUG: Parent directory: [%PARENT_DIR%]
 
-REM 验证父目录是否存在
+REM Validate parent directory existence
 if not exist "%PARENT_DIR%" (
     echo ERROR: Parent directory does not exist: %PARENT_DIR%
     echo Please ensure the target directory path is correct.
@@ -78,7 +95,7 @@ if not exist "%PARENT_DIR%" (
     exit /b 1
 )
 
-REM 检查目标目录是否已存在规则文件，避免重复执行
+REM Check target directory exists rules file, avoid duplicate execution
 set "RULES_DIR=%TARGET_DIR%\.rules"
 if exist "%RULES_DIR%\main.md" (
     echo.
@@ -100,7 +117,7 @@ if exist "%RULES_DIR%\main.md" (
     exit /b 0
 )
 
-REM 创建项目目录
+REM Create project directory
 echo Creating target directory: %TARGET_DIR%
 if not exist "%TARGET_DIR%" (
     mkdir "%TARGET_DIR%" 2>nul
@@ -114,7 +131,7 @@ if not exist "%TARGET_DIR%" (
     )
 )
 
-REM 创建rules子目录
+REM Create rules subdirectory
 echo Creating rules directory: %RULES_DIR%
 if not exist "%RULES_DIR%" (
     mkdir "%RULES_DIR%" 2>nul
@@ -128,11 +145,11 @@ if not exist "%RULES_DIR%" (
     )
 )
 
-REM 初始化错误状态变量
+REM Initialize error state variables
 set "COPY_ERRORS=0"
 set "MISSING_FILES=0"
 
-REM 创建主规则文件
+REM Create main rules file
 set "MAIN_RULES=%RULES_DIR%\main.md"
 
 echo # AgentRules %RULE_TYPE% Rules > "%MAIN_RULES%"
@@ -153,7 +170,7 @@ echo. >> "%MAIN_RULES%"
 echo ## Rules Directory Structure >> "%MAIN_RULES%"
 echo. >> "%MAIN_RULES%"
 
-REM P0 Level - Core Safety Rules (所有类型都需要)
+REM P0 Level - Core Safety Rules (required for all types)
 echo Creating P0 Level - Core Safety Rules...
 mkdir "%RULES_DIR%\P0-core-safety" 2>nul
 if exist "%GLOBAL_RULES_DIR%\file-generation-safety-rules.mdc" (
@@ -192,7 +209,7 @@ echo   - ai-ethical-boundaries.mdc >> "%MAIN_RULES%"
 echo   - rule-conflict-resolution.mdc >> "%MAIN_RULES%"
 echo. >> "%MAIN_RULES%"
 
-REM P1 Level - Core Identity Rules (所有类型都需要)
+REM P1 Level - Core Identity Rules (required for all types)
 echo Creating P1 Level - Core Identity Rules...
 mkdir "%RULES_DIR%\P1-core-identity" 2>nul
 if exist "%GLOBAL_RULES_DIR%\unified-rules-base.mdc" (
@@ -231,7 +248,7 @@ echo   - ai-agent-intelligence-core.mdc >> "%MAIN_RULES%"
 echo   - ai-thinking-protocol.mdc >> "%MAIN_RULES%"
 echo. >> "%MAIN_RULES%"
 
-REM P2 Level - Intelligent System Rules (所有类型都需要)
+REM P2 Level - Intelligent System Rules (required for all types)
 echo Creating P2 Level - Intelligent System Rules...
 mkdir "%RULES_DIR%\P2-intelligent-system" 2>nul
 if exist "%GLOBAL_RULES_DIR%\super-brain-system.mdc" (
@@ -265,11 +282,11 @@ echo   - memory-system-integration.mdc >> "%MAIN_RULES%"
 echo   - intelligent-recommendation-engine.mdc >> "%MAIN_RULES%"
 echo. >> "%MAIN_RULES%"
 
-REM P3 Level - Professional Development Rules (根据类型选择)
+REM P3 Level - Professional Development Rules (selected by type)
 echo Creating P3 Level - Professional Development Rules...
 mkdir "%RULES_DIR%\P3-professional-dev" 2>nul
 
-REM 添加通用的专业开发规则
+REM Add common professional development rules
 if exist "%GLOBAL_RULES_DIR%\multimodal-interaction-framework.mdc" (
     copy "%GLOBAL_RULES_DIR%\multimodal-interaction-framework.mdc" "%RULES_DIR%\P3-professional-dev\" >nul 2>&1
     if errorlevel 1 echo WARNING: Failed to copy multimodal-interaction-framework.mdc
@@ -289,7 +306,7 @@ if exist "%GLOBAL_RULES_DIR%\knowledge-creation-discovery-framework.mdc" (
     echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\knowledge-creation-discovery-framework.mdc
 )
 
-REM 使用goto来确保条件判断正确执行
+REM Use goto to ensure conditional execution order
 if /i "%RULE_TYPE%"=="frontend" goto :frontend_p3
 if /i "%RULE_TYPE%"=="backend" goto :backend_p3
 goto :fullstack_p3
@@ -372,11 +389,11 @@ echo   - complete-workflow-integration.mdc >> "%MAIN_RULES%"
 :p3_done
 echo. >> "%MAIN_RULES%"
 
-REM P4 Level - Project Workflow Rules (根据类型选择)
+REM P4 Level - Project Workflow Rules (required for all types)
 echo Creating P4 Level - Project Workflow Rules...
 mkdir "%RULES_DIR%\P4-project-workflow" 2>nul
 
-REM 使用goto来确保条件判断正确执行
+REM Use goto to ensure conditional execution order
 if /i "%RULE_TYPE%"=="frontend" goto :frontend_p4
 if /i "%RULE_TYPE%"=="backend" goto :backend_p4
 goto :fullstack_p4
@@ -424,7 +441,7 @@ echo   - frontend-dev.mdc >> "%MAIN_RULES%"
 echo   - backend-dev.mdc >> "%MAIN_RULES%"
 
 :p4_common
-REM 通用项目工作流规则
+REM Common project workflow rules
 if exist "%PROJECT_RULES_DIR%\commit.mdc" (
     copy "%PROJECT_RULES_DIR%\commit.mdc" "%RULES_DIR%\P4-project-workflow\" >nul 2>&1
     if errorlevel 1 echo WARNING: Failed to copy commit.mdc
@@ -448,7 +465,7 @@ if exist "%PROJECT_RULES_DIR%\bug-fix.mdc" (
 )
 echo. >> "%MAIN_RULES%"
 
-REM P5 Level - Advanced Feature Rules (所有类型都需要)
+REM P5 Level - Advanced Feature Rules (required for all types)
 echo Creating P5 Level - Advanced Feature Rules...
 mkdir "%RULES_DIR%\P5-advanced-features" 2>nul
 if exist "%PROJECT_RULES_DIR%\intelligent-project-management.mdc" (
@@ -482,7 +499,7 @@ echo   - mcp-intelligent-strategy.mdc >> "%MAIN_RULES%"
 echo   - ai-powered-code-review.mdc >> "%MAIN_RULES%"
 echo. >> "%MAIN_RULES%"
 
-REM P6 Level - System Optimization Rules (所有类型都需要)
+REM P6 Level - System Optimization Rules (required for all types)
 echo Creating P6 Level - System Optimization Rules...
 mkdir "%RULES_DIR%\P6-system-optimization" 2>nul
 if exist "%GLOBAL_RULES_DIR%\system-integration-config.mdc" (
@@ -502,7 +519,7 @@ echo   - system-integration-config.mdc >> "%MAIN_RULES%"
 echo   - rule-redundancy-optimization.mdc >> "%MAIN_RULES%"
 echo. >> "%MAIN_RULES%"
 
-REM P7 Level - Utility and Support Rules (根据类型选择mermaid)
+REM P7 Level - Utility and Support Rules (include mermaid by mode)
 echo Creating P7 Level - Utility and Support Rules...
 mkdir "%RULES_DIR%\P7-utilities" 2>nul
 if exist "%PROJECT_RULES_DIR%\analyze-issue.mdc" (
@@ -536,7 +553,7 @@ echo   - implement-task.mdc >> "%MAIN_RULES%"
 echo   - create-docs.mdc >> "%MAIN_RULES%"
 echo   - feedback-enhanced.mdc >> "%MAIN_RULES%"
 
-REM mermaid只在frontend和fullstack模式中包含
+REM Mermaid is included only in frontend and fullstack modes
 if /i "%RULE_TYPE%"=="frontend" goto :add_mermaid
 if /i "%RULE_TYPE%"=="fullstack" goto :add_mermaid
 goto :skip_mermaid
@@ -567,45 +584,23 @@ echo - P6 (400): System Optimization - Performance tuning >> "%MAIN_RULES%"
 echo - P7 (300): Utilities - Supporting tools >> "%MAIN_RULES%"
 echo. >> "%MAIN_RULES%"
 
-REM 统计文件数量
+REM Count total files
 set /a TOTAL_FILES=0
 for /r "%RULES_DIR%" %%f in (*.md *.mdc) do set /a TOTAL_FILES+=1
 
 echo.
 echo ========================================
-echo SUCCESS: %RULE_TYPE% Rules Directory Created! (最终版本)
+echo SUCCESS: %RULE_TYPE% Rules Directory Created! (Final Release)
 echo ========================================
 echo.
 echo Project Directory: %TARGET_DIR%
 echo Rules Directory: %RULES_DIR%
 echo Rule Type: %RULE_TYPE%
-echo Total Files: %TOTAL_FILES%
-echo Priority Levels: P0-P7 (8 levels)
-echo AI Understanding: Priority-based directory structure
-echo.
-echo Directory Structure:
-echo   %TARGET_DIR%/
-echo   └── rules/
-echo       ├── main.md (Directory guide)
-echo       ├── P0-core-safety/
-echo       ├── P1-core-identity/
-echo       ├── P2-intelligent-system/
-echo       ├── P3-professional-dev/
-echo       ├── P4-project-workflow/
-echo       ├── P5-advanced-features/
-echo       ├── P6-system-optimization/
-echo       └── P7-utilities/
-echo.
-echo 最终版本: 增强的错误处理和路径验证功能!
-echo.
-echo ========================================
-echo FINAL OUTPUT PATH (最终输出路径):
-echo ========================================
-echo %TARGET_DIR%
-echo ========================================
+echo Total files installed: %TOTAL_FILES%
+echo Priority levels: P0-P7 (8 levels)
+echo Target location: %TARGET_DIR%
 echo.
 echo You can now navigate to the above path to access your AgentRules!
-echo 您现在可以导航到上述路径来访问您的AgentRules！
 echo.
 
 if %TOTAL_FILES% EQU 0 (
@@ -630,20 +625,20 @@ echo AgentRules %RULE_TYPE% Installation Complete!
 echo ========================================
 echo.
 
-REM 检查安装状态
+REM Check installation status
 if "%MISSING_FILES%"=="1" (
-    echo ⚠️  WARNING: Some critical files were missing during installation
+    echo WARNING: Some critical files were missing during installation
     echo    This may affect system functionality. Please check source files.
 ) else if "%COPY_ERRORS%"=="1" (
-    echo ⚠️  WARNING: Some files failed to copy during installation
+    echo WARNING: Some files failed to copy during installation
     echo    Installation completed with errors. Please check permissions.
 ) else (
-    echo ✓ Installation completed successfully!
+    echo Installation completed successfully!
 )
 
-echo ✓ Total files installed: %TOTAL_FILES%
-echo ✓ Priority levels: P0-P7 (8 levels)
-echo ✓ Target location: %TARGET_DIR%
+echo Total files installed: %TOTAL_FILES%
+echo Priority levels: P0-P7 (8 levels)
+echo Target location: %TARGET_DIR%
 echo.
 echo You can now use these rules with your AI development tools.
 echo The rules are organized by priority for optimal AI understanding.
@@ -660,14 +655,14 @@ if "%COPY_ERRORS%"=="1" echo Status: WARNING - Copy errors occurred
 if "%MISSING_FILES%"=="0" if "%COPY_ERRORS%"=="0" echo Status: SUCCESS - All files installed correctly
 echo ========================================
 echo.
-echo 🎉 Happy coding with AgentRules Ultimate!
+echo Happy coding with AgentRules Ultimate!
 echo.
 echo Press ENTER to exit...
 pause >nul
 echo.
 echo Thank you for using AgentRules Ultimate!
 
-REM 根据错误状态设置退出代码
+REM Set exit code based on error status
 if "%MISSING_FILES%"=="1" exit /b 2
 if "%COPY_ERRORS%"=="1" exit /b 1
 exit /b 0

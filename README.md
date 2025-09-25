@@ -19,7 +19,7 @@
 
 ## 🚀 快速开始
 - **📚 MCP快速入门**: [MCP快速入门指南](docs/MCP-QUICK-START-GUIDE.md)
-- **📖 安装教程**: [安装教程](install-scripts/INSTALL-GUIDE.md)
+- **📖 安装教程**: [安装教程](install-scripts/INSTALL-GUIDE.md) | [中文版](install-scripts/INSTALL-GUIDE-CN.md)
 - **⚡ 3分钟上手**: [快速开始指南](#️⃣-步骤2一键安装到项目)
 
 ## ⚙️ 环境要求
@@ -41,7 +41,7 @@
 | **🎯 快速开始** | [⚡ 快速开始](#️⃣-步骤2一键安装到项目) • [📦 一键安装](#️⃣-步骤2一键安装到项目) • [✅ 安装验证](#-步骤3验证安装--激活规则) | 新手必看 |
 | **📖 使用指南** | [🏗️ 项目结构](#-项目结构) • [🎯 核心命令](#-核心命令预览) • [🤖 AI工具支持](#-支持的ai工具) | 日常使用 |
 | **🚀 高级功能** | [🔧 MCP工具集成](#-mcp智能工具集成) • [🧠 超级大脑系统](tutorials/super-brain-system-usage-guide.md) | 深度定制 |
-| **📋 详细文档** | [🗺️ 导航索引](docs/NAVIGATION-INDEX.md) • [环境配置](docs/ENVIRONMENT-SETUP.md) • [安装指南](install-scripts/INSTALL-GUIDE.md) • [故障排除](docs/MCP-TROUBLESHOOTING-GUIDE.md) | 完整参考 |
+| **📋 详细文档** | [🗺️ 导航索引](docs/NAVIGATION-INDEX.md) • [环境配置](docs/ENVIRONMENT-SETUP.md) • [安装指南](install-scripts/INSTALL-GUIDE.md) • [中文安装指南](install-scripts/INSTALL-GUIDE-CN.md) • [故障排除](docs/MCP-TROUBLESHOOTING-GUIDE.md) | 完整参考 |
 
 ## 🚀 快速开始（3分钟上手）
 
@@ -192,7 +192,8 @@ rules-2.4.1-optimized/
 ├── 🚀 安装脚本（企业级测试通过）
 │   ├── install-scripts/
 │   │   ├── install-ultra.bat               # 🎯 统一安装脚本（主要）
-│   │   ├── INSTALL-GUIDE.md                # 📚 傻瓜式安装教程
+│   │   ├── INSTALL-GUIDE.md                # 📚 傻瓜式安装教程（英文）
+│   │   ├── INSTALL-GUIDE-CN.md             # 📚 傻瓜式安装教程（中文）
 │   │   └── test-scripts/                   # 测试脚本目录
 │   │       ├── README.md                   # 测试说明文档
 │   │       └── comprehensive-test-report.bat # 综合测试报告

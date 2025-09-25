@@ -52,7 +52,7 @@
 
 > **💡 快速安装**: 参考 [README.md](../README.md) 的快速开始部分
 >
-> **📚 详细安装**: 参考 [傻瓜式安装指南](../install-scripts/INSTALL-GUIDE.md)
+> **📚 详细安装**: 参考 [傻瓜式安装指南](../install-scripts/INSTALL-GUIDE.md) | [中文版](../install-scripts/INSTALL-GUIDE-CN.md)
 >
 > **🎯 安装命令**: 
 > ```cmd
