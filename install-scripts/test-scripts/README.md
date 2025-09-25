@@ -21,7 +21,7 @@
   - ✅ **ASCII安全输出**: 完全ASCII英文输出，支持所有Windows环境
   - 🔧 **PowerShell清理**: 使用PowerShell方法处理Unicode字符
 
-**最新测试输出示例 (2025年1月)** ✅:
+**最新测试输出示例 (2025年9月)** ✅:
 ```
 ========================================
 AgentRules Comprehensive Detection Tool
