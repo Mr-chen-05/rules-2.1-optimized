@@ -77,10 +77,36 @@ alwaysApply: true
 
 ## 🔧 智能工作流
 
+### MCP智能检测和自动执行
+```yaml
+自动检测触发条件:
+  任务开始时: 自动检测MCP配置状态
+  文件操作时: 检查filesystem工具可用性
+  代码分析时: 验证codebase-retrieval状态
+  GitHub操作时: 确认github工具配置
+  跨平台需求时: 自动运行mcp-cross-platform-sync.ps1
+
+智能脚本调用:
+  检测脚本位置: 
+    - 项目根目录/mcp-tools/mcp-cross-platform-sync.ps1
+    - 源码目录/mcp-scripts/mcp-cross-platform-sync.ps1
+  
+  自动执行条件:
+    - 需要了解MCP配置状态时
+    - 检测到多个AI工具时
+    - 用户询问MCP相关问题时
+    - 配置不完整需要分析时
+  
+  执行方式:
+    - 静默执行: .\mcp-cross-platform-sync.ps1 -Action detect
+    - 获取结果: 解析输出并整合到AI响应中
+    - 智能分析: 基于检测结果提供建议
+```
+
 ### MCP优先使用策略
 ```yaml
 强制执行流程:
-  任务接收 → 扫描MCP工具 → 效率评估 → 选择最优方案 → 执行监控 → 动态调整
+  任务接收 → 智能检测MCP状态 → 扫描可用工具 → 效率评估 → 选择最优方案 → 执行监控 → 动态调整
 
 工具选择矩阵:
   文件操作: server-filesystem > 手动操作

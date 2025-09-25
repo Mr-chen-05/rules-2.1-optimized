@@ -25,21 +25,28 @@ alwaysApply: true
 ### 检测逻辑
 ```yaml
 检测步骤:
-  1. 扫描常见MCP配置路径:
+  1. 智能脚本检测:
+     - 优先查找项目中的mcp-tools/mcp-cross-platform-sync.ps1
+     - 如果存在，自动执行获取详细配置信息
+     - 解析脚本输出，获得完整的跨平台MCP状态
+  
+  2. 基础路径扫描:
      - ~/.claude/mcp_settings.json
      - %USERPROFILE%\AppData\Roaming\Trae\User\mcp.json
      - %USERPROFILE%\AppData\Roaming\Cursor\User\globalStorage\cursor.mcp\mcp_settings.json
   
-  2. 分析配置完整性:
+  3. 配置完整性分析:
      - 配置文件是否存在
      - 是否包含基础MCP服务器
      - 服务器配置是否有效
+     - 跨平台配置一致性
   
-  3. 评估功能缺失:
+  4. 功能缺失评估:
      - 缺少文件系统工具
      - 缺少记忆系统
      - 缺少代码检索能力
      - 缺少GitHub集成
+     - 跨平台配置差异
 ```
 
 ## 💡 智能提醒机制

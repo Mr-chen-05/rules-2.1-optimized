@@ -47,10 +47,24 @@ priority: 950
 ```yaml
 工具选择策略:
   强制优先级:
-    1. 扫描可用MCP工具
-    2. 评估任务适配度
-    3. 选择最优工具组合
-    4. 执行并监控效果
+    1. 智能检测MCP配置状态 (自动调用检测脚本)
+    2. 扫描可用MCP工具
+    3. 评估任务适配度
+    4. 选择最优工具组合
+    5. 执行并监控效果
+  
+  自动脚本执行:
+    触发条件:
+      - 任务涉及文件操作时
+      - 需要跨平台MCP分析时
+      - 用户询问MCP状态时
+      - 检测到配置问题时
+    
+    执行流程:
+      - 检查项目中是否存在mcp-tools/mcp-cross-platform-sync.ps1
+      - 如果存在，静默执行 -Action detect
+      - 解析输出结果，整合到AI决策中
+      - 基于检测结果优化MCP工具选择
   
   核心工具优先级:
     Tier_1: server-filesystem, server-memory, codebase-retrieval
