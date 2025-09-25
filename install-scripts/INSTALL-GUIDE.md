@@ -1,6 +1,6 @@
 # AgentRules Ultimate - Installation Guide
 
-> **🌐 Language Options**: [English](INSTALL-GUIDE.md) | [中文](INSTALL-GUIDE-CN.md)
+> **🌐 Language Options**: 🇺🇸 English (Current) | [🇨🇳 中文](INSTALL-GUIDE-CN.md)
 
 > **IMPORTANT NOTICE**: Now only one script is needed to handle all AI tools!
 >
