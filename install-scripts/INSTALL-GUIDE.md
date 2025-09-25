@@ -209,9 +209,9 @@ Your Project Directory/
 
 | Mode          | File Count | Contents                                                              |
 | ------------- | ---------- | --------------------------------------------------------------------- |
-| **Frontend**  | 31 files   | Frontend rules + mermaid chart support + 6 new core intelligent rules |
-| **Backend**   | 30 files   | Backend rules (no mermaid) + 6 new core intelligent rules             |
-| **Fullstack** | 33 files   | Frontend + backend complete rules + 6 new core intelligent rules      |
+| **Frontend**  | 38 files   | Frontend rules + mermaid chart support + 8 Phase 2+3 intelligent rules |
+| **Backend**   | 37 files   | Backend rules (no mermaid) + 8 Phase 2+3 intelligent rules             |
+| **Fullstack** | 41 files   | Frontend + backend complete rules + 8 Phase 2+3 intelligent rules      |
 
 ## How to Use Installed Rules?
 
@@ -397,9 +397,9 @@ install-scripts\install-ultra.bat
 
 **🚀 Three Development Modes**:
 
-- `frontend` - Frontend development (31 files)
-- `backend` - Backend development (30 files)
-- `fullstack` - Full-stack development (33 files, recommended)
+- `frontend` - Frontend development (38 files)
+- `backend` - Backend development (37 files)
+- `fullstack` - Full-stack development (41 files, recommended)
 
 **🔧 MCP Cross-Platform Management**:
 

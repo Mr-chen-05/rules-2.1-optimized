@@ -209,9 +209,9 @@ install-scripts\install-ultra.bat C:\my-project
 
 | 模式          | 文件数量  | 包含内容                                           |
 | ------------- | --------- | -------------------------------------------------- |
-| **Frontend**  | 31 个文件 | 前端规则 + mermaid 图表支持 + 6 个新增核心智能规则 |
-| **Backend**   | 30 个文件 | 后端规则（不含 mermaid）+ 6 个新增核心智能规则     |
-| **Fullstack** | 33 个文件 | 前端 + 后端完整规则 + 6 个新增核心智能规则         |
+| **Frontend**  | 38 个文件 | 前端规则 + mermaid 图表支持 + 8 个Phase 2+3智能规则 |
+| **Backend**   | 37 个文件 | 后端规则（不含 mermaid）+ 8 个Phase 2+3智能规则     |
+| **Fullstack** | 41 个文件 | 前端 + 后端完整规则 + 8 个Phase 2+3智能规则         |
 
 ## 如何使用安装的规则？
 
@@ -397,9 +397,9 @@ install-scripts\install-ultra.bat
 
 **🚀 三种开发模式**:
 
-- `frontend` - 前端开发（31 个文件）
-- `backend` - 后端开发（30 个文件）
-- `fullstack` - 全栈开发（33 个文件，推荐）
+- `frontend` - 前端开发（38 个文件）
+- `backend` - 后端开发（37 个文件）
+- `fullstack` - 全栈开发（41 个文件，推荐）
 
 **🔧 MCP 跨平台管理**:
 

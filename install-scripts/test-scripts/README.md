@@ -100,9 +100,9 @@ comprehensive-test-report.bat C:\path\to\your\project
 - ❤️ **0-49分**: 差 - 规则严重不完整
 
 **模式检测标准**:
-- **Frontend模式**: 31个文件 (包含mermaid.mdc + frontend-dev.mdc)
-- **Backend模式**: 30个文件 (包含backend-dev.mdc，无mermaid.mdc)  
-- **Fullstack模式**: 33个文件 (包含所有关键文件)
+- **Frontend模式**: 38个文件 (包含mermaid.mdc + frontend-dev.mdc + 8个Phase 2+3智能规则)
+- **Backend模式**: 37个文件 (包含backend-dev.mdc，无mermaid.mdc + 8个Phase 2+3智能规则)
+- **Fullstack模式**: 41个文件 (包含所有关键文件 + 8个Phase 2+3智能规则)
 
 ## 更新记录
 

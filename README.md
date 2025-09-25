@@ -1,6 +1,6 @@
-# 🎯 Rules 2.4.2 Intelligent - 下一代智能AI助手规则体系
+# 🎯 Rules 2.5.0 Phase 3 - 下一代智能AI助手规则体系
 
-> **🏆 PERFECT (A++)评级** | **✅ 100%测试通过** | **🚀 生产就绪** | **💬 完整MCP支持** | **🧠 智能化升级**
+> **🏆 PERFECT (A++)评级** | **✅ 100%测试通过** | **🚀 生产就绪** | **💬 完整MCP支持** | **🧠 AI智能化** | **🎯 41个规则**
 
 ## 📖 项目简介
 
@@ -221,23 +221,34 @@ rules-2.4.2-optimized/
 │   │   ├── rule-conflict-resolution.mdc     # ⚖️ 规则冲突解决
 │   │   ├── rule-redundancy-optimization.mdc # 🔧 规则冗余优化
 │   │   └── system-integration-config.mdc    # ⚙️ 系统集成配置
-│   └── project-rules/                      # 🎯 模块化项目规则
-│       ├── frontend-dev.mdc                # 🎨 前端开发工作流
-│       ├── backend-dev.mdc                 # 🔧 后端开发工作流
-│       ├── feedback-enhanced.mdc           # 💬 智能反馈机制
-│       ├── code-review.mdc                 # 👀 代码审查
-│       ├── mcp-intelligent-strategy.mdc    # 🧠 MCP智能使用策略
-│       ├── ai-powered-code-review.mdc      # 🤖 AI驱动代码审查
-│       ├── analyze-issue.mdc               # 🔍 问题分析
-│       ├── bug-fix.mdc                     # 🐛 错误修复
-│       ├── commit.mdc                      # 📝 提交规范
-│       ├── create-docs.mdc                 # 📚 文档创建
-│       ├── implement-task.mdc              # ⚡ 任务实现
-│       ├── intelligent-project-management.mdc # 📊 智能项目管理
-│       ├── intelligent-workflow-orchestration.mdc # 🎼 智能工作流编排
-│       ├── mcp-unified-management.mdc      # 🔧 MCP统一管理
-│       ├── mcp-zero-config-detection.mdc   # 🔍 MCP零配置检测
-│       └── mermaid.mdc                     # 📊 Mermaid图表
+│   └── project-rules/                      # 🎯 模块化项目规则 (24个)
+│       ├── 🚀 Phase 3 智能补强规则 (3个)
+│       │   ├── context-loader.mdc          # 🧠 智能项目上下文加载器
+│       │   ├── custom-command-builder.mdc  # 🛠️ 智能自定义命令构建器
+│       │   └── mcp-debugging-enhanced.mdc  # 🔧 增强MCP调试工具
+│       ├── ⚡ Phase 2 核心工作流规则 (5个)
+│       │   ├── commit-fast.mdc             # ⚡ AI智能快速提交工作流
+│       │   ├── changelog-management.mdc    # 📋 智能变更日志管理
+│       │   ├── code-quality-check.mdc      # 🔍 跨语言代码质量检查
+│       │   ├── root-cause-analysis.mdc     # 🔧 AI根因分析方法
+│       │   └── systematic-debugging.mdc    # 🐛 系统化调试工具
+│       └── 📋 基础项目规则 (16个)
+│           ├── frontend-dev.mdc            # 🎨 前端开发工作流
+│           ├── backend-dev.mdc             # 🔧 后端开发工作流
+│           ├── feedback-enhanced.mdc       # 💬 智能反馈机制
+│           ├── code-review.mdc             # 👀 代码审查
+│           ├── mcp-intelligent-strategy.mdc # 🧠 MCP智能使用策略
+│           ├── ai-powered-code-review.mdc  # 🤖 AI驱动代码审查
+│           ├── analyze-issue.mdc           # 🔍 问题分析
+│           ├── bug-fix.mdc                 # 🐛 错误修复
+│           ├── commit.mdc                  # 📝 提交规范
+│           ├── create-docs.mdc             # 📚 文档创建
+│           ├── implement-task.mdc          # ⚡ 任务实现
+│           ├── intelligent-project-management.mdc # 📊 智能项目管理
+│           ├── intelligent-workflow-orchestration.mdc # 🎼 智能工作流编排
+│           ├── mcp-unified-management.mdc  # 🔧 MCP统一管理
+│           ├── mcp-zero-config-detection.mdc # 🔍 MCP零配置检测
+│           └── mermaid.mdc                 # 📊 Mermaid图表
 │
 ├── 📚 核心教程和文档
 │   ├── tutorials/                          # 🔥 核心使用教程（必看！）

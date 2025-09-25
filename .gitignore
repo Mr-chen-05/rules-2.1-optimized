@@ -88,6 +88,7 @@ demo-project/
 temp-install/
 .test-*
 DOCUMENTATION-ANALYSIS.md
+plan/
 
 #工具脚本
 tools/
