@@ -3,7 +3,7 @@ type: "always_apply"
 description: "后端开发AI助手规则 - 智能化企业级标准"
 globs: ["**/*"]
 alwaysApply: true
-priority: 800
+priority: 700
 ---
 
 # 🚀 后端开发AI助手规则 - 智能化升级版

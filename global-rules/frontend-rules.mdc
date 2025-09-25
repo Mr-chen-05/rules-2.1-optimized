@@ -3,7 +3,7 @@ type: "always_apply"
 description: "前端开发AI助手规则 - 智能化企业级标准，集成最新前端技术栈和智能MCP工具编排"
 globs: ["**/*"]
 alwaysApply: true
-priority: 800
+priority: 700
 ---
 
 # 🎨 前端开发 AI 助手规则 - 智能化升级版
