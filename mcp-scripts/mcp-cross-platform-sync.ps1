@@ -114,7 +114,7 @@ function Analyze-MCPConfig {
 # Detect all platforms MCP status
 function Detect-AllMCPStatus {
     Write-ColorOutput "`nDetecting MCP configuration status for all AI tools..." "Cyan"
-    Write-ColorOutput "=" * 60 "Gray"
+    Write-ColorOutput ("=" * 60) "Gray"
     
     $installedTools = Get-InstalledAITools
     $allAnalysis = @{}
@@ -126,7 +126,7 @@ function Detect-AllMCPStatus {
     
     Write-ColorOutput "`nInstalled AI Tools:" "Yellow"
     foreach ($tool in $installedTools) {
-        Write-ColorOutput "  • $($MCPConfigs[$tool].Name)" "White"
+        Write-ColorOutput "  * $($MCPConfigs[$tool].Name)" "White"
     }
     
     Write-ColorOutput "`nMCP Configuration Analysis:" "Yellow"
@@ -186,8 +186,8 @@ function Detect-AllMCPStatus {
         }
         
         Write-ColorOutput "`nSuggested Actions:" "Cyan"
-        Write-ColorOutput "  • Run: .\mcp-cross-platform-sync.ps1 -Action sync -SourcePlatform $bestTool" "White"
-        Write-ColorOutput "  • Or use AI command: 'Sync MCP Configuration'" "White"
+        Write-ColorOutput "  * Run: .\mcp-cross-platform-sync.ps1 -Action sync -SourcePlatform $bestTool" "White"
+        Write-ColorOutput "  * Or use AI command: 'Sync MCP Configuration'" "White"
     } else {
         Write-ColorOutput "  No MCP servers configured on any platform" "Red"
         Write-ColorOutput "  Suggestion: Configure MCP environment on one platform first" "Yellow"
