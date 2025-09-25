@@ -1,0 +1,568 @@
+---
+type: "intelligent_workflow_rule"
+description: "AI-powered cross-language code quality check with intelligent analysis - AI驱动的跨语言代码质量检查"
+globs: ["**/*"]
+priority: 640
+alwaysApply: true
+integrations: ["super-brain-system", "mcp-intelligent-strategy", "intelligent-project-management", "commit-fast", "changelog-management"]
+---
+
+# 🔍 Code Quality Check - 智能代码质量检查
+
+AI驱动的跨语言代码质量检查系统，集成智能分析引擎、MCP工具自动化和超级大脑系统推荐。
+
+## 🧠 AI Intelligence Core - AI智能核心
+
+### 智能激活条件
+```yaml
+自动激活场景:
+  - 检测到代码文件变更需要质量检查
+  - 用户执行 "/quality-check" 命令
+  - commit-fast提交前自动触发
+  - 超级大脑系统推荐质量检查
+  - 项目进入代码审查阶段
+
+智能分析维度:
+  - 代码复杂度和可维护性 (30%)
+  - 安全漏洞和潜在风险 (25%)
+  - 性能问题和优化机会 (20%)
+  - 代码规范和最佳实践 (15%)
+  - 测试覆盖率和质量 (10%)
+```
+
+## 🚀 Commands - 智能命令
+
+- `/quality-check` - AI智能质量检查（推荐）
+- `/quality-check --language <lang>` - 指定语言检查
+- `/quality-check --severity <level>` - 指定严重级别 (critical/high/medium/low)
+- `/quality-check --fix` - 自动修复可修复的问题
+- `/quality-check --report` - 生成详细质量报告
+- `/quality-check --baseline` - 建立质量基线
+
+## ✨ AI-Powered Features - AI驱动功能
+
+### 🤖 智能代码分析引擎
+```yaml
+多语言支持:
+  前端语言:
+    - JavaScript/TypeScript (ES6+, React, Vue, Angular)
+    - HTML5/CSS3 (响应式设计, 可访问性)
+    - SCSS/SASS/Less (预处理器优化)
+
+  后端语言:
+    - Python (Django, Flask, FastAPI)
+    - Node.js (Express, Koa, NestJS)
+    - Java (Spring Boot, Maven, Gradle)
+    - C# (.NET Core, ASP.NET)
+    - Go (Gin, Echo, 微服务)
+
+  数据库和配置:
+    - SQL (MySQL, PostgreSQL, SQLite)
+    - NoSQL (MongoDB, Redis)
+    - YAML/JSON/XML 配置文件
+    - Docker/Kubernetes 配置
+
+智能分析能力:
+  - 语法和语义分析
+  - 代码复杂度计算
+  - 安全漏洞扫描
+  - 性能瓶颈识别
+  - 代码异味检测
+  - 依赖关系分析
+```
+
+### 🔧 MCP工具智能编排
+```yaml
+工具链集成:
+  代码分析工具:
+    - ESLint/Prettier (JavaScript/TypeScript)
+    - Pylint/Black (Python)
+    - SonarQube (多语言静态分析)
+    - CodeQL (安全分析)
+    - Bandit (Python安全扫描)
+
+  性能分析工具:
+    - Lighthouse (前端性能)
+    - Profiler (后端性能)
+    - Memory Analyzer (内存分析)
+    - Load Testing (负载测试)
+
+  自动化修复:
+    - 代码格式化自动修复
+    - 简单语法错误修复
+    - 导入语句优化
+    - 代码风格统一
+```
+
+## 📋 Quality Check Categories - 质量检查分类
+
+### 🔴 Critical Issues - 致命问题
+```yaml
+安全漏洞:
+  - SQL注入风险
+  - XSS跨站脚本攻击
+  - CSRF跨站请求伪造
+  - 敏感信息泄露
+  - 不安全的加密实现
+
+架构问题:
+  - 循环依赖
+  - 紧耦合设计
+  - 单点故障
+  - 资源泄露
+  - 死锁风险
+```
+
+### 🟠 High Priority - 高优先级
+```yaml
+性能问题:
+  - 内存泄露
+  - 无限循环
+  - 低效算法
+  - 数据库N+1查询
+  - 大文件处理问题
+
+可维护性:
+  - 代码重复率过高
+  - 函数复杂度过高
+  - 类职责不清
+  - 命名不规范
+  - 缺少文档注释
+```
+
+### 🟡 Medium Priority - 中优先级
+```yaml
+代码规范:
+  - 代码风格不一致
+  - 变量命名不规范
+  - 注释不充分
+  - 文件结构混乱
+  - 版本控制问题
+
+测试质量:
+  - 测试覆盖率不足
+  - 测试用例质量低
+  - 缺少集成测试
+  - 测试数据不完整
+  - 测试环境不一致
+```
+
+### 🟢 Low Priority - 低优先级
+```yaml
+优化建议:
+  - 代码简化机会
+  - 性能优化建议
+  - 新技术应用建议
+  - 重构机会识别
+  - 最佳实践推荐
+```
+
+## 🔄 AI Workflow Process - AI工作流程
+
+### Phase 1: 智能扫描阶段
+```yaml
+Step 1 - 环境检测:
+  - 识别项目类型和技术栈
+  - 检测代码文件和结构
+  - 分析项目配置和依赖
+  - 加载相应的检查规则
+
+Step 2 - 文件分析:
+  - 扫描所有相关代码文件
+  - 识别文件类型和语言
+  - 分析文件大小和复杂度
+  - 建立文件依赖关系图
+
+Step 3 - 智能分类:
+  - 按语言分类文件
+  - 按模块分组检查
+  - 识别关键文件和路径
+  - 确定检查优先级
+```
+
+### Phase 2: 深度分析阶段
+```yaml
+Step 4 - 多维度分析:
+  - 语法和语义检查
+  - 安全漏洞扫描
+  - 性能问题分析
+  - 代码质量评估
+
+Step 5 - AI智能评分:
+  - 计算代码质量分数
+  - 生成问题严重级别
+  - 识别修复优先级
+  - 提供改进建议
+
+Step 6 - 关联分析:
+  - 分析问题间的关联性
+  - 识别根本原因
+  - 评估修复影响范围
+  - 生成修复计划
+```
+
+### Phase 3: 报告生成阶段
+```yaml
+Step 7 - 智能报告:
+  - 生成详细质量报告
+  - 创建问题修复建议
+  - 提供代码改进方案
+  - 生成质量趋势分析
+
+Step 8 - 自动修复:
+  - 执行可自动修复的问题
+  - 生成修复代码建议
+  - 创建重构方案
+  - 更新项目配置
+```
+
+## 🧠 Super Brain Integration - 超级大脑集成
+
+### 智能推荐引擎
+```yaml
+质量标准推荐:
+  - 基于项目类型推荐质量标准
+  - 根据团队经验调整检查级别
+  - 建议最佳实践和工具配置
+  - 提供个性化质量目标
+
+学习和优化:
+  - 学习项目特定的质量模式
+  - 记录常见问题和解决方案
+  - 优化检查规则和阈值
+  - 积累质量改进经验
+
+项目管理集成:
+  - 根据项目阶段调整检查重点
+  - 集成到开发工作流中
+  - 提供质量门禁建议
+  - 支持持续集成流程
+```
+
+### 与commit-fast协同
+```yaml
+提交前检查:
+  - commit-fast触发自动质量检查
+  - 阻止低质量代码提交
+  - 提供快速修复建议
+  - 集成到提交工作流
+
+质量门禁:
+  - 设置质量阈值
+  - 自动拒绝不合格提交
+  - 生成质量改进任务
+  - 通知相关开发人员
+```
+
+## 🎯 Language-Specific Rules - 语言特定规则
+
+### JavaScript/TypeScript
+```yaml
+检查重点:
+  - ESLint规则合规性
+  - TypeScript类型安全
+  - React/Vue组件最佳实践
+  - 异步代码处理
+  - 内存泄露检测
+
+工具集成:
+  - ESLint + Prettier
+  - TypeScript Compiler
+  - JSHint/JSLint
+  - Webpack Bundle Analyzer
+  - Chrome DevTools
+```
+
+### Python
+```yaml
+检查重点:
+  - PEP 8代码风格
+  - 类型注解完整性
+  - Django/Flask安全实践
+  - 性能优化机会
+  - 依赖安全检查
+
+工具集成:
+  - Pylint + Black
+  - mypy (类型检查)
+  - Bandit (安全扫描)
+  - pytest (测试质量)
+  - Safety (依赖安全)
+```
+
+### Java
+```yaml
+检查重点:
+  - Spring Boot最佳实践
+  - 内存管理和GC优化
+  - 线程安全和并发
+  - 设计模式应用
+  - Maven/Gradle配置
+
+工具集成:
+  - SpotBugs + PMD
+  - Checkstyle
+  - JaCoCo (覆盖率)
+  - SonarQube
+  - OWASP Dependency Check
+```
+
+## 📊 Quality Metrics - 质量指标
+
+### 代码质量评分
+```yaml
+评分维度:
+  - 可维护性指数 (25%)
+  - 安全性评分 (25%)
+  - 性能效率 (20%)
+  - 可靠性指标 (15%)
+  - 可测试性 (15%)
+
+评分等级:
+  - A级 (90-100分): 优秀
+  - B级 (80-89分): 良好
+  - C级 (70-79分): 一般
+  - D级 (60-69分): 需改进
+  - F级 (<60分): 不合格
+```
+
+### 趋势分析
+```yaml
+质量趋势:
+  - 代码质量变化趋势
+  - 问题修复效率
+  - 新增问题统计
+  - 团队质量改进进度
+
+基准对比:
+  - 行业标准对比
+  - 历史版本对比
+  - 团队平均水平
+  - 最佳实践差距
+```
+
+## 🔧 Auto-Fix Capabilities - 自动修复能力
+
+### 可自动修复的问题
+```yaml
+格式化问题:
+  - 代码缩进和空格
+  - 行尾字符统一
+  - 导入语句排序
+  - 变量命名规范
+
+简单语法问题:
+  - 缺少分号
+  - 括号匹配
+  - 引号统一
+  - 未使用变量清理
+
+配置优化:
+  - 依赖版本更新
+  - 配置文件格式化
+  - 环境变量优化
+  - 构建脚本改进
+```
+
+### 修复建议生成
+```yaml
+智能建议:
+  - 提供多种修复方案
+  - 评估修复影响范围
+  - 生成重构建议
+  - 推荐最佳实践
+
+代码示例:
+  - 提供修复前后对比
+  - 生成示例代码
+  - 解释修复原理
+  - 提供相关文档链接
+```
+
+## 🚨 Error Handling & Safety - 错误处理和安全保障
+
+### 统一错误处理机制
+```yaml
+错误分类:
+  Level 1 - 致命错误:
+    - 代码分析工具不可用
+    - 项目文件结构损坏
+    - 内存不足无法分析
+    - 关键依赖缺失
+
+  Level 2 - 严重错误:
+    - 部分文件分析失败
+    - 工具配置错误
+    - 网络连接问题
+    - 权限访问受限
+
+  Level 3 - 一般错误:
+    - 单个文件检查失败
+    - 工具版本不兼容
+    - 配置参数错误
+    - 临时文件创建失败
+
+  Level 4 - 警告信息:
+    - 检查规则过时
+    - 性能检查超时
+    - 部分功能不可用
+    - 建议更新工具
+```
+
+### 错误恢复策略
+```yaml
+自动恢复:
+  - 工具重启和重试机制
+  - 备用分析引擎切换
+  - 缓存数据恢复
+  - 降级检查模式
+
+人工干预:
+  - 致命错误立即通知
+  - 提供详细错误信息和解决方案
+  - 支持手动配置修复
+  - 集成feedback-enhanced反馈
+
+日志记录:
+  - 完整的分析过程日志
+  - 错误堆栈和上下文
+  - 工具执行状态
+  - 性能指标记录
+```
+
+### 安全保障机制
+```yaml
+数据安全:
+  - 敏感代码信息保护
+  - 分析结果加密存储
+  - 访问权限控制
+  - 审计日志记录
+
+操作安全:
+  - 自动修复前备份
+  - 危险操作确认
+  - 回滚机制支持
+  - 权限验证检查
+
+与其他规则协调:
+  - 与commit-fast共享错误处理
+  - 与changelog-management协调日志
+  - 统一的安全保障措施
+  - 集成的恢复策略
+```
+
+## ⚡ Performance Optimization - 性能优化
+
+### 智能缓存机制
+```yaml
+缓存策略:
+  - 文件分析结果缓存
+  - 工具执行结果缓存
+  - 配置解析结果缓存
+  - 依赖关系图缓存
+
+优化技术:
+  - 增量分析算法
+  - 并行文件处理
+  - 智能跳过未变更文件
+  - 资源池管理
+```
+
+### 执行效率目标
+```yaml
+性能指标:
+  - 单文件分析: <2秒
+  - 项目全量检查: <30秒 (中型项目)
+  - 增量检查: <5秒
+  - 报告生成: <3秒
+
+优化措施:
+  - 异步并行处理
+  - 智能文件过滤
+  - 缓存命中优化
+  - 内存使用优化
+```
+
+## 📋 Usage Examples - 使用示例
+
+### 基础质量检查
+```bash
+# AI智能质量检查
+/quality-check
+
+# 输出示例:
+# 🔍 代码质量检查完成
+# 
+# 📊 质量评分: B级 (85分)
+# 🔴 致命问题: 0个
+# 🟠 高优先级: 3个
+# 🟡 中优先级: 12个
+# 🟢 低优先级: 8个
+# 
+# 🔧 可自动修复: 15个问题
+# 📄 详细报告: ./quality-report.html
+```
+
+### 语言特定检查
+```bash
+# Python代码检查
+/quality-check --language python
+
+# JavaScript/TypeScript检查
+/quality-check --language javascript
+
+# 多语言项目检查
+/quality-check --language all
+```
+
+### 自动修复模式
+```bash
+# 自动修复可修复的问题
+/quality-check --fix
+
+# 输出示例:
+# 🔧 自动修复完成
+# ✅ 修复了15个问题
+# - 代码格式化: 8个
+# - 导入优化: 4个
+# - 变量清理: 3个
+# 
+# 📋 需要手动处理: 8个问题
+# 📄 修复报告: ./fix-report.md
+```
+
+## 🔗 Integration Points - 集成点
+
+### 与现有规则集成
+```yaml
+commit-fast集成:
+  - 提交前自动触发质量检查
+  - 质量不合格阻止提交
+  - 集成到快速提交工作流
+  - 提供质量改进建议
+
+changelog-management集成:
+  - 质量改进记录到变更日志
+  - 生成质量趋势报告
+  - 集成到版本发布流程
+  - 质量指标历史追踪
+
+super-brain-system集成:
+  - 智能质量标准推荐
+  - 个性化检查配置
+  - 学习项目质量模式
+  - 质量改进路径规划
+
+mcp-intelligent-strategy集成:
+  - 智能工具选择和配置
+  - 自动化检查流程
+  - 工具故障转移
+  - 性能优化建议
+```
+
+---
+
+**🎯 规则优先级**: 640 (与commit-fast和changelog-management协同)  
+**🔄 更新频率**: 基于代码变更和质量反馈持续优化  
+**📊 成功指标**: 代码质量评分提升30%+, 问题检出率>95%, 修复效率提升50%+  
+**🧠 AI模型**: 集成多语言代码分析和质量评估引擎

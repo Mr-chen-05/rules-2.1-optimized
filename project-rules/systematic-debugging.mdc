@@ -1,0 +1,569 @@
+---
+type: "intelligent_workflow_rule"
+description: "AI-powered systematic debugging with intelligent troubleshooting - AI驱动的系统化调试方法"
+globs: ["**/*"]
+priority: 625
+alwaysApply: true
+integrations: ["super-brain-system", "mcp-intelligent-strategy", "intelligent-project-management", "commit-fast", "changelog-management", "code-quality-check", "root-cause-analysis"]
+---
+
+# 🐛 Systematic Debugging - 智能系统化调试
+
+AI驱动的系统化调试工具，集成智能故障诊断、自动化调试流程和解决方案推荐引擎。
+
+## 🧠 AI Intelligence Core - AI智能核心
+
+### 智能激活条件
+```yaml
+自动激活场景:
+  - 检测到代码执行错误或异常
+  - 用户执行 "/debug" 命令
+  - code-quality-check发现严重Bug
+  - root-cause-analysis需要深度调试
+  - 超级大脑系统推荐系统化调试
+
+智能分析维度:
+  - 错误类型和严重程度 (30%)
+  - 代码复杂度和调试难度 (25%)
+  - 系统环境和依赖关系 (20%)
+  - 历史调试经验匹配 (15%)
+  - 调试工具可用性 (10%)
+```
+
+## 🚀 Commands - 智能命令
+
+- `/debug` - AI智能系统化调试（推荐）
+- `/debug --error <type>` - 指定错误类型调试
+- `/debug --trace` - 执行跟踪调试
+- `/debug --performance` - 性能调试模式
+- `/debug --security` - 安全问题调试
+- `/debug --auto-fix` - 自动修复调试
+
+## ✨ AI-Powered Features - AI驱动功能
+
+### 🤖 智能故障诊断引擎
+```yaml
+错误类型识别:
+  语法错误:
+    - 编译时错误
+    - 语法解析错误
+    - 类型不匹配
+    - 缺少依赖
+
+  运行时错误:
+    - 空指针异常
+    - 数组越界
+    - 内存泄露
+    - 死锁问题
+
+  逻辑错误:
+    - 算法逻辑错误
+    - 业务逻辑缺陷
+    - 数据处理错误
+    - 状态管理问题
+
+  环境错误:
+    - 配置错误
+    - 依赖版本冲突
+    - 权限问题
+    - 网络连接问题
+
+智能诊断能力:
+  - 错误堆栈智能分析
+  - 异常模式识别
+  - 相关代码定位
+  - 影响范围评估
+```
+
+### 🔧 自动化调试工具集成
+```yaml
+调试工具编排:
+  前端调试:
+    - Chrome DevTools
+    - React Developer Tools
+    - Vue.js DevTools
+    - Browser Console
+
+  后端调试:
+    - Node.js Inspector
+    - Python Debugger (pdb)
+    - Java Debugger (jdb)
+    - .NET Debugger
+
+  数据库调试:
+    - SQL Query Analyzer
+    - Database Profiler
+    - Connection Pool Monitor
+    - Transaction Analyzer
+
+  性能调试:
+    - Memory Profiler
+    - CPU Profiler
+    - Network Monitor
+    - I/O Analyzer
+```
+
+## 📋 Debugging Categories - 调试分类
+
+### 🔴 Critical Debugging - 致命调试
+```yaml
+系统崩溃:
+  - 应用程序崩溃
+  - 服务器宕机
+  - 数据库连接失败
+  - 内存溢出
+
+调试策略:
+  - 立即错误定位
+  - 紧急恢复方案
+  - 核心转储分析
+  - 系统状态快照
+```
+
+### 🟠 High Priority Debugging - 高优先级调试
+```yaml
+功能故障:
+  - 核心功能异常
+  - API接口错误
+  - 数据处理失败
+  - 用户操作阻塞
+
+调试策略:
+  - 功能流程跟踪
+  - 数据流分析
+  - 接口调用监控
+  - 用户行为重现
+```
+
+### 🟡 Medium Priority Debugging - 中优先级调试
+```yaml
+性能问题:
+  - 响应时间慢
+  - 内存使用高
+  - CPU占用率高
+  - 网络延迟
+
+调试策略:
+  - 性能瓶颈分析
+  - 资源使用监控
+  - 代码热点识别
+  - 优化建议生成
+```
+
+### 🟢 Low Priority Debugging - 低优先级调试
+```yaml
+体验问题:
+  - 界面显示异常
+  - 交互响应慢
+  - 功能使用不便
+  - 错误提示不清
+
+调试策略:
+  - 用户体验分析
+  - 界面渲染检查
+  - 交互流程优化
+  - 错误信息改进
+```
+
+## 🔄 AI Workflow Process - AI工作流程
+
+### Phase 1: 问题识别阶段
+```yaml
+Step 1 - 错误收集:
+  - 收集错误信息和堆栈
+  - 记录用户操作步骤
+  - 获取系统环境信息
+  - 建立问题重现环境
+
+Step 2 - 智能分类:
+  - AI自动错误分类
+  - 确定调试优先级
+  - 识别相关系统组件
+  - 评估影响范围
+
+Step 3 - 工具选择:
+  - 智能选择调试工具
+  - 配置调试环境
+  - 准备调试数据
+  - 建立调试计划
+```
+
+### Phase 2: 深度调试阶段
+```yaml
+Step 4 - 系统化调试:
+  - 执行分层调试策略
+  - 进行断点和跟踪分析
+  - 监控系统状态变化
+  - 收集调试数据
+
+Step 5 - 数据分析:
+  - 分析调试日志和数据
+  - 识别异常模式和趋势
+  - 定位问题根本原因
+  - 验证调试假设
+
+Step 6 - 解决方案验证:
+  - 设计修复方案
+  - 验证修复效果
+  - 测试回归风险
+  - 确认问题解决
+```
+
+### Phase 3: 知识积累阶段
+```yaml
+Step 7 - 经验记录:
+  - 记录调试过程和方法
+  - 总结有效的调试策略
+  - 更新调试知识库
+  - 分享调试经验
+
+Step 8 - 预防改进:
+  - 设计预防性措施
+  - 改进监控和预警
+  - 优化开发流程
+  - 更新最佳实践
+```
+
+## 🧠 Super Brain Integration - 超级大脑集成
+
+### 智能推荐引擎
+```yaml
+调试策略推荐:
+  - 基于错误类型推荐调试方法
+  - 根据项目特点选择调试工具
+  - 提供个性化调试建议
+  - 优化调试流程效率
+
+学习和优化:
+  - 学习项目特定的调试模式
+  - 积累调试经验和技巧
+  - 优化调试工具配置
+  - 改进调试策略准确性
+
+项目管理集成:
+  - 根据项目阶段调整调试重点
+  - 集成到开发工作流
+  - 提供调试时间估算
+  - 支持调试资源规划
+```
+
+### 与其他规则协同
+```yaml
+root-cause-analysis协同:
+  - 深度调试支持根因分析
+  - 验证根因分析假设
+  - 提供详细的技术证据
+  - 完善解决方案设计
+
+code-quality-check协同:
+  - 调试质量检查发现的问题
+  - 验证代码修复效果
+  - 提供调试最佳实践
+  - 改进代码质量标准
+
+commit-fast协同:
+  - 调试提交过程中的问题
+  - 优化提交工作流
+  - 预防提交相关错误
+  - 改进提交质量
+
+changelog-management协同:
+  - 记录调试过程和结果
+  - 跟踪问题修复历史
+  - 生成调试报告
+  - 维护调试知识库
+```
+
+## 🛠️ Debugging Tools Integration - 调试工具集成
+
+### 前端调试工具
+```yaml
+浏览器调试:
+  - Chrome DevTools集成
+  - Firefox Developer Tools
+  - Safari Web Inspector
+  - Edge DevTools
+
+框架特定:
+  - React Developer Tools
+  - Vue.js DevTools
+  - Angular DevTools
+  - Redux DevTools
+
+性能调试:
+  - Lighthouse性能分析
+  - WebPageTest集成
+  - Performance Monitor
+  - Memory Heap Analyzer
+```
+
+### 后端调试工具
+```yaml
+语言特定:
+  - Node.js Inspector
+  - Python pdb/ipdb
+  - Java JDB/IntelliJ
+  - C# Visual Studio Debugger
+
+数据库调试:
+  - SQL Profiler
+  - Query Execution Plan
+  - Database Connection Monitor
+  - Transaction Log Analyzer
+
+系统调试:
+  - Process Monitor
+  - System Performance Counter
+  - Network Packet Analyzer
+  - Log File Analyzer
+```
+
+## 📊 Debugging Metrics - 调试指标
+
+### 调试效率指标
+```yaml
+时间指标:
+  - 问题定位时间
+  - 调试过程时间
+  - 修复验证时间
+  - 总体解决时间
+
+质量指标:
+  - 问题定位准确率
+  - 修复成功率
+  - 回归问题率
+  - 用户满意度
+
+学习指标:
+  - 调试经验积累
+  - 工具使用熟练度
+  - 调试策略优化
+  - 知识库完善度
+```
+
+### 调试成功标准
+```yaml
+问题解决:
+  - 问题完全修复
+  - 功能正常运行
+  - 性能指标达标
+  - 用户验收通过
+
+知识积累:
+  - 调试过程完整记录
+  - 解决方案文档化
+  - 经验知识更新
+  - 预防措施建立
+```
+
+## 🚨 Error Handling & Safety - 错误处理和安全保障
+
+### 统一错误处理机制
+```yaml
+错误分类:
+  Level 1 - 致命错误:
+    - 调试工具完全不可用
+    - 系统环境严重损坏
+    - 关键数据丢失风险
+    - 安全漏洞暴露
+
+  Level 2 - 严重错误:
+    - 调试过程中断
+    - 工具配置错误
+    - 数据访问权限问题
+    - 网络连接失败
+
+  Level 3 - 一般错误:
+    - 单个工具故障
+    - 部分数据缺失
+    - 配置参数错误
+    - 临时文件问题
+
+  Level 4 - 警告信息:
+    - 调试效率低下
+    - 工具版本过时
+    - 配置建议优化
+    - 最佳实践提醒
+```
+
+### 调试安全保障
+```yaml
+数据安全:
+  - 调试数据加密保护
+  - 敏感信息自动过滤
+  - 调试日志安全存储
+  - 访问权限控制
+
+操作安全:
+  - 调试操作审计
+  - 危险操作确认
+  - 自动备份机制
+  - 回滚操作支持
+
+与其他规则协调:
+  - 与所有规则共享错误处理机制
+  - 统一的安全保障措施
+  - 协调的日志记录系统
+  - 集成的恢复策略
+```
+
+## ⚡ Performance Optimization - 性能优化
+
+### 智能缓存机制
+```yaml
+缓存策略:
+  - 调试会话状态缓存
+  - 工具配置缓存
+  - 调试结果缓存
+  - 知识库查询缓存
+
+优化技术:
+  - 并行调试处理
+  - 智能断点管理
+  - 资源使用优化
+  - 调试数据压缩
+```
+
+### 执行效率目标
+```yaml
+性能指标:
+  - 调试环境启动: <5秒
+  - 问题定位: <20秒
+  - 解决方案生成: <10秒
+  - 总体调试流程: <60秒
+
+优化措施:
+  - 预加载常用调试工具
+  - 智能缓存调试状态
+  - 并行执行调试任务
+  - 优化调试数据传输
+```
+
+## 📋 Usage Examples - 使用示例
+
+### 基础系统化调试
+```bash
+# AI智能系统化调试
+/debug
+
+# 输出示例:
+# 🐛 系统化调试启动
+# 
+# 📊 错误分析: 运行时异常 - 空指针引用
+# 🎯 问题定位: UserService.java:45行
+# 🔧 建议工具: Java Debugger + IntelliJ IDEA
+# 
+# 🛠️ 调试步骤:
+# 1. 设置断点在UserService.java:43行
+# 2. 检查user对象的初始化
+# 3. 验证数据库查询结果
+# 4. 确认异常处理逻辑
+# 
+# 📋 预期修复: 添加空值检查和异常处理
+```
+
+### 性能调试模式
+```bash
+# 性能问题调试
+/debug --performance
+
+# 输出示例:
+# ⚡ 性能调试模式启动
+# 
+# 📊 性能分析: 响应时间过长 (>5秒)
+# 🎯 瓶颈定位: 数据库查询优化需求
+# 🔧 推荐工具: SQL Profiler + Performance Monitor
+# 
+# 🛠️ 调试计划:
+# 1. 启用SQL查询日志
+# 2. 分析慢查询语句
+# 3. 检查索引使用情况
+# 4. 优化查询性能
+```
+
+### 安全问题调试
+```bash
+# 安全问题调试
+/debug --security
+
+# 输出示例:
+# 🔒 安全调试模式启动
+# 
+# 📊 安全分析: 潜在SQL注入风险
+# 🎯 风险定位: UserController.java:getUserById方法
+# 🔧 推荐工具: OWASP ZAP + Burp Suite
+# 
+# 🛠️ 安全检查:
+# 1. 验证输入参数过滤
+# 2. 检查SQL语句构造
+# 3. 测试注入攻击向量
+# 4. 加强输入验证
+```
+
+## 🔗 Integration Points - 集成点
+
+### 与现有规则集成
+```yaml
+完整的Phase 2规则链:
+  1. code-quality-check发现问题
+  2. systematic-debugging深度调试
+  3. root-cause-analysis根因分析
+  4. commit-fast优化提交
+  5. changelog-management记录改进
+
+协同工作流:
+  - 质量检查 → 系统调试 → 根因分析 → 解决方案
+  - 调试结果 → 代码修复 → 质量验证 → 提交记录
+  - 问题模式 → 预防措施 → 流程改进 → 知识积累
+
+super-brain-system集成:
+  - 智能调试策略推荐
+  - 调试经验学习和积累
+  - 个性化调试配置
+  - 调试效率优化建议
+```
+
+## 📚 Debugging Knowledge Base - 调试知识库
+
+### 常见问题解决方案
+```yaml
+前端常见问题:
+  - JavaScript异步问题
+  - React组件状态问题
+  - CSS布局问题
+  - 浏览器兼容性问题
+
+后端常见问题:
+  - 数据库连接问题
+  - API接口错误
+  - 服务器配置问题
+  - 微服务通信问题
+
+性能常见问题:
+  - 内存泄露定位
+  - CPU使用率过高
+  - 数据库查询优化
+  - 网络延迟问题
+```
+
+### 调试最佳实践
+```yaml
+调试原则:
+  - 系统化方法论
+  - 分层调试策略
+  - 数据驱动决策
+  - 经验积累共享
+
+调试技巧:
+  - 有效断点设置
+  - 日志分析方法
+  - 性能监控技巧
+  - 问题重现技术
+```
+
+---
+
+**🎯 规则优先级**: 625 (与Phase 2其他规则协同)  
+**🔄 更新频率**: 基于调试经验和工具发展持续优化  
+**📊 成功指标**: 调试效率提升60%+, 问题解决率>95%, 调试时间减少50%+  
+**🧠 AI模型**: 集成故障诊断和智能推理引擎
