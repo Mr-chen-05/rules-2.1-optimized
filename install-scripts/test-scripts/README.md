@@ -5,7 +5,7 @@
 ## 可用脚本
 
 ### 1. comprehensive-test-report.bat
-**综合规则检测工具** ✅ **已修复编码问题**
+**综合规则检测工具** ✅ **已全面优化编码兼容性**
 
 - **功能**: 全面检测已安装规则的模式、完整性和健康度
 - **用法**: `comprehensive-test-report.bat [project-path]`
@@ -17,7 +17,9 @@
   - 📂 目录结构完整性检查
   - 🎯 关键文件存在性验证
   - 💡 智能修复建议
-  - ✅ **编码修复**: 完全解决Unicode字符问题，支持所有Windows环境
+  - 🌐 **增强编码检测**: 自动检测系统编码 (CP936/950/932/949/437/65001)
+  - ✅ **ASCII安全输出**: 完全ASCII英文输出，支持所有Windows环境
+  - 🔧 **PowerShell清理**: 使用PowerShell方法处理Unicode字符
 
 **成功测试输出示例**:
 ```
@@ -103,6 +105,13 @@ comprehensive-test-report.bat C:\path\to\your\project
 - **Fullstack模式**: 33个文件 (包含所有关键文件)
 
 ## 更新记录
+
+**2025年9月25日 (最新)**:
+- 🌐 **增强编码检测**: 自动检测系统编码，支持中文、日文、韩文、西方语言
+- ✅ **ASCII安全输出**: 完全转换为ASCII英文输出，避免编码问题
+- 🔧 **PowerShell清理**: 使用PowerShell方法替代Unicode清理逻辑
+- 📝 **注释英文化**: 所有代码注释转换为英文，提升维护性
+- 🚀 **跨区域兼容**: 与install-ultra.bat保持一致的编码处理策略
 
 **2025年8月29日**: 
 - ✅ 修复了Unicode编码问题，支持所有Windows环境

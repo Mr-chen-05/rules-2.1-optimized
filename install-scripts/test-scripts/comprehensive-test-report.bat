@@ -2,27 +2,24 @@
 chcp 65001 >nul
 setlocal enabledelayedexpansion
 
-REM 环境安全检查 - 检测可能的编码问题
-set "ENCODING_TEST=测试"
-if not "%ENCODING_TEST%"=="测试" (
-    echo WARNING: Character encoding issue detected
-    echo Switching to safe mode...
-    chcp 936 >nul
-)
+REM Enhanced encoding detection - Auto-detect system encoding
+for /f "tokens=2 delims=:" %%i in ('chcp') do set "CURRENT_CP=%%i"
+set "CURRENT_CP=%CURRENT_CP: =%"
+if "%CURRENT_CP%"=="936" set "ENCODING_MODE=Chinese_Simplified"
+if "%CURRENT_CP%"=="950" set "ENCODING_MODE=Chinese_Traditional"
+if "%CURRENT_CP%"=="932" set "ENCODING_MODE=Japanese"
+if "%CURRENT_CP%"=="949" set "ENCODING_MODE=Korean"
+if "%CURRENT_CP%"=="437" set "ENCODING_MODE=Western"
+if "%CURRENT_CP%"=="65001" set "ENCODING_MODE=UTF8"
+if not defined ENCODING_MODE set "ENCODING_MODE=Unknown"
 
-REM 增强的Unicode字符清理 - 清理所有可能的Unicode控制字符
+REM ASCII-safe path cleaning using PowerShell
 set "RAW_TARGET=%~1"
-set "TARGET_DIR=%RAW_TARGET%"
-REM 清理双向文本控制字符 (U+202A-U+202E)
-set "TARGET_DIR=%TARGET_DIR:‪=%"
-set "TARGET_DIR=%TARGET_DIR:‫=%"
-set "TARGET_DIR=%TARGET_DIR:‬=%"
-set "TARGET_DIR=%TARGET_DIR:‭=%"
-set "TARGET_DIR=%TARGET_DIR:‮=%"
-REM 清理零宽字符 (U+200B-U+200D, U+FEFF)
-for /f "delims=" %%i in ("%TARGET_DIR%") do set "TARGET_DIR=%%i"
-REM 移除首尾空格
-for /f "tokens=* delims= " %%a in ("%TARGET_DIR%") do set "TARGET_DIR=%%a"
+if defined RAW_TARGET (
+    for /f "delims=" %%i in ('powershell -Command "[System.Text.Encoding]::UTF8.GetString([System.Text.Encoding]::UTF8.GetBytes('%RAW_TARGET%')) -replace '[\u200B-\u200D\uFEFF\u202A-\u202E]', '' | ForEach-Object { $_.Trim() }"') do set "TARGET_DIR=%%i"
+) else (
+    set "TARGET_DIR="
+)
 
 echo ========================================
 echo AgentRules Comprehensive Detection Tool
@@ -48,7 +45,7 @@ echo Detecting project path: %PROJECT_PATH%
 echo Rules directory path: %RULES_PATH%
 echo.
 
-REM 检查规则目录是否存在
+REM Check if rules directory exists
 if not exist "%RULES_PATH%" (
     echo ERROR: Rules directory does not exist - %RULES_PATH%
     echo Please install rules first using install-ultra.bat
@@ -59,7 +56,7 @@ if not exist "%RULES_PATH%" (
 echo Rules directory exists, starting comprehensive detection...
 echo.
 
-REM 检查目录结构
+REM Check directory structure
 echo Directory Structure Detection:
 set "MISSING_DIRS=0"
 for %%d in (P0-core-safety P1-core-identity P2-intelligent-system P3-professional-dev P4-project-workflow P5-advanced-features P6-system-optimization P7-utilities) do (
@@ -78,7 +75,7 @@ if %MISSING_DIRS% GTR 0 (
 )
 echo.
 
-REM 统计文件数量
+REM Count files
 set /a TOTAL_FILES=0
 set /a MD_FILES=0
 set /a MDC_FILES=0
@@ -95,7 +92,7 @@ echo   .md files: %MD_FILES%
 echo   .mdc files: %MDC_FILES%
 echo.
 
-REM 检测关键文件
+REM Detect key files
 echo Key File Detection:
 set "HAS_MERMAID=0"
 set "HAS_FRONTEND_DEV=0"
@@ -148,7 +145,7 @@ if exist "%RULES_PATH%\P3-professional-dev\backend-rules-2.1.md" (
 
 echo.
 
-REM 智能模式判断
+REM Intelligent mode detection
 echo Mode Detection Results:
 set "DETECTED_MODE=UNKNOWN"
 set "MODE_CONFIDENCE=LOW"
@@ -205,7 +202,7 @@ echo   Expected count: Frontend(31), Backend(30), Fullstack(33)
 :mode_detected
 echo.
 
-REM 健康度评估
+REM Health assessment
 echo Rules Health Assessment:
 set /a HEALTH_SCORE=0
 
@@ -230,7 +227,7 @@ if %HEALTH_SCORE% GEQ 90 (
 
 echo.
 
-REM 建议
+REM Recommendations
 echo Recommendations:
 if %MISSING_DIRS% GTR 0 echo   Re-run install-ultra.bat to fix missing directories
 if %HAS_MAIN_MD%==0 echo   Missing main.md file may affect AI understanding
