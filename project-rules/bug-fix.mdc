@@ -1,6 +1,8 @@
 ---
+type: "workflow_rule"
 description: "Complete bug-fixing workflow from issue to PR - 从问题到PR的完整Bug修复工作流"
 globs: ["**/*"]
+priority: 600
 alwaysApply: false
 ---
 

@@ -1,6 +1,8 @@
 ---
+type: "utility_rule"
 description: "Methodical task implementation approach - 系统化任务实现方法"
 globs: ["**/*"]
+priority: 300
 alwaysApply: false
 ---
 

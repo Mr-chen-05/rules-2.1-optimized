@@ -1,6 +1,8 @@
 ---
+type: "workflow_rule"
 description: "Frontend development workflow with Vue/React/TypeScript - 前端开发完整工作流"
 globs: ["**/*.vue", "**/*.jsx", "**/*.tsx", "**/*.ts", "**/*.js", "**/*.css", "**/*.scss", "**/*.html"]
+priority: 600
 alwaysApply: false
 ---
 

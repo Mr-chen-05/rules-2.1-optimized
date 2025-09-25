@@ -1,6 +1,8 @@
 ---
+type: "workflow_rule"
 description: "Standard commit workflow with conventional format and emojis - 标准化提交工作流"
 globs: ["**/*"]
+priority: 600
 alwaysApply: true
 ---
 

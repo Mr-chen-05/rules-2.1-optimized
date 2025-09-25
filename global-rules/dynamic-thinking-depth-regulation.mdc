@@ -3,7 +3,7 @@ type: "always_apply"
 description: "动态思考深度调节机制 - 根据任务复杂度自适应调整思维深度"
 globs: ["**/*"]
 alwaysApply: true
-priority: 1180
+priority: 1000
 ---
 
 # 🎯 动态思考深度调节机制 (Dynamic Thinking Depth Regulation)

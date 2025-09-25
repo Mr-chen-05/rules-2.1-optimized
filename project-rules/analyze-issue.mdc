@@ -1,6 +1,8 @@
 ---
+type: "utility_rule"
 description: "GitHub issue analysis and implementation specification - GitHub问题分析和实现规范"
 globs: ["**/*"]
+priority: 300
 alwaysApply: false
 ---
 

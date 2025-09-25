@@ -1,6 +1,8 @@
 ---
+type: "workflow_rule"
 description: "Multi-role pull request review checklist - 多角色拉取请求审查清单"
 globs: ["**/*"]
+priority: 600
 alwaysApply: false
 ---
 

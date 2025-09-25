@@ -2,7 +2,7 @@
 type: "project_rule"
 description: "MCP零配置检测和提醒策略 - 检测用户是否缺少MCP配置并主动提醒引导"
 globs: ["**/*"]
-priority: 970
+priority: 980
 alwaysApply: true
 ---
 

@@ -1,6 +1,8 @@
 ---
+type: "utility_rule"
 description: "Comprehensive documentation generation - 全面的文档生成"
 globs: ["**/*.md", "**/*.mdx", "**/*.rst", "**/*.txt"]
+priority: 300
 alwaysApply: false
 ---
 

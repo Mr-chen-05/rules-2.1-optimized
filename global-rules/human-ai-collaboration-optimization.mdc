@@ -3,7 +3,7 @@ type: "always_apply"
 description: "人机协同优化规则 - 认知互补和思维品质提升框架"
 globs: ["**/*"]
 alwaysApply: true
-priority: 1170
+priority: 1000
 ---
 
 # 🤝 人机协同优化规则 (Human-AI Collaboration Optimization)
