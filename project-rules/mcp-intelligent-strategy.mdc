@@ -41,20 +41,26 @@ priority: 950
     - 个性化定制和效果评估
 ```
 
-### 🔍 MCP环境智能检测 (基于steipete最佳实践)
+### 🔍 MCP环境智能检测 (跨AI工具平台支持)
 ```yaml
-自动检测机制:
-  环境扫描:
-    - 检查 ~/.claude/mcp_settings.json 配置状态
-    - 扫描已安装MCP服务器和版本信息
-    - 分析项目技术栈和开发需求
-    - 评估团队协作和工作流模式
+多平台检测机制:
+  支持的AI工具:
+    - Trae: %USERPROFILE%\AppData\Roaming\Trae\User\mcp.json
+    - Trae CN: %USERPROFILE%\AppData\Roaming\Trae CN\User\mcp.json
+    - Cursor: %USERPROFILE%\AppData\Roaming\Cursor\User\globalStorage\cursor.mcp\mcp_settings.json
+    - Claude: %USERPROFILE%\.claude\mcp_settings.json
   
-  缺失检测:
-    - 识别未配置的关键MCP工具
-    - 分析功能缺口和效率瓶颈
-    - 评估潜在的改进机会
-    - 生成个性化推荐方案
+  环境扫描:
+    - 自动检测所有已安装的AI工具
+    - 扫描各平台的MCP配置文件
+    - 分析配置差异和同步状态
+    - 评估跨平台兼容性
+  
+  配置分析:
+    - 统计各平台已配置的MCP服务器
+    - 识别配置不一致和缺失项
+    - 分析服务器性能和可用性
+    - 生成跨平台优化建议
   
   智能推荐:
     基础工具集 (必需):
@@ -65,9 +71,14 @@ priority: 950
     
     专业工具集 (推荐):
       - server-github: Git协作和PR管理
+      - context7: 文档和知识管理
+      - 数据库服务器: MySQL/Redis集成
+      - 自动化工具: Playwright/TestSprite
+    
+    高级工具集 (可选):
       - Peekaboo: 视觉AI分析 (macOS 14.0+)
-      - 浏览器自动化: UI测试和截图
       - MCP Inspector: 调试和性能监控
+      - 自定义服务器: 项目特定需求
 ```
 
 ### 效率优先原则
