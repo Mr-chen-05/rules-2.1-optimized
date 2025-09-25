@@ -183,7 +183,6 @@ dir "你的项目目录路径\rules\P0-core-safety\" # 核心安全规则
 rules-2.4.1-optimized/
 ├── 📄 核心文档
 │   ├── README.md                           # 📚 项目主文档
-│   ├── QUICK-START-GUIDE.md                # ⚡ 5分钟快速开始指南
 │   ├── USAGE.md                            # 📚 详细使用指南
 │   ├── COMMANDS-REFERENCE.md               # 🎯 完整命令参考
 │   ├── LICENSE                             # 📄 开源协议
@@ -200,25 +199,25 @@ rules-2.4.1-optimized/
 │   └── mcp-scripts/                        # 🧠 MCP工具安装脚本
 │       ├── run-powershell-installer.bat    # 🔥 一键MCP工具安装
 │       ├── install-mcp-tools-enhanced-final.ps1 # PowerShell安装脚本
+│       ├── mcp-cross-platform-sync.ps1     # 跨平台同步脚本
 │       └── 安装脚本使用说明.md              # 📚 MCP安装详细说明
 │
 ├── 📝 规则文件（核心功能）
 │   ├── global-rules/                       # 📋 全局规则文件
-│   │   ├── ai-agent-intelligence-core.md   # 🧠 AI智能核心
+│   │   ├── ai-agent-intelligence-core.mdc  # 🧠 AI智能核心
 │   │   ├── frontend-rules.mdc              # 🎨 前端完整规则
 │   │   ├── backend-rules.mdc               # 🔧 后端完整规则
 │   │   ├── super-brain-system.mdc          # 🧠 超级大脑系统
-│   │   ├── unified-rules-base.md           # 📋 统一规则基础
-│   │   ├── ai-ethical-boundaries.md        # 🛡️ AI伦理边界
-│   │   ├── ai-thinking-protocol.md         # 🤔 AI思维协议
-│   │   ├── complete-workflow-integration.mdc # 🔄 完整工作流集成
-│   │   ├── dynamic-thinking-depth-regulation.md # 📊 动态思维深度调节
-│   │   ├── file-generation-safety-rules.md # 🔒 文件生成安全规则
-│   │   ├── human-ai-collaboration-optimization.md # 🤝 人机协作优化
+│   │   ├── unified-rules-base.mdc          # 📋 统一规则基础
+│   │   ├── ai-ethical-boundaries.mdc       # 🛡️ AI伦理边界
+│   │   ├── ai-thinking-protocol.mdc        # 🤔 AI思维协议
+│   │   ├── dynamic-thinking-depth-regulation.mdc # 📊 动态思维深度调节
+│   │   ├── file-generation-safety-rules.mdc # 🔒 文件生成安全规则
+│   │   ├── human-ai-collaboration-optimization.mdc # 🤝 人机协作优化
 │   │   ├── intelligent-recommendation-engine.mdc # 🎯 智能推荐引擎
-│   │   ├── knowledge-creation-discovery-framework.md # 📚 知识创建发现框架
+│   │   ├── knowledge-creation-discovery-framework.mdc # 📚 知识创建发现框架
 │   │   ├── memory-system-integration.mdc    # 💾 记忆系统集成
-│   │   ├── multimodal-interaction-framework.md # 🎭 多模态交互框架
+│   │   ├── multimodal-interaction-framework.mdc # 🎭 多模态交互框架
 │   │   ├── rule-conflict-resolution.mdc     # ⚖️ 规则冲突解决
 │   │   ├── rule-redundancy-optimization.mdc # 🔧 规则冗余优化
 │   │   └── system-integration-config.mdc    # ⚙️ 系统集成配置
@@ -236,6 +235,8 @@ rules-2.4.1-optimized/
 │       ├── implement-task.mdc              # ⚡ 任务实现
 │       ├── intelligent-project-management.mdc # 📊 智能项目管理
 │       ├── intelligent-workflow-orchestration.mdc # 🎼 智能工作流编排
+│       ├── mcp-unified-management.mdc      # 🔧 MCP统一管理
+│       ├── mcp-zero-config-detection.mdc   # 🔍 MCP零配置检测
 │       └── mermaid.mdc                     # 📊 Mermaid图表
 │
 ├── 📚 核心教程和文档
