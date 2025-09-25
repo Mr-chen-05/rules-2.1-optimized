@@ -1,15 +1,17 @@
 ---
 type: "project_rule"
-description: "MCP工具智能使用策略 - 专注于MCP工具的自主选择和高效使用"
+description: "MCP工具智能使用策略 - 专注于MCP工具的优先使用和高效执行"
 globs: ["**/*"]
 priority: 950
 ---
 
 # 🧠 MCP工具智能使用策略
 
-## 🎯 核心原则 <mcreference link="https://www.ibm.com/think/insights/ai-agents-2025-expectations-vs-reality" index="1">1</mcreference>
+## 🎯 核心原则
 
-**核心原则**: AI助手必须优先使用MCP工具，实现高效的工具选择和使用模式。
+**MCP优先原则**: AI助手必须优先使用MCP工具，实现高效的任务执行和工具协同。
+
+> **注意**: MCP环境检测、配置管理、跨平台同步等功能已整合到 [MCP统一管理策略](mcp-unified-management.mdc) 中。本策略专注于MCP工具的智能使用。
 
 ## 🎯 核心策略原则
 
@@ -41,44 +43,24 @@ priority: 950
     - 个性化定制和效果评估
 ```
 
-### 🔍 MCP环境智能检测 (跨AI工具平台支持)
+### 🔧 MCP工具使用优先级
 ```yaml
-多平台检测机制:
-  支持的AI工具:
-    - Trae: %USERPROFILE%\AppData\Roaming\Trae\User\mcp.json
-    - Trae CN: %USERPROFILE%\AppData\Roaming\Trae CN\User\mcp.json
-    - Cursor: %USERPROFILE%\AppData\Roaming\Cursor\User\globalStorage\cursor.mcp\mcp_settings.json
-    - Claude: %USERPROFILE%\.claude\mcp_settings.json
+工具选择策略:
+  强制优先级:
+    1. 扫描可用MCP工具
+    2. 评估任务适配度
+    3. 选择最优工具组合
+    4. 执行并监控效果
   
-  环境扫描:
-    - 自动检测所有已安装的AI工具
-    - 扫描各平台的MCP配置文件
-    - 分析配置差异和同步状态
-    - 评估跨平台兼容性
+  核心工具优先级:
+    Tier_1: server-filesystem, server-memory, codebase-retrieval
+    Tier_2: server-github, mcp-feedback-enhanced, context7
+    Tier_3: 数据库工具, 自动化工具, 视觉AI工具
   
-  配置分析:
-    - 统计各平台已配置的MCP服务器
-    - 识别配置不一致和缺失项
-    - 分析服务器性能和可用性
-    - 生成跨平台优化建议
-  
-  智能推荐:
-    基础工具集 (必需):
-      - server-filesystem: 文件系统高效操作
-      - codebase-retrieval: 语义代码搜索
-      - server-memory: 智能记忆和上下文
-      - mcp-feedback-enhanced: 增强交互反馈
-    
-    专业工具集 (推荐):
-      - server-github: Git协作和PR管理
-      - context7: 文档和知识管理
-      - 数据库服务器: MySQL/Redis集成
-      - 自动化工具: Playwright/TestSprite
-    
-    高级工具集 (可选):
-      - Peekaboo: 视觉AI分析 (macOS 14.0+)
-      - MCP Inspector: 调试和性能监控
-      - 自定义服务器: 项目特定需求
+  切换条件:
+    - MCP工具不可用 → 使用备选方案
+    - 功能不足 → 组合多个工具
+    - 性能问题 → 动态调整策略
 ```
 
 ### 效率优先原则
