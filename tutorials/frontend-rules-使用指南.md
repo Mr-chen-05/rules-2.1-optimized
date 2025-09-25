@@ -1021,7 +1021,10 @@ Get-Counter "\Process(node)\% Processor Time"
 
 ## 📋 版本信息
 
-**📌 当前版本**: 请查看 [README.md](../README.md) 获取最新版本信息和更新日志。
+- **当前版本**: v2.4.2-intelligent
+- **发布日期**: 2025年9月25日
+
+**📌 详细信息**: 请查看 [README.md](../README.md) 获取最新版本信息和更新日志。
 
 ## 👨‍💻 开发团队
 
