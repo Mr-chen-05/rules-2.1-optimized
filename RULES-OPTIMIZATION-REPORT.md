@@ -129,6 +129,36 @@ MCP优先级调整:
   - utility_rule: 工具和支持规则 (P7)
 ```
 
+### 阶段4: 智能推荐系统架构优化
+```yaml
+优化前架构问题:
+  - intelligent-project-management.mdc 中重复实现推荐算法
+  - 与 intelligent-recommendation-engine.mdc 功能重叠
+  - 推荐逻辑分散，维护困难
+
+优化后架构:
+  全局推荐引擎:
+    - intelligent-recommendation-engine.mdc (P930)
+    - 提供通用推荐算法和关键词匹配
+    - 支持多种推荐类型和上下文分析
+  
+  专用推荐模块:
+    - mcp-unified-management.mdc 中的MCP专用推荐
+    - 专注MCP工具选择和配置推荐
+    - 与全局推荐引擎协同工作
+  
+  集成调用方式:
+    - intelligent-project-management.mdc 调用全局推荐引擎
+    - 避免重复实现推荐算法
+    - 统一推荐体验和逻辑
+
+优化效果:
+  - 消除推荐算法重复实现
+  - 统一推荐体验和准确性
+  - 降低维护复杂度
+  - 提升推荐系统可扩展性
+```
+
 ## 📈 **预期优化效果**
 
 ### 性能提升
