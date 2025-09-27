@@ -89,7 +89,7 @@ temp-install/
 .test-*
 DOCUMENTATION-ANALYSIS.md
 plan/
-
+test-project/
 #工具脚本
 tools/
 releases/** 

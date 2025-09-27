@@ -2,7 +2,7 @@
 type: "project_rule"
 description: "MCP零配置检测和提醒策略 - 检测用户是否缺少MCP配置并主动提醒引导"
 globs: ["**/*"]
-priority: 980
+priority: 1050
 alwaysApply: true
 ---
 
@@ -167,12 +167,7 @@ alwaysApply: true
   工具安装: "逐步安装每个MCP工具"
   配置文件: "创建和编辑mcp_settings.json"
   测试验证: "验证每个工具是否正常工作"
-  
-参考文档:
-  - "docs/MCP-QUICK-START-GUIDE.md" - 快速入门
-  - "docs/MCP-DETAILED-CONFIG-GUIDE.md" - 详细配置
-  - "mcp-scripts/安装脚本使用说明.md" - 脚本说明
-```
+
 
 ## 📊 检测结果示例
 

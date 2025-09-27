@@ -2,7 +2,7 @@
 type: "workflow_rule"
 description: "Backend development workflow with Java/Python/Node.js - 后端开发完整工作流"
 globs: ["**/*.py", "**/*.js", "**/*.ts", "**/*.java", "**/*.go", "**/*.rs", "**/*.php", "**/*.rb", "**/*.cs", "**/*.sql"]
-priority: 600
+priority: 820
 alwaysApply: false
 ---
 

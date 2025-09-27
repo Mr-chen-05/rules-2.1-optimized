@@ -1,0 +1,226 @@
+---
+type: "system_integration_rule"
+description: "Context Loader与记录员系统集成配置 - 解决功能重叠和协同工作"
+priority: 900
+alwaysApply: true
+integrations: ["context-loader", "context-recorder-system", "super-brain-system"]
+---
+
+# 🔗 Context Systems Integration - 上下文系统集成
+
+解决 Context Loader 与记录员系统的功能重叠，实现协同工作和智能分工。
+
+## 🎯 系统分工定义
+
+### Context Loader (项目分析器)
+```yaml
+主要职责:
+  - 项目技术栈识别和分析
+  - 代码结构和架构模式分析
+  - 开发工具和配置推荐
+  - 项目健康度评估
+  - 一次性深度项目分析
+
+触发时机:
+  - 首次接触新项目
+  - 项目结构发生重大变化
+  - 用户主动请求项目分析
+  - 技术栈升级或迁移
+
+输出内容:
+  - 项目技术栈报告
+  - 配置推荐建议
+  - 项目健康度评分
+  - 改进建议清单
+```
+
+### Context Recorder (记录员系统)
+```yaml
+主要职责:
+  - 持续的项目进度记录
+  - 决策和任务状态跟踪
+  - 问题和解决方案归档
+  - 增量式上下文更新
+  - 长期项目记忆管理
+
+触发时机:
+  - 每次对话和任务执行
+  - 重要决策制定时
+  - 问题解决过程中
+  - 项目里程碑达成
+
+输出内容:
+  - project.context.md (实时状态)
+  - context.archive.md (历史归档)
+  - 任务进度跟踪
+  - 决策记录链
+```
+
+## 🔄 协同工作流程
+
+### 1. 项目初始化阶段
+```yaml
+Step 1 - Context Loader 启动:
+  - 执行深度项目分析
+  - 生成技术栈报告
+  - 提供配置推荐
+  - 评估项目健康度
+
+Step 2 - 记录员系统接管:
+  - 基于 Context Loader 分析结果初始化 project.context.md
+  - 将技术栈信息记录到 Pinned 区块
+  - 将配置推荐转化为 TODO 任务
+  - 开始持续记录模式
+
+集成数据流:
+  Context Loader 分析结果 → 记录员系统 Pinned 区块
+  配置推荐 → TODO 任务列表
+  项目健康度 → Notes 区块
+```
+
+### 2. 日常开发阶段
+```yaml
+记录员系统主导:
+  - 持续记录开发进度
+  - 跟踪任务状态变化
+  - 记录决策和问题解决
+  - 维护项目上下文连续性
+
+Context Loader 辅助:
+  - 仅在重大变化时重新分析
+  - 提供技术栈更新建议
+  - 监控项目健康度变化
+```
+
+### 3. 项目重构/升级阶段
+```yaml
+双系统协作:
+  - Context Loader 重新分析项目变化
+  - 记录员系统记录重构决策过程
+  - 新的分析结果更新到 project.context.md
+  - 重构任务纳入 TODO 管理
+```
+
+## 🚫 冲突避免机制
+
+### 功能边界清晰化
+```yaml
+Context Loader 不应该:
+  - 创建或修改 project.context.md
+  - 进行持续的状态跟踪
+  - 记录具体的任务执行过程
+  - 管理长期项目记忆
+
+记录员系统不应该:
+  - 进行深度技术栈分析
+  - 提供配置推荐建议
+  - 评估项目健康度
+  - 分析代码架构模式
+```
+
+### 数据交换协议
+```yaml
+Context Loader → 记录员系统:
+  数据格式: 结构化分析报告
+  传递方式: 通过 Pinned 区块记录关键信息
+  更新频率: 仅在重大变化时
+
+记录员系统 → Context Loader:
+  数据格式: 项目变化通知
+  传递方式: 通过状态变化触发重新分析
+  更新频率: 检测到重大项目变化时
+```
+
+## 🎛️ 智能路由规则
+
+### 指令路由分配
+```yaml
+Context Loader 处理:
+  - /load-context (所有变体)
+  - /analyze-project
+  - /tech-stack
+  - /project-health
+
+记录员系统处理:
+  - /record
+  - /init-project
+  - /archive
+  - /status
+  - /sync
+
+共享指令:
+  - /project-overview (双系统协作)
+  - /project-summary (双系统协作)
+```
+
+### 自动触发逻辑
+```yaml
+Context Loader 自动触发:
+  - 检测到新的 package.json/requirements.txt
+  - 发现新的配置文件
+  - 项目结构发生重大变化
+  - 依赖版本大幅更新
+
+记录员系统自动触发:
+  - 每次 AI 对话开始
+  - 任务状态发生变化
+  - 重要决策制定
+  - 问题解决完成
+```
+
+## 📋 集成最佳实践
+
+### 1. 项目启动最佳流程
+```yaml
+推荐顺序:
+  1. 执行 /load-context --deep (Context Loader 深度分析)
+  2. 自动触发 /init-project (记录员系统初始化)
+  3. 将分析结果整合到 project.context.md
+  4. 开始正常的开发记录流程
+```
+
+### 2. 定期维护流程
+```yaml
+每周维护:
+  - 记录员系统自动归档过期内容
+  - Context Loader 检查项目健康度变化
+
+每月维护:
+  - Context Loader 重新评估技术栈
+  - 记录员系统生成月度项目报告
+```
+
+### 3. 错误处理机制
+```yaml
+冲突检测:
+  - 监控两系统是否同时修改相同文件
+  - 检测功能重复执行
+  - 识别数据不一致问题
+
+自动修复:
+  - 优先保留记录员系统的实时数据
+  - Context Loader 重新分析以同步状态
+  - 生成冲突解决报告
+```
+
+## 🔧 配置参数
+
+### 集成开关
+```yaml
+integration_mode: "collaborative"  # collaborative | independent | recorder_only
+auto_sync: true
+conflict_resolution: "recorder_priority"
+analysis_frequency: "on_major_change"
+```
+
+### 性能优化
+```yaml
+cache_analysis_results: true
+incremental_analysis: true
+background_sync: true
+memory_optimization: true
+```
+
+---
+
+**注意**: 此集成配置确保两个系统各司其职，避免功能重叠，实现最佳的协同效果。

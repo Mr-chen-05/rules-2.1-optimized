@@ -2,7 +2,7 @@
 type: "project_rule"
 description: "MCP统一管理策略 - 整合检测、推荐、配置、同步等所有MCP功能的统一管理"
 globs: ["**/*"]
-priority: 970
+priority: 990
 alwaysApply: true
 ---
 

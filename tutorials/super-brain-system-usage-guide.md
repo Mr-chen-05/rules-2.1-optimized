@@ -67,8 +67,7 @@ mcp --version
 
 ### 🚀 快速入门（5分钟）
 1. **[README.md](../README.md)** - 项目概述和核心特性
-2. **[QUICK-START-GUIDE.md](../QUICK-START-GUIDE.md)** - 一键激活指南
-3. **本文档** - 深度使用技巧
+2. **本文档** - 深度使用技巧
 
 ### 🔧 配置指南（进阶）
 - **[INSTALL-GUIDE.md](../install-scripts/INSTALL-GUIDE.md)** - 完整安装配置流程 | [中文版](../install-scripts/INSTALL-GUIDE-CN.md)

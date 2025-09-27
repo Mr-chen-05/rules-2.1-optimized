@@ -100,6 +100,8 @@ set "HAS_BACKEND_DEV=0"
 set "HAS_FRONTEND_RULES=0"
 set "HAS_BACKEND_RULES=0"
 set "HAS_MAIN_MD=0"
+set "HAS_SUPER_BRAIN=0"
+set "HAS_MEMORY_SYSTEM=0"
 
 if exist "%RULES_PATH%\main.md" (
     set "HAS_MAIN_MD=1"
@@ -143,6 +145,20 @@ if exist "%RULES_PATH%\P3-professional-dev\backend-rules.mdc" (
     echo   MISSING backend-rules.mdc - No backend rules
 )
 
+if exist "%RULES_PATH%\P2-intelligent-system\super-brain-system.mdc" (
+    set "HAS_SUPER_BRAIN=1"
+    echo   OK super-brain-system.mdc - Super brain system
+) else (
+    echo   MISSING super-brain-system.mdc - No super brain system
+)
+
+if exist "%RULES_PATH%\P2-intelligent-system\memory-system-integration.mdc" (
+    set "HAS_MEMORY_SYSTEM=1"
+    echo   OK memory-system-integration.mdc - Memory system
+) else (
+    echo   MISSING memory-system-integration.mdc - No memory system
+)
+
 echo.
 
 REM Intelligent mode detection
@@ -150,12 +166,12 @@ echo Mode Detection Results:
 set "DETECTED_MODE=UNKNOWN"
 set "MODE_CONFIDENCE=LOW"
 
-if %TOTAL_FILES% GEQ 40 if %TOTAL_FILES% LEQ 42 (
-    if %HAS_MERMAID%==1 if %HAS_FRONTEND_DEV%==1 if %HAS_BACKEND_DEV%==1 (
+if %TOTAL_FILES% GEQ 44 if %TOTAL_FILES% LEQ 46 (
+    if %HAS_MERMAID%==1 if %HAS_FRONTEND_DEV%==1 if %HAS_BACKEND_DEV%==1 if %HAS_FRONTEND_RULES%==1 if %HAS_BACKEND_RULES%==1 (
         set "DETECTED_MODE=FULLSTACK"
         set "MODE_CONFIDENCE=HIGH"
         echo   Detected: FULLSTACK mode (Full-stack development)
-        echo   File count: %TOTAL_FILES% (expected: 41)
+        echo   File count: %TOTAL_FILES% (expected: 45)
         echo   OK Contains frontend, backend and chart support
         goto :mode_detected
     ) else (
@@ -165,12 +181,12 @@ if %TOTAL_FILES% GEQ 40 if %TOTAL_FILES% LEQ 42 (
     )
 )
 
-if %TOTAL_FILES% GEQ 38 if %TOTAL_FILES% LEQ 40 (
-    if %HAS_MERMAID%==1 if %HAS_FRONTEND_DEV%==1 if %HAS_BACKEND_DEV%==0 (
+if %TOTAL_FILES% GEQ 42 if %TOTAL_FILES% LEQ 44 (
+    if %HAS_MERMAID%==1 if %HAS_FRONTEND_DEV%==1 if %HAS_BACKEND_DEV%==0 if %HAS_FRONTEND_RULES%==1 (
         set "DETECTED_MODE=FRONTEND"
         set "MODE_CONFIDENCE=HIGH"
         echo   Detected: FRONTEND mode (Frontend development)
-        echo   File count: %TOTAL_FILES% (expected: 39)
+        echo   File count: %TOTAL_FILES% (expected: 43)
         echo   OK Contains frontend development and chart support
         goto :mode_detected
     ) else (
@@ -180,12 +196,12 @@ if %TOTAL_FILES% GEQ 38 if %TOTAL_FILES% LEQ 40 (
     )
 )
 
-if %TOTAL_FILES% GEQ 37 if %TOTAL_FILES% LEQ 39 (
-    if %HAS_MERMAID%==0 if %HAS_BACKEND_DEV%==1 if %HAS_FRONTEND_DEV%==0 (
+if %TOTAL_FILES% GEQ 41 if %TOTAL_FILES% LEQ 43 (
+    if %HAS_MERMAID%==0 if %HAS_BACKEND_DEV%==1 if %HAS_FRONTEND_DEV%==0 if %HAS_BACKEND_RULES%==1 (
         set "DETECTED_MODE=BACKEND"
         set "MODE_CONFIDENCE=HIGH"
         echo   Detected: BACKEND mode (Backend development)
-        echo   File count: %TOTAL_FILES% (expected: 38)
+        echo   File count: %TOTAL_FILES% (expected: 42)
         echo   OK Contains backend development, no chart support
         goto :mode_detected
     ) else (
@@ -197,7 +213,7 @@ if %TOTAL_FILES% GEQ 37 if %TOTAL_FILES% LEQ 39 (
 
 echo   Unknown mode or incomplete files
 echo   File count: %TOTAL_FILES%
-echo   Expected count: Frontend(39), Backend(38), Fullstack(41)
+echo   Expected count: Frontend(43), Backend(42), Fullstack(45)
 
 :mode_detected
 echo.
@@ -208,7 +224,7 @@ set /a HEALTH_SCORE=0
 
 if %MISSING_DIRS%==0 set /a HEALTH_SCORE+=20
 if %HAS_MAIN_MD%==1 set /a HEALTH_SCORE+=10
-if %TOTAL_FILES% GEQ 37 set /a HEALTH_SCORE+=30
+if %TOTAL_FILES% GEQ 41 set /a HEALTH_SCORE+=30
 if "%MODE_CONFIDENCE%"=="HIGH" set /a HEALTH_SCORE+=40
 
 if %HEALTH_SCORE% GEQ 90 (
@@ -232,7 +248,7 @@ echo Recommendations:
 if %MISSING_DIRS% GTR 0 echo   Re-run install-ultra.bat to fix missing directories
 if %HAS_MAIN_MD%==0 echo   Missing main.md file may affect AI understanding
 if "%MODE_CONFIDENCE%"=="LOW" echo   File configuration abnormal, recommend reinstalling rules
-if %TOTAL_FILES% LSS 37 echo   Too few files, check installation process
+if %TOTAL_FILES% LSS 41 echo   Too few files, check installation process
 
 echo.
 echo ========================================

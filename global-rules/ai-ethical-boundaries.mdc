@@ -1,9 +1,9 @@
 ---
 type: "always_apply"
-description: "AI伦理边界规则 - 动态伦理判断框架和透明度管理机制"
+description: "AI伦理边界规则 - 确保AI行为符合伦理标准和社会价值观"
 globs: ["**/*"]
 alwaysApply: true
-priority: 1000
+priority: 1090
 ---
 
 # 🛡️ AI伦理边界规则 (AI Ethical Boundaries)

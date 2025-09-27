@@ -102,7 +102,7 @@ Write-Host ""
 Write-Host "[INFO] Recommended: Choose a drive with enough space (needs about 100MB)" -ForegroundColor Blue
 Write-Host "[INFO] If installation is slow, consider switching npm registry" -ForegroundColor Blue
 Write-Host "  Quick method: npm config set registry https://registry.npmmirror.com" -ForegroundColor Cyan
-Write-Host "  Detailed guide: docs/MCP-QUICK-START-GUIDE.md" -ForegroundColor Cyan
+Write-Host "  Detailed guide: README.md" -ForegroundColor Cyan
 Write-Host ""
 
 # Input drive letter

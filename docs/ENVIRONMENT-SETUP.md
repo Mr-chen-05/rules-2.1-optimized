@@ -514,6 +514,6 @@ node --version; npm --version; Write-Host "🎯 核心环境检查完成"
 1. **🚀 快速安装**: 返回 [README.md](../README.md) 执行安装脚本
 2. **🧠 智能系统**: 查看 [超级大脑系统指南](../tutorials/super-brain-system-usage-guide.md)
 3. **🔧 MCP工具**: 阅读 [MCP快速入门指南](./MCP-QUICK-START-GUIDE.md)
-4. **📚 详细教程**: 浏览 [使用指南](../USAGE.md)
+4. **📚 详细教程**: 浏览 [使用指南](../README.md)
 
 ---

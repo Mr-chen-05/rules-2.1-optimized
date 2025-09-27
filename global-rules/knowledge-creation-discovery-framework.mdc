@@ -1,9 +1,9 @@
 ---
 type: "always_apply"
-description: "知识创造与发现框架 - 从信息检索向主动知识创造转变"
+description: "知识创造发现框架 - 智能知识挖掘、创新思维和学习能力增强"
 globs: ["**/*"]
 alwaysApply: true
-priority: 1000
+priority: 1120
 ---
 
 # 🔬 知识创造与发现框架 (Knowledge Creation and Discovery Framework)

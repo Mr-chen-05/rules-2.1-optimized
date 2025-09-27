@@ -2,7 +2,7 @@
 type: "intelligent_workflow_rule"
 description: "AI-powered root cause analysis with Five Whys methodology - AI驱动的根因分析方法"
 globs: ["**/*"]
-priority: 630
+priority: 650
 alwaysApply: true
 integrations: ["super-brain-system", "mcp-intelligent-strategy", "intelligent-project-management", "commit-fast", "changelog-management", "code-quality-check"]
 ---

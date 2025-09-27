@@ -3,7 +3,7 @@ type: "always_apply"
 description: "AI代理智能核心规则 - 统一智能决策引擎和工作流编排系统"
 globs: ["**/*"]
 alwaysApply: true
-priority: 900
+priority: 950
 ---
 
 # 🤖 AI代理智能核心规则

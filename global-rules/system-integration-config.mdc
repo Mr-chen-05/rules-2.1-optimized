@@ -1,8 +1,8 @@
 ---
-type: "global_rule"
-description: "系统集成配置 - 确保所有智能系统组件协同工作的配置和协调规则"
+type: "always_apply"
+description: "系统集成配置 - 统一管理各个智能系统的集成和协调"
 globs: ["**/*"]
-priority: 960
+priority: 970
 ---
 
 # ⚙️ 系统集成配置

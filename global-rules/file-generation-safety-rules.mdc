@@ -3,7 +3,7 @@ type: "always_apply"
 description: "文件生成安全规则 - 强制性用户确认机制，防止AI未经授权生成文件"
 globs: ["**/*"]
 alwaysApply: true
-priority: 1000
+priority: 1200
 ---
 
 # 🚨 文件生成安全规则（死命令）

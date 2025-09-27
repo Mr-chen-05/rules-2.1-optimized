@@ -1,9 +1,9 @@
 ---
 type: "always_apply"
-description: "AI思维协议 - 基于双过程理论和元认知的智能思维框架"
+description: "AI思维协议 - 智能思考深度调节和认知负载管理"
 globs: ["**/*"]
 alwaysApply: true
-priority: 1000
+priority: 1160
 ---
 
 # 🧠 AI思维协议 (Anthropic Thinking Protocol)

@@ -2,7 +2,7 @@
 type: "intelligent_workflow_rule"
 description: "AI-powered fast commit workflow with intelligent message generation - AI驱动的快速提交工作流"
 globs: ["**/*"]
-priority: 650
+priority: 680
 alwaysApply: true
 integrations: ["super-brain-system", "mcp-intelligent-strategy", "intelligent-project-management"]
 ---

@@ -341,7 +341,7 @@ taskkill /PID 1234 /F
 - 🚀 [MCP快速入门指南](MCP-QUICK-START-GUIDE.md)
 - 🔧 [MCP详细配置指南](MCP-DETAILED-CONFIG-GUIDE.md)
 - 🧠 [MCP智能使用策略](MCP-INTELLIGENT-USAGE-STRATEGY.md)
-- 📖 [项目说明](../README.md)
+- 📖 [快速开始指南](../README.md)
 
 ### 社区支持
 - 💬 GitHub Issues: [提交问题](https://github.com/Mr-chen-05/rules-2.4.2-optimized/issues)

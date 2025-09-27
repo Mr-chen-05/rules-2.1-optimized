@@ -203,37 +203,29 @@ if exist "%GLOBAL_RULES_DIR%\rule-conflict-resolution.mdc" (
     echo ERROR: Critical file missing: rule-conflict-resolution.mdc
     set "MISSING_FILES=1"
 )
-echo - P0-core-safety/ (Priority: 1000) >> "%MAIN_RULES%"
-echo   - file-generation-safety-rules.mdc >> "%MAIN_RULES%"
-echo   - ai-ethical-boundaries.mdc >> "%MAIN_RULES%"
-echo   - rule-conflict-resolution.mdc >> "%MAIN_RULES%"
-echo. >> "%MAIN_RULES%"
-
-REM P1 Level - Core Identity Rules (required for all types)
-echo Creating P1 Level - Core Identity Rules...
-mkdir "%RULES_DIR%\P1-core-identity" 2>nul
-if exist "%GLOBAL_RULES_DIR%\unified-rules-base.mdc" (
-    copy "%GLOBAL_RULES_DIR%\unified-rules-base.mdc" "%RULES_DIR%\P1-core-identity\" >nul 2>&1
+if exist "%GLOBAL_RULES_DIR%\rule-redundancy-optimization.mdc" (
+    copy "%GLOBAL_RULES_DIR%\rule-redundancy-optimization.mdc" "%RULES_DIR%\P0-core-safety\" >nul 2>&1
     if errorlevel 1 (
-        echo ERROR: Failed to copy unified-rules-base.mdc
+        echo ERROR: Failed to copy rule-redundancy-optimization.mdc
         set "COPY_ERRORS=1"
     )
 ) else (
-    echo ERROR: Critical file missing: unified-rules-base.mdc
+    echo ERROR: Critical file missing: rule-redundancy-optimization.mdc
     set "MISSING_FILES=1"
 )
-if exist "%GLOBAL_RULES_DIR%\ai-agent-intelligence-core.mdc" (
-    copy "%GLOBAL_RULES_DIR%\ai-agent-intelligence-core.mdc" "%RULES_DIR%\P1-core-identity\" >nul 2>&1
+REM multimodal-interaction-framework.mdc moved to P3 level (priority 800)
+if exist "%GLOBAL_RULES_DIR%\dynamic-thinking-depth-regulation.mdc" (
+    copy "%GLOBAL_RULES_DIR%\dynamic-thinking-depth-regulation.mdc" "%RULES_DIR%\P0-core-safety\" >nul 2>&1
     if errorlevel 1 (
-        echo ERROR: Failed to copy ai-agent-intelligence-core.mdc
+        echo ERROR: Failed to copy dynamic-thinking-depth-regulation.mdc
         set "COPY_ERRORS=1"
     )
 ) else (
-    echo ERROR: Critical file missing: ai-agent-intelligence-core.mdc
+    echo ERROR: Critical file missing: dynamic-thinking-depth-regulation.mdc
     set "MISSING_FILES=1"
 )
 if exist "%GLOBAL_RULES_DIR%\ai-thinking-protocol.mdc" (
-    copy "%GLOBAL_RULES_DIR%\ai-thinking-protocol.mdc" "%RULES_DIR%\P1-core-identity\" >nul 2>&1
+    copy "%GLOBAL_RULES_DIR%\ai-thinking-protocol.mdc" "%RULES_DIR%\P0-core-safety\" >nul 2>&1
     if errorlevel 1 (
         echo ERROR: Failed to copy ai-thinking-protocol.mdc
         set "COPY_ERRORS=1"
@@ -242,32 +234,77 @@ if exist "%GLOBAL_RULES_DIR%\ai-thinking-protocol.mdc" (
     echo ERROR: Critical file missing: ai-thinking-protocol.mdc
     set "MISSING_FILES=1"
 )
-echo - P1-core-identity/ (Priority: 900) >> "%MAIN_RULES%"
-echo   - unified-rules-base.mdc >> "%MAIN_RULES%"
-echo   - ai-agent-intelligence-core.mdc >> "%MAIN_RULES%"
+if exist "%GLOBAL_RULES_DIR%\human-ai-collaboration-optimization.mdc" (
+    copy "%GLOBAL_RULES_DIR%\human-ai-collaboration-optimization.mdc" "%RULES_DIR%\P0-core-safety\" >nul 2>&1
+    if errorlevel 1 (
+        echo ERROR: Failed to copy human-ai-collaboration-optimization.mdc
+        set "COPY_ERRORS=1"
+    )
+) else (
+    echo ERROR: Critical file missing: human-ai-collaboration-optimization.mdc
+    set "MISSING_FILES=1"
+)
+if exist "%GLOBAL_RULES_DIR%\knowledge-creation-discovery-framework.mdc" (
+    copy "%GLOBAL_RULES_DIR%\knowledge-creation-discovery-framework.mdc" "%RULES_DIR%\P0-core-safety\" >nul 2>&1
+    if errorlevel 1 (
+        echo ERROR: Failed to copy knowledge-creation-discovery-framework.mdc
+        set "COPY_ERRORS=1"
+    )
+) else (
+    echo ERROR: Critical file missing: knowledge-creation-discovery-framework.mdc
+    set "MISSING_FILES=1"
+)
+echo - P0-core-safety/ (Priority: 1100-1200) >> "%MAIN_RULES%"
+echo   - file-generation-safety-rules.mdc >> "%MAIN_RULES%"
+echo   - ai-ethical-boundaries.mdc >> "%MAIN_RULES%"
+echo   - rule-conflict-resolution.mdc >> "%MAIN_RULES%"
+echo   - rule-redundancy-optimization.mdc >> "%MAIN_RULES%"
+REM   - multimodal-interaction-framework.mdc moved to P3
+echo   - dynamic-thinking-depth-regulation.mdc >> "%MAIN_RULES%"
 echo   - ai-thinking-protocol.mdc >> "%MAIN_RULES%"
+echo   - human-ai-collaboration-optimization.mdc >> "%MAIN_RULES%"
+echo   - knowledge-creation-discovery-framework.mdc >> "%MAIN_RULES%"
+echo. >> "%MAIN_RULES%"
+
+REM P1 Level - Core Identity Rules (required for all types)
+echo Creating P1 Level - Core Identity Rules...
+mkdir "%RULES_DIR%\P1-core-identity" 2>nul
+REM Files with priority 1000-1099 belong to P1
+if exist "%PROJECT_RULES_DIR%\mcp-zero-config-detection.mdc" (
+    copy "%PROJECT_RULES_DIR%\mcp-zero-config-detection.mdc" "%RULES_DIR%\P1-core-identity\" >nul 2>&1
+    if errorlevel 1 (
+        echo ERROR: Failed to copy mcp-zero-config-detection.mdc
+        set "COPY_ERRORS=1"
+    )
+) else (
+    echo ERROR: Critical file missing: mcp-zero-config-detection.mdc
+    set "MISSING_FILES=1"
+)
+echo - P1-core-identity/ (Priority: 1000-1099) >> "%MAIN_RULES%"
+echo   - mcp-zero-config-detection.mdc >> "%MAIN_RULES%"
 echo. >> "%MAIN_RULES%"
 
 REM P2 Level - Intelligent System Rules (required for all types)
 echo Creating P2 Level - Intelligent System Rules...
 mkdir "%RULES_DIR%\P2-intelligent-system" 2>nul
-if exist "%GLOBAL_RULES_DIR%\super-brain-system.mdc" (
-    copy "%GLOBAL_RULES_DIR%\super-brain-system.mdc" "%RULES_DIR%\P2-intelligent-system\" >nul 2>&1
-    if errorlevel 1 echo WARNING: Failed to copy super-brain-system.mdc
+REM Files with priority 900-999 belong to P2
+if exist "%GLOBAL_RULES_DIR%\unified-rules-base.mdc" (
+    copy "%GLOBAL_RULES_DIR%\unified-rules-base.mdc" "%RULES_DIR%\P2-intelligent-system\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy unified-rules-base.mdc
 ) else (
-    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\super-brain-system.mdc
+    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\unified-rules-base.mdc
 )
-if exist "%GLOBAL_RULES_DIR%\dynamic-thinking-depth-regulation.mdc" (
-    copy "%GLOBAL_RULES_DIR%\dynamic-thinking-depth-regulation.mdc" "%RULES_DIR%\P2-intelligent-system\" >nul 2>&1
-    if errorlevel 1 echo WARNING: Failed to copy dynamic-thinking-depth-regulation.mdc
+if exist "%GLOBAL_RULES_DIR%\ai-agent-intelligence-core.mdc" (
+    copy "%GLOBAL_RULES_DIR%\ai-agent-intelligence-core.mdc" "%RULES_DIR%\P2-intelligent-system\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy ai-agent-intelligence-core.mdc
 ) else (
-    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\dynamic-thinking-depth-regulation.mdc
+    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\ai-agent-intelligence-core.mdc
 )
-if exist "%GLOBAL_RULES_DIR%\memory-system-integration.mdc" (
-    copy "%GLOBAL_RULES_DIR%\memory-system-integration.mdc" "%RULES_DIR%\P2-intelligent-system\" >nul 2>&1
-    if errorlevel 1 echo WARNING: Failed to copy memory-system-integration.mdc
+if exist "%GLOBAL_RULES_DIR%\system-integration-config.mdc" (
+    copy "%GLOBAL_RULES_DIR%\system-integration-config.mdc" "%RULES_DIR%\P2-intelligent-system\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy system-integration-config.mdc
 ) else (
-    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\memory-system-integration.mdc
+    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\system-integration-config.mdc
 )
 if exist "%GLOBAL_RULES_DIR%\intelligent-recommendation-engine.mdc" (
     copy "%GLOBAL_RULES_DIR%\intelligent-recommendation-engine.mdc" "%RULES_DIR%\P2-intelligent-system\" >nul 2>&1
@@ -275,36 +312,90 @@ if exist "%GLOBAL_RULES_DIR%\intelligent-recommendation-engine.mdc" (
 ) else (
     echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\intelligent-recommendation-engine.mdc
 )
-echo - P2-intelligent-system/ (Priority: 800) >> "%MAIN_RULES%"
-echo   - super-brain-system.mdc >> "%MAIN_RULES%"
-echo   - dynamic-thinking-depth-regulation.mdc >> "%MAIN_RULES%"
-echo   - memory-system-integration.mdc >> "%MAIN_RULES%"
+if exist "%GLOBAL_RULES_DIR%\context-systems-integration.mdc" (
+    copy "%GLOBAL_RULES_DIR%\context-systems-integration.mdc" "%RULES_DIR%\P2-intelligent-system\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy context-systems-integration.mdc
+) else (
+    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\context-systems-integration.mdc
+)
+REM Add high-priority project rules that belong in P2 (priority 900-999)
+if exist "%PROJECT_RULES_DIR%\mcp-unified-management.mdc" (
+    copy "%PROJECT_RULES_DIR%\mcp-unified-management.mdc" "%RULES_DIR%\P2-intelligent-system\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy mcp-unified-management.mdc
+) else (
+    echo WARNING: Source file not found: %PROJECT_RULES_DIR%\mcp-unified-management.mdc
+)
+if exist "%PROJECT_RULES_DIR%\mcp-intelligent-strategy.mdc" (
+    copy "%PROJECT_RULES_DIR%\mcp-intelligent-strategy.mdc" "%RULES_DIR%\P2-intelligent-system\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy mcp-intelligent-strategy.mdc
+) else (
+    echo WARNING: Source file not found: %PROJECT_RULES_DIR%\mcp-intelligent-strategy.mdc
+)
+if exist "%PROJECT_RULES_DIR%\intelligent-project-management.mdc" (
+    copy "%PROJECT_RULES_DIR%\intelligent-project-management.mdc" "%RULES_DIR%\P2-intelligent-system\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy intelligent-project-management.mdc
+) else (
+    echo WARNING: Source file not found: %PROJECT_RULES_DIR%\intelligent-project-management.mdc
+)
+if exist "%PROJECT_RULES_DIR%\intelligent-workflow-orchestration.mdc" (
+    copy "%PROJECT_RULES_DIR%\intelligent-workflow-orchestration.mdc" "%RULES_DIR%\P2-intelligent-system\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy intelligent-workflow-orchestration.mdc
+) else (
+    echo WARNING: Source file not found: %PROJECT_RULES_DIR%\intelligent-workflow-orchestration.mdc
+)
+if exist "%PROJECT_RULES_DIR%\feedback-enhanced.mdc" (
+    copy "%PROJECT_RULES_DIR%\feedback-enhanced.mdc" "%RULES_DIR%\P2-intelligent-system\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy feedback-enhanced.mdc
+) else (
+    echo WARNING: Source file not found: %PROJECT_RULES_DIR%\feedback-enhanced.mdc
+)
+if exist "%PROJECT_RULES_DIR%\ai-powered-code-review.mdc" (
+    copy "%PROJECT_RULES_DIR%\ai-powered-code-review.mdc" "%RULES_DIR%\P2-intelligent-system\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy ai-powered-code-review.mdc
+) else (
+    echo WARNING: Source file not found: %PROJECT_RULES_DIR%\ai-powered-code-review.mdc
+)
+REM Add promoted files from P3 to P2 (priority 920-970)
+if exist "%GLOBAL_RULES_DIR%\super-brain-system.mdc" (
+    copy "%GLOBAL_RULES_DIR%\super-brain-system.mdc" "%RULES_DIR%\P2-intelligent-system\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy super-brain-system.mdc
+) else (
+    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\super-brain-system.mdc
+)
+if exist "%GLOBAL_RULES_DIR%\memory-system-integration.mdc" (
+    copy "%GLOBAL_RULES_DIR%\memory-system-integration.mdc" "%RULES_DIR%\P2-intelligent-system\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy memory-system-integration.mdc
+) else (
+    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\memory-system-integration.mdc
+)
+if exist "%GLOBAL_RULES_DIR%\context-recorder-system.mdc" (
+    copy "%GLOBAL_RULES_DIR%\context-recorder-system.mdc" "%RULES_DIR%\P2-intelligent-system\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy context-recorder-system.mdc
+) else (
+    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\context-recorder-system.mdc
+)
+echo - P2-intelligent-system/ (Priority: 900-999) >> "%MAIN_RULES%"
+echo   - unified-rules-base.mdc >> "%MAIN_RULES%"
+echo   - ai-agent-intelligence-core.mdc >> "%MAIN_RULES%"
+echo   - system-integration-config.mdc >> "%MAIN_RULES%"
 echo   - intelligent-recommendation-engine.mdc >> "%MAIN_RULES%"
+echo   - context-systems-integration.mdc >> "%MAIN_RULES%"
+echo   - mcp-unified-management.mdc >> "%MAIN_RULES%"
+echo   - mcp-intelligent-strategy.mdc >> "%MAIN_RULES%"
+echo   - intelligent-project-management.mdc >> "%MAIN_RULES%"
+echo   - intelligent-workflow-orchestration.mdc >> "%MAIN_RULES%"
+echo   - feedback-enhanced.mdc >> "%MAIN_RULES%"
+echo   - ai-powered-code-review.mdc >> "%MAIN_RULES%"
+echo   - super-brain-system.mdc >> "%MAIN_RULES%"
+echo   - memory-system-integration.mdc >> "%MAIN_RULES%"
+echo   - context-recorder-system.mdc >> "%MAIN_RULES%"
 echo. >> "%MAIN_RULES%"
 
 REM P3 Level - Professional Development Rules (selected by type)
 echo Creating P3 Level - Professional Development Rules...
 mkdir "%RULES_DIR%\P3-professional-dev" 2>nul
 
-REM Add common professional development rules
-if exist "%GLOBAL_RULES_DIR%\multimodal-interaction-framework.mdc" (
-    copy "%GLOBAL_RULES_DIR%\multimodal-interaction-framework.mdc" "%RULES_DIR%\P3-professional-dev\" >nul 2>&1
-    if errorlevel 1 echo WARNING: Failed to copy multimodal-interaction-framework.mdc
-) else (
-    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\multimodal-interaction-framework.mdc
-)
-if exist "%GLOBAL_RULES_DIR%\human-ai-collaboration-optimization.mdc" (
-    copy "%GLOBAL_RULES_DIR%\human-ai-collaboration-optimization.mdc" "%RULES_DIR%\P3-professional-dev\" >nul 2>&1
-    if errorlevel 1 echo WARNING: Failed to copy human-ai-collaboration-optimization.mdc
-) else (
-    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\human-ai-collaboration-optimization.mdc
-)
-if exist "%GLOBAL_RULES_DIR%\knowledge-creation-discovery-framework.mdc" (
-    copy "%GLOBAL_RULES_DIR%\knowledge-creation-discovery-framework.mdc" "%RULES_DIR%\P3-professional-dev\" >nul 2>&1
-    if errorlevel 1 echo WARNING: Failed to copy knowledge-creation-discovery-framework.mdc
-) else (
-    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\knowledge-creation-discovery-framework.mdc
-)
+REM Common professional development rules (high priority files moved to P1)
 
 REM Use goto to ensure conditional execution order
 if /i "%RULE_TYPE%"=="frontend" goto :frontend_p3
@@ -314,42 +405,24 @@ goto :fullstack_p3
 :frontend_p3
 echo DEBUG: Processing frontend P3 rules
 echo ## Frontend Development Rules >> "%MAIN_RULES%"
-if exist "%GLOBAL_RULES_DIR%\frontend-rules.mdc" (
-    copy "%GLOBAL_RULES_DIR%\frontend-rules.mdc" "%RULES_DIR%\P3-professional-dev\" >nul 2>&1
-    if errorlevel 1 echo WARNING: Failed to copy frontend-rules.mdc
-) else (
-    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\frontend-rules.mdc
-)
-REM complete-workflow-integration.mdc has been integrated into intelligent-project-management.mdc
-REM No longer needed as a separate file
-echo - P3-professional-dev/ (Priority: 700) >> "%MAIN_RULES%"
-echo   - multimodal-interaction-framework.mdc >> "%MAIN_RULES%"
-echo   - human-ai-collaboration-optimization.mdc >> "%MAIN_RULES%"
-echo   - knowledge-creation-discovery-framework.mdc >> "%MAIN_RULES%"
-echo   - frontend-rules.mdc >> "%MAIN_RULES%"
+REM frontend-rules.mdc moved to P5 due to priority (700)
+echo - P3-professional-dev/ (Priority: 800-899) >> "%MAIN_RULES%"
+REM No files in P3 for frontend mode
 goto :p3_done
 
 :backend_p3
 echo DEBUG: Processing backend P3 rules
 echo ## Backend Development Rules >> "%MAIN_RULES%"
-if exist "%GLOBAL_RULES_DIR%\backend-rules.mdc" (
-    copy "%GLOBAL_RULES_DIR%\backend-rules.mdc" "%RULES_DIR%\P3-professional-dev\" >nul 2>&1
-    if errorlevel 1 echo WARNING: Failed to copy backend-rules.mdc
-) else (
-    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\backend-rules.mdc
-)
-REM complete-workflow-integration.mdc has been integrated into intelligent-project-management.mdc
-REM No longer needed as a separate file
-echo - P3-professional-dev/ (Priority: 700) >> "%MAIN_RULES%"
-echo   - multimodal-interaction-framework.mdc >> "%MAIN_RULES%"
-echo   - human-ai-collaboration-optimization.mdc >> "%MAIN_RULES%"
-echo   - knowledge-creation-discovery-framework.mdc >> "%MAIN_RULES%"
-echo   - backend-rules.mdc >> "%MAIN_RULES%"
+REM backend-rules.mdc moved to P5 due to priority (700)
+echo - P3-professional-dev/ (Priority: 800-899) >> "%MAIN_RULES%"
+REM No files in P3 for backend mode
 goto :p3_done
 
 :fullstack_p3
 echo DEBUG: Processing fullstack P3 rules
 echo ## Fullstack Development Rules >> "%MAIN_RULES%"
+REM Files with priority 800-899 belong to P3
+REM Add promoted frontend/backend rules (priority 850-860)
 if exist "%GLOBAL_RULES_DIR%\frontend-rules.mdc" (
     copy "%GLOBAL_RULES_DIR%\frontend-rules.mdc" "%RULES_DIR%\P3-professional-dev\" >nul 2>&1
     if errorlevel 1 echo WARNING: Failed to copy frontend-rules.mdc
@@ -362,14 +435,25 @@ if exist "%GLOBAL_RULES_DIR%\backend-rules.mdc" (
 ) else (
     echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\backend-rules.mdc
 )
-REM complete-workflow-integration.mdc has been integrated into intelligent-project-management.mdc
-REM No longer needed as a separate file
-echo - P3-professional-dev/ (Priority: 700) >> "%MAIN_RULES%"
-echo   - multimodal-interaction-framework.mdc >> "%MAIN_RULES%"
-echo   - human-ai-collaboration-optimization.mdc >> "%MAIN_RULES%"
-echo   - knowledge-creation-discovery-framework.mdc >> "%MAIN_RULES%"
+REM Keep brain-recorder-integration at P3 level (priority 890)
+if exist "%GLOBAL_RULES_DIR%\brain-recorder-integration.mdc" (
+    copy "%GLOBAL_RULES_DIR%\brain-recorder-integration.mdc" "%RULES_DIR%\P3-professional-dev\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy brain-recorder-integration.mdc
+) else (
+    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\brain-recorder-integration.mdc
+)
+REM Add multimodal-interaction-framework from P0 (priority 800)
+if exist "%GLOBAL_RULES_DIR%\multimodal-interaction-framework.mdc" (
+    copy "%GLOBAL_RULES_DIR%\multimodal-interaction-framework.mdc" "%RULES_DIR%\P3-professional-dev\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy multimodal-interaction-framework.mdc
+) else (
+    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\multimodal-interaction-framework.mdc
+)
+echo - P3-professional-dev/ (Priority: 800-899) >> "%MAIN_RULES%"
 echo   - frontend-rules.mdc >> "%MAIN_RULES%"
 echo   - backend-rules.mdc >> "%MAIN_RULES%"
+echo   - brain-recorder-integration.mdc >> "%MAIN_RULES%"
+echo   - multimodal-interaction-framework.mdc >> "%MAIN_RULES%"
 
 :p3_done
 echo. >> "%MAIN_RULES%"
@@ -391,7 +475,7 @@ if exist "%PROJECT_RULES_DIR%\frontend-dev.mdc" (
 ) else (
     echo WARNING: Source file not found: %PROJECT_RULES_DIR%\frontend-dev.mdc
 )
-echo - P4-project-workflow/ (Priority: 600) >> "%MAIN_RULES%"
+echo - P4-project-workflow/ (Priority: 700-799) >> "%MAIN_RULES%"
 echo   - frontend-dev.mdc >> "%MAIN_RULES%"
 goto :p4_common
 
@@ -403,7 +487,7 @@ if exist "%PROJECT_RULES_DIR%\backend-dev.mdc" (
 ) else (
     echo WARNING: Source file not found: %PROJECT_RULES_DIR%\backend-dev.mdc
 )
-echo - P4-project-workflow/ (Priority: 600) >> "%MAIN_RULES%"
+echo - P4-project-workflow/ (Priority: 700-799) >> "%MAIN_RULES%"
 echo   - backend-dev.mdc >> "%MAIN_RULES%"
 goto :p4_common
 
@@ -421,12 +505,15 @@ if exist "%PROJECT_RULES_DIR%\backend-dev.mdc" (
 ) else (
     echo WARNING: Source file not found: %PROJECT_RULES_DIR%\backend-dev.mdc
 )
-echo - P4-project-workflow/ (Priority: 600) >> "%MAIN_RULES%"
+echo - P4-project-workflow/ (Priority: 700-799) >> "%MAIN_RULES%"
 echo   - frontend-dev.mdc >> "%MAIN_RULES%"
 echo   - backend-dev.mdc >> "%MAIN_RULES%"
 
 :p4_common
 REM Common project workflow rules
+REM Files with priority 700-799 belong to P4
+REM backend-rules.mdc moved to P3 level (priority 850)
+REM frontend-rules.mdc moved to P3 level (priority 860)
 if exist "%PROJECT_RULES_DIR%\commit.mdc" (
     copy "%PROJECT_RULES_DIR%\commit.mdc" "%RULES_DIR%\P4-project-workflow\" >nul 2>&1
     if errorlevel 1 echo WARNING: Failed to copy commit.mdc
@@ -434,13 +521,7 @@ if exist "%PROJECT_RULES_DIR%\commit.mdc" (
 ) else (
     echo WARNING: Source file not found: %PROJECT_RULES_DIR%\commit.mdc
 )
-if exist "%PROJECT_RULES_DIR%\commit-fast.mdc" (
-    copy "%PROJECT_RULES_DIR%\commit-fast.mdc" "%RULES_DIR%\P4-project-workflow\" >nul 2>&1
-    if errorlevel 1 echo WARNING: Failed to copy commit-fast.mdc
-    echo   - commit-fast.mdc >> "%MAIN_RULES%"
-) else (
-    echo WARNING: Source file not found: %PROJECT_RULES_DIR%\commit-fast.mdc
-)
+REM commit-fast.mdc moved to P5 level (priority 680)
 if exist "%PROJECT_RULES_DIR%\code-review.mdc" (
     copy "%PROJECT_RULES_DIR%\code-review.mdc" "%RULES_DIR%\P4-project-workflow\" >nul 2>&1
     if errorlevel 1 echo WARNING: Failed to copy code-review.mdc
@@ -474,104 +555,59 @@ echo. >> "%MAIN_RULES%"
 REM P5 Level - Advanced Feature Rules (required for all types)
 echo Creating P5 Level - Advanced Feature Rules...
 mkdir "%RULES_DIR%\P5-advanced-features" 2>nul
-if exist "%PROJECT_RULES_DIR%\intelligent-project-management.mdc" (
-    copy "%PROJECT_RULES_DIR%\intelligent-project-management.mdc" "%RULES_DIR%\P5-advanced-features\" >nul 2>&1
-    if errorlevel 1 echo WARNING: Failed to copy intelligent-project-management.mdc
+REM Files with priority 600-699 belong to P5
+if exist "%PROJECT_RULES_DIR%\context-loader.mdc" (
+    copy "%PROJECT_RULES_DIR%\context-loader.mdc" "%RULES_DIR%\P5-advanced-features\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy context-loader.mdc
 ) else (
-    echo WARNING: Source file not found: %PROJECT_RULES_DIR%\intelligent-project-management.mdc
+    echo WARNING: Source file not found: %PROJECT_RULES_DIR%\context-loader.mdc
 )
-if exist "%PROJECT_RULES_DIR%\intelligent-workflow-orchestration.mdc" (
-    copy "%PROJECT_RULES_DIR%\intelligent-workflow-orchestration.mdc" "%RULES_DIR%\P5-advanced-features\" >nul 2>&1
-    if errorlevel 1 echo WARNING: Failed to copy intelligent-workflow-orchestration.mdc
-) else (
-    echo WARNING: Source file not found: %PROJECT_RULES_DIR%\intelligent-workflow-orchestration.mdc
-)
-if exist "%PROJECT_RULES_DIR%\mcp-intelligent-strategy.mdc" (
-    copy "%PROJECT_RULES_DIR%\mcp-intelligent-strategy.mdc" "%RULES_DIR%\P5-advanced-features\" >nul 2>&1
-    if errorlevel 1 echo WARNING: Failed to copy mcp-intelligent-strategy.mdc
-) else (
-    echo WARNING: Source file not found: %PROJECT_RULES_DIR%\mcp-intelligent-strategy.mdc
-)
-if exist "%PROJECT_RULES_DIR%\ai-powered-code-review.mdc" (
-    copy "%PROJECT_RULES_DIR%\ai-powered-code-review.mdc" "%RULES_DIR%\P5-advanced-features\" >nul 2>&1
-    if errorlevel 1 echo WARNING: Failed to copy ai-powered-code-review.mdc
-) else (
-    echo WARNING: Source file not found: %PROJECT_RULES_DIR%\ai-powered-code-review.mdc
-)
+REM custom-command-builder.mdc moved to P6 due to priority (500)
 if exist "%PROJECT_RULES_DIR%\mcp-debugging-enhanced.mdc" (
     copy "%PROJECT_RULES_DIR%\mcp-debugging-enhanced.mdc" "%RULES_DIR%\P5-advanced-features\" >nul 2>&1
     if errorlevel 1 echo WARNING: Failed to copy mcp-debugging-enhanced.mdc
-    echo   - mcp-debugging-enhanced.mdc >> "%MAIN_RULES%"
 ) else (
     echo WARNING: Source file not found: %PROJECT_RULES_DIR%\mcp-debugging-enhanced.mdc
-)
-if exist "%PROJECT_RULES_DIR%\systematic-debugging.mdc" (
-    copy "%PROJECT_RULES_DIR%\systematic-debugging.mdc" "%RULES_DIR%\P5-advanced-features\" >nul 2>&1
-    if errorlevel 1 echo WARNING: Failed to copy systematic-debugging.mdc
-    echo   - systematic-debugging.mdc >> "%MAIN_RULES%"
-) else (
-    echo WARNING: Source file not found: %PROJECT_RULES_DIR%\systematic-debugging.mdc
 )
 if exist "%PROJECT_RULES_DIR%\root-cause-analysis.mdc" (
     copy "%PROJECT_RULES_DIR%\root-cause-analysis.mdc" "%RULES_DIR%\P5-advanced-features\" >nul 2>&1
     if errorlevel 1 echo WARNING: Failed to copy root-cause-analysis.mdc
-    echo   - root-cause-analysis.mdc >> "%MAIN_RULES%"
 ) else (
     echo WARNING: Source file not found: %PROJECT_RULES_DIR%\root-cause-analysis.mdc
 )
-if exist "%PROJECT_RULES_DIR%\context-loader.mdc" (
-    copy "%PROJECT_RULES_DIR%\context-loader.mdc" "%RULES_DIR%\P5-advanced-features\" >nul 2>&1
-    if errorlevel 1 echo WARNING: Failed to copy context-loader.mdc
-    echo   - context-loader.mdc >> "%MAIN_RULES%"
+if exist "%PROJECT_RULES_DIR%\systematic-debugging.mdc" (
+    copy "%PROJECT_RULES_DIR%\systematic-debugging.mdc" "%RULES_DIR%\P5-advanced-features\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy systematic-debugging.mdc
 ) else (
-    echo WARNING: Source file not found: %PROJECT_RULES_DIR%\context-loader.mdc
+    echo WARNING: Source file not found: %PROJECT_RULES_DIR%\systematic-debugging.mdc
 )
-if exist "%PROJECT_RULES_DIR%\custom-command-builder.mdc" (
-    copy "%PROJECT_RULES_DIR%\custom-command-builder.mdc" "%RULES_DIR%\P5-advanced-features\" >nul 2>&1
-    if errorlevel 1 echo WARNING: Failed to copy custom-command-builder.mdc
-    echo   - custom-command-builder.mdc >> "%MAIN_RULES%"
+REM Add demoted commit-fast.mdc from P4 (priority 680)
+if exist "%PROJECT_RULES_DIR%\commit-fast.mdc" (
+    copy "%PROJECT_RULES_DIR%\commit-fast.mdc" "%RULES_DIR%\P5-advanced-features\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy commit-fast.mdc
 ) else (
-    echo WARNING: Source file not found: %PROJECT_RULES_DIR%\custom-command-builder.mdc
+    echo WARNING: Source file not found: %PROJECT_RULES_DIR%\commit-fast.mdc
 )
-if exist "%PROJECT_RULES_DIR%\mcp-unified-management.mdc" (
-    copy "%PROJECT_RULES_DIR%\mcp-unified-management.mdc" "%RULES_DIR%\P5-advanced-features\" >nul 2>&1
-    if errorlevel 1 echo WARNING: Failed to copy mcp-unified-management.mdc
-) else (
-    echo WARNING: Source file not found: %PROJECT_RULES_DIR%\mcp-unified-management.mdc
-)
-if exist "%PROJECT_RULES_DIR%\mcp-zero-config-detection.mdc" (
-    copy "%PROJECT_RULES_DIR%\mcp-zero-config-detection.mdc" "%RULES_DIR%\P5-advanced-features\" >nul 2>&1
-    if errorlevel 1 echo WARNING: Failed to copy mcp-zero-config-detection.mdc
-) else (
-    echo WARNING: Source file not found: %PROJECT_RULES_DIR%\mcp-zero-config-detection.mdc
-)
-echo - P5-advanced-features/ (Priority: 500) >> "%MAIN_RULES%"
-echo   - intelligent-project-management.mdc >> "%MAIN_RULES%"
-echo   - intelligent-workflow-orchestration.mdc >> "%MAIN_RULES%"
-echo   - mcp-intelligent-strategy.mdc >> "%MAIN_RULES%"
-echo   - ai-powered-code-review.mdc >> "%MAIN_RULES%"
-echo   - mcp-unified-management.mdc >> "%MAIN_RULES%"
-echo   - mcp-zero-config-detection.mdc >> "%MAIN_RULES%"
+echo - P5-advanced-features/ (Priority: 600-699) >> "%MAIN_RULES%"
+echo   - context-loader.mdc >> "%MAIN_RULES%"
+echo   - mcp-debugging-enhanced.mdc >> "%MAIN_RULES%"
+echo   - root-cause-analysis.mdc >> "%MAIN_RULES%"
+echo   - systematic-debugging.mdc >> "%MAIN_RULES%"
+echo   - commit-fast.mdc >> "%MAIN_RULES%"
 echo. >> "%MAIN_RULES%"
 
 REM P6 Level - System Optimization Rules (required for all types)
 echo Creating P6 Level - System Optimization Rules...
 mkdir "%RULES_DIR%\P6-system-optimization" 2>nul
-if exist "%GLOBAL_RULES_DIR%\system-integration-config.mdc" (
-    copy "%GLOBAL_RULES_DIR%\system-integration-config.mdc" "%RULES_DIR%\P6-system-optimization\" >nul 2>&1
-    if errorlevel 1 echo WARNING: Failed to copy system-integration-config.mdc
+REM Files with priority 500-599 belong to P6
+if exist "%PROJECT_RULES_DIR%\custom-command-builder.mdc" (
+    copy "%PROJECT_RULES_DIR%\custom-command-builder.mdc" "%RULES_DIR%\P6-system-optimization\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy custom-command-builder.mdc
 ) else (
-    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\system-integration-config.mdc
+    echo WARNING: Source file not found: %PROJECT_RULES_DIR%\custom-command-builder.mdc
 )
-if exist "%GLOBAL_RULES_DIR%\rule-redundancy-optimization.mdc" (
-    copy "%GLOBAL_RULES_DIR%\rule-redundancy-optimization.mdc" "%RULES_DIR%\P6-system-optimization\" >nul 2>&1
-    if errorlevel 1 echo WARNING: Failed to copy rule-redundancy-optimization.mdc
-) else (
-    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\rule-redundancy-optimization.mdc
-)
-echo - P6-system-optimization/ (Priority: 400) >> "%MAIN_RULES%"
-echo   - system-integration-config.mdc >> "%MAIN_RULES%"
-echo   - rule-redundancy-optimization.mdc >> "%MAIN_RULES%"
+echo - P6-system-optimization/ (Priority: 500-599) >> "%MAIN_RULES%"
+echo   - custom-command-builder.mdc >> "%MAIN_RULES%"
 echo. >> "%MAIN_RULES%"
 
 REM P7 Level - Utility and Support Rules (include mermaid by mode)
@@ -595,18 +631,11 @@ if exist "%PROJECT_RULES_DIR%\create-docs.mdc" (
 ) else (
     echo WARNING: Source file not found: %PROJECT_RULES_DIR%\create-docs.mdc
 )
-if exist "%PROJECT_RULES_DIR%\feedback-enhanced.mdc" (
-    copy "%PROJECT_RULES_DIR%\feedback-enhanced.mdc" "%RULES_DIR%\P7-utilities\" >nul 2>&1
-    if errorlevel 1 echo WARNING: Failed to copy feedback-enhanced.mdc
-) else (
-    echo WARNING: Source file not found: %PROJECT_RULES_DIR%\feedback-enhanced.mdc
-)
 
-echo - P7-utilities/ (Priority: 300) >> "%MAIN_RULES%"
+echo - P7-utilities/ (Priority: 300-499) >> "%MAIN_RULES%"
 echo   - analyze-issue.mdc >> "%MAIN_RULES%"
 echo   - implement-task.mdc >> "%MAIN_RULES%"
 echo   - create-docs.mdc >> "%MAIN_RULES%"
-echo   - feedback-enhanced.mdc >> "%MAIN_RULES%"
 
 REM Mermaid is included only in frontend and fullstack modes
 if /i "%RULE_TYPE%"=="frontend" goto :add_mermaid
@@ -626,6 +655,35 @@ if exist "%PROJECT_RULES_DIR%\mermaid.mdc" (
 :skip_mermaid
 echo. >> "%MAIN_RULES%"
 
+REM Create Templates directory and copy template files for AI context recording
+echo Creating Templates directory and copying template files...
+set "TEMPLATES_DIR=%TARGET_DIR%\templates"
+mkdir "%TEMPLATES_DIR%" 2>nul
+
+REM Copy template files for AI to use in context recording
+set "SOURCE_TEMPLATES_DIR=%BASE_DIR%\templates"
+if exist "%SOURCE_TEMPLATES_DIR%\project-init-template.md" (
+    copy "%SOURCE_TEMPLATES_DIR%\project-init-template.md" "%TEMPLATES_DIR%\" >nul 2>&1
+    if errorlevel 1 (
+        echo WARNING: Failed to copy project-init-template.md
+    ) else (
+        echo   Project initialization template installed: project-init-template.md
+    )
+) else (
+    echo WARNING: Source file not found: %SOURCE_TEMPLATES_DIR%\project-init-template.md
+)
+
+if exist "%SOURCE_TEMPLATES_DIR%\archive-init-template.md" (
+    copy "%SOURCE_TEMPLATES_DIR%\archive-init-template.md" "%TEMPLATES_DIR%\" >nul 2>&1
+    if errorlevel 1 (
+        echo WARNING: Failed to copy archive-init-template.md
+    ) else (
+        echo   Archive initialization template installed: archive-init-template.md
+    )
+) else (
+    echo WARNING: Source file not found: %SOURCE_TEMPLATES_DIR%\archive-init-template.md
+)
+
 REM Create MCP Tools directory and copy management scripts
 echo Creating MCP Tools directory and copying management scripts...
 set "MCP_TOOLS_DIR=%TARGET_DIR%\mcp-tools"
@@ -644,6 +702,17 @@ if exist "%MCP_SCRIPTS_DIR%\mcp-cross-platform-sync.ps1" (
     echo WARNING: Source file not found: %MCP_SCRIPTS_DIR%\mcp-cross-platform-sync.ps1
 )
 
+REM Add templates information to main.md
+echo ## Templates Directory >> "%MAIN_RULES%"
+echo. >> "%MAIN_RULES%"
+echo The templates/ directory contains initialization templates for AI context recording: >> "%MAIN_RULES%"
+echo - project-init-template.md - Template for creating project.context.md files >> "%MAIN_RULES%"
+echo - archive-init-template.md - Template for creating context.archive.md files >> "%MAIN_RULES%"
+echo. >> "%MAIN_RULES%"
+echo AI will automatically use these templates when initializing project context recording. >> "%MAIN_RULES%"
+echo Templates support variable replacement: {{PROJECT_NAME}}, {{TIMESTAMP}}, etc. >> "%MAIN_RULES%"
+echo. >> "%MAIN_RULES%"
+
 REM Add MCP tools information to main.md
 echo ## MCP Tools Directory >> "%MAIN_RULES%"
 echo. >> "%MAIN_RULES%"
@@ -656,14 +725,14 @@ echo. >> "%MAIN_RULES%"
 echo ## Priority Levels for AI Understanding >> "%MAIN_RULES%"
 echo. >> "%MAIN_RULES%"
 echo **AI should follow rules in this priority order:** >> "%MAIN_RULES%"
-echo - P0 (1000): Core Safety - MUST follow first >> "%MAIN_RULES%"
-echo - P1 (900): Core Identity - Fundamental behavior >> "%MAIN_RULES%"
-echo - P2 (800): Intelligent Systems - Advanced capabilities >> "%MAIN_RULES%"
-echo - P3 (700): Professional Development - Domain expertise >> "%MAIN_RULES%"
-echo - P4 (600): Project Workflows - Operational procedures >> "%MAIN_RULES%"
-echo - P5 (500): Advanced Features - Enhanced functionality >> "%MAIN_RULES%"
-echo - P6 (400): System Optimization - Performance tuning >> "%MAIN_RULES%"
-echo - P7 (300): Utilities - Supporting tools >> "%MAIN_RULES%"
+echo - P0 (1100-1200): Core Safety - MUST follow first >> "%MAIN_RULES%"
+echo - P1 (1000-1099): Core Identity - Fundamental behavior >> "%MAIN_RULES%"
+echo - P2 (900-999): Intelligent Systems - Advanced capabilities >> "%MAIN_RULES%"
+echo - P3 (800-899): Professional Development - Domain expertise >> "%MAIN_RULES%"
+echo - P4 (700-799): Project Workflows - Operational procedures >> "%MAIN_RULES%"
+echo - P5 (600-699): Advanced Features - Enhanced functionality >> "%MAIN_RULES%"
+echo - P6 (500-599): System Optimization - Performance tuning >> "%MAIN_RULES%"
+echo - P7 (300-499): Utilities - Supporting tools >> "%MAIN_RULES%"
 echo. >> "%MAIN_RULES%"
 
 REM Count total files

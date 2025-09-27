@@ -12,14 +12,23 @@
 
 使用 **一个脚本** 为 **所有 AI 工具** 安装 AgentRules 规则系统，让你的 AI 助手变得超级智能。
 
-### 核心功能
+### 🎯 核心功能
 
-- **前端开发**: Vue、React、TypeScript 专业开发
-- **后端开发**: Node.js、Python、Java 等后端技术
-- **全栈开发**: 前端+后端完整解决方案
-- **代码管理**: 标准化提交、代码审查、Bug 修复
-- **可视化**: 自动生成架构图、流程图
-- **智能系统**: AI 记忆、推荐引擎、超级大脑
+- **🎨 前端开发**: Vue、React、TypeScript 专业开发，遵循现代最佳实践
+- **⚙️ 后端开发**: Node.js、Python、Java 等后端技术，采用企业级架构模式
+- **🔄 全栈开发**: 前端+后端完整解决方案，无缝集成
+- **📝 代码管理**: 标准化提交、自动化代码审查、智能 Bug 修复
+- **📊 可视化**: 自动生成架构图、流程图和文档
+- **🧠 智能系统**: AI 记忆、推荐引擎、具备学习能力的超级大脑
+
+### 🚀 高级能力
+
+- **🤖 AI 驱动开发**: 智能代码生成、优化和重构
+- **🔧 MCP 工具集成**: 与模型上下文协议工具无缝集成
+- **📚 知识管理**: 持久化记忆和上下文感知辅助
+- **🎯 项目模板**: 预配置模板，快速项目初始化
+- **🔍 智能调试**: AI 辅助错误检测和解决
+- **📈 性能优化**: 自动化性能分析和改进
 
 ### Ultimate 版本特色
 
@@ -45,6 +54,54 @@
 - **编码检测** - 自动检测系统编码（CP936/950/932/949/437/65001）
 - **完美兼容** - 支持所有主流 AI 开发工具
 - **双击安装** - 支持直接双击脚本，自动创建桌面 agent 项目
+
+## 🚀 快速使用指南
+
+### 📋 新手用户（推荐）
+
+1. **双击** `install-scripts` 文件夹中的 `install-ultra.bat`
+2. 脚本会自动在桌面创建 `agent` 文件夹
+3. 打开你的 AI 工具（Cursor、Claude 等）开始编程！
+
+### ⚡ 高级用户
+
+```bash
+# 进入 install-scripts 目录
+cd install-scripts
+
+# 使用特定模式运行
+install-ultra.bat [项目路径] [模式]
+
+# 示例：
+install-ultra.bat                    # 在桌面创建 agent 文件夹（全栈模式）
+install-ultra.bat C:\MyProject frontend    # 前端开发设置
+install-ultra.bat D:\WebApp backend        # 后端开发设置
+```
+
+### 🎯 开发模式
+
+| 模式 | 文件数 | 优先级层次 | 适用场景 |
+|------|--------|------------|----------|
+| `frontend` | 38 个文件 | P0-P7 (8层) | React、Vue、Angular 项目 |
+| `backend` | 37 个文件 | P0-P7 (8层) | API、服务器、数据库项目 |
+| `fullstack` | 45 个文件 | P0-P7 (8层) | 完整的 Web 应用程序（推荐） |
+
+### 📁 创建的目录结构
+
+```
+你的项目/
+├── .rules/                    # AgentRules 规则目录
+│   ├── P0-core-safety/       # 核心安全规则
+│   ├── P1-core-identity/     # 核心身份规则
+│   ├── P2-intelligent-system/ # 智能系统规则
+│   ├── P3-professional-dev/  # 专业开发规则
+│   ├── P4-project-workflow/  # 项目工作流规则
+│   ├── P5-advanced-features/ # 高级功能规则
+│   ├── P6-system-optimization/ # 系统优化规则
+│   ├── P7-utility-support/   # 实用工具和支持规则
+│   ├── templates/            # 项目模板
+│   └── mcp-tools/           # MCP 管理脚本
+```
 
 ## 开始前的准备（必读！）
 
@@ -397,14 +454,47 @@ install-scripts\install-ultra.bat
 
 **🚀 三种开发模式**:
 
-- `frontend` - 前端开发（38 个文件）
-- `backend` - 后端开发（37 个文件）
-- `fullstack` - 全栈开发（41 个文件，推荐）
+- `frontend` - 前端开发（38 个文件，P0-P7 优先级层次）
+- `backend` - 后端开发（37 个文件，P0-P7 优先级层次）
+- `fullstack` - 全栈开发（45 个文件，P0-P7 优先级层次，推荐）
 
 **🔧 MCP 跨平台管理**:
 
 - `mcp-cross-platform-sync.ps1 -Action detect` - 分析 MCP 配置
 - `mcp-cross-platform-sync.ps1 -Action sync` - 在 AI 工具间同步（即将推出）
+
+## ✅ 安装验证
+
+安装成功后，你应该看到：
+
+```
+========================================
+SUCCESS: fullstack Rules Directory Created (Final Release)
+========================================
+
+Project Directory: [你选择的路径]
+Rules Directory: [你选择的路径]\.rules
+Rule Type: fullstack
+Total files installed: 45
+Priority levels: P0-P7 (8 levels)
+Target location: [你选择的路径]
+
+Installation completed successfully
+========================================
+```
+
+### 🔍 验证安装
+
+1. **检查目录结构**: 导航到你的项目文件夹，验证 `.rules` 目录存在
+2. **文件计数**: 确保所有 45 个文件都存在（全栈模式）
+3. **优先级层次**: 验证 P0-P7 目录已创建
+4. **模板文件**: 检查 `templates/` 和 `mcp-tools/` 目录存在
+
+### 🚀 下一步
+
+1. **打开 AI 工具**: 启动 Cursor、Claude 或你喜欢的 AI 开发工具
+2. **加载项目**: 打开包含 `.rules` 文件夹的项目目录
+3. **开始编程**: 开始享受增强的 AI 辅助开发！
 
 **✅ 一次安装，所有 AI 工具都能用！**
 **🎯 双击即用，零技术门槛！**

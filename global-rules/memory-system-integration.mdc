@@ -2,7 +2,7 @@
 type: "global_rule"
 description: "记忆系统集成 - 项目记忆存储、管理和智能使用"
 globs: ["**/*"]
-priority: 940
+priority: 930
 ---
 
 # 💾 记忆系统集成

@@ -4,7 +4,7 @@ description: "Enhanced feedback mechanism with 1-hour timeout - 增强反馈机�
 globs: ["**/*"]
 alwaysApply: true
 enforcement: mandatory
-priority: 950
+priority: 960
 ---
 
 # 🤖 Enhanced Feedback Mechanism - 增强反馈机制

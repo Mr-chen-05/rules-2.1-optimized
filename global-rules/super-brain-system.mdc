@@ -2,7 +2,9 @@
 type: "global_rule"
 description: "超级大脑系统 - 智能项目管理激活机制和核心功能"
 globs: ["**/*"]
-priority: 800
+priority: 970
+dependencies: ["context-recorder-system.mdc"]
+integrations: ["context-recorder-system", "memory-system", "intelligent-recommendation-engine"]
 ---
 
 # 🧠 超级大脑系统
@@ -47,15 +49,18 @@ priority: 800
    🎯 当前项目: [项目名称或'未设定']
    📋 当前阶段: [阶段信息或'待确定']
    💾 记忆状态: [已加载/空白]
+   📝 记录员状态: [已集成/待激活]
    
    🤖 可用功能:
    • 智能阶段推荐 (/recommend)
    • 项目状态查询 (/status)
    • 阶段切换 (/switch [阶段号])
    • 记忆查看 (/memory)
+   • 自动记录 (/brain-record)
    • 工具编排优化
    
-   💡 请告诉我您的项目需求，我将为您提供最佳的管理方案！"
+   💡 请告诉我您的项目需求，我将为您提供最佳的管理方案！
+   📝 所有决策和操作将自动记录到项目上下文中。"
 ```
 
 ## 🎛️ 核心功能模块
@@ -146,7 +151,53 @@ MCP工具智能编排:
     - 技术趋势跟踪
 ```
 
-## 🔄 系统集成规则
+## 🔄 统一系统激活管理
+
+### 激活逻辑统一
+```yaml
+统一入口:
+  主触发词: "启动超级大脑系统"
+  
+  其他兼容触发词:
+    - "启动智能项目管理"
+    - "激活项目大脑"
+    - "开启智能管理"
+    - "启动AI项目助手"
+    - "智能管理"
+    - "项目大脑"
+  
+  状态查询:
+    - "查看项目状态"
+    - "项目进度如何"
+    - "当前在哪个阶段"
+    - "系统状态"
+
+自动子系统激活:
+  1. 记录员系统 (context-recorder-system.mdc)
+  2. 项目管理系统 (intelligent-project-management.mdc)
+  3. MCP工具策略 (mcp-intelligent-strategy.mdc)
+  4. 工作流编排 (intelligent-workflow-orchestration.mdc - 企业级项目)
+```
+
+### 与记录员系统集成
+```yaml
+自动激活机制:
+  1. 超级大脑系统启动时自动激活记录员系统
+  2. 所有重大决策自动触发记录
+  3. 阶段切换时自动归档当前状态
+  4. 项目初始化时创建上下文文件
+
+联动规则:
+  决策记录: 技术选型、架构设计、阶段切换 → 自动记录
+  任务跟踪: Git提交、模块完成、问题解决 → 自动更新
+  状态同步: 项目进度、记忆状态、系统状态 → 实时同步
+  
+集成命令:
+  - /brain-start: 同时激活超级大脑和记录员
+  - /brain-status: 显示两个系统综合状态
+  - /brain-record: 手动触发决策记录
+  - /brain-archive: 阶段完成时综合归档
+```
 
 ### 与项目管理系统集成
 ```yaml

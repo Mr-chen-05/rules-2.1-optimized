@@ -1020,7 +1020,7 @@ Get-Counter "\Process(node)\% Processor Time"
 - 🔧 [MCP工具介绍](../docs/MCP-TOOLS-INTRODUCTION.md) - 工具功能说明
 
 ### **🎓 学习教程：**
-- 🌟 [快速开始指南](../QUICK-START-GUIDE.md) - 5分钟上手
+- 🌟 [快速开始指南](../README.md) - 5分钟上手
 - 🏗️ [后端开发指南](../docs/backend-guide.md) - 后端开发参考
 - 🎨 [前端开发指南](../docs/frontend-guide.md) - 前端开发参考
 - 🧠 [超级大脑系统](../tutorials/super-brain-system-usage-guide.md) - 智能系统使用
