@@ -1,6 +1,6 @@
 # Test Scripts 测试脚本
 
-本目录包含用于测试和验证AgentRules安装的脚本。
+本目录包含用于测试和验证Rules 2.5.1安装的脚本。
 
 ## 可用脚本
 
@@ -24,7 +24,7 @@
 **最新测试输出示例 (2025年9月)** ✅:
 ```
 ========================================
-AgentRules Comprehensive Detection Tool
+Rules 2.5.1 Comprehensive Detection Tool
 ========================================
 Detecting project path: e:\temp-test-rules
 Rules directory path: e:\temp-test-rules\.rules
@@ -76,7 +76,7 @@ Health Score: 100/100
 **历史测试输出示例 (参考)**:
 ```
 ========================================
-AgentRules Comprehensive Detection Tool
+Rules 2.5.1 Comprehensive Detection Tool
 ========================================
 Detecting project path: C:\Users\luo20\Desktop\demo-project
 Rules directory path: C:\Users\luo20\Desktop\demo-project\rules
@@ -154,7 +154,7 @@ comprehensive-test-report.bat C:\path\to\your\project
 **模式检测标准 (2025年9月更新)**:
 - **Frontend模式**: 39个文件 (包含mermaid.mdc + frontend-dev.mdc + 新增8个规则文件)
 - **Backend模式**: 38个文件 (包含backend-dev.mdc，无mermaid.mdc + 新增8个规则文件)
-- **Fullstack模式**: 41个文件 (包含所有关键文件 + 新增8个规则文件)
+- **Fullstack模式**: 45个文件 (包含所有关键文件 + 优化后的规则分布)
 
 **新增规则文件 (8个)**:
 - `commit-fast.mdc` - 快速提交工作流
@@ -174,13 +174,13 @@ comprehensive-test-report.bat C:\path\to\your\project
 - 📊 **文件数量更新**: 
   - Frontend: 31→39个文件
   - Backend: 30→38个文件  
-  - Fullstack: 33→41个文件
+  - Fullstack: 33→45个文件
 - ✅ **测试验证**: 
   - install-ultra.bat: 成功安装42个文件
   - comprehensive-test-report.bat: 正确检测FULLSTACK模式，健康评分100/100
 - 🎯 **完整性保证**: 所有新增规则文件正确集成到安装和检测流程
 
-**2025年9月25日**:
+**2025年9月27日**:
 - 🌐 **增强编码检测**: 自动检测系统编码，支持中文、日文、韩文、西方语言
 - ✅ **ASCII安全输出**: 完全转换为ASCII英文输出，避免编码问题
 - 🔧 **PowerShell清理**: 使用PowerShell方法替代Unicode清理逻辑

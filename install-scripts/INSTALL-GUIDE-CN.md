@@ -1,4 +1,4 @@
-# AgentRules Ultimate - 统一安装指南
+# Rules 2.5.1 - 统一安装指南
 
 > **🌐 语言选择**: [🇺🇸 English](./INSTALL-GUIDE.md) | 🇨🇳 中文 (当前)
 
@@ -10,7 +10,7 @@
 
 ## 这个教程能帮你做什么？
 
-使用 **一个脚本** 为 **所有 AI 工具** 安装 AgentRules 规则系统，让你的 AI 助手变得超级智能。
+使用 **一个脚本** 为 **所有 AI 工具** 安装 Rules 2.5.1 规则系统，让你的 AI 助手变得超级智能。
 
 ### 🎯 核心功能
 
@@ -90,7 +90,7 @@ install-ultra.bat D:\WebApp backend        # 后端开发设置
 
 ```
 你的项目/
-├── .rules/                    # AgentRules 规则目录
+├── .rules/                    # Rules 2.5.1 规则目录
 │   ├── P0-core-safety/       # 核心安全规则
 │   ├── P1-core-identity/     # 核心身份规则
 │   ├── P2-intelligent-system/ # 智能系统规则
@@ -268,7 +268,7 @@ install-scripts\install-ultra.bat C:\my-project
 | ------------- | --------- | -------------------------------------------------- |
 | **Frontend**  | 38 个文件 | 前端规则 + mermaid 图表支持 + 8 个Phase 2+3智能规则 |
 | **Backend**   | 37 个文件 | 后端规则（不含 mermaid）+ 8 个Phase 2+3智能规则     |
-| **Fullstack** | 41 个文件 | 前端 + 后端完整规则 + 8 个Phase 2+3智能规则         |
+| **Fullstack** | 45 个文件 | 前端 + 后端完整规则 + 优化后的智能规则分布         |
 
 ## 如何使用安装的规则？
 
