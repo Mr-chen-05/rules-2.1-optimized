@@ -46,6 +46,18 @@ set "BASE_DIR=%~dp0.."
 set "GLOBAL_RULES_DIR=%BASE_DIR%\global-rules"
 set "PROJECT_RULES_DIR=%BASE_DIR%\project-rules"
 
+echo.
+echo [Step] Validating rules consistency...
+powershell -NoProfile -ExecutionPolicy Bypass -File "%BASE_DIR%\scripts\validate-rules-consistency.ps1"
+if errorlevel 1 (
+    echo ERROR: Rules consistency validation failed. Please fix rule metadata per README.md.
+    echo See: README.md -> 规则元数据字段说明
+    echo.
+    pause
+    exit /b 1
+)
+echo [OK] Rules consistency validation passed.
+
 REM Get original arguments and clean Unicode characters
 set "RAW_TARGET=%~1"
 set "RULE_TYPE=%~2"
