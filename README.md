@@ -501,6 +501,39 @@ install-scripts\install-ultra.bat "你的项目路径" fullstack
 | `/create-command` | **智能命令创建** | **AI生成自定义命令** | `custom-command-builder.mdc` |
 | `/list-commands` | 命令列表 | 查看所有自定义命令 | `custom-command-builder.mdc` |
 
+## 🧾 规则元数据字段说明
+
+为了确保规则行为一致、配置清晰，所有规则文件（.mdc）应明确声明 alwaysApply 字段：
+
+- 含义：控制规则是否在所有会话中默认全局加载与执行
+  - alwaysApply: true → 默认全局启用（基础、安全、整合类规则）
+    - 典型：unified-rules-base、rule-conflict-resolution、system-integration-config、ai-agent-intelligence-core 等
+  - alwaysApply: false → 按需启用（入口、工具、工作流能力）
+    - 典型：super-brain-system、intelligent-recommendation-engine、intelligent-project-management、intelligent-workflow-orchestration、ai-powered-code-review 等
+
+- 与 type 的关系：
+  - type: "always_apply" 用于规则分类（安装/分组），alwaysApply 用于运行时默认加载策略（执行层开关）
+  - 两者同时存在时，应保持一致；若不一致，以 alwaysApply 布尔值为准（执行策略优先）
+
+- 推荐的元数据头示例（放在 priority 下方）：
+
+```
+---
+id: project-rules/commit
+name: '标准化提交规范（/commit）'
+priority: P0
+alwaysApply: true           # 全局启用，确保随时可用
+type: 'always_apply'        # 可选：用于分类
+---
+```
+
+- 激活方式说明：
+  - alwaysApply: true → 规则在会话启动时即加载，无需额外命令
+  - alwaysApply: false → 通过命令触发或明确读取对应 .mdc 文件
+
+- commit.mdc 策略：保持 alwaysApply: true
+  - 原因：commit 作为代码提交规范与质量保障的基础能力，应全局可用并在跨场景工作流中一致生效（支持 /commit 与 /commit-fast）
+
 ## 🧠 核心功能
 
 ### 🚀 **AI智能核心系统**
