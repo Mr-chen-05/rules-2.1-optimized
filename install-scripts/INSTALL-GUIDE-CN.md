@@ -52,6 +52,7 @@
 - **智能适配** - 自动适配所有 AI 工具和 IDE
 - **优先级系统** - P0-P7 八层架构，AI 理解度提升 200%
 - **编码检测** - 自动检测系统编码（CP936/950/932/949/437/65001）
+- **规则一致性预检** - 安装前自动运行 `scripts/validate-rules-consistency.ps1`；发现不一致将中止并提示修复
 - **完美兼容** - 支持所有主流 AI 开发工具
 - **双击安装** - 支持直接双击脚本，自动创建桌面 agent 项目
 
@@ -98,9 +99,10 @@ install-ultra.bat D:\WebApp backend        # 后端开发设置
 │   ├── P4-project-workflow/  # 项目工作流规则
 │   ├── P5-advanced-features/ # 高级功能规则
 │   ├── P6-system-optimization/ # 系统优化规则
-│   ├── P7-utility-support/   # 实用工具和支持规则
-│   ├── templates/            # 项目模板
-│   └── mcp-tools/           # MCP 管理脚本
+│   └── P7-utilities/         # 实用工具规则
+├── templates/                # 项目模板
+├── mcp-tools/                # MCP 管理脚本
+└── scripts/                  # 项目级维护与校验脚本
 ```
 
 ## 开始前的准备（必读！）
@@ -260,6 +262,8 @@ install-scripts\install-ultra.bat C:\my-project
 │   └── P7-utilities/               ← 实用工具规则 (优先级300)
 └── mcp-tools/                       ← MCP工具和脚本
     └── mcp-cross-platform-sync.ps1 ← 跨平台MCP配置同步工具
+└── scripts/                         ← 项目级维护与校验脚本
+    └── validate-rules-consistency.ps1 ← 规则元数据一致性校验工具
 ```
 
 ## 不同模式的文件数量

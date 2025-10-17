@@ -52,6 +52,7 @@ Use **one script** to install Rules 2.5.1 rule system for **all AI tools**, maki
 - **Smart Adaptation** - Auto-adapts to all AI tools and IDEs
 - **Priority System** - P0-P7 eight-layer architecture, 200% AI understanding improvement
 - **Encoding Detection** - Auto-detects system encoding (CP936/950/932/949/437/65001)
+- **Rule Consistency Pre-Check** - Automatically runs `scripts/validate-rules-consistency.ps1` before installation; aborts on inconsistency and provides fix guidance
 - **Perfect Compatibility** - Supports all mainstream AI development tools
 - **Double-Click Installation** - Supports direct script double-click, auto-creates desktop agent project
 
@@ -98,9 +99,10 @@ your-project/
 │   ├── P4-project-workflow/  # Project workflow rules
 │   ├── P5-advanced-features/ # Advanced feature rules
 │   ├── P6-system-optimization/ # System optimization rules
-│   ├── P7-utility-support/   # Utility and support rules
-│   ├── templates/            # Project templates
-│   └── mcp-tools/           # MCP management scripts
+│   └── P7-utilities/         # Utility rules
+├── templates/                # Project templates
+├── mcp-tools/                # MCP management scripts
+└── scripts/                  # Project-level maintenance/validation scripts
 ```
 
 ## Pre-Installation Preparation (Must Read!)
@@ -260,6 +262,8 @@ Your Project Directory/
 │   └── P7-utilities/               ← Utility rules (Priority 300)
 └── mcp-tools/                       ← MCP tools and scripts
     └── mcp-cross-platform-sync.ps1 ← Cross-platform MCP configuration sync tool
+└── scripts/                         ← Project-level maintenance/validation scripts
+    └── validate-rules-consistency.ps1 ← Rule metadata consistency validator
 ```
 
 ## File Count by Mode
