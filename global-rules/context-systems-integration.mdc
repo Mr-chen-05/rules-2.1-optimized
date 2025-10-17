@@ -1,5 +1,5 @@
 ---
-type: "system_integration_rule"
+type: "always_apply"
 description: "Context Loader与记录员系统集成配置 - 解决功能重叠和协同工作"
 priority: 900
 alwaysApply: true

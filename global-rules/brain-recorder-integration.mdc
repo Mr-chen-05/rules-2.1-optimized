@@ -1,5 +1,5 @@
 ---
-type: "system_integration_rule"
+type: "always_apply"
 description: "Brain-Recorder Integration System (大脑-记录员集成系统) - 超级大脑与记录员系统的深度集成"
 priority: 890
 alwaysApply: true

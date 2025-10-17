@@ -1,5 +1,5 @@
 ---
-type: "global_context_management_system"
+type: "always_apply"
 description: "Context Recorder System (记录员系统) - 全局上下文管理和项目记忆维护系统"
 priority: 920
 alwaysApply: true
