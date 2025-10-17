@@ -80,6 +80,7 @@ graph TD
 | **frontend-guide.md** | 前端开发参考 | 需要快速参考时 |
 | **backend-guide.md** | 后端开发参考 | 需要快速参考时 |
 | **intelligent-system/** | 智能系统详细文档 | 高级配置时 |
+| **README.md（规则元数据字段说明）** | 规则元数据说明 | 需要了解 alwaysApply/type 一致性约定时 |
 
 ## 🔄 解决循环依赖的策略
 

@@ -514,6 +514,7 @@ install-scripts\install-ultra.bat "你的项目路径" fullstack
 - 与 type 的关系：
   - type: "always_apply" 用于规则分类（安装/分组），alwaysApply 用于运行时默认加载策略（执行层开关）
   - 两者同时存在时，必须保持一致；不一致视为配置错误，应在校验或加载阶段给出明确提示（约定优于配置）
+  - 一致性检查范围：仅针对 type: "always_apply" 与 alwaysApply 的一致性强制检查；其他类型需保持语义一致但不强制同名
 
 - 推荐的元数据头示例（放在 priority 下方）：
 
