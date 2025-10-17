@@ -62,6 +62,7 @@ npx @modelcontextprotocol/server-everything --version
 # 检查Python MCP工具
 uvx mcp-feedback-enhanced@latest version
 ```
+提示：server-memory 为可选工具。若未安装或不需要，可跳过其版本检查（Recorder 优先）。
 
 **如果MCP工具未安装，请先安装：**
 ```bash
@@ -70,7 +71,7 @@ uvx mcp-feedback-enhanced@latest version
 
 # 或手动安装
 npm install -g @modelcontextprotocol/server-filesystem
-npm install -g @modelcontextprotocol/server-memory
+npm install -g @modelcontextprotocol/server-memory  # 可选
 npm install -g @modelcontextprotocol/server-github
 npm install -g @modelcontextprotocol/server-everything
 pip install uv  # 用于Python工具
@@ -287,6 +288,7 @@ F:\work\company-website
       ],
       "env": {}
     },
+    // 提示：Memory（server-memory）为可选，如不需要可删除该条目（Recorder 优先）。
     "github": {
       "command": "npx",
       "args": [
@@ -498,10 +500,10 @@ uvx mcp-feedback-enhanced@latest version
 
 ### **5.0.1 mcp-feedback-enhanced 安装卡住问题**
 
-**🚨 常见问题：** 脚本在安装 `mcp-feedback-enhanced` 时卡住，其他4个MCP工具已安装成功
+**🚨 常见问题：** 脚本在安装 `mcp-feedback-enhanced` 时卡住，其他3-4个MCP工具已安装成功（server-memory 可选）
 
 **问题现象：**
-- 前4个MCP工具（filesystem、memory、github、everything）安装成功
+- 前3-4个MCP工具（filesystem、github、everything；server-memory 如已安装）安装成功
 - 脚本在最后一个 `mcp-feedback-enhanced` 处卡住不动
 - 脚本暂停导致 `mcp-config.json` 配置文件未生成
 
@@ -583,7 +585,7 @@ uvx --index-url https://pypi.tuna.tsinghua.edu.cn/simple mcp-feedback-enhanced@l
 
 **✅ 验证安装成功：**
 ```bash
-# 验证所有MCP工具是否正常工作
+# 验证所有MCP工具是否正常工作（server-memory 如已安装）
 npx @modelcontextprotocol/server-filesystem --version
 npx @modelcontextprotocol/server-memory --version
 npx @modelcontextprotocol/server-github --version
@@ -647,6 +649,7 @@ uvx mcp-feedback-enhanced@latest version
       ],
       "env": {}
     },
+    // 提示：Memory（server-memory）为可选，如不需要可删除该条目（Recorder 优先）。
     "github": {
       "command": "npx",
       "args": [

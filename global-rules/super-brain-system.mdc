@@ -4,7 +4,7 @@ description: "超级大脑系统 - 智能项目管理激活机制和核心功能
 globs: ["**/*"]
 priority: 970
 dependencies: ["context-recorder-system.mdc"]
-integrations: ["context-recorder-system", "memory-system", "intelligent-recommendation-engine"]
+integrations: ["context-recorder-system", "intelligent-recommendation-engine"]
 ---
 
 # 🧠 超级大脑系统
@@ -50,12 +50,13 @@ integrations: ["context-recorder-system", "memory-system", "intelligent-recommen
    📋 当前阶段: [阶段信息或'待确定']
    💾 记忆状态: [已加载/空白]
    📝 记录员状态: [已集成/待激活]
+   🔎 记忆策略: Recorder 优先，Memory 可选（按需联动）
    
    🤖 可用功能:
    • 智能阶段推荐 (/recommend)
    • 项目状态查询 (/status)
    • 阶段切换 (/switch [阶段号])
-   • 记忆查看 (/memory)
+   • 记忆查看 (/memory) [可选]
    • 自动记录 (/brain-record)
    • 工具编排优化
    

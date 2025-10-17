@@ -4,7 +4,7 @@ description: "AI-powered intelligent project context loader with deep analysis -
 globs: ["**/*"]
 priority: 680
 alwaysApply: true
-integrations: ["super-brain-system", "mcp-intelligent-strategy", "intelligent-project-management", "commit-fast", "changelog-management", "code-quality-check", "root-cause-analysis", "systematic-debugging"]
+integrations: ["super-brain-system", "mcp-intelligent-strategy", "intelligent-project-management", "commit", "changelog-management", "code-quality-check", "root-cause-analysis", "systematic-debugging"]
 ---
 
 # 🧠 Context Loader - 智能项目上下文加载器
@@ -219,11 +219,11 @@ Step 8 - 工作流优化:
 
 ### 与其他规则协同
 ```yaml
-commit-fast协同:
+commit工作流协同（支持 /commit-fast 别名）:
   - 为提交工作流提供项目上下文
   - 优化提交信息生成
   - 配置项目特定的提交规范
-  - 集成到快速提交流程
+  - 集成到统一提交工作流（含快速模式）
 
 code-quality-check协同:
   - 为质量检查提供项目配置
@@ -407,7 +407,7 @@ Node.js项目上下文:
 
 ### 与Phase 2规则深度集成
 ```yaml
-commit-fast集成:
+commit工作流集成（支持 /commit-fast 别名）:
   - 为提交工作流提供项目上下文信息
   - 基于项目类型优化提交信息生成
   - 配置项目特定的提交规范和模板
@@ -565,7 +565,7 @@ mcp-intelligent-strategy集成:
 # - 推荐添加 Docker容器化配置
 # 
 # 🎯 工作流推荐:
-# - 推荐使用 commit-fast 智能提交工作流
+# - 推荐使用 commit 智能提交工作流（支持 /commit-fast 别名）
 # - 建议启用 code-quality-check 质量检查
 # - 推荐配置 changelog-management 变更管理
 ```

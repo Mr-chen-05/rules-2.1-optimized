@@ -38,6 +38,15 @@ alwaysApply: false
 - `/设置标准级别` - 平衡质量和效率（默认）
 - `/设置原型级别` - 快速验证，降低质量要求
 
+## 🧠 前置步骤：Context7 知识预载（修复/新项目前置）
+- 触发时机：开始 /backend-dev 前，涉及 Bug 修复或新后端项目/功能开发
+- 执行：
+  - 使用 Context7 在 src、docs、tests、config、README.*、architecture、api 目录检索关键材料（架构设计、数据模型、接口契约、性能/安全约束、历史决策）
+  - 质量阈值：至少 5 个高相关片段或覆盖 3 类关键材料；评分 ≥ 0.65；超时 60s
+  - 回退：Context7 → 代码检索（search_codebase/search_by_regex）→ 文件系统读取
+  - 记录与确认：将“知识预载摘要”写入 project.context.md 的 Pinned，并通过增强反馈机制确认后继续
+- 跳过条件：纯文档/注释微调、无逻辑改动的小变更
+
 ## 📋 Process - 开发流程
 
 ### 1. 🔍 需求分析 (Requirements Analysis)

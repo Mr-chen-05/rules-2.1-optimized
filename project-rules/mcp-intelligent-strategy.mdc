@@ -63,11 +63,12 @@ priority: 980
     执行流程:
       - 检查项目中是否存在mcp-tools/mcp-cross-platform-sync.ps1
       - 如果存在，静默执行 -Action detect
+      - 策略引用: 默认遵循“检测复用与跳过 / 缓存复用”策略；详细参数与覆盖条件请参见 P2-intelligent-system/mcp-zero-config-detection.mdc
       - 解析输出结果，整合到AI决策中
       - 基于检测结果优化MCP工具选择
   
   核心工具优先级:
-    Tier_1: server-filesystem, server-memory, codebase-retrieval
+    Tier_1: server-filesystem, codebase-retrieval
     Tier_2: server-github, mcp-feedback-enhanced, context7
     Tier_3: 数据库工具, 自动化工具, 视觉AI工具
   
@@ -144,10 +145,20 @@ MCP工具选择矩阵:
       - 适用: 复杂决策、确认操作
       - 优势: 结构化反馈、超时处理
     
-    知识管理:
-      - 首选: server-memory
-      - 适用: 信息存储、上下文保持
-      - 优势: 语义检索、持久化
+    网页调试:
+      - 首选: chrome-devtools (CDP)
+      - 适用: 前端网络异常、控制台错误、DOM变更跟踪、性能分析
+      - 优势: 原生浏览器调试能力、精准事件监控
+    
+    测试自动化:
+      - 首选: Playwright
+      - 适用: 端到端测试、跨浏览器自动化、回归测试
+      - 优势: 高可靠性、多浏览器支持、并行执行
+    
+  知识管理:
+      - 默认建议: context7（文档与知识检索与管理）+ Recorder（记录员系统）
+      - 可选: server-memory（用于语义模糊检索或跨项目/跨时间聚合）
+      - 优势: context7统一知识入口与检索；Recorder精准归档与回溯；Memory语义聚合与跨范围检索
     
     备选方案:
       - 通用工具: MCP工具不可用时
@@ -211,12 +222,12 @@ MCP工具选择矩阵:
 | GitHub操作 | `npx @modelcontextprotocol/server-github` 或GitHub MCP工具 | web-fetch抓取HTML |
 | 代码检索 | `codebase-retrieval` 或代码检索MCP工具 | 盲目搜索文件 |
 | 用户反馈 | `uvx mcp-feedback-enhanced` 或反馈MCP工具 | 简单文本询问 |
-| 记忆管理 | `npx @modelcontextprotocol/server-memory` 或记忆MCP工具 | 临时变量存储 |
+| 记忆检索（可选） | `npx @modelcontextprotocol/server-memory` 或记忆MCP工具 | 临时变量存储 |
 | 数据库操作 | `npx @modelcontextprotocol/server-postgres`, `npx @modelcontextprotocol/server-mysql` 等 | 手动SQL操作 |
 | 通用工具操作 | `npx @modelcontextprotocol/server-everything` 或通用MCP工具 | 手动执行基础操作 |
 | 测试和演示 | `npx @modelcontextprotocol/server-everything` 或通用MCP工具 | 复杂的手动验证 |
 
-## 🧠 强制性Memory自动记录机制
+## 🧠 按需 Memory 记录机制（Recorder 优先，默认关闭）
 
 ### 📝 自动记录触发条件
 ```
@@ -390,6 +401,7 @@ IF 遇到以下情况 THEN 建议调用memory工具：
     - server-github: 代码审查和版本控制
     - mcp-feedback-enhanced: 代码质量反馈
     - context7: 技术问题解决方案
+    - chrome-devtools: 前端调试与性能分析（CDP）
 ```
 
 ### 阶段4_智能测试优化
@@ -399,6 +411,7 @@ IF 遇到以下情况 THEN 建议调用memory工具：
     - server-filesystem: 测试文件管理
     - memory: 测试结果记录和分析
     - mcp-feedback-enhanced: 测试反馈收集
+    - Playwright: 端到端与跨浏览器自动化
   
   性能优化:
     - codebase-retrieval: 性能优化模式
@@ -462,3 +475,15 @@ IF 遇到以下情况 THEN 建议调用memory工具：
 **🎯 记住：这是重要的核心策略，建议严格遵循！**
 
 **🚀 目标：让每个使用这个项目的AI都成为高效的MCP工具使用专家！**
+
+### 检测复用与跳过条件
+```
+复用策略:
+- 若检测到 project.context.md 中存在“MCP平台报告”或当前会话已生成“检测响应”，则复用已有检测结果，不重复扫描。
+- 若 mcp-unified-management.mdc 在最近 3600 秒内执行过检测（可通过状态标记/日志识别），则直接复用其结果。
+- 若用户明确要求“重新检测”，则覆盖上述跳过条件并重新执行扫描。
+
+跳过场景:
+- 系统级启动命令（如“启动超级大脑系统”）阶段的初始化，不主动重复进行工具扫描；由统一管理或系统激活流程协调。
+- 无文件/代码相关操作的纯信息咨询对话。
+```

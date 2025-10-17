@@ -75,21 +75,23 @@ if %MISSING_DIRS% GTR 0 (
 )
 echo.
 
-REM Count files
+REM Count files - Focus on .mdc rule files only
 set /a TOTAL_FILES=0
 set /a MD_FILES=0
 set /a MDC_FILES=0
 
 echo File Statistics:
 for /r "%RULES_PATH%" %%f in (*.md *.mdc) do (
-    set /a TOTAL_FILES+=1
     if /i "%%~xf"==".md" set /a MD_FILES+=1
     if /i "%%~xf"==".mdc" set /a MDC_FILES+=1
 )
 
-echo   Total files: %TOTAL_FILES%
-echo   .md files: %MD_FILES%
-echo   .mdc files: %MDC_FILES%
+REM Use .mdc files as primary count for rule validation
+set /a TOTAL_FILES=%MDC_FILES%
+
+echo   Rule files (.mdc): %MDC_FILES%
+echo   Index files (.md): %MD_FILES%
+echo   Total rule count: %TOTAL_FILES% (based on .mdc files)
 echo.
 
 REM Detect key files
@@ -152,11 +154,12 @@ if exist "%RULES_PATH%\P2-intelligent-system\super-brain-system.mdc" (
     echo   MISSING super-brain-system.mdc - No super brain system
 )
 
-if exist "%RULES_PATH%\P2-intelligent-system\memory-system-integration.mdc" (
+REM Memory capability check: use Context Recorder as primary indicator
+if exist "%RULES_PATH%\P2-intelligent-system\context-recorder-system.mdc" (
     set "HAS_MEMORY_SYSTEM=1"
-    echo   OK memory-system-integration.mdc - Memory system
+    echo   OK context-recorder-system.mdc - Memory support (Recorder)
 ) else (
-    echo   MISSING memory-system-integration.mdc - No memory system
+    echo   MISSING context-recorder-system.mdc - No memory support (Recorder)
 )
 
 echo.
@@ -166,12 +169,12 @@ echo Mode Detection Results:
 set "DETECTED_MODE=UNKNOWN"
 set "MODE_CONFIDENCE=LOW"
 
-if %TOTAL_FILES% GEQ 44 if %TOTAL_FILES% LEQ 46 (
+if %TOTAL_FILES% GEQ 42 if %TOTAL_FILES% LEQ 44 (
     if %HAS_MERMAID%==1 if %HAS_FRONTEND_DEV%==1 if %HAS_BACKEND_DEV%==1 if %HAS_FRONTEND_RULES%==1 if %HAS_BACKEND_RULES%==1 (
         set "DETECTED_MODE=FULLSTACK"
         set "MODE_CONFIDENCE=HIGH"
         echo   Detected: FULLSTACK mode (Full-stack development)
-        echo   File count: %TOTAL_FILES% (expected: 45)
+        echo   File count: %TOTAL_FILES% (expected: 43 .mdc files)
         echo   OK Contains frontend, backend and chart support
         goto :mode_detected
     ) else (
@@ -181,12 +184,12 @@ if %TOTAL_FILES% GEQ 44 if %TOTAL_FILES% LEQ 46 (
     )
 )
 
-if %TOTAL_FILES% GEQ 42 if %TOTAL_FILES% LEQ 44 (
+if %TOTAL_FILES% GEQ 41 if %TOTAL_FILES% LEQ 43 (
     if %HAS_MERMAID%==1 if %HAS_FRONTEND_DEV%==1 if %HAS_BACKEND_DEV%==0 if %HAS_FRONTEND_RULES%==1 (
         set "DETECTED_MODE=FRONTEND"
         set "MODE_CONFIDENCE=HIGH"
         echo   Detected: FRONTEND mode (Frontend development)
-        echo   File count: %TOTAL_FILES% (expected: 43)
+        echo   File count: %TOTAL_FILES% (expected: 42 .mdc files)
         echo   OK Contains frontend development and chart support
         goto :mode_detected
     ) else (
@@ -196,12 +199,12 @@ if %TOTAL_FILES% GEQ 42 if %TOTAL_FILES% LEQ 44 (
     )
 )
 
-if %TOTAL_FILES% GEQ 41 if %TOTAL_FILES% LEQ 43 (
+if %TOTAL_FILES% GEQ 40 if %TOTAL_FILES% LEQ 42 (
     if %HAS_MERMAID%==0 if %HAS_BACKEND_DEV%==1 if %HAS_FRONTEND_DEV%==0 if %HAS_BACKEND_RULES%==1 (
         set "DETECTED_MODE=BACKEND"
         set "MODE_CONFIDENCE=HIGH"
         echo   Detected: BACKEND mode (Backend development)
-        echo   File count: %TOTAL_FILES% (expected: 42)
+        echo   File count: %TOTAL_FILES% (expected: 41 .mdc files)
         echo   OK Contains backend development, no chart support
         goto :mode_detected
     ) else (
@@ -213,7 +216,7 @@ if %TOTAL_FILES% GEQ 41 if %TOTAL_FILES% LEQ 43 (
 
 echo   Unknown mode or incomplete files
 echo   File count: %TOTAL_FILES%
-echo   Expected count: Frontend(43), Backend(42), Fullstack(45)
+echo   Expected count: Frontend(42), Backend(41), Fullstack(43) .mdc files
 
 :mode_detected
 echo.
@@ -224,7 +227,7 @@ set /a HEALTH_SCORE=0
 
 if %MISSING_DIRS%==0 set /a HEALTH_SCORE+=20
 if %HAS_MAIN_MD%==1 set /a HEALTH_SCORE+=10
-if %TOTAL_FILES% GEQ 41 set /a HEALTH_SCORE+=30
+if %TOTAL_FILES% GEQ 40 set /a HEALTH_SCORE+=30
 if "%MODE_CONFIDENCE%"=="HIGH" set /a HEALTH_SCORE+=40
 
 if %HEALTH_SCORE% GEQ 90 (
@@ -248,7 +251,7 @@ echo Recommendations:
 if %MISSING_DIRS% GTR 0 echo   Re-run install-ultra.bat to fix missing directories
 if %HAS_MAIN_MD%==0 echo   Missing main.md file may affect AI understanding
 if "%MODE_CONFIDENCE%"=="LOW" echo   File configuration abnormal, recommend reinstalling rules
-if %TOTAL_FILES% LSS 41 echo   Too few files, check installation process
+if %TOTAL_FILES% LSS 40 echo   Too few .mdc rule files, check installation process
 
 echo.
 echo ========================================

@@ -4,7 +4,7 @@ description: "AI-powered root cause analysis with Five Whys methodology - AI驱�
 globs: ["**/*"]
 priority: 650
 alwaysApply: true
-integrations: ["super-brain-system", "mcp-intelligent-strategy", "intelligent-project-management", "commit-fast", "changelog-management", "code-quality-check"]
+integrations: ["super-brain-system", "mcp-intelligent-strategy", "intelligent-project-management", "commit", "changelog-management", "code-quality-check"]
 ---
 
 # 🔍 Root Cause Analysis - 智能根因分析
@@ -217,7 +217,7 @@ code-quality-check协同:
   - 提供质量改进根本方案
   - 建立质量预防机制
 
-commit-fast协同:
+commit协同:
   - 分析提交失败原因
   - 优化提交工作流
   - 预防提交冲突
@@ -515,7 +515,7 @@ code-quality-check集成:
   - 提供质量改进的根本方案
   - 建立质量预防机制
 
-commit-fast集成:
+commit集成:
   - 分析提交失败的根本原因
   - 优化提交工作流程
   - 预防提交冲突和问题
@@ -585,7 +585,7 @@ super-brain-system集成:
   - 分析结果和建议
 
 与其他规则协调:
-  - 与commit-fast共享错误处理
+- 与commit共享错误处理
   - 与changelog-management协调日志
   - 与code-quality-check统一安全措施
   - 集成的恢复策略

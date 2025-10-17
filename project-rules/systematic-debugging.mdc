@@ -4,7 +4,7 @@ description: "AI-powered systematic debugging with intelligent troubleshooting -
 globs: ["**/*"]
 priority: 650
 alwaysApply: true
-integrations: ["super-brain-system", "mcp-intelligent-strategy", "intelligent-project-management", "commit-fast", "changelog-management", "code-quality-check", "root-cause-analysis"]
+integrations: ["super-brain-system", "mcp-intelligent-strategy", "intelligent-project-management", "commit", "changelog-management", "code-quality-check", "root-cause-analysis"]
 ---
 
 # 🐛 Systematic Debugging - 智能系统化调试
@@ -261,7 +261,7 @@ code-quality-check协同:
   - 提供调试最佳实践
   - 改进代码质量标准
 
-commit-fast协同:
+commit协同:
   - 调试提交过程中的问题
   - 优化提交工作流
   - 预防提交相关错误
@@ -508,7 +508,7 @@ changelog-management协同:
   1. code-quality-check发现问题
   2. systematic-debugging深度调试
   3. root-cause-analysis根因分析
-  4. commit-fast优化提交
+  4. commit优化提交
   5. changelog-management记录改进
 
 协同工作流:

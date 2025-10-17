@@ -4,7 +4,7 @@ description: "AI-powered cross-language code quality check with intelligent anal
 globs: ["**/*"]
 priority: 640
 alwaysApply: true
-integrations: ["super-brain-system", "mcp-intelligent-strategy", "intelligent-project-management", "commit-fast", "changelog-management"]
+integrations: ["super-brain-system", "mcp-intelligent-strategy", "intelligent-project-management", "commit", "changelog-management"]
 ---
 
 # 🔍 Code Quality Check - 智能代码质量检查
@@ -18,7 +18,7 @@ AI驱动的跨语言代码质量检查系统，集成智能分析引擎、MCP工
 自动激活场景:
   - 检测到代码文件变更需要质量检查
   - 用户执行 "/quality-check" 命令
-  - commit-fast提交前自动触发
+  - commit工作流提交前自动触发（/commit 或 /commit --fast；支持 /commit-fast 别名）
   - 超级大脑系统推荐质量检查
   - 项目进入代码审查阶段
 
@@ -239,10 +239,10 @@ Step 8 - 自动修复:
   - 支持持续集成流程
 ```
 
-### 与commit-fast协同
+### 与commit工作流协同（支持 /commit-fast 别名）
 ```yaml
 提交前检查:
-  - commit-fast触发自动质量检查
+  - commit工作流触发自动质量检查（/commit 或 /commit --fast）
   - 阻止低质量代码提交
   - 提供快速修复建议
   - 集成到提交工作流
@@ -445,7 +445,7 @@ Step 8 - 自动修复:
   - 权限验证检查
 
 与其他规则协调:
-  - 与commit-fast共享错误处理
+  - 与commit共享错误处理
   - 与changelog-management协调日志
   - 统一的安全保障措施
   - 集成的恢复策略
@@ -535,7 +535,7 @@ Step 8 - 自动修复:
 
 ### 与现有规则集成
 ```yaml
-commit-fast集成:
+commit工作流集成（支持 /commit-fast 别名）:
   - 提交前自动触发质量检查
   - 质量不合格阻止提交
   - 集成到快速提交工作流
@@ -562,7 +562,7 @@ mcp-intelligent-strategy集成:
 
 ---
 
-**🎯 规则优先级**: 640 (与commit-fast和changelog-management协同)  
+**🎯 规则优先级**: 640 (与commit和changelog-management协同)  
 **🔄 更新频率**: 基于代码变更和质量反馈持续优化  
 **📊 成功指标**: 代码质量评分提升30%+, 问题检出率>95%, 修复效率提升50%+  
 **🧠 AI模型**: 集成多语言代码分析和质量评估引擎

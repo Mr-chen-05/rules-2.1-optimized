@@ -20,14 +20,41 @@ alwaysApply: true
   代码分析时: 需要代码检索时检测
   项目管理时: 涉及项目记忆时检测
   GitHub操作时: 需要Git协作时检测
+  跳过与复用条件:
+    系统级启动: 在“启动超级大脑系统”等系统激活阶段不主动触发零配置检测，由系统激活流程统一协调
+    最近检测复用: 若最近3600秒内已有检测结果或存在"检测响应"/"MCP平台报告"，则复用结果并跳过重复检测
+    用户覆盖: 若用户明确要求“重新检测”，则执行检测并更新结果缓存
+```
+
+### 缓存复用
+```yaml
+缓存策略:
+  缓存文件位置: 项目根目录/.cache/mcp-status-cache.json
+  缓存时间: 默认3600秒（1小时）
+  记录内容: 检测时间戳、检测来源、结果摘要
+  记录项:
+    - 最近检测时间戳
+    - 检测来源（mcp-unified-management / zero-config / 其他）
+    - 检测结果摘要
+  一句话总结:
+    - 默认1小时内复用上一次检测结果；超过1小时或你说"重新检测"会重跑；也可以执行 -Action clearCache 手动清空缓存。
+  复用策略:
+    - 在缓存有效期（≤3600秒）内直接复用检测结果
+    - 如 project.context.md 或会话上下文存在“MCP平台报告/检测响应”，优先读取并复用
+    - 用户显式“重新检测”时刷新缓存并重新执行检测
+  注意:
+    - 缓存仅用于避免短时重复扫描；长期变更需强制检测
 ```
 
 ### 检测逻辑
 ```yaml
 检测步骤:
   1. 智能脚本检测:
-     - 优先查找项目中的mcp-tools/mcp-cross-platform-sync.ps1
-     - 如果存在，自动执行获取详细配置信息
+     - 默认路径（install-ultra.bat生成）：mcp-tools/mcp-cross-platform-sync.ps1
+     - 兼容路径（新结构）：mcp-scripts/mcp-cross-platform-sync.ps1
+     - 如果脚本存在，自动执行获取详细配置信息
+     - 调用参数: 默认 -Action detect -CacheTTLSeconds 3600；用户明确"重新检测"时添加 -Force
+     - 清理缓存: 支持 -Action clearCache 手动清理检测缓存文件（用于极端或调试场景）
      - 解析脚本输出，获得完整的跨平台MCP状态
   
   2. 基础路径扫描:
@@ -50,8 +77,6 @@ alwaysApply: true
 ```
 
 ## 💡 智能提醒机制
-
-### 零配置检测响应
 ```yaml
 当检测到用户完全没有MCP配置时:
   
@@ -95,35 +120,37 @@ alwaysApply: true
 ```
 
 ## 🎯 个性化推荐策略
-
-### 基于项目类型推荐
 ```yaml
 前端项目:
   必需工具:
     - server-filesystem: "管理项目文件和组件"
-    - server-memory: "记住项目结构和偏好"
   推荐工具:
     - server-github: "版本控制和协作"
     - mcp-feedback-enhanced: "增强交互体验"
+    - chrome-devtools: "浏览器调试与性能分析（CDP）"
+    - Playwright: "端到端测试与跨浏览器自动化"
+    - server-memory (可选): "语义模糊检索与跨范围聚合"
   
 后端项目:
   必需工具:
     - server-filesystem: "管理API和配置文件"
-    - server-memory: "记住数据库结构和API设计"
     - codebase-retrieval: "智能代码搜索和分析"
   推荐工具:
     - server-github: "代码协作和CI/CD"
     - 数据库工具: "数据库操作和管理"
+    - server-memory (可选): "语义模糊检索与跨范围聚合"
 
 全栈项目:
   必需工具:
     - server-filesystem: "管理前后端文件"
-    - server-memory: "记住完整项目架构"
     - codebase-retrieval: "跨技术栈代码分析"
     - mcp-feedback-enhanced: "复杂项目交互管理"
   推荐工具:
     - server-github: "团队协作和版本管理"
     - 自动化工具: "测试和部署自动化"
+    - chrome-devtools: "浏览器调试与性能分析（CDP）"
+    - Playwright: "端到端测试与跨浏览器自动化"
+    - server-memory (可选): "语义模糊检索与跨范围聚合"
 ```
 
 ### 基于用户经验推荐
@@ -145,8 +172,6 @@ alwaysApply: true
 ```
 
 ## 🚀 配置引导流程
-
-### 快速配置路径
 ```yaml
 一键配置:
   检测环境: "检查Node.js、Python环境"
@@ -167,6 +192,7 @@ alwaysApply: true
   工具安装: "逐步安装每个MCP工具"
   配置文件: "创建和编辑mcp_settings.json"
   测试验证: "验证每个工具是否正常工作"
+```
 
 
 ## 📊 检测结果示例
@@ -193,7 +219,7 @@ alwaysApply: true
 ```yaml
 检测结果:
   "📊 MCP配置分析："
-  "✅ 已配置: filesystem, memory (2个工具)"
+  "✅ 已配置: filesystem, memory (2个工具，memory 可选)"
   "❌ 建议添加: github, codebase-retrieval (2个工具)"
   "📈 完整配置后可再提升效率 30-40%"
   
@@ -209,8 +235,6 @@ alwaysApply: true
 ```
 
 ## 🔄 持续监控机制
-
-### 定期检查
 ```yaml
 检查频率:
   新项目: 每次进入新项目时检查

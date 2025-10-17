@@ -32,7 +32,7 @@
 - ✅ **超越steipete** - 在所有主要功能领域实现超越
 
 ### 🚀 **Phase 2+3 新增核心功能**
-- ⚡ **AI智能快速提交** (`/commit-fast`) - 智能提交信息生成
+- ⚡ **AI智能快速提交**（使用 `/commit --fast`，`/commit-fast` 为别名） - 智能提交信息生成
 - 🔍 **跨语言质量检查** (`/quality-check`) - 多语言代码质量分析
 - 🧠 **智能项目上下文** (`/load-context`) - AI项目分析和配置推荐
 - 🛠️ **自定义命令构建** (`/create-command`) - AI生成用户自定义命令
@@ -250,7 +250,7 @@ npm init -y
 
 # 安装Node.js MCP工具（本地安装，路径清晰）
 npm install @modelcontextprotocol/server-filesystem
-npm install @modelcontextprotocol/server-memory
+npm install @modelcontextprotocol/server-memory  # 可选（Recorder 优先）
 npm install @modelcontextprotocol/server-github
 npm install @modelcontextprotocol/server-everything
 
@@ -282,6 +282,7 @@ pip install uv
       ],
       "env": {}
     },
+    // 提示：Memory（server-memory）为可选，如不需要可删除该条目（Recorder 优先）。
     "github": {
       "command": "npx",
       "args": [

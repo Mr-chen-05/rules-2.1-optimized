@@ -71,6 +71,8 @@ graph TD
 | **MCP-INTELLIGENT-USAGE-STRATEGY.md** | MCP智能策略 | MCP详细配置 | 高级应用 |
 | **MCP-TROUBLESHOOTING-GUIDE.md** | MCP故障排除 | 遇到问题时 | 问题解决 |
 
+- 检测复用与跳过 / 缓存复用策略（一句话：5分钟内复用检测结果；需要立即重跑时加 -Force；也可执行 -Action clearCache 手动清空缓存）: project-rules/mcp-zero-config-detection.mdc
+
 ### 📚 参考文档
 
 | 文档 | 职责 | 使用时机 |

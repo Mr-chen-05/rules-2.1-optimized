@@ -131,7 +131,7 @@ Enable Development Efficiency Optimization
 • 智能阶段推荐 (/recommend)
 • 项目状态查询 (/status)
 • 阶段切换 (/switch [阶段号])
-• 记忆查看 (/memory)
+• 记忆查看 (/memory)（可选）
 • 工具编排优化
 
 💡 请告诉我您的项目需求，我将为您提供最佳的管理方案！
@@ -420,7 +420,7 @@ How is the project going?  # 英文智能查询
 
 🔗 智能链接:
   • 📊 详细进度: /recommend
-  • 💾 项目记忆: /memory
+  • 💾 项目记忆: /memory（可选）
   • 🔄 切换阶段: /switch 5
   • 🤖 AI深度分析: /analyze
 ```
@@ -528,6 +528,10 @@ How is the project going?  # 英文智能查询
 ```
 
 ### 💾 /memory - 智能记忆管理系统
+
+> ℹ️ 区别说明（Recorder 与 Memory）
+> - Recorder（记录员系统）：负责“把事记好”—分类、归档、精准查（Facts/Decisions/TODO/Notes）。日常历史查询与继续任务，优先用 Recorder。
+> - Memory（可选）：负责“模糊/聚合地找到”—语义模糊搜索、跨项目/跨时间窗口检索、相似问题/方案聚合，并可批量把历史注入当前上下文。仅当你忘关键词、需要跨范围或做回顾总结时启用。
 
 **🔍 智能记忆查询：**
 ```bash

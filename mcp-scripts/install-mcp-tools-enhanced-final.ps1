@@ -188,7 +188,7 @@ Write-Host ""
 Write-Host "[5/6] Install Node.js MCP Tools..." -ForegroundColor Yellow
 Write-Host "----------------------------------------" -ForegroundColor Gray
 Write-Host "[DEBUG] Starting MCP tools installation..." -ForegroundColor Gray
-Write-Host "[INFO] Installing 5 MCP tools to: $installPath" -ForegroundColor Blue
+Write-Host "[INFO] Installing 4 Node.js MCP tools to: $installPath (server-memory optional)" -ForegroundColor Blue
 Write-Host "[INFO] If installation is slow, consider switching npm registry" -ForegroundColor Blue
 Write-Host "  Quick method: npm config set registry https://registry.npmmirror.com" -ForegroundColor Cyan
 Write-Host "  Detailed guide: docs/MCP-QUICK-START-GUIDE.md" -ForegroundColor Cyan
@@ -213,7 +213,7 @@ for ($i = 0; $i -lt $packages.Length; $i++) {
     $package = $packages[$i]
     $packageName = $packageNames[$i]
     
-    Write-Host "[DEBUG] Installing package $($i+1)/5..." -ForegroundColor Gray
+    Write-Host "[DEBUG] Installing package $($i+1)/4..." -ForegroundColor Gray
     Write-Host "[INFO] Installing $packageName..." -ForegroundColor Blue
     Write-Host "[DEBUG] Working directory: $installPath" -ForegroundColor Gray
     Write-Host "[DEBUG] Running: npm install $package" -ForegroundColor Gray
@@ -314,6 +314,16 @@ $jsonContent = @"
         "MCP_NO_BROWSER": "true",
         "MCP_DESKTOP_MODE": "true"
       }
+    },
+     "Playwright": {
+      "command": "npx",
+      "args": ["-y", "@executeautomation/playwright-mcp-server"],
+      "env": {},
+      "fromGalleryId": "executeautomation.mcp-playwright"
+    },
+    "chrome-devtools": {
+      "command": "npx",
+      "args": ["-y", "chrome-devtools-mcp@latest"]
     }
   }
 }
@@ -343,7 +353,7 @@ if (Test-Path (Join-Path $nodeModulesPath "server-memory")) {
     $installedCount++
     Write-Host "[SUCCESS] server-memory installed" -ForegroundColor Green
 } else {
-    Write-Host "[ERROR] server-memory not installed" -ForegroundColor Red
+    Write-Host "[INFO] server-memory not installed (optional)" -ForegroundColor Yellow
 }
 
 if (Test-Path (Join-Path $nodeModulesPath "server-github")) {
@@ -382,7 +392,7 @@ Write-Host ""
 Write-Host "MCP Tools Installation Completed" -ForegroundColor Green
 Write-Host ""
 Write-Host "Final installation path: $installPath" -ForegroundColor Blue
-Write-Host "Installed tools count: $installedCount/5" -ForegroundColor Blue
+Write-Host "Installed tools count: $installedCount/5 (up to 5; server-memory is optional)" -ForegroundColor Blue
 Write-Host ""
 Write-Host "Project files:" -ForegroundColor Blue
 if (Test-Path (Join-Path $installPath "node_modules")) { Write-Host "  node_modules" -ForegroundColor White }
@@ -390,11 +400,11 @@ if (Test-Path (Join-Path $installPath "package-lock.json")) { Write-Host "  pack
 if (Test-Path (Join-Path $installPath "package.json")) { Write-Host "  package.json" -ForegroundColor White }
 if (Test-Path (Join-Path $installPath "mcp-config.json")) { Write-Host "  mcp-config.json" -ForegroundColor White }
 Write-Host ""
-Write-Host "[VERIFICATION] How to verify all 5 MCP tools:" -ForegroundColor Yellow
+Write-Host "[VERIFICATION] How to verify installed MCP tools (3-5 total):" -ForegroundColor Yellow
 Write-Host ""
-Write-Host "1. Node.js MCP tools (4 tools - visible in file manager):" -ForegroundColor Blue
+Write-Host "1. Node.js MCP tools (3-4 tools - visible in file manager):" -ForegroundColor Blue
 Write-Host "   Get-ChildItem \"$installPath\node_modules\@modelcontextprotocol\"" -ForegroundColor Cyan
-Write-Host "   Should show: server-filesystem, server-memory, server-github, server-everything" -ForegroundColor White
+Write-Host "   Should show: server-filesystem, server-github, server-everything (+ server-memory if installed)" -ForegroundColor White
 Write-Host ""
 Write-Host "   Your installation path: $installPath" -ForegroundColor Blue
 Write-Host "   You can also open this folder in file explorer to verify:" -ForegroundColor Blue

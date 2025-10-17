@@ -41,12 +41,12 @@ uvx mcp-feedback-enhanced@latest version
 
 **详细验证方法**:
 ```powershell
-# 1. 验证Node.js MCP工具（4个）- 应该在文件夹中可见
+# 1. 验证Node.js MCP工具（3-4个，server-memory 可选）- 应该在文件夹中可见
 # 根据你在安装时选择的路径：
 dir "C:\MCP-Tools\node_modules\@modelcontextprotocol"  # 默认路径（选项1）
 dir "D:\MCP-Tools\node_modules\@modelcontextprotocol"  # D盘路径（选项2）
 dir "你的安装路径\node_modules\@modelcontextprotocol"    # 自定义路径（选项3）
-# 应该显示: server-filesystem, server-memory, server-github, server-everything
+# 应该显示: server-filesystem, server-github, server-everything（server-memory 如已安装）
 
 # 2. 验证Python MCP工具（1个）- 不在文件夹中，用命令验证
 uvx mcp-feedback-enhanced@latest version
@@ -379,3 +379,19 @@ copy "your-mcp-config.json" "your-mcp-config-backup.json"
 ```
 
 记住：大部分MCP问题都是配置问题，仔细检查JSON语法和路径格式通常能解决90%的问题！
+
+### 问题4: 检测行为异常（重复执行或未触发）
+**症状**:
+- 每次启动都重复进行项目级检测，影响速度
+- 系统级启动后未触发项目级检测
+
+**原因分析**:
+- 已启用“检测复用与跳过”策略：
+  - 系统级启动阶段不主动触发项目级检测（由统一管理流程协调）
+  - 300秒内复用最近检测结果或已有 “检测响应 / MCP平台报告”
+
+**解决方案**:
+1. 需要强制重新检测：发送“重新检测”指令或在命令中添加 `--force`
+2. 想避免重复检测：确保最近有检测结果，或将检测流程交由统一管理模块发起
+3. 等待缓存过期：超过300秒后系统会自动进行新一轮检测
+4. 验证是否已复用：检查是否存在最近的“检测响应 / MCP平台报告”记录

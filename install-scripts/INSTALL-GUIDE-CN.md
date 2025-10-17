@@ -80,11 +80,11 @@ install-ultra.bat D:\WebApp backend        # 后端开发设置
 
 ### 🎯 开发模式
 
-| 模式 | 文件数 | 优先级层次 | 适用场景 |
-|------|--------|------------|----------|
-| `frontend` | 38 个文件 | P0-P7 (8层) | React、Vue、Angular 项目 |
-| `backend` | 37 个文件 | P0-P7 (8层) | API、服务器、数据库项目 |
-| `fullstack` | 45 个文件 | P0-P7 (8层) | 完整的 Web 应用程序（推荐） |
+| 模式 | .mdc文件数 | 优先级层次 | 适用场景 |
+|------|------------|------------|----------|
+| `frontend` | 42 个.mdc文件 | P0-P7 (8层) | React、Vue、Angular 项目 |
+| `backend` | 41 个.mdc文件 | P0-P7 (8层) | API、服务器、数据库项目 |
+| `fullstack` | 43 个.mdc文件 | P0-P7 (8层) | 完整的 Web 应用程序（推荐） |
 
 ### 📁 创建的目录结构
 
@@ -264,11 +264,11 @@ install-scripts\install-ultra.bat C:\my-project
 
 ## 不同模式的文件数量
 
-| 模式          | 文件数量  | 包含内容                                           |
-| ------------- | --------- | -------------------------------------------------- |
-| **Frontend**  | 38 个文件 | 前端规则 + mermaid 图表支持 + 8 个Phase 2+3智能规则 |
-| **Backend**   | 37 个文件 | 后端规则（不含 mermaid）+ 8 个Phase 2+3智能规则     |
-| **Fullstack** | 45 个文件 | 前端 + 后端完整规则 + 优化后的智能规则分布         |
+| 模式          | .mdc文件数量  | 包含内容                                           |
+| ------------- | ------------- | -------------------------------------------------- |
+| **Frontend**  | 42 个.mdc文件 | 前端规则 + mermaid 图表支持 + 8 个Phase 2+3智能规则 |
+| **Backend**   | 41 个.mdc文件 | 后端规则（不含 mermaid）+ 8 个Phase 2+3智能规则     |
+| **Fullstack** | 43 个.mdc文件 | 前端 + 后端完整规则 + 优化后的智能规则分布         |
 
 ## 如何使用安装的规则？
 
@@ -454,9 +454,9 @@ install-scripts\install-ultra.bat
 
 **🚀 三种开发模式**:
 
-- `frontend` - 前端开发（38 个文件，P0-P7 优先级层次）
-- `backend` - 后端开发（37 个文件，P0-P7 优先级层次）
-- `fullstack` - 全栈开发（45 个文件，P0-P7 优先级层次，推荐）
+- `frontend` - 前端开发（42 个.mdc文件，P0-P7 优先级层次）
+- `backend` - 后端开发（41 个.mdc文件，P0-P7 优先级层次）
+- `fullstack` - 全栈开发（43 个.mdc文件，P0-P7 优先级层次，推荐）
 
 **🔧 MCP 跨平台管理**:
 
@@ -475,7 +475,7 @@ SUCCESS: fullstack Rules Directory Created (Final Release)
 Project Directory: [你选择的路径]
 Rules Directory: [你选择的路径]\.rules
 Rule Type: fullstack
-Total files installed: 45
+Total .mdc files installed: 43
 Priority levels: P0-P7 (8 levels)
 Target location: [你选择的路径]
 
@@ -486,7 +486,7 @@ Installation completed successfully
 ### 🔍 验证安装
 
 1. **检查目录结构**: 导航到你的项目文件夹，验证 `.rules` 目录存在
-2. **文件计数**: 确保所有 45 个文件都存在（全栈模式）
+2. **文件计数**: 确保所有 43 个.mdc文件都存在（全栈模式）
 3. **优先级层次**: 验证 P0-P7 目录已创建
 4. **模板文件**: 检查 `templates/` 和 `mcp-tools/` 目录存在
 

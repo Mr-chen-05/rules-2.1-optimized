@@ -191,7 +191,7 @@ echo $env:AI_RULES_PATH
 /api-design      # API设计
 
 # 代码管理
-/commit          # 标准化提交
+/commit          # 标准化提交（支持快速模式 --fast；`/commit-fast` 为别名）
 /code-review     # 代码审查
 /bug-fix         # Bug修复
 /feedback        # 智能反馈
@@ -298,7 +298,7 @@ install-scripts\install-ultra.bat ..\你的项目目录 fullstack
 
 - **PERFECT (A++)评级** - 企业级标准
 - **5/5 脚本通过** - 100%测试通过率
-- **5/5 工具验证** - MCP 工具全部可用
+- **3-5/5 工具验证** - Node.js MCP 工具为 3-4 个（server-memory 可选），Python 工具 1 个；整体可用性验证通过
 - **完整文档** - 从入门到故障排除
 
 ### 🛡️ 企业级标准

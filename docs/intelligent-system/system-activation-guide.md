@@ -69,6 +69,11 @@
     - MCP服务器可用
     - 记忆系统初始化
     - 推荐引擎就绪
+  
+  ✅ 工具清单与验证:
+    - Node.js MCP 工具: 3-4 个（server-filesystem、server-github、server-everything；server-memory 可选）
+    - Python MCP 工具: 1 个（mcp-feedback-enhanced）
+    - 验证方法: 检查安装目录或运行验证脚本（见 mcp-scripts/安装脚本使用说明.md）
 ```
 
 ### 启动步骤

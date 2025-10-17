@@ -16,6 +16,15 @@ alwaysApply: false
 - `/issue-spec` - 创建实现规范
 - `/estimate` - 评估工作量
 
+## 🧠 前置步骤：Context7 知识预载（修复/新项目前置）
+- 触发时机：开始 /analyze-issue 前，问题类型为 Bug/错误/异常 或 新功能/新项目分析
+- 执行：
+  - 使用 Context7 在 src、docs、tests、config、README.*、architecture、api 目录检索相关材料（错误堆栈、模块、接口、约束、历史决策）
+  - 质量阈值：至少 5 个高相关片段或覆盖 3 类关键材料；评分 ≥ 0.65；超时 60s
+  - 回退：Context7 → 代码检索（search_codebase/search_by_regex）→ 文件系统读取
+  - 记录与确认：将“知识预载摘要”写入 project.context.md 的 Pinned，并通过增强反馈机制确认后继续
+- 跳过条件：纯文档/注释、打印文案微调、单文件小范围变量改名等轻量变更
+
 ## 📋 Process - 分析流程
 
 ### 1. 🔍 问题理解 (Issue Understanding)

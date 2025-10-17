@@ -80,11 +80,11 @@ install-ultra.bat D:\WebApp backend        # Backend development setup
 
 ### 🎯 Development Modes
 
-| Mode | Files | Priority Levels | Best For |
-|------|-------|----------------|----------|
-| `frontend` | 38 files | P0-P7 (8 levels) | React, Vue, Angular projects |
-| `backend` | 37 files | P0-P7 (8 levels) | API, server, database projects |
-| `fullstack` | 45 files | P0-P7 (8 levels) | Complete web applications (recommended) |
+| Mode | .mdc Files | Priority Levels | Best For |
+|------|------------|----------------|----------|
+| `frontend` | 42 .mdc files | P0-P7 (8 levels) | React, Vue, Angular projects |
+| `backend` | 41 .mdc files | P0-P7 (8 levels) | API, server, database projects |
+| `fullstack` | 43 .mdc files | P0-P7 (8 levels) | Complete web applications (recommended) |
 
 ### 📁 Directory Structure Created
 
@@ -266,9 +266,9 @@ Your Project Directory/
 
 | Mode          | File Count | Contents                                                              |
 | ------------- | ---------- | --------------------------------------------------------------------- |
-| **Frontend**  | 38 files   | Frontend rules + mermaid chart support + 8 Phase 2+3 intelligent rules |
-| **Backend**   | 37 files   | Backend rules (no mermaid) + 8 Phase 2+3 intelligent rules             |
-| **Fullstack** | 45 files   | Frontend + backend complete rules + optimized intelligent rule distribution      |
+| **Frontend**  | 42 .mdc files   | Frontend rules + mermaid chart support + 8 Phase 2+3 intelligent rules |
+| **Backend**   | 41 .mdc files   | Backend rules (no mermaid) + 8 Phase 2+3 intelligent rules             |
+| **Fullstack** | 43 .mdc files   | Frontend + backend complete rules + optimized intelligent rule distribution      |
 
 ## How to Use Installed Rules?
 
@@ -454,9 +454,9 @@ install-scripts\install-ultra.bat
 
 **🚀 Three Development Modes**:
 
-- `frontend` - Frontend development (38 files, P0-P7 priority levels)
-- `backend` - Backend development (37 files, P0-P7 priority levels)
-- `fullstack` - Full-stack development (45 files, P0-P7 priority levels, recommended)
+- `frontend` - Frontend development (42 .mdc files, P0-P7 priority levels)
+- `backend` - Backend development (41 .mdc files, P0-P7 priority levels)
+- `fullstack` - Full-stack development (43 .mdc files, P0-P7 priority levels, recommended)
 
 **🔧 MCP Cross-Platform Management**:
 
@@ -475,7 +475,7 @@ SUCCESS: fullstack Rules Directory Created (Final Release)
 Project Directory: [Your chosen path]
 Rules Directory: [Your chosen path]\.rules
 Rule Type: fullstack
-Total files installed: 45
+Total .mdc files installed: 43
 Priority levels: P0-P7 (8 levels)
 Target location: [Your chosen path]
 
@@ -486,7 +486,7 @@ Installation completed successfully
 ### 🔍 Verify Installation
 
 1. **Check Directory Structure**: Navigate to your project folder and verify the `.rules` directory exists
-2. **Count Files**: Ensure all 45 files are present (for fullstack mode)
+2. **Count Files**: Ensure all 43 .mdc files are present (for fullstack mode)
 3. **Priority Levels**: Verify P0-P7 directories are created
 4. **Templates**: Check that `templates/` and `mcp-tools/` directories exist
 

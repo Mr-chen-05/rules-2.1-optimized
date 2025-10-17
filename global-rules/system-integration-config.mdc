@@ -35,7 +35,7 @@ priority: 970
   记忆系统 (优先级: 940):
     角色: 信息存储和智能检索
     功能: 记忆管理、上下文感知、经验积累、知识图谱
-    依赖: MCP Memory工具、context7、codebase-retrieval
+    依赖: context7、codebase-retrieval（server-memory 可选）
     智能特性: 语义搜索、自动关联、持续学习
   
   推荐引擎 (优先级: 930):
@@ -115,8 +115,8 @@ priority: 970
       - 智能内容总结
       - 自动知识提取
 
-  增强记忆系统:
-    组件: memory服务器 + 智能索引
+  增强记忆系统（可选）:
+    组件: memory 服务器 + 智能索引
     功能: 
       - 结构化信息存储和检索
       - 语义搜索和关联分析
@@ -380,6 +380,7 @@ priority: 970
       user_satisfaction: number
       tool_efficiency: number
 ```
+注: memory_system_active 仅在启用了 Memory 工具时有效；未启用 Memory 不影响 Recorder 的记录与检索能力。
 
 ### 状态同步机制
 ```yaml
@@ -540,7 +541,7 @@ priority: 970
   功能级权限:
     - ACTIVATE_SUPER_BRAIN: 激活超级大脑
     - MANAGE_PROJECT_PHASES: 管理项目阶段
-    - ACCESS_MEMORY_SYSTEM: 访问记忆系统
+    - ACCESS_MEMORY_SYSTEM（可选）: 访问记忆系统（启用 Memory 时需要）
     - USE_RECOMMENDATION: 使用推荐功能
     - MODIFY_CONFIGURATION: 修改配置
   

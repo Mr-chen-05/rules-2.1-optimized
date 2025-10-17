@@ -5,7 +5,6 @@ priority: 890
 alwaysApply: true
 dependencies: ["super-brain-system.mdc", "context-recorder-system.mdc"]
 integrations: ["super-brain-system", "context-recorder-system"]
-version: "1.0"
 ---
 
 # 🧠📝 Brain-Recorder Integration System (大脑-记录员集成系统)
@@ -47,6 +46,22 @@ version: "1.0"
     5. 用户确认 → 更新项目状态
 ```
 
+### 记忆与检索（默认建议）
+```yaml
+策略:
+  - Recorder 优先: 使用记录员系统提供的分类与归档完成历史检索
+  - Memory 可选: 需要模糊语义检索或跨项目/跨时间聚合时，再联动 Memory 工具
+
+联动触发:
+  - 用户请求“找不到但能描述”的信息
+  - 需要加载较大时间窗的历史上下文
+  - 需要聚合相似问题/方案做回顾
+
+结果处理:
+  - Memory 检索/加载的结果注入当前上下文
+  - 后续回答与执行基于注入结果进行
+```
+
 ## 自动联动规则
 
 ### 启动联动
@@ -72,6 +87,7 @@ version: "1.0"
      📋 当前阶段: [从项目记录推断]
      💾 记忆状态: [检查上下文文件]
      📚 历史记录: [显示最近决策和任务]
+     🔎 记忆策略: Recorder 优先，Memory 可选（按需联动）
      
      🤖 智能功能已就绪:
      • 项目生命周期管理
@@ -164,7 +180,7 @@ version: "1.0"
 "/project-summary": 生成项目综合报告
 "/project-backup": 备份所有项目数据
   
-  记忆管理指令:
+  记忆管理指令（可选，Recorder 优先）:
   "/memory-load": 加载历史项目记忆
   "/memory-search [关键词]": 搜索历史决策和记录
   "/memory-export": 导出项目知识库

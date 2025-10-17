@@ -1,20 +1,90 @@
 ---
-type: "workflow_rule"
-description: "Standard commit workflow with conventional format and emojis - 标准化提交工作流"
+type: "intelligent_workflow_rule"
+description: "Unified comprehensive commit workflow (standard + fast + AI) - 统一全面提交工作流（标准 + 快速 + AI）"
 globs: ["**/*"]
-priority: 600
+priority: 680
 alwaysApply: true
+integrations: ["super-brain-system", "code-quality-check", "changelog-management", "mcp-intelligent-strategy", "intelligent-project-management"]
 ---
 
-# 📝 Commit Workflow - 提交工作流
+# 📝 Commit Unified Workflow - 统一提交工作流
 
-创建格式良好的提交，使用约定式提交格式和描述性表情符号。
+一个全面、统一的提交工作流：既支持标准化提交，也支持快速提交与AI智能消息生成；集成质量门与变更日志，适配不同团队规范与项目阶段。
 
-## 🚀 Commands - 命令
+## 🚀 Commands - 智能命令（统一）
 
 - `/commit` - 标准提交（包含预提交检查）
-- `/commit --no-verify` - 跳过预提交检查的快速提交
-- `/commit-fast` - 快速提交工作流，自动选择第一个消息
+- `/commit --fast` - 快速提交模式（智能暂存 + AI消息生成）
+- `/commit-fast` - 快速提交别名（与 `/commit --fast` 等效）
+- `/commit --no-verify` - 跳过预提交检查（紧急场景）
+- `/commit --analyze` - 深度分析模式（详细变更分析与建议）
+- `/commit --template <type>` - 指定模板类型（如 feat/fix/docs/refactor 等）
+- `/commit --smart-stage` - 智能暂存相关文件（自动排除临时/配置文件）
+
+说明：保留所有既有命令习惯，同时提供统一的参数化入口，便于脚本与工具集成。
+
+## 🧠 AI Intelligence Core - AI智能核心
+
+### 智能激活条件
+```yaml
+自动激活场景:
+  - 检测到多个文件变更且需要快速提交
+  - 用户执行 `/commit --fast` 或 `/commit-fast`
+  - 超级大脑系统推荐快速提交流程
+  - 项目处于需要频繁提交的阶段
+
+智能分析维度:
+  - 变更文件类型和数量 (30%)
+  - 代码变更复杂度 (25%)
+  - 项目当前阶段 (20%)
+  - 历史提交模式 (15%)
+  - 时间紧迫性 (10%)
+```
+
+## ✨ AI-Powered Features - AI驱动功能
+
+### 🤖 智能提交信息生成
+```yaml
+AI分析引擎:
+  文件变更分析:
+    - 自动识别变更类型（feat/fix/docs/refactor等）
+    - 分析变更影响范围和重要性
+    - 检测代码模式和最佳实践
+    - 识别潜在的安全和性能影响
+
+  智能消息生成:
+    - 基于变更内容自动生成描述性标题
+    - 智能选择最合适的emoji和类型
+    - 自动添加作用域（scope）信息
+    - 生成详细的变更说明（可选）
+
+  上下文感知:
+    - 考虑项目类型和技术栈
+    - 分析历史提交模式
+    - 集成项目管理阶段信息
+    - 参考团队提交规范
+```
+
+### 🔧 MCP工具自动编排（可选）
+```yaml
+预提交自动化:
+  - 智能选择相关的代码检查工具
+  - 自动运行适当的测试套件
+  - 执行代码格式化和清理
+  - 生成或更新相关文档
+
+质量保证:
+  - 自动安全扫描（如适用）
+  - 性能影响评估
+  - 依赖关系检查
+  - 版本兼容性验证
+
+智能优化:
+  - 根据项目类型选择工具
+  - 基于变更范围调整检查级别
+  - 并行执行提升效率
+  - 智能缓存和增量检查
+```
 
 ## ✨ Features - 功能特性
 
@@ -23,7 +93,9 @@ alwaysApply: true
 - 使用约定式提交格式和描述性表情符号
 - 建议为不同关注点拆分提交
 
-## 📋 Commit Types - 提交类型
+补充：在快速模式下，会根据变更自动选择最合适的提交类型与模板，并支持自动生成详细说明。
+
+## 📋 Commit Types - 提交类型（统一）
 
 | 类型 | 表情符号 | 描述 | 示例 |
 |------|----------|------|------|
@@ -39,6 +111,39 @@ alwaysApply: true
 | **remove** | 🔥 | 删除代码 | `🔥 remove: 删除废弃的API接口` |
 | **hotfix** | 🚑 | 紧急修复 | `🚑 hotfix: 修复生产环境登录问题` |
 | **security** | 🔒 | 安全改进 | `🔒 security: 加强密码加密机制` |
+
+### 扩展类型（AI自动识别）
+```yaml
+功能开发:
+  - ✨ feat: 新功能添加
+  - 🎉 init: 项目初始化
+  - 🚀 deploy: 部署相关
+  - 💫 enhancement: 功能增强
+
+问题修复:
+  - 🐛 fix: 常规Bug修复
+  - 🚑 hotfix: 紧急修复
+  - 🩹 patch: 小补丁
+  - 🔧 config: 配置修复
+
+代码质量:
+  - ♻️ refactor: 代码重构
+  - 🎨 style: 代码格式化
+  - ⚡️ perf: 性能优化
+  - 🧹 cleanup: 代码清理
+
+文档和测试:
+  - 📝 docs: 文档更新
+  - ✅ test: 测试相关
+  - 📚 tutorial: 教程更新
+  - 💡 example: 示例代码
+
+工具和配置:
+  - 🧑‍💻 chore: 工具配置
+  - 📦 deps: 依赖更新
+  - 🔨 build: 构建相关
+  - 🔧 tools: 工具更新
+```
 
 ## 📋 Process - 提交流程
 
@@ -71,7 +176,7 @@ git add .
 - 为复杂变更添加正文，解释原因
 - 引用相关问题/PR
 
-### 6. 执行提交
+### 6. 执行提交（标准）
 ```bash
 git commit -m "✨ feat(auth): 添加JWT认证中间件
 
@@ -82,6 +187,16 @@ git commit -m "✨ feat(auth): 添加JWT认证中间件
 Closes #123"
 ```
 
+### 7. 快速提交（可选）
+当使用 `/commit --fast` 或 `/commit-fast` 时：
+```yaml
+流程简化:
+  - 自动暂存相关变更（智能排除临时/配置文件）
+  - 运行最小必要的预提交检查（可配置）
+  - AI生成提交标题与说明（可交互确认或全自动）
+  - 直接执行提交并记录元数据
+```
+
 ## ✅ Best Practices - 最佳实践
 
 ### 提交原则
@@ -90,6 +205,16 @@ Closes #123"
 - **解释原因** - 说明为什么，而不仅仅是什么
 - **引用问题** - 在相关时引用问题/PR
 - **拆分变更** - 将不相关的变更拆分为单独的提交
+
+### 超级大脑集成（建议）
+```yaml
+智能推荐:
+  - 基于项目阶段推荐提交频率与时机
+  - 推荐相关后续操作（测试/文档/变更日志）
+学习优化:
+  - 记录提交偏好与历史模式
+  - 优化AI消息生成准确性
+```
 
 ### 消息格式
 ```
@@ -134,6 +259,8 @@ Closes #456
 4. **构建验证** - 确保代码可以成功构建
 5. **文档生成** - 自动更新API文档
 
+提示：在快速模式下，可以降级或跳过部分检查（与 `--no-verify` 区分，仍建议保留核心检查）。
+
 ### 跳过检查
 ```bash
 # 紧急情况下跳过预提交检查
@@ -154,6 +281,13 @@ git commit --no-verify -m "🚑 hotfix: 紧急修复生产问题"
 - [ ] 检查CI/CD流水线状态
 - [ ] 更新相关文档
 - [ ] 通知团队成员（如需要）
+
+## 🧠 Super Brain Integration - 超级大脑集成
+
+与超级大脑系统协同：
+- 感知阶段与上下文，优化提交策略与消息生成
+- 自动记录与学习，提升未来建议与准确性
+- 与智能项目管理、质量检查、变更日志联动
 
 ## 🎯 Integration - 集成
 

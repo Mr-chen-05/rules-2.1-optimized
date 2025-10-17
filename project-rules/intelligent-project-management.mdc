@@ -201,7 +201,7 @@ priority: 950
 辅助命令:
   "/status" - 查看当前阶段和规则
   "/recommend" - 获取阶段推荐
-  "/memory" - 查看项目记忆
+  "/memory" - 查看项目记忆（可选，Recorder 优先）
 ```
 
 ## 🤖 智能推荐机制 (集成全局推荐引擎)
@@ -473,7 +473,7 @@ MCP工具策略:
 ```yaml
 工具编排策略:
   阶段1_需求分析:
-    主要工具: ["mcp-feedback-enhanced", "memory"]
+    主要工具: ["mcp-feedback-enhanced", "memory（可选）"]
     目标: 需求收集和分析
   
   阶段2_架构设计:

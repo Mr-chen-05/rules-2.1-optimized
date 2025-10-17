@@ -6,7 +6,9 @@ param(
     [string]$SourcePlatform = "auto",  # auto, trae, cursor, claude
     [string[]]$TargetPlatforms = @("all"),  # all, trae, cursor, claude
     [switch]$DryRun = $false,  # Show operations only, do not execute
-    [switch]$Verbose = $false  # Verbose output
+    [switch]$Verbose = $false,  # Verbose output
+    [int]$CacheTTLSeconds = 3600,
+    [switch]$Force = $false
 )
 
 # MCP Configuration file paths
@@ -48,6 +50,18 @@ function Write-ColorOutput {
         [string]$Color = "White"
     )
     Write-Host $Message -ForegroundColor $Color
+}
+
+# Unified cache file path helper (shared by detect and clearcache)
+function Get-CacheFilePath {
+    $scriptDir = $PSScriptRoot
+    if (-not $scriptDir) {
+        $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
+    }
+    $rootDir = Split-Path -Parent $scriptDir
+    $cacheDir = Join-Path $rootDir ".cache"
+    if (-not (Test-Path $cacheDir)) { New-Item -ItemType Directory -Path $cacheDir | Out-Null }
+    return (Join-Path $cacheDir "mcp-status-cache.json")
 }
 
 # Smart detection of current running AI tools
@@ -209,7 +223,7 @@ function Get-InstalledAITools {
         if (Test-Path $configDir) {
             $installedTools += $tool
             if ($Verbose) {
-                Write-ColorOutput "Found: $($MCPConfigs[$tool].Name)" "Green"
+                Write-ColorOutput -Message "Found: $($MCPConfigs[$tool].Name)" -Color "Green"
             }
         }
     }
@@ -233,7 +247,7 @@ function Get-MCPConfig {
         return $config
     }
     catch {
-        Write-ColorOutput "Failed to read $Platform config: $($_.Exception.Message)" "Red"
+        Write-ColorOutput -Message "Failed to read $Platform config: $($_.Exception.Message)" -Color "Red"
         return $null
     }
 }
@@ -272,36 +286,36 @@ function Analyze-MCPConfig {
 
 # Detect all platforms MCP status
 function Detect-AllMCPStatus {
-    Write-ColorOutput "`nDetecting MCP configuration status for all AI tools..." "Cyan"
-    Write-ColorOutput ("=" * 60) "Gray"
+    Write-ColorOutput "`nDetecting MCP configuration status for all AI tools..." -Color "Cyan"
+    Write-ColorOutput -Message ("=" * 60) -Color "Gray"
     
     $installedTools = Get-InstalledAITools
     $allAnalysis = @{}
     
     if ($installedTools.Count -eq 0) {
-        Write-ColorOutput "No supported AI tools detected" "Red"
+        Write-ColorOutput "No supported AI tools detected" -Color "Red"
         return
     }
     
-    Write-ColorOutput "`nInstalled AI Tools:" "Yellow"
+    Write-ColorOutput "`nInstalled AI Tools:" -Color "Yellow"
     foreach ($tool in $installedTools) {
-        Write-ColorOutput "  * $($MCPConfigs[$tool].Name)" "White"
+        Write-ColorOutput "  * $($MCPConfigs[$tool].Name)" -Color "White"
     }
     
-    Write-ColorOutput "`nMCP Configuration Analysis:" "Yellow"
+    Write-ColorOutput "`nMCP Configuration Analysis:" -Color "Yellow"
     
     foreach ($tool in $installedTools) {
         $config = Get-MCPConfig -Platform $tool
         $analysis = Analyze-MCPConfig -Config $config -Platform $tool
         $allAnalysis[$tool] = $analysis
         
-        Write-ColorOutput "`n$($MCPConfigs[$tool].Name):" "Cyan"
+        Write-ColorOutput "`n$($MCPConfigs[$tool].Name):" -Color "Cyan"
         
         if ($analysis.ServerCount -eq 0) {
-            Write-ColorOutput "  No MCP servers configured" "Red"
+            Write-ColorOutput "  No MCP servers configured" -Color "Red"
         } else {
-            Write-ColorOutput "  Configured $($analysis.ServerCount) MCP servers" "Green"
-            Write-ColorOutput "  Servers: $($analysis.Servers -join ', ')" "Gray"
+            Write-ColorOutput "  Configured $($analysis.ServerCount) MCP servers" -Color "Green"
+            Write-ColorOutput "  Servers: $($analysis.Servers -join ', ')" -Color "Gray"
             
             # Check key servers
             $keyServers = @()
@@ -313,13 +327,18 @@ function Detect-AllMCPStatus {
             if ($analysis.HasDatabase) { $keyServers += "Database" }
             
             if ($keyServers.Count -gt 0) {
-                Write-ColorOutput "  Key features: $($keyServers -join ', ')" "Green"
+                Write-ColorOutput "  Key features: $($keyServers -join ', ')" -Color "Green"
+            }
+            
+            # Memory is optional; absence should not be treated as a problem
+            if (-not $analysis.HasMemory) {
+                Write-ColorOutput "  Memory: Optional (not detected but does not affect usage; Recorder takes priority)" -Color "Yellow"
             }
         }
     }
     
     # Generate recommendations
-    Write-ColorOutput "`nSmart Recommendations:" "Yellow"
+    Write-ColorOutput -Message "`nSmart Recommendations:" -Color "Yellow"
     
     $bestConfig = $null
     $bestTool = $null
@@ -334,22 +353,23 @@ function Detect-AllMCPStatus {
     }
     
     if ($bestTool) {
-        Write-ColorOutput "  Best configuration: $($MCPConfigs[$bestTool].Name) ($maxServers servers)" "Green"
+        $bestSummaryMessage = "  Best configuration: " + $MCPConfigs[$bestTool].Name + " - servers: " + $maxServers
+        Write-ColorOutput -Message $bestSummaryMessage -Color "Green"
         
         # Check missing servers in other platforms
         foreach ($tool in $allAnalysis.Keys) {
             if ($tool -ne $bestTool -and $allAnalysis[$tool].ServerCount -lt $maxServers) {
                 $missing = $maxServers - $allAnalysis[$tool].ServerCount
-                Write-ColorOutput "  $($MCPConfigs[$tool].Name) can add $missing servers" "Yellow"
+                Write-ColorOutput "  $($MCPConfigs[$tool].Name) can add $missing servers" -Color "Yellow"
             }
         }
         
-        Write-ColorOutput "`nSuggested Actions:" "Cyan"
-        Write-ColorOutput "  * Run: .\mcp-cross-platform-sync.ps1 -Action sync -SourcePlatform $bestTool" "White"
-        Write-ColorOutput "  * Or use AI command: 'Sync MCP Configuration'" "White"
+        Write-ColorOutput -Message "`nSuggested Actions:" -Color "Cyan"
+        Write-ColorOutput "  * Run: .\mcp-cross-platform-sync.ps1 -Action sync -SourcePlatform $bestTool" -Color "White"
+        Write-ColorOutput "  * Or use AI command: 'Sync MCP Configuration'" -Color "White"
     } else {
-        Write-ColorOutput "  No MCP servers configured on any platform" "Red"
-        Write-ColorOutput "  Suggestion: Configure MCP environment on one platform first" "Yellow"
+        Write-ColorOutput "  No MCP servers configured on any platform" -Color "Red"
+        Write-ColorOutput "  Suggestion: Configure MCP environment on one platform first" -Color "Yellow"
     }
     
     return $allAnalysis
@@ -357,26 +377,89 @@ function Detect-AllMCPStatus {
 
 # Main execution logic
 function Main {
-    Write-ColorOutput "MCP Cross-Platform Configuration Sync Tool" "Cyan"
-    Write-ColorOutput "Supports: Trae, Cursor, Claude and other AI tools" "Gray"
+    Write-ColorOutput "MCP Cross-Platform Configuration Sync Tool" -Color "Cyan"
+    Write-ColorOutput "Supports: Trae, Cursor, Claude and other AI tools" -Color "Gray"
     
     if ($DryRun) {
-        Write-ColorOutput "DRY RUN MODE - No files will be modified" "Yellow"
+        Write-ColorOutput "DRY RUN MODE - No files will be modified" -Color "Yellow"
     }
     
     switch ($Action.ToLower()) {
         "detect" {
-            Detect-AllMCPStatus
+            # Using global Get-CacheFilePath
+            
+            function Save-StatusCache {
+                param([string]$summary, $analysis)
+                $cacheFile = Get-CacheFilePath
+                $payload = @{
+                    lastCheckAt = (Get-Date).ToString("s")
+                    lastAction = "detect"
+                    summary = $summary
+                    analysis = $analysis
+                }
+                $json = $payload | ConvertTo-Json -Depth 6
+                Set-Content -Path $cacheFile -Value $json -Encoding UTF8
+            }
+            
+            function Load-StatusCache {
+                $cacheFile = Get-CacheFilePath
+                if (Test-Path $cacheFile) {
+                    try { return Get-Content -Path $cacheFile -Raw | ConvertFrom-Json } catch { return $null }
+                }
+                return $null
+            }
+            if (-not $Force) {
+                $cache = Load-StatusCache
+                if ($cache -and $cache.lastAction -eq "detect") {
+                    try {
+                        $last = [datetime]::Parse($cache.lastCheckAt)
+                        $age = (New-TimeSpan -Start $last -End (Get-Date)).TotalSeconds
+                        if ($age -le $CacheTTLSeconds) {
+                            Write-ColorOutput ("Reusing cached detection (age: " + [math]::Round($age) + "s). Use --Force to override") -Color "Yellow"
+                            if ($cache.summary) { Write-ColorOutput ("Cached summary: " + $cache.summary) -Color "Gray" }
+                            return
+                        }
+                    } catch {}
+                }
+            }
+            $allAnalysis = Detect-AllMCPStatus
+            # Compute summary for cache
+            $bestTool = $null; $maxServers = 0
+            foreach ($tool in $allAnalysis.Keys) {
+                if ($allAnalysis[$tool].ServerCount -gt $maxServers) {
+                    $maxServers = $allAnalysis[$tool].ServerCount
+                    $bestTool = $tool
+                }
+            }
+            if ($bestTool) {
+                 $summary = "Best configuration: " + $MCPConfigs[$bestTool].Name + " - servers: " + $maxServers
+             } else {
+                 $summary = "No MCP servers configured on any platform"
+             }
+            Save-StatusCache -summary $summary -analysis $allAnalysis
         }
         "current" {
             Show-CurrentAIToolDetails
         }
         "sync" {
-            Write-ColorOutput "Sync functionality will be implemented in next version" "Yellow"
+            Write-ColorOutput -Message "Sync functionality will be implemented in next version" -Color "Yellow"
+        }
+        "clearcache" {
+            $cacheFile = Get-CacheFilePath
+            if (Test-Path $cacheFile) {
+                try {
+                    Remove-Item -Path $cacheFile -Force
+                    Write-ColorOutput -Message "Cache cleared: $cacheFile" -Color "Green"
+                } catch {
+                    Write-ColorOutput -Message "Failed to clear cache: $($_.Exception.Message)" -Color "Red"
+                }
+            } else {
+                Write-ColorOutput -Message "No cache file found to clear." -Color "Yellow"
+            }
         }
         default {
-            Write-ColorOutput "Unknown action: $Action" "Red"
-            Write-ColorOutput "Supported actions: detect, current, sync" "Gray"
+            Write-ColorOutput -Message "Unknown action: $Action" -Color "Red"
+            Write-ColorOutput -Message "Supported actions: detect, current, sync, clearCache" -Color "Gray"
         }
     }
 }

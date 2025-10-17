@@ -61,7 +61,7 @@
 ### 📁 规则文件位置
 - **全局规则**: `global-rules/` 目录
   - `super-brain-system.mdc` - 超级大脑系统
-  - `memory-system-integration.mdc` - 记忆系统
+  - `brain-recorder-integration.mdc` + `context-recorder-system.mdc` - 记忆系统（集成）
   - `intelligent-recommendation-engine.mdc` - 推荐引擎
   - `complete-workflow-integration.mdc` - 完整工作流
   - `system-integration-config.mdc` - 系统集成配置

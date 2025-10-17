@@ -21,7 +21,7 @@
   - ✅ **ASCII安全输出**: 完全ASCII英文输出，支持所有Windows环境
   - 🔧 **PowerShell清理**: 使用PowerShell方法处理Unicode字符
 
-**最新测试输出示例 (2025年9月)** ✅:
+**最新测试输出示例 (2025年10月)** ✅:
 ```
 ========================================
 Rules 2.5.1 Comprehensive Detection Tool
@@ -43,9 +43,9 @@ Directory Structure Detection:
   OK All 8 priority directories complete
 
 File Statistics:
-  Total files: 42
-  .md files: 1
-  .mdc files: 41
+  Rule files (.mdc): 43
+  Index files (.md): 1
+  Total rule count: 43 (based on .mdc files)
 
 Key File Detection:
   OK main.md - Rules directory guide
@@ -56,8 +56,8 @@ Key File Detection:
   OK backend-rules.mdc - Backend rules
 
 Mode Detection Results:
-  Detected: FULLSTACK mode (Full-stack development
-  File count: 42 (expected: 41
+  Detected: FULLSTACK mode (Full-stack development)
+  File count: 43 (expected: 43 .mdc files)
   OK Contains frontend, backend and chart support
 
 Rules Health Assessment:
@@ -151,13 +151,13 @@ comprehensive-test-report.bat C:\path\to\your\project
 - 🧡 **50-69分**: 一般 - 规则不完整或配置有误
 - ❤️ **0-49分**: 差 - 规则严重不完整
 
-**模式检测标准 (2025年9月更新)**:
-- **Frontend模式**: 39个文件 (包含mermaid.mdc + frontend-dev.mdc + 新增8个规则文件)
-- **Backend模式**: 38个文件 (包含backend-dev.mdc，无mermaid.mdc + 新增8个规则文件)
-- **Fullstack模式**: 45个文件 (包含所有关键文件 + 优化后的规则分布)
+**模式检测标准 (2025年10月更新 - 基于.mdc文件统计)**:
+- **Frontend模式**: 42个.mdc文件 (包含mermaid.mdc + frontend-dev.mdc + 新增8个规则文件)
+- **Backend模式**: 41个.mdc文件 (包含backend-dev.mdc，无mermaid.mdc + 新增8个规则文件)
+- **Fullstack模式**: 43个.mdc文件 (包含所有关键文件 + 优化后的规则分布)
 
 **新增规则文件 (8个)**:
-- `commit-fast.mdc` - 快速提交工作流
+- `commit.mdc` - 统一提交工作流（支持快速模式 --fast；`/commit-fast` 为别名）
 - `code-quality-check.mdc` - 代码质量检查
 - `changelog-management.mdc` - 变更日志管理
 - `mcp-debugging-enhanced.mdc` - 增强MCP调试
@@ -168,15 +168,15 @@ comprehensive-test-report.bat C:\path\to\your\project
 
 ## 更新记录
 
-**2025年9月 (最新)**:
+**2025年10月 (最新)**:
 - 🔧 **脚本修复**: 修复install-ultra.bat和comprehensive-test-report.bat脚本
 - 📁 **新增规则文件支持**: 添加8个新规则文件的安装和检测逻辑
-- 📊 **文件数量更新**: 
-  - Frontend: 31→39个文件
-  - Backend: 30→38个文件  
-  - Fullstack: 33→45个文件
+- 📊 **文件数量更新 (基于.mdc文件统计)**: 
+  - Frontend: 31→42个.mdc文件
+  - Backend: 30→41个.mdc文件  
+  - Fullstack: 33→43个.mdc文件
 - ✅ **测试验证**: 
-  - install-ultra.bat: 成功安装42个文件
+  - install-ultra.bat: 成功安装43个.mdc文件
   - comprehensive-test-report.bat: 正确检测FULLSTACK模式，健康评分100/100
 - 🎯 **完整性保证**: 所有新增规则文件正确集成到安装和检测流程
 

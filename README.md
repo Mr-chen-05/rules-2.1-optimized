@@ -14,7 +14,7 @@
 | 💬 **深度讨论框架** | 结构化决策支持，多维度分析 | 决策支持质量 >92% |
 | ⚡ **开发效率优化引擎** | 智能代码生成，自动化工作流编排 | 开发效率提升 40-60% |
 | 🎯 **超级大脑系统** | L4级完全自主模式，端到端智能决策 | 持续学习优化 |
-| 🚀 **完整MCP工具链** | 5大智能工具：反馈增强、文件系统、GitHub集成等 | 一键安装配置 |
+| 🚀 **完整MCP工具链** | 4-5大智能工具（Memory 可选）：反馈增强、文件系统、GitHub集成等 | 一键安装配置 |
 | **📚 企业级标准** | 100%测试通过，生产就绪 | PERFECT (A++)评级 |
 
 ## 🚀 快速开始
@@ -208,7 +208,6 @@ Rules 2.5.1/
 │   │   ├── frontend-rules.mdc              # 🎨 前端完整规则
 │   │   ├── backend-rules.mdc               # 🔧 后端完整规则
 │   │   ├── super-brain-system.mdc          # 🧠 超级大脑系统
-│   │   ├── memory-system-integration.mdc   # 💾 记忆系统集成
 │   │   ├── context-recorder-system.mdc     # 📝 上下文记录系统
 │   │   ├── brain-recorder-integration.mdc  # 🧠 大脑-记录员集成
 │   │   ├── context-systems-integration.mdc # 🔗 上下文系统集成
@@ -222,7 +221,6 @@ Rules 2.5.1/
 │   │   ├── knowledge-creation-discovery-framework.mdc # 📚 知识创建发现框架
 │   │   ├── multimodal-interaction-framework.mdc # 🎭 多模态交互框架
 │   │   ├── rule-conflict-resolution.mdc     # ⚖️ 规则冲突解决
-│   │   ├── rule-redundancy-optimization.mdc # 🔧 规则冗余优化
 │   │   └── system-integration-config.mdc    # ⚙️ 系统集成配置
 │   └── project-rules/                      # 🎯 模块化项目规则 (24个)
 │       ├── 🚀 Phase 3 智能补强规则 (3个)
@@ -230,7 +228,7 @@ Rules 2.5.1/
 │       │   ├── custom-command-builder.mdc  # 🛠️ 智能自定义命令构建器
 │       │   └── mcp-debugging-enhanced.mdc  # 🔧 增强MCP调试工具
 │       ├── ⚡ Phase 2 核心工作流规则 (5个)
-│       │   ├── commit-fast.mdc             # ⚡ AI智能快速提交工作流
+│       │   ├── commit.mdc                  # 统一提交工作流（支持快速模式）
 │       │   ├── changelog-management.mdc    # 📋 智能变更日志管理
 │       │   ├── code-quality-check.mdc      # 🔍 跨语言代码质量检查
 │       │   ├── root-cause-analysis.mdc     # 🔧 AI根因分析方法
@@ -318,10 +316,10 @@ install-scripts\install-ultra.bat "你的项目目录路径" fullstack  # 🌟 �
 
 ### 🔧 MCP智能工具集成
 
-**5个核心工具，一键安装：**
+**4-5个核心工具（一键安装；Memory 可选）：**
 - **💬 智能反馈** - 实时交互和进度汇报
 - **📁 文件系统** - 自动化文件操作
-- **🧠 记忆管理** - 上下文保存和检索
+- **🧠 记忆管理**（可选，Recorder 优先）- 上下文保存和检索、语义聚合
 - **🐙 GitHub集成** - 仓库管理和PR处理
 - **🛠️ 通用工具** - 基础操作和测试验证
 
@@ -366,7 +364,7 @@ cd mcp-scripts
 ### 📋 项目认证详情
 - **✅ 企业级评级**: PERFECT (A++) - 生产就绪
 - **✅ 安装脚本**: 统一安装脚本，支持前端/后端/全栈
-- **✅ MCP工具**: 5个核心MCP工具完整集成
+- **✅ MCP工具**: 4-5个核心MCP工具完整集成（其中 server-memory 可选）
 - **✅ 文档体系**: 从入门到高级配置的完整指南
 - **✅ 编码标准**: UTF-8编码、错误处理、路径安全
 
@@ -445,8 +443,7 @@ install-scripts\install-ultra.bat "你的项目路径" fullstack
 
 | 命令 | 功能 | 适用场景 | 对应文件 |
 |------|------|----------|----------|
-| `/commit` | 提交规范 | 标准化Git提交 | `commit.mdc` |
-| `/commit-fast` | **AI智能快速提交** | **AI驱动的智能提交工作流** | `commit-fast.mdc` |
+| `/commit` | 提交规范 | 标准化Git提交（支持快速模式 --fast；`/commit-fast` 为别名） | `commit.mdc` |
 | `/quality-check` | **跨语言质量检查** | **多语言代码质量分析** | `code-quality-check.mdc` |
 | `/code-review` | 代码审查 | PR审查和质量检查 | `code-review.mdc` |
 | `/ai-powered-code-review` | AI代码审查 | 智能代码质量分析 | `ai-powered-code-review.mdc` |
@@ -522,9 +519,9 @@ install-scripts\install-ultra.bat "你的项目路径" fullstack
 - **特点**: 实时分析，个性化推荐
 
 ### 🧠 **记忆系统集成**
-- **文件**: `memory-system-integration.mdc`
-- **功能**: 上下文记忆和知识管理
-- **特点**: 持久化存储，智能检索
+- **文件**: `brain-recorder-integration.mdc` + `context-recorder-system.mdc`
+- **功能**: 上下文记忆与知识管理（记录、检索、联动）
+- **特点**: 持久化存储，智能检索，记录员系统与大脑集成协同
 
 ### 🌟 **超级大脑系统**
 - **文件**: `super-brain-system.mdc`
@@ -541,10 +538,10 @@ install-scripts\install-ultra.bat "你的项目路径" fullstack
 - **功能**: 自动检测和解决规则冲突
 - **特点**: 智能仲裁，优先级管理
 
-### 📊 **规则冗余优化**
-- **文件**: `rule-redundancy-optimization.mdc`
-- **功能**: 优化规则结构，消除冗余
-- **特点**: 自动优化，性能提升
+### 📊 **规则冲突与冗余优化（已合并）**
+- **文件**: `rule-conflict-resolution.mdc`
+- **功能**: 冲突仲裁与冗余治理，统一规则入口
+- **特点**: 用户指令最高优先级，避免重复定义
 
 ### MCP智能策略（自动应用）
 - **文件**: `mcp-intelligent-strategy.mdc`
@@ -628,6 +625,7 @@ install-scripts\install-ultra.bat "你的项目路径" fullstack
 /memory-export    # 导出项目知识库
 /memory-clean     # 清理过期记录
 ```
+提示：Memory（/memory-*）为可选功能。默认使用 Recorder 完成结构化记录与精准检索；仅当需要模糊语义检索或跨项目/跨时间聚合时再按需使用 Memory（Recorder 优先）。
 
 ### 📝 记录员系统
 ```bash

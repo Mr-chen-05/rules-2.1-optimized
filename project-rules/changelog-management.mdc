@@ -4,7 +4,7 @@ description: "AI-powered changelog management with automatic generation and vers
 globs: ["**/*"]
 priority: 620
 alwaysApply: true
-integrations: ["super-brain-system", "mcp-intelligent-strategy", "intelligent-project-management", "commit-fast"]
+integrations: ["super-brain-system", "mcp-intelligent-strategy", "intelligent-project-management", "commit"]
 ---
 
 # 📋 Changelog Management - 智能变更日志管理
@@ -20,7 +20,7 @@ AI驱动的自动化变更日志生成和管理系统，集成版本控制、智
   - 用户执行 "/changelog" 相关命令
   - 项目进入发布准备阶段
   - 超级大脑系统推荐生成变更日志
-  - 集成到commit-fast工作流中
+  - 集成到commit工作流中（支持 /commit-fast 别名）
 
 智能分析维度:
   - 提交历史分析和分类 (35%)
@@ -472,7 +472,7 @@ CI/CD集成:
 
 ### 与现有规则集成
 ```yaml
-commit-fast集成:
+commit集成:
   - 自动从快速提交中提取变更信息
   - 集成智能提交信息分析
   - 支持实时变更日志更新
@@ -613,7 +613,7 @@ mcp-intelligent-strategy集成:
   - 异常模式检测
 ```
 
-### 与commit-fast协调
+### 与commit协调
 ```yaml
 错误处理协调:
   - 共享统一的错误分类体系
@@ -622,15 +622,15 @@ mcp-intelligent-strategy集成:
   - 集成的日志记录系统
 
 工作流协同:
-  - commit-fast错误时暂停变更日志生成
-  - 变更日志错误时通知commit-fast
+  - commit错误时暂停变更日志生成
+  - 变更日志错误时通知commit
   - 共享错误状态和恢复进度
   - 协调的用户通知机制
 ```
 
 ---
 
-**🎯 规则优先级**: 620 (与commit-fast协同工作)  
+**🎯 规则优先级**: 620 (与commit协同工作)  
 **🔄 更新频率**: 基于版本发布和用户反馈持续优化  
 **📊 成功指标**: 变更日志生成效率提升70%+, 内容质量评分>4.6/5.0  
 **🧠 AI模型**: 集成自然语言处理和语义分析引擎

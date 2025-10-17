@@ -34,11 +34,10 @@ alwaysApply: true
   与全局推荐引擎协同: 接收项目阶段信息，提供MCP工具建议
   避免重复: 专注MCP领域，不重复实现通用推荐算法
 
-工具分层:
-  Tier_1_核心工具 (必需):
-    - server-filesystem: 文件系统操作
-    - server-memory: 智能记忆系统
-    - codebase-retrieval: 代码语义搜索
+  工具分层:
+    Tier_1_核心工具 (必需):
+      - server-filesystem: 文件系统操作
+      - codebase-retrieval: 代码语义搜索
   
   Tier_2_协作工具 (推荐):
     - server-github: Git协作和PR管理
@@ -48,12 +47,23 @@ alwaysApply: true
   Tier_3_高级工具 (可选):
     - 数据库服务器: MySQL/Redis集成
     - 自动化工具: Playwright/TestSprite
+    - 调试工具: chrome-devtools (CDP 浏览器调试与性能分析)
     - 视觉AI: Peekaboo (macOS 14.0+)
 
 推荐算法:
   项目类型适配: 基于前端/后端/全栈自动推荐
   团队规模调整: 个人/小团队/大团队差异化配置
   经验水平适配: 新手/中级/专家不同复杂度
+
+  场景化推荐:
+    意图识别:
+      - 测试/E2E/回归:
+        前端/全栈项目: "推荐 Playwright（测试自动化）与 chrome-devtools（浏览器调试）"
+      - 前端调试/性能/Console/Network/DOM:
+        默认: "推荐 chrome-devtools（CDP 集成）"
+    执行建议:
+      - "优先使用已安装的MCP服务器；未安装则提示'一键配置MCP'"
+      - "结合 install-mcp-tools-enhanced-final.ps1 生成配置状态进行检测"
 ```
 
 ### 3. 统一命令系统
@@ -78,6 +88,22 @@ alwaysApply: true
   - "MCP使用报告" - 使用统计分析
   - "修复MCP问题" - 自动问题诊断
   - "更新MCP服务器" - 批量更新管理
+  - "运行 Playwright 测试" - 端到端测试执行
+  - "启动浏览器调试" - 通过 chrome-devtools (CDP) 连接并调试
+
+命令示例:
+  Playwright:
+    执行示例: "npx playwright test --project=chromium --headed"
+    常用参数:
+      - "--project=chromium|firefox|webkit"
+      - "--grep=@smoke"
+      - "--reporter=html|list|blob"
+  chrome-devtools:
+    启动示例: "chrome --remote-debugging-port=9222"
+    连接示例: "ws://127.0.0.1:9222/devtools/browser/<id>"
+    典型用途:
+      - "Network/Console/DOM/Performance 监控"
+    注意: "需安装 chrome-devtools-mcp@latest 并确保目标浏览器可连接"
 ```
 
 ## 🔧 智能工作流
@@ -89,13 +115,18 @@ alwaysApply: true
   文件操作时: 检查filesystem工具可用性
   代码分析时: 验证codebase-retrieval状态
   GitHub操作时: 确认github工具配置
-  跨平台需求时: 自动运行mcp-cross-platform-sync.ps1
+  跨平台需求时: 自动运行 项目根目录/mcp-tools/mcp-cross-platform-sync.ps1
+  网页调试时: 检查 chrome-devtools 可用性
+  测试执行时: 检查 Playwright 安装与浏览器驱动
+  跳过与复用条件:
+    系统级启动: 在“启动超级大脑系统”等系统激活阶段不主动触发检测，由系统激活流程统一协调
+    最近检测复用: 若最近3600秒内已有检测结果或存在"检测响应"/"MCP平台报告"，则复用结果并跳过重复检测
+    用户覆盖: 若用户明确要求重新检测，则执行检测并更新结果缓存
+```
 
 智能脚本调用:
   检测脚本位置: 
     - 项目根目录/mcp-tools/mcp-cross-platform-sync.ps1
-    - 源码目录/mcp-scripts/mcp-cross-platform-sync.ps1
-  
   自动执行条件:
     - 需要了解MCP配置状态时
     - 检测到多个AI工具时
@@ -103,22 +134,26 @@ alwaysApply: true
     - 配置不完整需要分析时
   
   执行方式:
-    - 静默执行: .\mcp-cross-platform-sync.ps1 -Action detect
+    - 静默执行: .\mcp-tools\mcp-cross-platform-sync.ps1 -Action detect
+    - 策略引用: 默认遵循“检测复用与跳过 / 缓存复用”策略；详细参数与覆盖条件请参见 mcp-zero-config-detection.mdc
     - 获取结果: 解析输出并整合到AI响应中
     - 智能分析: 基于检测结果提供建议
-```
+  
+  缓存复用:
+    - 详细策略与参数请参见 mcp-zero-config-detection.mdc（唯一事实来源）
+    - 本文仅说明在高层编排中会引用该策略，不重复参数或条件
 
 ### MCP优先使用策略
 ```yaml
 强制执行流程:
   任务接收 → 智能检测MCP状态 → 扫描可用工具 → 效率评估 → 选择最优方案 → 执行监控 → 动态调整
 
-工具选择矩阵:
+  工具选择矩阵:
   文件操作: server-filesystem > 手动操作
   代码检索: codebase-retrieval > 盲目搜索
   GitHub操作: server-github > web抓取
   用户反馈: mcp-feedback-enhanced > 简单询问
-  记忆管理: server-memory > 临时变量
+  记忆检索（可选）: server-memory > 临时变量
   通用操作: server-everything > 手动执行
 
 切换条件:
@@ -142,8 +177,8 @@ alwaysApply: true
     - Claude标准配置
     - 环境变量适配
 
-渐进式配置:
-  阶段1: 核心工具 (filesystem, memory, codebase)
+  渐进式配置:
+  阶段1: 核心工具 (filesystem, codebase；memory 可选)
   阶段2: 协作工具 (github, feedback-enhanced)
   阶段3: 高级工具 (数据库, 自动化, 视觉AI)
   阶段4: 定制工具 (项目特定需求)

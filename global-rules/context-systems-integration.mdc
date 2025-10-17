@@ -54,6 +54,23 @@ integrations: ["context-loader", "context-recorder-system", "super-brain-system"
   - context.archive.md (历史归档)
   - 任务进度跟踪
   - 决策记录链
+
+### Context7（知识引擎）
+```yaml
+主要职责:
+  - 针对性知识检索与聚合（架构、接口、约束、历史决策、相关代码）
+  - 在具体任务执行前进行知识预载（Bug 修复/新项目/新功能）
+  - 为工作流提供“最小充分理解”所需材料
+触发时机:
+  - /analyze-issue、/implement-task、/frontend-dev、/backend-dev 之前
+  - 检测到错误关键词或新项目初始化意图
+输出内容:
+  - 知识预载摘要（关键结论、文件链接、风险与约束、下一步建议）
+  - 写入 project.context.md 的 Pinned/Notes，并触发用户确认
+协同声明:
+  - Context Loader 负责首次深度项目分析；Context7 专注于任务前置知识预载
+  - 记录员系统接收预载摘要并维护连续上下文
+```
 ```
 
 ## 🔄 协同工作流程
@@ -219,6 +236,22 @@ cache_analysis_results: true
 incremental_analysis: true
 background_sync: true
 memory_optimization: true
+```
+
+## 🧠 记忆协同策略（Recorder 优先，Memory 可选）
+```yaml
+默认原则:
+  - 日常结构化记录与精准检索由记录员系统负责（Recorder）
+  - Memory 按需启用，仅在需要模糊语义检索或跨项目/跨时间聚合时使用
+
+协同方式:
+  - 如已安装 Memory：可选择性同步关键片段以支持语义检索（可选）
+  - 如未安装 Memory：不影响系统使用；继续以 Recorder 为主进行记录与检索
+
+触发条件（建议）:
+  - 用户明确提出语义检索/跨项目聚合需求
+  - 需要对历史碎片化信息进行模糊匹配
+  - 需要跨阶段/跨仓库的全局聚合分析
 ```
 
 ---

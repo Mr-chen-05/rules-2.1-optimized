@@ -17,6 +17,15 @@ alwaysApply: false
 - `/task-review` - 任务审查
 - `/task-complete` - 完成任务
 
+## 🧠 前置步骤：Context7 知识预载（修复/新项目前置）
+- 触发时机：开始 /implement-task 前，任务涉及 Bug 修复或新功能/新项目实现
+- 执行：
+  - 使用 Context7 在 src、docs、tests、config、README.*、architecture、api 目录检索关键材料（架构、接口、约束、相关代码与历史决策）
+  - 质量阈值：至少 5 个高相关片段或覆盖 3 类关键材料；评分 ≥ 0.65；超时 60s
+  - 回退：Context7 → 代码检索（search_codebase/search_by_regex）→ 文件系统读取
+  - 记录与确认：将“知识预载摘要”写入 project.context.md 的 Pinned，并通过增强反馈机制确认后继续
+- 跳过条件：纯文档/注释、打印文案微调、单文件小范围变量改名等轻量变更
+
 ## 📋 Process - 实现流程
 
 ### 1. 📊 任务分析 (Task Analysis)

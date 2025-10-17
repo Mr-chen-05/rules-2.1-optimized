@@ -134,9 +134,9 @@ cd C:\MCP-Tools
 # 初始化项目
 npm init -y
 
-# 安装Node.js MCP工具（本地安装，路径清晰）
+# 安装Node.js MCP工具（本地安装，路径清晰；server-memory 可选）
 npm install @modelcontextprotocol/server-filesystem
-npm install @modelcontextprotocol/server-memory
+npm install @modelcontextprotocol/server-memory  # 可选（Recorder 优先）
 npm install @modelcontextprotocol/server-github
 npm install @modelcontextprotocol/server-everything
 
@@ -179,6 +179,7 @@ uvx mcp-feedback-enhanced@latest version
       ],
       "env": {}
     },
+    // 提示：Memory（server-memory）为可选，如不需要可删除该条目（Recorder 优先）。
     "github": {
       "command": "npx",
       "args": [

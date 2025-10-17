@@ -44,14 +44,15 @@
   - 实时学习优化和反馈机制
   - 置信度评估和推荐解释
 
-#### 5. 🧠 记忆系统
-- **文件**: `global-rules/memory-system-integration.mdc`
-- **功能**: 完整的项目阶段记忆和状态管理
+#### 5. 🧠 记忆系统（由记录员系统 + 大脑集成共同提供）
+- **文件**: `global-rules/brain-recorder-integration.mdc` + `global-rules/context-recorder-system.mdc`
+- **功能**: 完整的项目阶段记忆与状态管理（记录、检索、联动）
 - **特性**:
   - 多层记忆架构 (会话/项目/全局/学习)
-  - MCP Memory工具集成
+  - MCP Memory 工具协同（与记录员系统配合）
   - 智能检索策略 (语义/关联/模式/混合)
-  - 自动记录机制和上下文感知
+  - 自动记录机制与上下文感知（由记录员系统承担）
+  - 默认建议：Recorder 优先，Memory 可选（仅当需要模糊语义检索或跨项目/跨时间聚合时启用）
 
 #### 6. ⚙️ 系统集成配置
 - **文件**: `global-rules/system-integration-config.mdc`
@@ -68,6 +69,7 @@
 - **特性**:
   - 简单的激活命令和操作流程
   - 个性化配置和团队协作设置
+  - 工具清单与验证：Node.js MCP 工具应为 3-4 个（server-filesystem、server-github、server-everything；server-memory 可选）；Python 工具 1 个（mcp-feedback-enhanced）
   - 使用场景示例和最佳实践
   - 故障排除和技术支持
 

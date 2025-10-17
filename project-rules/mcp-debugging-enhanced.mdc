@@ -297,13 +297,15 @@ mcp-intelligent-strategy协同:
 官方MCP工具:
   - @modelcontextprotocol/server-filesystem
   - @modelcontextprotocol/server-github
-  - @modelcontextprotocol/server-memory
+  - @modelcontextprotocol/server-memory  # 可选（按需启用）
   - @modelcontextprotocol/server-everything
   - codebase-retrieval
   - context7
 
 第三方MCP工具:
   - mcp-feedback-enhanced
+  - chrome-devtools  # CDP 调试集成（浏览器调试与性能分析）
+  - playwright       # 端到端测试/自动化
   - 自定义MCP服务器
   - 企业级MCP工具
   - 社区开发MCP工具
@@ -328,12 +330,59 @@ mcp-intelligent-strategy协同:
   - 性能分析器
   - 内存分析器
   - 日志分析工具
+  - Chrome DevTools Protocol (CDP) 集成：网络、控制台、DOM、性能事件监控
 
 自动化工具:
-  - 自动化测试套件
+  - 自动化测试套件（Playwright 集成）
   - 性能基准测试
   - 配置验证工具
   - 故障模拟器
+```
+
+### 🔎 智能激活条件（Playwright 与 Chrome DevTools）
+```yaml
+触发来源:
+  用户意图:
+    - 测试/E2E/回归/自动化/CI/覆盖率
+    - 前端调试/浏览器错误/控制台异常/网络失败/白屏/卡顿/性能问题/内存泄漏
+  项目类型:
+    - frontend
+    - full-stack
+  文件特征:
+    - playwright.config.(ts|js)
+    - **/tests/**, **/e2e/**
+    - package.json 中存在 devDependencies.@playwright/test
+  运行端口/服务:
+    - http://localhost:9222/json/version 可访问（Chrome 远程调试端口）
+
+激活逻辑:
+  Playwright（测试自动化）:
+    条件:
+      - 命中“测试/E2E/回归/自动化/CI”等意图 或 项目类型为前端/全栈 且检测到 Playwright 配置/依赖
+    行为:
+      - 优先提示执行: npx playwright test --project=chromium --headed
+      - 根据需求追加: --grep <标签>、--reporter=html、--project=webkit/firefox
+      - 未安装时: 提示安装并引导执行 npm i -D @playwright/test && npx playwright install
+      - 记录测试结果与报告链接，纳入 Recorder/知识管理
+  Chrome DevTools（CDP 调试）:
+    条件:
+      - 命中“前端调试/性能问题/浏览器错误/白屏/卡顿/内存泄漏”等意图 或 项目类型为前端/全栈
+    行为:
+      - 检查并提示启动: chrome --remote-debugging-port=9222
+      - 自动获取 webSocketDebuggerUrl: 访问 http://localhost:9222/json/version
+      - 连接后执行: 网络/控制台/DOM/性能/内存 的采集与分析工作流
+      - 未开启端口或无法连接时: 提供一键启动与连接引导
+  组合策略:
+    - 同时命中测试与调试意图时，优先通过 mcp-feedback-enhanced 征询选择（仅调试、仅测试、两者都做）
+    - 推荐工作流: CDP 诊断 → 修复 → Playwright 冒烟/关键路径回归 → 报告归档
+
+检测与安装:
+  - 依赖 install-mcp-tools-enhanced-final.ps1 的检测与提示能力（未安装时提供一键安装/配置）
+  - 与 mcp-unified-management 的场景化推荐策略保持一致（基于项目类型与意图触发）
+
+安全与回滚:
+  - 所有执行前进行参数确认（通过 feedback-enhanced 收集偏好）
+  - 执行失败时保留日志与采集数据，便于后续复盘与重试
 ```
 
 ## 🚨 Error Handling & Safety - 错误处理和安全保障

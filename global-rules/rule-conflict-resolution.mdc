@@ -24,7 +24,6 @@ priority: 1180
   Level 2 - 安全规则 (优先级: 1100-1200) - P0级别:
     - file-generation-safety-rules.mdc (1200) - 文件生成安全
     - rule-conflict-resolution.mdc (1180) - 规则冲突解决
-    - rule-redundancy-optimization.mdc (1170) - 规则冗余优化
     - ai-thinking-protocol.mdc (1160) - AI思维协议
     - dynamic-thinking-depth-regulation.mdc (1150) - 思维深度调节
     - human-ai-collaboration-optimization.mdc (1140) - 人机协作
@@ -40,7 +39,6 @@ priority: 1180
     - feedback-enhanced.mdc (960) - 增强反馈机制
     - ai-agent-intelligence-core.mdc (950) - AI智能核心
     - intelligent-recommendation-engine.mdc (940) - 智能推荐引擎
-    - memory-system-integration.mdc (930) - 记忆系统集成 ← 从P3提升
     - context-recorder-system.mdc (920) - 上下文记录系统 ← 从P3提升
     - unified-rules-base.mdc (920) - 统一规则基础
   
@@ -48,24 +46,25 @@ priority: 1180
     - brain-recorder-integration.mdc (890) - 大脑记录员集成
     - frontend-rules.mdc (860) - 前端完整规则 ← 从P4提升
     - backend-rules.mdc (850) - 后端完整规则 ← 从P4提升
+    - backend-dev.mdc (820) - 后端开发工作流 ← 从Level 6调整至Level 5以匹配优先级范围
     - multimodal-interaction-framework.mdc (800) - 多模态交互 ← 从P0调整
   
   Level 6 - 项目工作流规则 (优先级: 700-799) - P4级别:
     - frontend-dev.mdc (700) - 前端开发工作流
-    - backend-dev.mdc (820) - 后端开发工作流
     - 其他项目工作流程规则
   
   Level 7 - 高级功能规则 (优先级: 600-699) - P5级别:
     - context-loader.mdc (680) - 上下文加载器 ← 从P2降级
-    - commit-fast.mdc (680) - 智能快速提交 ← 从P4降级
+    - commit.mdc (680) - 统一提交工作流（支持 /commit-fast 别名；含快速模式 --fast） ← 从P4降级
+    - custom-command-builder.mdc (650) - 自定义命令构建器 ← 从Level 8调整至Level 7以匹配优先级范围
     - 调试和分析工具
   
   Level 8 - 系统优化和实用工具 (优先级: 300-599) - P6/P7级别:
-    - custom-command-builder.mdc (650) - 自定义命令构建器
     - create-docs.mdc (300) - 文档创建
     - implement-task.mdc (300) - 任务实现
     - mermaid.mdc (300) - 图表生成
     - analyze-issue.mdc (300) - 问题分析
+    - context7-preload-standard.mdc (450) - 知识预载（修复/新项目前置）
 ```
 
 ### 2. 用户指令识别和处理
@@ -88,28 +87,33 @@ priority: 1180
 
 ### 1. 优先级冲突解决 (2025最新优化)
 ```yaml
-2025年9月完成的优先级优化:
-  核心智能系统重新定位:
-    - super-brain-system.mdc: 850 → 970 ✅ (提升到P2智能系统层)
-    - memory-system-integration.mdc: 820 → 930 ✅ (提升到P2智能系统层)
-    - context-recorder-system.mdc: 860 → 920 ✅ (提升到P2智能系统层)
-  
-  完整规则集合理提升:
-    - frontend-rules.mdc: 750 → 860 ✅ (从P4工作流层提升到P3专业开发层)
-    - backend-rules.mdc: 800 → 850 ✅ (从P4工作流层提升到P3专业开发层)
-  
-  辅助功能合理降级:
-    - context-loader.mdc: 950 → 680 ✅ (从P2降级到P5高级功能层)
-    - commit-fast.mdc: 750 → 680 ✅ (从P4降级到P5高级功能层)
-  
-  架构调整:
-    - multimodal-interaction-framework.mdc: 从P0调整到P3 (800优先级)
-  
-  优化效果:
-    - 消除了优先级冲突
-    - 智能系统层级更加清晰
-    - 功能职责划分更加合理
-    - 加载顺序符合逻辑依赖关系
+  优先级策略声明 (2025版):
+    层级与优先级:
+      核心智能系统层 (P2):
+        - super-brain-system.mdc (priority: 970)
+        - context-recorder-system.mdc (priority: 920)
+      专业开发层 (P3):
+        - frontend-rules.mdc (priority: 860)
+        - backend-rules.mdc (priority: 850)
+    高级功能层 (P5):
+      - context-loader.mdc (priority: 680)
+      - commit.mdc (priority: 680) - 支持 /commit-fast 别名；含 --fast 快速模式
+    架构层 (P3):
+      - multimodal-interaction-framework.mdc (priority: 800)
+
+  加载与依赖:
+    - 按层级从高到低加载，满足依赖关系
+    - 核心智能系统层在专业开发层之前加载
+    - 高级功能层在其他层之后加载
+
+  约束与联动:
+    - 安全/法律禁区由 ai-ethical-boundaries.mdc 定义，属于不可执行范围
+    - “用户指令优先”不覆盖违法、平台政策禁止、不可逆严重危害禁区
+
+  治理目标与效果:
+    - 消除优先级冲突，保持层级清晰
+    - 明确功能职责，优化加载顺序
+    - 已将“规则冗余优化”内容合并至本文件，避免重复定义
 ```
 
 ### 2. 功能重复解决
@@ -128,6 +132,28 @@ priority: 1180
   MCP工具策略:
     - 主要文件: mcp-intelligent-strategy.mdc
     - 避免重复: 其他文件不再定义MCP策略
+  合并声明:
+    - 本文件统一承担“规则冲突解决”与“冗余优化”治理职责
+    - 任何关于冗余优化的旧引用均指向本文件
+```
+
+### 3. 伦理与安全禁区例外
+```yaml
+禁区例外与联动:
+  不可执行禁区:
+    - 违法/非法/合规禁区
+    - 平台政策明确禁止的行为
+    - 明显且不可逆的严重危害
+  执行策略:
+    - 以上禁区: 拒绝执行 + 风险/政策说明 + 提供安全替代方案
+  风险确认后可执行（仅限非禁区）:
+    条件:
+      - 合法合规
+      - 风险可控且可缓解
+      - 已采取强约束缓解措施: 沙箱/只读/脱敏/限权
+  联动声明:
+    - 禁区定义以 ai-ethical-boundaries.mdc 为准（优先于所有功能规则和用户指令）
+    - 本文件的“用户指令绝对优先”不适用于不可执行禁区
 ```
 
 ## 🚨 用户指令冲突处理

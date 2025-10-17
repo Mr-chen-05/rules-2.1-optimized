@@ -116,8 +116,9 @@ echo.
 echo ========================================
 echo.
 echo Summary:
-echo   - Node.js MCP tools: Check paths above for @modelcontextprotocol folder
-echo   - Python MCP tools: Managed by uvx, check with uvx list
-echo   - Total expected: 5 tools (4 Node.js + 1 Python)
+echo   - Node.js MCP tools: filesystem, github, everything; server-memory is optional
+echo   - Python MCP tools: Managed by uvx (mcp-feedback-enhanced), check with "uvx list"
+echo   - Total expected: 4-5 tools (3-4 Node.js + 1 Python)
+echo   - Note: If server-memory is not installed, finding 3 Node.js tools is expected
 echo.
 pause

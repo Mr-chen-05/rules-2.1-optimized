@@ -11,7 +11,7 @@
 - **没有MCP**: AI可以生成代码和提供建议，但无法直接操作文件系统、访问GitHub、持久化记住信息
 - **有了MCP**: AI不仅能生成代码，还能直接操作外部工具，帮您自动化文件管理、项目操作、知识记录等任务
 
-## 🎯 5个MCP工具能为您做什么？
+## 🎯 5个MCP工具（其中 Memory 可选）能为您做什么？
 
 ### 1️⃣ **npx @modelcontextprotocol/server-filesystem** - 文件管理专家
 **🔍 它是什么？** 让AI能够读写您电脑上的文件
@@ -28,8 +28,10 @@
 ✅ 使用后：告诉AI"创建一个React组件"，AI直接生成文件
 ```
 
-### 2️⃣ **npx @modelcontextprotocol/server-memory** - 智能记忆助手
-**🔍 它是什么？** 让AI能够记住重要信息，建立知识库
+### 2️⃣ **npx @modelcontextprotocol/server-memory** - 智能记忆助手（可选）
+**🔍 它是什么？** 让AI能够记住重要信息、进行语义检索与跨范围聚合
+**ℹ️ 默认建议**：Recorder 优先。日常的结构化记录与精准检索由记录员系统（Recorder）完成；当需要模糊语义检索或跨项目/跨时间聚合时，再按需启用 Memory。
+**与 Recorder 的区别**：Recorder 负责结构化记录与精准查询；Memory 负责语义模糊搜索、跨范围聚合，并可将检索结果注入当前上下文。
 
 **💡 实际用途：**
 - ✅ 记住您的项目决策和解决方案
@@ -96,7 +98,7 @@
 ```
 🔥 组合威力：
 1. npx @modelcontextprotocol/server-filesystem → 创建项目文件结构
-2. npx @modelcontextprotocol/server-memory → 记录项目配置和决策
+2. Recorder（默认）→ 记录项目配置和决策；如需语义检索或跨项目聚合，启用 npx @modelcontextprotocol/server-memory（可选）
 3. uvx mcp-feedback-enhanced → 确认技术选型
 4. npx @modelcontextprotocol/server-github → 创建仓库并推送初始代码
 
@@ -106,7 +108,7 @@
 ### 📋 场景2：解决技术问题
 ```
 🔥 组合威力：
-1. npx @modelcontextprotocol/server-memory → 查询历史解决方案
+1. Recorder（默认）→ 查询结构化历史方案；如需模糊语义检索或跨范围聚合，使用 npx @modelcontextprotocol/server-memory（可选）
 2. npx @modelcontextprotocol/server-filesystem → 检查相关代码文件
 3. uvx mcp-feedback-enhanced → 确认修复方案
 4. npx @modelcontextprotocol/server-github → 提交修复并创建PR
@@ -163,6 +165,37 @@
 5. 🔧 根据需要查看详细配置
 ```
 
+## 📦 新增推荐：前端调试与测试专用MCP
+
+### Playwright（端到端测试 / 跨浏览器自动化）
+- 适用场景：E2E、回归测试、CI 集成、跨浏览器一致性验证
+- 安装建议：
+  - 开发依赖：`npm i -D @playwright/test`
+  - 安装浏览器：`npx playwright install`
+- 常用命令：
+  - 运行测试（Chromium，带界面）：`npx playwright test --project=chromium --headed`
+  - 筛选测试：`npx playwright test --grep "@critical"`
+  - 报告输出：`npx playwright test --reporter=html`
+- 集成说明：
+  - 若已运行安装脚本（install-mcp-tools-enhanced-final.ps1），系统会自动检测 Playwright 并在前端/全栈项目、或用户明确提出“测试/自动化/E2E/回归”需求时主动推荐。
+  - 未安装时将提示安装并给出命令与引导。
+
+### Chrome DevTools（CDP 浏览器调试 / 性能分析）
+- 适用场景：前端调试、网络/控制台错误分析、白屏/卡顿排查、性能瓶颈定位、内存泄漏追踪
+- 启动浏览器远程调试：`chrome --remote-debugging-port=9222`
+  - 提示：如 PATH 未配置，可通过快捷方式或完整路径启动 Chrome 并在目标后添加 `--remote-debugging-port=9222`
+- 获取 WebSocket 端点：访问 `http://localhost:9222/json/version`，复制 `webSocketDebuggerUrl`（形如 `ws://127.0.0.1:9222/devtools/browser/<id>`）
+- 常见能力：
+  - 网络请求/响应、错误速览、重放与比较
+  - 控制台错误与堆栈、源映射定位
+  - 性能采样与火焰图、关键渲染路径分析
+  - 覆盖率/加载优化建议、内存快照与泄漏检测
+- 集成说明：
+  - 若已运行安装脚本，系统会在检测到“前端调试/性能问题/浏览器错误/白屏/卡顿”等意图或前端/全栈项目类型时，自动建议启用 CDP 调试并协助连接。
+  - 未安装或未开启远程调试端口时，会提供一键启动与连接引导。
+
+> 一键安装/自动检测：请参考 `mcp-scripts/安装脚本使用说明.md`，使用 `run-powershell-installer.bat` 或 `install-mcp-tools-enhanced-final.ps1` 完成自动配置与连通性校验。
+
 ## 🤝 总结：值得安装吗？
 
 ### ✅ 如果您是以下情况，强烈推荐：
@@ -173,7 +206,7 @@
 
 ### 💡 投资15分钟安装，获得：
 - 🚀 **10倍效率提升**的文件和项目操作
-- 🧠 **永久记忆**的AI助手
+- 🧠 **支持永久记忆**的AI助手（Memory 可按需安装）
 - 🔄 **无缝集成**的GitHub工作流
 - 💬 **智能交互**的开发体验
 
@@ -184,3 +217,5 @@
 👉 **下一步**: [开始安装MCP工具](../mcp-scripts/安装脚本使用说明.md)
 
 👉 **需要帮助？**: [MCP故障排除指南](MCP-TROUBLESHOOTING-GUIDE.md)
+
+👉 **检测复用与跳过 / 缓存复用策略**（一句话：默认5分钟内复用检测结果；需要立即重跑时加 -Force；也可执行 -Action clearCache 清空缓存）: [mcp-zero-config-detection.mdc](../project-rules/mcp-zero-config-detection.mdc)
