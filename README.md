@@ -516,6 +516,12 @@ install-scripts\install-ultra.bat "你的项目路径" fullstack
   - 两者同时存在时，必须保持一致；不一致视为配置错误，应在校验或加载阶段给出明确提示（约定优于配置）
   - 一致性检查范围：仅针对 type: "always_apply" 与 alwaysApply 的一致性强制检查；其他类型需保持语义一致但不强制同名
 
+- **详细一致性规则**：
+  - **若 type 写为 "always_apply"，alwaysApply 必须为 true**（否则视为配置错误）
+  - **若 alwaysApply 为 true，推荐 type 也写为 "always_apply"**；如因历史命名（如 unified_base、system_integration_rule）代表基线/全局启用，也可保留，但必须保证其语义与 alwaysApply: true 一致，并在文档中注明此类型属于 baseline 类别
+  - **若 alwaysApply 为 false，则 type 不得为 "always_apply"**，建议使用 entrypoint/workflow/tool/on_demand 等类别名称
+  - **发现不一致时，按"约定优于配置"的原则，视为错误并提示修正**
+
 - 推荐的元数据头示例（放在 priority 下方）：
 
 ```
