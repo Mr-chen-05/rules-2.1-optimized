@@ -1,6 +1,6 @@
 # 🎯 Rules 2.5.1 - 下一代智能AI助手规则体系
 
-> **🏆 PERFECT (A++)评级** | **✅ 100%测试通过** | **🚀 生产就绪** | **💬 完整MCP支持** | **🧠 AI智能化** | **🎯 45个规则**
+> **🏆 PERFECT (A++)评级** | **✅ 100%测试通过** | **🚀 生产就绪** | **💬 完整MCP支持** | **🧠 AI智能化** | **🎯 43个规则（.mdc）**
 
 ## 📖 项目简介
 
@@ -222,7 +222,7 @@ Rules 2.5.1/
 │   │   ├── multimodal-interaction-framework.mdc # 🎭 多模态交互框架
 │   │   ├── rule-conflict-resolution.mdc     # ⚖️ 规则冲突解决
 │   │   └── system-integration-config.mdc    # ⚙️ 系统集成配置
-│   └── project-rules/                      # 🎯 模块化项目规则 (24个)
+│   └── project-rules/                      # 🎯 模块化项目规则 (23个)
 │       ├── 🚀 Phase 3 智能补强规则 (3个)
 │       │   ├── context-loader.mdc          # 🧠 智能项目上下文加载器
 │       │   ├── custom-command-builder.mdc  # 🛠️ 智能自定义命令构建器
