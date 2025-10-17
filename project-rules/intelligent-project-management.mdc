@@ -2,6 +2,7 @@
 type: "project_rule"
 description: "智能项目管理系统 - 整合阶段管理、工作流编排、智能推荐和记忆系统"
 globs: ["**/*"]
+alwaysApply: false
 priority: 950
 ---
 

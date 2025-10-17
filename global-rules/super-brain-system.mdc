@@ -3,6 +3,7 @@ type: "global_rule"
 description: "超级大脑系统 - 智能项目管理激活机制和核心功能"
 globs: ["**/*"]
 priority: 970
+alwaysApply: false
 dependencies: ["context-recorder-system.mdc"]
 integrations: ["context-recorder-system", "intelligent-recommendation-engine"]
 ---

@@ -2,6 +2,7 @@
 type: "project_rule"
 description: "AI驱动的智能代码审查规则 - 基于机器学习的代码质量分析和自动化审查流程"
 globs: ["**/*"]
+alwaysApply: false
 priority: 500
 ---
 

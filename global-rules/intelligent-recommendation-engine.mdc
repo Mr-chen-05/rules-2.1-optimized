@@ -2,6 +2,7 @@
 type: "global_rule"
 description: "智能推荐引擎 - 基于关键词匹配和上下文分析的阶段推荐系统"
 globs: ["**/*"]
+alwaysApply: false
 priority: 940
 ---
 

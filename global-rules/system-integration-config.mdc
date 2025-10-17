@@ -2,6 +2,7 @@
 type: "always_apply"
 description: "系统集成配置 - 统一管理各个智能系统的集成和协调"
 globs: ["**/*"]
+alwaysApply: true
 priority: 970
 ---
 
