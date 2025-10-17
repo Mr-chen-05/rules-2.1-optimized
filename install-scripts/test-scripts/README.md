@@ -137,6 +137,34 @@ Health Score: 100/100
 - **EXCELLENT** = 优秀
 - **Comprehensive Detection Complete** = 综合检测完成
 
+### 2. validate-rules-consistency.ps1
+**规则元数据一致性校验**（type: `"always_apply"` 与 `alwaysApply:true`）
+
+- 功能：扫描 `global-rules/` 与 `project-rules/` 下所有 `.mdc` 文件，强制校验以下规则：
+  - 若存在 `type: "always_apply"`，则必须包含 `alwaysApply: true`
+  - 可选语义警告（默认关闭）：若 `alwaysApply:true` 存在但 `type` ≠ `"always_apply"`，给出警告
+- 适用场景：本地开发预检、CI 流水线校验、发布前一致性检查
+- 与安装脚本集成：`install-ultra.bat` 会在开始阶段自动运行该脚本，如发现不一致将**中止安装**并提示修复指引
+- 退出码：
+  - `0` → 校验通过（无错误）
+  - 非零 → 存在违反强制一致性的错误
+
+**用法**:
+```bash
+# 基本校验（推荐）
+pwsh ./scripts/validate-rules-consistency.ps1
+
+# 启用语义一致性警告（非强制）
+pwsh ./scripts/validate-rules-consistency.ps1 -WarnOnSemanticInconsistency
+```
+
+**示例输出（通过）**:
+```
+[validate] RepoRoot: E:\AgentRules\English\rules-2.1-optimized
+[validate] Scanning rule directories: E:\AgentRules\English\rules-2.1-optimized\global-rules, E:\AgentRules\English\rules-2.1-optimized\project-rules
+[summary] Errors: 0; Warnings: 0; Files scanned: 43
+```
+
 ## 使用说明
 
 **基本用法**:

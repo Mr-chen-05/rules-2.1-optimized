@@ -9,7 +9,7 @@
   Optionally warns if alwaysApply:true is present but type is not "always_apply" (semantic inconsistency) — disabled by default.
 
 .PARAMETER WarnOnSemanticInconsistency
-  When set to $true, emits warnings for rules that have alwaysApply:true but type != "always_apply".
+  When present, emits warnings for rules that have alwaysApply:true but type != "always_apply".
 
 .NOTES
   Exit code: 0 if no errors; non-zero if any violation is found.
@@ -18,10 +18,10 @@
   pwsh ./scripts/validate-rules-consistency.ps1
 
 .EXAMPLE
-  pwsh ./scripts/validate-rules-consistency.ps1 -WarnOnSemanticInconsistency $true
+  pwsh ./scripts/validate-rules-consistency.ps1 -WarnOnSemanticInconsistency
 #>
 param(
-  [bool] $WarnOnSemanticInconsistency = $false
+  [switch] $WarnOnSemanticInconsistency = $false
 )
 
 $ErrorCount = 0
@@ -30,8 +30,8 @@ $WarningCount = 0
 # Repo root resolved from script location
 $RepoRoot = Split-Path -Path $PSScriptRoot -Parent
 $RulesDirs = @(
-  Join-Path $RepoRoot 'global-rules',
-  Join-Path $RepoRoot 'project-rules'
+  (Join-Path -Path $RepoRoot -ChildPath 'global-rules'),
+  (Join-Path -Path $RepoRoot -ChildPath 'project-rules')
 )
 
 Write-Host "[validate] RepoRoot: $RepoRoot"

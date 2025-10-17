@@ -56,6 +56,19 @@ if not exist "%RULES_PATH%" (
 echo Rules directory exists, starting comprehensive detection...
 echo.
 
+REM Pre-check: Validate repository rule metadata consistency
+set "PRECHECK_FAILED=0"
+echo [Pre-Check] Validating rule metadata consistency in repository...
+powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0..\..\scripts\validate-rules-consistency.ps1"
+if errorlevel 1 (
+    echo WARNING: Rule metadata consistency violations detected in repository.
+    echo Please fix per README.md ^> 规则元数据字段说明
+    set "PRECHECK_FAILED=1"
+) else (
+    echo [OK] Rule metadata consistency pre-check passed.
+)
+echo.
+
 REM Check directory structure
 echo Directory Structure Detection:
 set "MISSING_DIRS=0"

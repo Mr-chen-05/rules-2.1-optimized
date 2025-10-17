@@ -535,7 +535,7 @@ type: 'always_apply'        # 可选：用于分类
     ```
   - 启用语义一致性警告（非强制）：
     ```bash
-    pwsh ./scripts/validate-rules-consistency.ps1 -WarnOnSemanticInconsistency $true
+    pwsh ./scripts/validate-rules-consistency.ps1 -WarnOnSemanticInconsistency
     ```
 
 - 激活方式说明：
