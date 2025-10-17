@@ -1,4 +1,5 @@
 # 📚 Rules 2.5.1 命令快速参考
+> 当前版本状态：Rules 2.5.1 Phase 3 · 43 个规则（仅统计 .mdc）
 
 > **📢 重要通知**: 本文档内容已整合到主文档中，请访问 [README.md](README.md) 获取完整信息
 >
@@ -71,6 +72,7 @@
 
 ## 💡 使用提示
 
+- ✅ 快速验证安装数量：运行 install-scripts\\test-scripts\\comprehensive-test-report.bat，确认输出包含 "Rule files (.mdc): 43"
 - 🎯 **统一体验**: 所有 AI 工具使用统一安装脚本，功能完全一致
 - 📚 **完整参考**: 访问 [README.md](README.md) 获取最新的完整命令列表
 - 🔍 **快速查找**: 使用 Ctrl+F 在主文档中快速搜索特定命令
