@@ -1,5 +1,5 @@
 ---
-type: "intelligent_workflow_rule"
+type: "always_apply"
 description: "AI-powered cross-language code quality check with intelligent analysis - AI驱动的跨语言代码质量检查"
 globs: ["**/*"]
 priority: 640

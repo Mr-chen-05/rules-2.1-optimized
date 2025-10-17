@@ -1,5 +1,5 @@
 ---
-type: "feature_rule"
+type: "always_apply"
 description: "Enhanced feedback mechanism with 1-hour timeout - 增强反馈机制，1小时超时"
 globs: ["**/*"]
 alwaysApply: true

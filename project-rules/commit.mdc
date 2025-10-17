@@ -1,5 +1,5 @@
 ---
-type: "intelligent_workflow_rule"
+type: "always_apply"
 description: "Unified comprehensive commit workflow (standard + fast + AI) - 统一全面提交工作流（标准 + 快速 + AI）"
 globs: ["**/*"]
 priority: 680

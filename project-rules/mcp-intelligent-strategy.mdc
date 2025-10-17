@@ -1,5 +1,5 @@
 ---
-type: "project_rule"
+type: "always_apply"
 description: "MCP工具智能使用策略 - 专注于MCP工具的优先使用和高效执行"
 globs: ["**/*"]
 alwaysApply: true

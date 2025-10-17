@@ -1,5 +1,5 @@
 ---
-type: "intelligent_workflow_rule"
+type: "always_apply"
 description: "AI-powered intelligent project context loader with deep analysis - AI驱动的智能项目上下文加载器"
 globs: ["**/*"]
 priority: 680

@@ -1,5 +1,5 @@
 ---
-type: "intelligent_workflow_rule"
+type: "always_apply"
 description: "AI-powered changelog management with automatic generation and version tracking - AI驱动的变更日志管理"
 globs: ["**/*"]
 priority: 620

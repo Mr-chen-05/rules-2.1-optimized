@@ -528,6 +528,16 @@ type: 'always_apply'        # 可选：用于分类
 ---
 ```
 
+- 一致性校验脚本（CI/本地）：
+  - 本地执行：
+    ```bash
+    pwsh ./scripts/validate-rules-consistency.ps1
+    ```
+  - 启用语义一致性警告（非强制）：
+    ```bash
+    pwsh ./scripts/validate-rules-consistency.ps1 -WarnOnSemanticInconsistency $true
+    ```
+
 - 激活方式说明：
   - alwaysApply: true → 规则在会话启动时即加载，无需额外命令
   - alwaysApply: false → 通过命令触发或明确读取对应 .mdc 文件
