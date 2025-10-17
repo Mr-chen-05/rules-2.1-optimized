@@ -702,6 +702,21 @@ if exist "%MCP_SCRIPTS_DIR%\mcp-cross-platform-sync.ps1" (
     echo WARNING: Source file not found: %MCP_SCRIPTS_DIR%\mcp-cross-platform-sync.ps1
 )
 
+REM Create Scripts directory and copy validation script
+set "SCRIPTS_TARGET_DIR=%TARGET_DIR%\scripts"
+mkdir "%SCRIPTS_TARGET_DIR%" 2>nul
+if exist "%BASE_DIR%\scripts\validate-rules-consistency.ps1" (
+    copy "%BASE_DIR%\scripts\validate-rules-consistency.ps1" "%SCRIPTS_TARGET_DIR%\" >nul 2>&1
+    if errorlevel 1 (
+        echo WARNING: Failed to copy validate-rules-consistency.ps1
+        set "COPY_ERRORS=1"
+    ) else (
+        echo   Validator script installed: scripts\validate-rules-consistency.ps1
+    )
+) else (
+    echo WARNING: Source file not found: %BASE_DIR%\scripts\validate-rules-consistency.ps1
+)
+
 REM Add templates information to main.md
 echo ## Templates Directory >> "%MAIN_RULES%"
 echo. >> "%MAIN_RULES%"
@@ -720,6 +735,13 @@ echo The mcp-tools/ directory contains management scripts for AI to use: >> "%MA
 echo - mcp-cross-platform-sync.ps1 - Cross-platform MCP configuration sync >> "%MAIN_RULES%"
 echo. >> "%MAIN_RULES%"
 echo AI can directly call these scripts for MCP management and orchestration. >> "%MAIN_RULES%"
+echo. >> "%MAIN_RULES%"
+
+REM Add Scripts information to main.md
+echo ## Scripts Directory >> "%MAIN_RULES%"
+echo. >> "%MAIN_RULES%"
+echo The scripts/ directory contains maintenance and validation scripts: >> "%MAIN_RULES%"
+echo - validate-rules-consistency.ps1 - Rule metadata consistency validator >> "%MAIN_RULES%"
 echo. >> "%MAIN_RULES%"
 
 echo ## Priority Levels for AI Understanding >> "%MAIN_RULES%"
