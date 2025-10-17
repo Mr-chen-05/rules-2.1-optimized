@@ -63,7 +63,7 @@
   - `super-brain-system.mdc` - 超级大脑系统
   - `brain-recorder-integration.mdc` + `context-recorder-system.mdc` - 记忆系统（集成）
   - `intelligent-recommendation-engine.mdc` - 推荐引擎
-  - `complete-workflow-integration.mdc` - 完整工作流
+  - `context-systems-integration.mdc` - 完整工作流
   - `system-integration-config.mdc` - 系统集成配置
 
 - **项目规则**: `project-rules/` 目录

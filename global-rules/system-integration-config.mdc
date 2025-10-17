@@ -67,7 +67,7 @@ priority: 970
 ```yaml
 智能系统组件映射:
   超级大脑系统:
-    组件: ai-agent-intelligence-core.md
+    组件: ai-agent-intelligence-core.mdc
     功能: 
       - 智能决策和推理
       - 系统协调和监控
@@ -150,7 +150,7 @@ priority: 970
       - 实时适应和优化
 
   智能项目管理系统:
-    组件: complete-workflow-integration.mdc
+    组件: context-systems-integration.mdc
     功能: 
       - 五阶段智能工作流管理
       - 智能MCP工具编排
@@ -167,7 +167,7 @@ priority: 970
       - 实时质量监控和改进
 
   智能工作流集成:
-    组件: complete-workflow-integration.mdc + 智能调度
+    组件: context-systems-integration.mdc + 智能调度
     功能: 
       - 智能阶段间协调和管理
       - 自适应流程优化
@@ -202,8 +202,6 @@ priority: 970
 ```
 
 ## 🔄 智能系统启动和初始化 ⚡
-
-### 增强启动序列
 ```yaml
 智能系统启动流程:
   阶段1_核心系统初始化:
@@ -247,8 +245,6 @@ priority: 970
     5. 确认推荐引擎学习效果
     6. 标记智能系统就绪状态
 ```
-
-### 智能健康检查 📊
 ```yaml
 智能系统健康监控:
   实时监控指标:
@@ -285,10 +281,6 @@ priority: 970
     - 预测性维护和风险预警
     - 自适应性能调优和优化
 ```
-
-## 🔗 系统间通信协议
-
-### 数据交换格式
 ```yaml
 标准消息格式:
   系统消息结构:
@@ -318,8 +310,6 @@ priority: 970
     - ERROR_REPORT: 错误报告
     - HEALTH_CHECK: 健康检查
 ```
-
-### 通信规则
 ```yaml
 通信约定:
   同步通信:
@@ -346,7 +336,7 @@ priority: 970
     - 最大重试次数: 3次
     - 重试间隔: 指数退避
 ```
-
+```yaml
 ## 🎛️ 状态管理和同步
 
 ### 全局状态定义
@@ -419,8 +409,6 @@ priority: 970
 ```
 
 ## 🔧 配置管理
-
-### 增强系统配置参数 🎯
 ```yaml
 核心智能配置:
   超级大脑系统:

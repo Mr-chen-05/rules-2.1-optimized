@@ -126,7 +126,7 @@ priority: 1180
   
   项目管理:
     - 主要文件: intelligent-project-management.mdc
-    - 协调文件: complete-workflow-integration.mdc
+    - 协调文件: context-systems-integration.mdc
     - 避免重复: 明确职责分工
   
   MCP工具策略:
