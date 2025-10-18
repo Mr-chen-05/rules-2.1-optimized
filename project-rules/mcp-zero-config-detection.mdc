@@ -59,10 +59,10 @@ alwaysApply: true
   
   2. 基础路径扫描:
      # 主流AI编辑器
-     - ~/.claude/mcp_settings.json
-     - %USERPROFILE%\.config\trae\mcp.json
+     - %USERPROFILE%\.claude\mcp_settings.json
+     - %USERPROFILE%\AppData\Roaming\Trae\User\mcp.json
      - %USERPROFILE%\AppData\Roaming\Trae CN\User\mcp.json
-     - %USERPROFILE%\AppData\Roaming\Cursor\User\globalStorage\cursor-ai.cursor\mcp.json
+     - %USERPROFILE%\AppData\Roaming\Cursor\User\globalStorage\cursor.mcp\mcp_settings.json
      
      # 2024-2025年热门AI工具
      - %USERPROFILE%\AppData\Roaming\Windsurf\User\mcp.json
@@ -73,18 +73,18 @@ alwaysApply: true
      # IDE集成AI助手
      - %USERPROFILE%\AppData\Roaming\Code\User\mcp.json
      - %USERPROFILE%\.jetbrains\mcp_config.json
-     - %USERPROFILE%\.tabnine\mcp_settings.json
+     - %USERPROFILE%\AppData\Roaming\TabNine\mcp_config.json
      
      # 云端AI平台
      - %USERPROFILE%\AppData\Roaming\AmazonQ\settings.json
-     - %USERPROFILE%\.google\gemini_mcp.json
+     - %USERPROFILE%\.google\gemini-code-assist\mcp.json
      - %USERPROFILE%\AppData\Roaming\CodeBuddy\mcp_settings.json
      
      # 开源AI工具
      - %USERPROFILE%\.aider\mcp_config.json
      - %USERPROFILE%\.codegeex\mcp_settings.json
      - %USERPROFILE%\.tabby\mcp_config.json
-     - %USERPROFILE%\.cline\mcp_settings.json
+     - %USERPROFILE%\AppData\Roaming\Code\User\globalStorage\saoudrizwan.claude-dev\settings\cline_mcp_settings.json
   
   3. 配置完整性分析:
      - 配置文件是否存在

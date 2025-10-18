@@ -166,7 +166,7 @@ OpenAICodex = @{
     
     # 鑵捐AI宸ュ叿
 CodeBuddy = @{
-        ConfigPath = "$env:USERPROFILE\AppData\Roaming\CodeBuddy\mcp_settings.json"
+        ConfigPath = "$env:USERPROFILE\AppData\Roaming\CodeBuddy\User\globalStorage\tencent.planning-genie\settings\codebuddy_mcp_settings.json"
         Name = "Tencent CodeBuddy"
         Format = "JSON"
         ProcessNames = @("CodeBuddy", "codebuddy")

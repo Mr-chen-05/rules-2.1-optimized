@@ -30,25 +30,25 @@ alwaysApply: true
   # IDE集成AI助手
   VSCode_Copilot: "%USERPROFILE%\AppData\Roaming\Code\User\mcp.json"
   JetBrains_AI: "%USERPROFILE%\.jetbrains\mcp_config.json"
-  Tabnine: "%USERPROFILE%\.tabnine\mcp_settings.json"
+  Tabnine: "%USERPROFILE%\AppData\Roaming\TabNine\mcp_config.json"
   
   # 云端AI平台
-  Amazon_Q: "%USERPROFILE%\.aws\q_developer_mcp.json"
-  Gemini_Code_Assist: "%USERPROFILE%\.google\gemini_mcp.json"
-  Qodo_Gen: "%USERPROFILE%\.qodo\mcp_settings.json"
+  Amazon_Q: "%USERPROFILE%\AppData\Roaming\AmazonQ\settings.json"
+  Gemini_Code_Assist: "%USERPROFILE%\.google\gemini-code-assist\mcp.json"
+  Qodo_Gen: "%USERPROFILE%\.qodo\mcp_config.json"
   
   # 开源AI工具
   Aider: "%USERPROFILE%\.aider\mcp_config.json"
   CodeGeeX: "%USERPROFILE%\.codegeex\mcp_settings.json"
   TabbyML: "%USERPROFILE%\.tabby\mcp_config.json"
-  Cline: "%USERPROFILE%\.cline\mcp_settings.json"
+  Cline: "%USERPROFILE%\AppData\Roaming\Code\User\globalStorage\saoudrizwan.claude-dev\settings\cline_mcp_settings.json"
   
   # OpenAI系列工具
   OpenAI_Codex: "%USERPROFILE%\.openai\codex_mcp.json"
   OpenAI_Codex_CLI: "%USERPROFILE%\.codex\cli_mcp_settings.json"
   
   # 腾讯AI工具
-  CodeBuddy: "%USERPROFILE%\.codebuddy\mcp_settings.json"
+  CodeBuddy: "%USERPROFILE%\AppData\Roaming\CodeBuddy\User\globalStorage\tencent.planning-genie\settings\codebuddy_mcp_settings.json"
   CodeBuddy_CLI: "%USERPROFILE%\.codebuddy\cli_mcp_config.json"
   
   # 新兴AI编辑器
