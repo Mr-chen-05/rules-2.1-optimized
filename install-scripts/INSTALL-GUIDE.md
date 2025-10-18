@@ -83,9 +83,9 @@ install-ultra.bat D:\WebApp backend        # Backend development setup
 
 | Mode | .mdc Files | Priority Levels | Best For |
 |------|------------|----------------|----------|
-| `frontend` | 42 .mdc files | P0-P7 (8 levels) | React, Vue, Angular projects |
-| `backend` | 41 .mdc files | P0-P7 (8 levels) | API, server, database projects |
-| `fullstack` | 43 .mdc files | P0-P7 (8 levels) | Complete web applications (recommended) |
+| `frontend` | 44 .mdc files | P0-P7 (8 levels) | React, Vue, Angular projects |
+| `backend` | 43 .mdc files | P0-P7 (8 levels) | API, server, database projects |
+| `fullstack` | 45 .mdc files | P0-P7 (8 levels) | Complete web applications (recommended) |
 
 ### 📁 Directory Structure Created
 
@@ -272,9 +272,9 @@ Your Project Directory/
 
 | Mode          | Expected .mdc Files | Actually Available Files | Contents                                           |
 | ------------- | ------------------- | ------------------------ | -------------------------------------------------- |
-| **Frontend**  | 42 .mdc files       | About 8-15 files         | Frontend rules + mermaid chart support + core safety rules |
-| **Backend**   | 41 .mdc files       | About 8-15 files         | Backend rules (no mermaid) + core safety rules             |
-| **Fullstack** | 43 .mdc files       | About 8-15 files         | Frontend + backend complete rules + core safety rules      |
+| **Frontend**  | 44 .mdc files       | About 8-15 files         | Frontend rules + mermaid chart support + core safety rules |
+| **Backend**   | 43 .mdc files       | About 8-15 files         | Backend rules (no mermaid) + core safety rules             |
+| **Fullstack** | 45 .mdc files       | About 8-15 files         | Frontend + backend complete rules + core safety rules      |
 
 > **⚠️ Important Note**: Since this is a development version, many advanced rule files are not yet fully ready. The script will display WARNING messages indicating that some source files are not found, which is normal. Core functionality files (P0-P1 level) will install normally, ensuring basic functionality is available.
 
@@ -483,7 +483,7 @@ SUCCESS: fullstack Rules Directory Created (Final Release)
 Project Directory: [Your chosen path]
 Rules Directory: [Your chosen path]\.rules
 Rule Type: fullstack
-Total .mdc files installed: 43
+Total .mdc files installed: 45
 Priority levels: P0-P7 (8 levels)
 Target location: [Your chosen path]
 
@@ -494,7 +494,7 @@ Installation completed successfully
 ### 🔍 Verify Installation
 
 1. **Check Directory Structure**: Navigate to your project folder and verify the `.rules` directory exists
-2. **Count Files**: Ensure all 43 .mdc files are present (for fullstack mode)
+2. **Count Files**: Ensure all 45 .mdc files are present (for fullstack mode)
 3. **Priority Levels**: Verify P0-P7 directories are created
 4. **Templates**: Check that `templates/` and `mcp-tools/` directories exist
 

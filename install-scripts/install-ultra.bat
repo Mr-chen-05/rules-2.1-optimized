@@ -51,7 +51,7 @@ echo [Step] Validating rules consistency...
 powershell -NoProfile -ExecutionPolicy Bypass -File "%BASE_DIR%\scripts\validate-rules-consistency.ps1"
 if errorlevel 1 (
     echo ERROR: Rules consistency validation failed. Please fix rule metadata per README.md.
-    echo See: README.md -> 规则元数据字段说明
+    echo See: README.md -> ?????????
     echo.
     pause
     exit /b 1
@@ -307,6 +307,18 @@ if exist "%GLOBAL_RULES_DIR%\system-integration-config.mdc" (
 ) else (
     echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\system-integration-config.mdc
 )
+if exist "%GLOBAL_RULES_DIR%\permission-control-system.mdc" (
+    copy "%GLOBAL_RULES_DIR%\permission-control-system.mdc" "%RULES_DIR%\P2-intelligent-system\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy permission-control-system.mdc
+) else (
+    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\permission-control-system.mdc
+)
+if exist "%GLOBAL_RULES_DIR%\system-diagnostics.mdc" (
+    copy "%GLOBAL_RULES_DIR%\system-diagnostics.mdc" "%RULES_DIR%\P2-intelligent-system\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy system-diagnostics.mdc
+) else (
+    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\system-diagnostics.mdc
+)
 if exist "%GLOBAL_RULES_DIR%\intelligent-recommendation-engine.mdc" (
     copy "%GLOBAL_RULES_DIR%\intelligent-recommendation-engine.mdc" "%RULES_DIR%\P2-intelligent-system\" >nul 2>&1
     if errorlevel 1 echo WARNING: Failed to copy intelligent-recommendation-engine.mdc
@@ -371,6 +383,8 @@ echo - P2-intelligent-system/ (Priority: 900-999) >> "%MAIN_RULES%"
 echo   - unified-rules-base.mdc >> "%MAIN_RULES%"
 echo   - ai-agent-intelligence-core.mdc >> "%MAIN_RULES%"
 echo   - system-integration-config.mdc >> "%MAIN_RULES%"
+echo   - permission-control-system.mdc >> "%MAIN_RULES%"
+echo   - system-diagnostics.mdc >> "%MAIN_RULES%"
 echo   - intelligent-recommendation-engine.mdc >> "%MAIN_RULES%"
 echo   - context-systems-integration.mdc >> "%MAIN_RULES%"
 echo   - mcp-unified-management.mdc >> "%MAIN_RULES%"

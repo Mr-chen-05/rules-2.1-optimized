@@ -327,6 +327,80 @@ CI/CD集成:
   - 维护版本兼容性文档
 ```
 
+#### 与Commit规则的协调机制 
+```yaml
+数据流向设计:
+  权威数据源:
+    - 主权威: Git提交历史 (不可改)
+    - 辅权威: Commit规则生成的提交信息 (标准化格式)
+    - 参考: project.context.md (仅参考，不作为权威)
+  
+  数据流向:
+    Git提交 → Commit规则 (提取提交信息)
+             ↓
+           标准化格式 (约定式提交)
+             ↓
+           Changelog规则 (解析和生成变更日志)
+             ↓
+           CHANGELOG.md (最终输出)
+  
+  禁止反向依赖:
+    ❌ Changelog 不依赖 project.context.md (仅作参考)
+    ❌ Commit 不依赖 Changelog (单向流动)
+    ❌ 两个系统不相互修改数据
+
+执行顺序定义:
+  Step 1 - Commit规则执行:
+    - 收集所有待提交变更
+    - 生成标准化提交信息 (Conventional Commits格式)
+    - 执行Git提交操作
+    - 输出: 新的提交哈希值和提交信息
+  
+  Step 2 - Git更新完成:
+    - 确认提交已写入版本库
+    - 更新本地和远程分支
+    - 触发Git钩子
+  
+  Step 3 - Changelog规则执行 (异步，非阻断):
+    - 读取Git提交历史
+    - 解析约定式提交格式
+    - 生成或更新CHANGELOG.md
+    - 更新版本信息
+  
+  Step 4 - project.context.md同步 (可选，最后执行):
+    - 同步关键版本信息到Pinned/Notes
+    - 记录发布相关决策到Decisions
+    - 不影响主流程
+
+版本控制策略:
+  Git版本: 基于提交ID (SHA)
+    - 不可改，唯一标识
+    - 是Changelog的权威来源
+  
+  Changelog版本: 基于发布版本号 (MAJOR.MINOR.PATCH)
+    - 语义化版本控制
+    - 独立于提交ID
+    - 用于生成发布说明
+  
+  Context版本: 独立的版本序列
+    - 与Git和Changelog无关
+    - 用于追踪项目记忆文件的演进
+    - 不参与发布版本计算
+
+冲突处理规则:
+  当Git历史和Changelog不一致时:
+    1. 原因分析: 检查是否为并发操作
+    2. 优先级: 以Git提交历史为准
+    3. 重建: 重新解析Git历史生成Changelog
+    4. 记录: 在日志中记录不一致事件
+  
+  当提交信息格式不符合约定时:
+    1. 检测: Changelog解析失败
+    2. 处理: 跳过该提交或生成警告
+    3. 通知: 提示用户修复提交信息
+    4. 可选: 允许手动补充说明
+```
+
 ## 📋 Configuration Options - 配置选项
 
 ### 🎛️ 生成配置
@@ -510,6 +584,80 @@ mcp-intelligent-strategy集成:
   - 邮件发送支持
   - Slack/Teams集成
   - 自定义Webhook
+```
+
+#### 与Commit规则的协调机制 (缺陷#22修复)
+```yaml
+数据流向设计:
+  权威数据源:
+    - 主权威: Git提交历史 (不可改)
+    - 辅权威: Commit规则生成的提交信息 (标准化格式)
+    - 参考: project.context.md (仅参考，不作为权威)
+  
+  数据流向:
+    Git提交 → Commit规则 (提取提交信息)
+             ↓
+           标准化格式 (约定式提交)
+             ↓
+           Changelog规则 (解析和生成变更日志)
+             ↓
+           CHANGELOG.md (最终输出)
+  
+  禁止反向依赖:
+    ❌ Changelog 不依赖 project.context.md (仅作参考)
+    ❌ Commit 不依赖 Changelog (单向流动)
+    ❌ 两个系统不相互修改数据
+
+执行顺序定义:
+  Step 1 - Commit规则执行:
+    - 收集所有待提交变更
+    - 生成标准化提交信息 (Conventional Commits格式)
+    - 执行Git提交操作
+    - 输出: 新的提交哈希值和提交信息
+  
+  Step 2 - Git更新完成:
+    - 确认提交已写入版本库
+    - 更新本地和远程分支
+    - 触发Git钩子
+  
+  Step 3 - Changelog规则执行 (异步，非阻断):
+    - 读取Git提交历史
+    - 解析约定式提交格式
+    - 生成或更新CHANGELOG.md
+    - 更新版本信息
+  
+  Step 4 - project.context.md同步 (可选，最后执行):
+    - 同步关键版本信息到Pinned/Notes
+    - 记录发布相关决策到Decisions
+    - 不影响主流程
+
+版本控制策略:
+  Git版本: 基于提交ID (SHA)
+    - 不可改，唯一标识
+    - 是Changelog的权威来源
+  
+  Changelog版本: 基于发布版本号 (MAJOR.MINOR.PATCH)
+    - 语义化版本控制
+    - 独立于提交ID
+    - 用于生成发布说明
+  
+  Context版本: 独立的版本序列
+    - 与Git和Changelog无关
+    - 用于追踪项目记忆文件的演进
+    - 不参与发布版本计算
+
+冲突处理规则:
+  当Git历史和Changelog不一致时:
+    1. 原因分析: 检查是否为并发操作
+    2. 优先级: 以Git提交历史为准
+    3. 重建: 重新解析Git历史生成Changelog
+    4. 记录: 在日志中记录不一致事件
+  
+  当提交信息格式不符合约定时:
+    1. 检测: Changelog解析失败
+    2. 处理: 跳过该提交或生成警告
+    3. 通知: 提示用户修复提交信息
+    4. 可选: 允许手动补充说明
 ```
 
 ## ⚡ Performance Optimization - 性能优化

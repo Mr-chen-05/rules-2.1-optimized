@@ -205,7 +205,7 @@ Rules 2.5.1/
 │       └── 安装脚本使用说明.md              # 📚 MCP安装详细说明
 │
 ├── 📝 规则文件（核心功能）
-│   ├── global-rules/                       # 📋 全局规则文件 (20个)
+│   ├── global-rules/                       # 📋 全局规则文件 (22个)
 │   │   ├── ai-agent-intelligence-core.mdc  # 🧠 AI智能核心
 │   │   ├── frontend-rules.mdc              # 🎨 前端完整规则
 │   │   ├── backend-rules.mdc               # 🔧 后端完整规则
@@ -214,6 +214,8 @@ Rules 2.5.1/
 │   │   ├── brain-recorder-integration.mdc  # 🧠 大脑-记录员集成
 │   │   ├── context-systems-integration.mdc # 🔗 上下文系统集成
 │   │   ├── unified-rules-base.mdc          # 📋 统一规则基础
+│   │   ├── permission-control-system.mdc   # 🔐 权限控制系统（新增）
+│   │   ├── system-diagnostics.mdc          # 🔧 系统诊断工具（新增）
 │   │   ├── intelligent-recommendation-engine.mdc # 🎯 智能推荐引擎
 │   │   ├── ai-ethical-boundaries.mdc       # 🛡️ AI伦理边界
 │   │   ├── ai-thinking-protocol.mdc        # 🤔 AI思维协议
@@ -308,14 +310,18 @@ install-scripts\install-ultra.bat "你的项目目录路径" fullstack  # 🌟 �
 
 ## 🎯 支持的AI工具
 
-| 开发模式 | 前端 | 后端 | MCP | 安装命令 |
-|----------|------|------|-----|-----------|
-| **前端开发** | ✅ | ❌ | ✅ | `install-scripts\install-ultra.bat "项目路径" frontend` |
-| **后端开发** | ❌ | ✅ | ✅ | `install-scripts\install-ultra.bat "项目路径" backend` |
-| **全栈开发** | ✅ | ✅ | ✅ | `install-scripts\install-ultra.bat "项目路径" fullstack` |
-| **默认模式** | ✅ | ✅ | ✅ | `install-scripts\install-ultra.bat "项目路径"` |
+| 开发模式 | 前端 | 后端 | MCP | 文件数 | 安装命令 |
+|----------|------|------|-----|--------|-----------|
+| **前端开发** | ✅ | ❌ | ✅ | 44个.mdc | `install-scripts\install-ultra.bat "项目路径" frontend` |
+| **后端开发** | ❌ | ✅ | ✅ | 43个.mdc | `install-scripts\install-ultra.bat "项目路径" backend` |
+| **全栈开发** | ✅ | ✅ | ✅ | 45个.mdc | `install-scripts\install-ultra.bat "项目路径" fullstack` |
+| **默认模式** | ✅ | ✅ | ✅ | 45个.mdc | `install-scripts\install-ultra.bat "项目路径"` |
 
 > **💡 提示**：统一安装脚本 `install-ultra.bat` 适配所有AI工具（Augment、Cursor、Claude、Trae AI等），支持前端/后端/全栈三种开发模式，100%测试通过
+> 
+> **🆕 新增规则**：
+> - 🔐 **permission-control-system.mdc** - 三角色权限控制系统（User/AI/System）
+> - 🔧 **system-diagnostics.mdc** - 10层系统诊断工具（规则/上下文/性能/数据一致性）
 
 ### 🔧 MCP智能工具集成
 

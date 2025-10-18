@@ -1,0 +1,327 @@
+---
+type: "always_apply"
+description: "权限控制系统 - 定义用户/AI/系统的角色权限和操作审计"
+globs: ["**/*"]
+alwaysApply: true
+priority: 910
+---
+
+# 🔐 权限控制系统
+
+## 第1层 - 核心身份定义
+
+### 三角色权限模型
+```yaml
+主要角色:
+  1. User (用户) - 项目所有者或维护者
+  2. AI (AI助手) - 智能开发助手或代理
+  3. System (系统) - 底层系统或管理员
+```
+
+## 第2层 - 权限分配矩阵
+
+### User (用户) 权限
+```yaml
+读权限:
+  - 读取所有区块内容 (Pinned/Decisions/TODO/Done/Notes)
+  - 读取归档文件
+  - 读取操作日志和审计日志
+  权限等级: 完全读权限
+
+写权限:
+  - 添加/编辑 Pinned 条目
+  - 添加/编辑 Notes 备注
+  - 编辑已有的任何条目
+  权限等级: 高级写权限
+
+删除权限:
+  - 标记条目为"已过期"或"已弃用"
+  - 清理临时备忘录
+  - 无法完全删除Pinned/Decisions/Done条目
+  权限等级: 受限删除权限
+
+执行权限:
+  - 执行 /archive 命令
+  - 执行 /sync 同步操作
+  - 执行 /rollback 回滚操作
+  - 执行 /export 导出操作
+  权限等级: 管理权限
+
+审批权限:
+  - 审批AI的操作
+  - 确认敏感信息脱敏
+  - 认可关键决策记录
+  权限等级: 审批权限
+```
+
+### AI (AI助手) 权限
+```yaml
+读权限:
+  - 读取所有区块内容
+  - 读取完整的历史记录
+  - 读取配置和元数据
+  权限等级: 完全读权限
+
+写权限 (追加模式):
+  - 追加 Pinned 条目 (需用户确认关键内容)
+  - 追加 Decisions 决策记录
+  - 追加 TODO 任务
+  - 追加 Done 已完成项
+  - 追加 Notes 备注
+  权限等级: 受限写权限 (仅追加)
+
+修改权限 (受限):
+  - 修改日期戳 (标记生效期间)
+  - 标记条目为 "已过期"
+  - 更新优先级
+  - 添加关联标签
+  权限等级: 低级修改权限
+
+删除权限:
+  - 完全禁止删除任何条目
+  - 无删除权限
+  权限等级: 无删除权限
+
+执行权限:
+  - 执行 /record 增量记录
+  - 执行 /sync-memory 同步记忆
+  - 建议执行 /archive (需用户确认)
+  权限等级: 受限执行权限
+
+操作限制:
+  - 不能访问系统配置
+  - 不能修改权限规则
+  - 不能执行危险操作
+  - 所有操作需要记录审计
+  权限等级: 沙箱隔离
+```
+
+### System (系统) 权限
+```yaml
+读权限:
+  - 读取所有内容和元数据
+  - 读取系统日志
+  权限等级: 完全读权限
+
+写权限:
+  - 修改任何内容
+  - 编辑系统配置
+  权限等级: 完全写权限
+
+删除权限:
+  - 删除任何内容
+  - 执行物理删除
+  权限等级: 完全删除权限
+
+执行权限:
+  - 执行所有命令
+  - 执行维护操作
+  - 执行恢复操作
+  权限等级: 完全执行权限
+```
+
+## 第3层 - 操作权限详细定义
+
+### 项目记录文件 (project.context.md) 操作权限
+```yaml
+区块权限矩阵:
+
+Pinned区块:
+  User: 创建/读/追加 ✅ | 修改日期 ✅ | 标记过期 ✅ | 删除 ❌
+  AI: 读 ✅ | 追加(需确认) ⚠️ | 修改日期 ❌ | 标记过期 ❌ | 删除 ❌
+  System: 所有操作 ✅
+
+Decisions区块:
+  User: 读 ✅ | 追加 ✅ | 编辑已有 ✅ | 删除 ❌
+  AI: 读 ✅ | 追加 ✅ | 编辑 ❌ | 删除 ❌
+  System: 所有操作 ✅
+
+TODO区块:
+  User: 读 ✅ | 创建 ✅ | 编辑 ✅ | 标记完成 ✅ | 删除 ❌
+  AI: 读 ✅ | 创建 ✅ | 更新优先级 ✅ | 标记完成 ❌ | 删除 ❌
+  System: 所有操作 ✅
+
+Done区块:
+  User: 读 ✅ | 追加 ✅ | 查看 ✅ | 删除 ❌
+  AI: 读 ✅ | 追加 ✅ | 删除 ❌
+  System: 所有操作 ✅
+
+Notes区块:
+  User: 读 ✅ | 创建 ✅ | 编辑 ✅ | 删除 ✅
+  AI: 读 ✅ | 追加 ✅ | 编辑 ❌ | 删除 ❌
+  System: 所有操作 ✅
+```
+
+## 第4层 - 操作审计系统
+
+### 审计日志格式
+```yaml
+审计日志文件: .context-audit-log
+
+日志条目结构:
+  {
+    "timestamp": "2025-01-31T14:30:00Z",
+    "actor": "user|ai|system",
+    "action": "append|modify|mark_expired|archive|sync",
+    "target": "Decisions#D001",
+    "target_section": "section_name",
+    "old_value": "previous content (if applicable)",
+    "new_value": "new content",
+    "reason": "user_input|auto_archive|maintenance",
+    "status": "success|failed",
+    "error_message": "error details if failed",
+    "ip_address": "user_ip (if available)",
+    "session_id": "session_identifier"
+  }
+
+审计日志保留:
+  - 最少保留3个月
+  - 最多保留12个月
+  - 按月份分割文件
+  - 定期压缩归档
+```
+
+### 操作权限验证流程
+```yaml
+权限验证步骤:
+  1. 识别操作者身份 (User/AI/System)
+  2. 识别目标区块 (Pinned/Decisions/等)
+  3. 识别操作类型 (read/write/modify/delete)
+  4. 查询权限矩阵
+  5. 检查是否有权限
+  6. 若无权限则拒绝操作并记录日志
+  7. 若有权限则执行操作
+  8. 记录操作到审计日志
+
+权限验证缓存:
+  - 缓存用户权限信息 (5分钟)
+  - 缓存AI权限信息 (1分钟)
+  - 缓存系统权限信息 (实时)
+  - 权限变更时立即刷新缓存
+```
+
+## 第5层 - 越权检测与防护
+
+### 异常操作检测
+```yaml
+异常行为识别:
+  1. 权限提升尝试:
+     - AI尝试删除条目
+     - User尝试修改系统配置
+     - 检测: 立即阻止并记录
+  
+  2. 批量操作异常:
+     - 短时间内大量删除操作
+     - 短时间内大量修改操作
+     - 检测: 触发速率限制告警
+  
+  3. 时间异常:
+     - 非工作时间的敏感操作
+     - 操作时间与事件时间不匹配
+     - 检测: 记录并提示用户审查
+
+异常处理:
+  - 立即中断操作
+  - 记录详细的异常信息
+  - 通知相关方
+  - 可选的自动回滚
+```
+
+## 第6层 - 权限冲突解决
+
+### 冲突处理规则
+```yaml
+操作冲突场景:
+
+场景1 - User和AI同时修改:
+  规则: User修改优先级更高
+  处理: 保留User的修改，记录冲突
+  通知: AI被告知操作失败
+
+场景2 - 权限不明确:
+  规则: 宁可拒绝也不滥批
+  处理: 默认拒绝，需要显式授权
+  通知: 记录权限查询失败
+
+场景3 - 系统维护与User操作:
+  规则: System有最高优先级
+  处理: System操作可中断User操作
+  通知: User被告知系统维护中
+```
+
+## 第7层 - 权限管理命令
+
+### 权限相关命令
+```yaml
+用户命令:
+  /permissions - 查看自己的权限
+  /audit-log - 查看审计日志
+  /access-request [resource] - 请求额外权限
+  /grant-permission [user] [permission] - 授予权限 (仅User)
+
+AI命令:
+  /check-permission [action] - 检查是否有权限执行操作
+  /request-confirmation [action] - 请求用户确认
+  /report-permission-denied - 报告被拒绝的操作
+
+系统命令:
+  /audit-summary - 生成审计摘要
+  /permission-reset - 重置所有权限
+  /revoke-permission [actor] [permission] - 撤销权限
+```
+
+## 第8层 - 权限配置文件
+
+### 权限配置 (.context-permissions.yaml)
+```yaml
+permission_config:
+  version: "2.1.0"
+  
+  roles:
+    user:
+      description: "项目所有者或维护者"
+      permissions:
+        - "read:*"
+        - "write:pinned"
+        - "write:notes"
+        - "modify:*"
+        - "delete:notes_only"
+        - "execute:archive"
+        - "execute:sync"
+        - "execute:rollback"
+    
+    ai:
+      description: "AI助手或代理"
+      permissions:
+        - "read:*"
+        - "write:decisions"
+        - "write:todo"
+        - "write:done"
+        - "write:notes"
+        - "modify:date_stamp"
+        - "modify:priority"
+        - "mark:expired"
+        - "execute:record"
+        - "execute:sync_memory"
+    
+    system:
+      description: "系统管理员"
+      permissions:
+        - "*:*"  # 全部权限
+
+  audit:
+    enabled: true
+    retention_days: 90
+    log_file: ".context-audit-log"
+    archive_monthly: true
+  
+  enforcement:
+    strict_mode: true
+    deny_by_default: true
+    alert_on_denied: true
+    log_all_operations: true
+```
+
+---
+
+**核心原则**: 安全优先，权限清晰，操作可审计。
