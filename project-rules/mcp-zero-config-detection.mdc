@@ -60,25 +60,25 @@ alwaysApply: true
   2. 基础路径扫描:
      # 主流AI编辑器
      - ~/.claude/mcp_settings.json
-     - %USERPROFILE%\AppData\Roaming\Trae\User\mcp.json
+     - %USERPROFILE%\.config\trae\mcp.json
      - %USERPROFILE%\AppData\Roaming\Trae CN\User\mcp.json
-     - %USERPROFILE%\AppData\Roaming\Cursor\User\globalStorage\cursor.mcp\mcp_settings.json
+     - %USERPROFILE%\AppData\Roaming\Cursor\User\globalStorage\cursor-ai.cursor\mcp.json
      
      # 2024-2025年热门AI工具
-     - %USERPROFILE%\AppData\Roaming\Windsurf\User\mcp_settings.json
+     - %USERPROFILE%\AppData\Roaming\Windsurf\User\mcp.json
      - %USERPROFILE%\.replit\mcp_config.json
-     - %USERPROFILE%\.sourcegraph\cody_mcp.json
-     - %USERPROFILE%\.continue\mcp_settings.json
+     - %USERPROFILE%\AppData\Roaming\Code\User\globalStorage\sourcegraph.cody-ai\mcp_settings.json
+     - %USERPROFILE%\.continue\mcpServers\mcp.json
      
      # IDE集成AI助手
-     - %USERPROFILE%\AppData\Roaming\Code\User\globalStorage\github.copilot\mcp_settings.json
+     - %USERPROFILE%\AppData\Roaming\Code\User\mcp.json
      - %USERPROFILE%\.jetbrains\mcp_config.json
      - %USERPROFILE%\.tabnine\mcp_settings.json
      
      # 云端AI平台
-     - %USERPROFILE%\.aws\q_developer_mcp.json
+     - %USERPROFILE%\AppData\Roaming\AmazonQ\settings.json
      - %USERPROFILE%\.google\gemini_mcp.json
-     - %USERPROFILE%\.qodo\mcp_settings.json
+     - %USERPROFILE%\AppData\Roaming\CodeBuddy\mcp_settings.json
      
      # 开源AI工具
      - %USERPROFILE%\.aider\mcp_config.json
@@ -119,7 +119,8 @@ alwaysApply: true
     "🚀 推荐配置方案："
     "1. 快速配置 (5分钟): 运行自动安装脚本"
     "2. 手动配置 (15分钟): 按照详细指南配置"
-    "3. 稍后配置: 继续当前任务，稍后配置"
+    "3. 跨平台同步: 从其他AI工具同步现有配置"
+    "4. 稍后配置: 继续当前任务，稍后配置"
 ```
 
 ### 部分配置检测响应
@@ -215,6 +216,7 @@ alwaysApply: true
   - "一键配置MCP" - 自动安装推荐工具
   - "MCP配置指导" - 获取详细配置步骤
   - "检查MCP状态" - 验证当前配置状态
+  - "跨平台同步MCP" - 从其他AI工具同步配置
 ```
 
 ### 手动配置路径
@@ -238,11 +240,13 @@ alwaysApply: true
   
   "🎯 推荐行动："
   "1. 运行快速配置脚本 (推荐)"
-  "2. 查看MCP工具介绍了解价值"
-  "3. 按照详细指南手动配置"
+  "2. 从其他AI工具同步配置 (如果已有)"
+  "3. 查看MCP工具介绍了解价值"
+  "4. 按照详细指南手动配置"
   
   "💡 现在配置还是稍后？"
   "- '立即配置' - 我来指导您完成配置"
+  "- '跨平台同步' - 从其他AI工具同步现有配置"
   "- '了解更多' - 先了解MCP工具的价值"
   "- '稍后配置' - 继续当前任务"
 ```

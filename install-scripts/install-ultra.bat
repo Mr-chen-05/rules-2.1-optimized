@@ -702,6 +702,29 @@ if exist "%MCP_SCRIPTS_DIR%\mcp-cross-platform-sync.ps1" (
     echo WARNING: Source file not found: %MCP_SCRIPTS_DIR%\mcp-cross-platform-sync.ps1
 )
 
+REM Copy MCP utility scripts
+if exist "%MCP_SCRIPTS_DIR%\parse-check.ps1" (
+    copy "%MCP_SCRIPTS_DIR%\parse-check.ps1" "%MCP_TOOLS_DIR%\" >nul 2>&1
+    if errorlevel 1 (
+        echo WARNING: Failed to copy parse-check.ps1
+    ) else (
+        echo   MCP syntax checker installed: parse-check.ps1
+    )
+) else (
+    echo WARNING: Source file not found: %MCP_SCRIPTS_DIR%\parse-check.ps1
+)
+
+if exist "%MCP_SCRIPTS_DIR%\list-cache.ps1" (
+    copy "%MCP_SCRIPTS_DIR%\list-cache.ps1" "%MCP_TOOLS_DIR%\" >nul 2>&1
+    if errorlevel 1 (
+        echo WARNING: Failed to copy list-cache.ps1
+    ) else (
+        echo   MCP cache manager installed: list-cache.ps1
+    )
+) else (
+    echo WARNING: Source file not found: %MCP_SCRIPTS_DIR%\list-cache.ps1
+)
+
 REM Create Scripts directory and copy validation script
 set "SCRIPTS_TARGET_DIR=%TARGET_DIR%\scripts"
 mkdir "%SCRIPTS_TARGET_DIR%" 2>nul
@@ -733,6 +756,8 @@ echo ## MCP Tools Directory >> "%MAIN_RULES%"
 echo. >> "%MAIN_RULES%"
 echo The mcp-tools/ directory contains management scripts for AI to use: >> "%MAIN_RULES%"
 echo - mcp-cross-platform-sync.ps1 - Cross-platform MCP configuration sync >> "%MAIN_RULES%"
+echo - parse-check.ps1 - PowerShell syntax and MCP configuration validator >> "%MAIN_RULES%"
+echo - list-cache.ps1 - MCP cache file viewer and manager >> "%MAIN_RULES%"
 echo. >> "%MAIN_RULES%"
 echo AI can directly call these scripts for MCP management and orchestration. >> "%MAIN_RULES%"
 echo. >> "%MAIN_RULES%"

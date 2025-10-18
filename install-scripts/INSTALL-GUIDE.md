@@ -261,7 +261,9 @@ Your Project Directory/
 │   ├── P6-system-optimization/     ← System optimization rules (Priority 400)
 │   └── P7-utilities/               ← Utility rules (Priority 300)
 └── mcp-tools/                       ← MCP tools and scripts
-    └── mcp-cross-platform-sync.ps1 ← Cross-platform MCP configuration sync tool
+    ├── mcp-cross-platform-sync.ps1 ← Cross-platform MCP configuration sync tool
+    ├── parse-check.ps1             ← PowerShell syntax and MCP configuration validator
+    └── list-cache.ps1              ← MCP cache file viewer and manager
 └── scripts/                         ← Project-level maintenance/validation scripts
     └── validate-rules-consistency.ps1 ← Rule metadata consistency validator
 ```
@@ -504,6 +506,47 @@ Installation completed successfully
 **🎯 Double-click ready, zero technical barrier!**
 **🌐 Global compatibility with auto-encoding detection!**
 **🔄 MCP sync support for optimal AI tool integration!**
+
+## 🛠️ MCP Tools Detailed Guide
+
+After installation, the `mcp-tools/` directory contains the following management tools:
+
+### 1. mcp-cross-platform-sync.ps1
+**Cross-platform MCP Configuration Sync Tool**
+- **Function**: Detect and sync MCP configurations across multiple AI tools
+- **Supported Platforms**: Trae AI, Cursor IDE, OpenAI Codex, and more
+- **Usage**: 
+  ```powershell
+  .\mcp-cross-platform-sync.ps1 detect  # Detect configurations
+  .\mcp-cross-platform-sync.ps1 sync    # Sync configurations
+  ```
+
+### 2. parse-check.ps1
+**PowerShell Syntax and MCP Configuration Validator**
+- **Function**: Validate PowerShell script syntax and MCP configuration file formats
+- **Features**: Fast syntax checking to ensure script executability
+- **Usage**: 
+  ```powershell
+  .\parse-check.ps1 [file_path]  # Check specific file
+  .\parse-check.ps1              # Check current directory
+  ```
+
+### 3. list-cache.ps1
+**MCP Cache File Viewer and Manager**
+- **Function**: View and manage MCP-related cache files
+- **Features**: Support cache cleanup and status viewing
+- **Usage**: 
+  ```powershell
+  .\list-cache.ps1        # List all cache files
+  .\list-cache.ps1 clean  # Clean cache files
+  ```
+
+### 🔧 Tool Integration Benefits
+
+- **Automated Management**: AI can directly call these scripts for MCP management
+- **Cross-platform Compatibility**: Support all mainstream AI development tools
+- **Smart Detection**: Automatically identify configuration issues and provide fix suggestions
+- **Cache Optimization**: Improve MCP tool response speed and stability
 
 ---
 

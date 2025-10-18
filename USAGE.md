@@ -228,6 +228,41 @@ echo $env:AI_RULES_PATH
 - **🧠 记忆管理** - 上下文保存和智能检索
 - **🐙 GitHub 集成** - 仓库管理和问题分析
 
+### 🔄 MCP 跨平台同步功能
+
+**功能概述：**
+MCP跨平台同步工具 (`mcp-cross-platform-sync.ps1`) 可以在不同AI开发平台之间同步MCP服务器配置，确保所有平台使用一致的配置。
+
+**支持的平台：**
+- ✅ **Trae AI** - 智能代码助手
+- ✅ **Cursor IDE** - AI驱动的代码编辑器  
+- ✅ **OpenAI Codex** - OpenAI的代码生成平台
+
+**核心功能：**
+- 🔍 **自动检测** - 发现已安装的AI平台及其配置状态
+- 🔄 **配置同步** - 在多个平台间同步MCP服务器配置
+- 🛡️ **安全备份** - 同步前自动备份原有配置
+- 📊 **状态监控** - 实时查看各平台的配置状态
+
+**快速使用：**
+```powershell
+# 检测所有已安装的AI平台
+.\mcp-cross-platform-sync.ps1 detect
+
+# 从Trae AI同步配置到OpenAI Codex
+.\mcp-cross-platform-sync.ps1 sync -SourcePlatform "Trae" -TargetPlatforms "OpenAICodex"
+
+# 预览同步操作（推荐）
+.\mcp-cross-platform-sync.ps1 sync -SourcePlatform "Trae" -TargetPlatforms "OpenAICodex" -DryRun
+```
+
+**使用场景：**
+- 🆕 **新平台配置** - 快速为新安装的AI平台配置MCP工具
+- 🔄 **配置标准化** - 确保所有平台使用相同的MCP配置
+- 🔧 **配置迁移** - 在不同AI平台间迁移MCP配置
+
+> **💡 提示**: 详细的跨平台同步使用方法请参考 [📋 安装脚本使用说明](mcp-scripts/安装脚本使用说明.md) 中的"MCP跨平台同步功能"部分。
+
 ## 🎯 使用场景
 
 ### 👨‍💻 个人开发者

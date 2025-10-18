@@ -200,6 +200,8 @@ Rules 2.5.1/
 │       ├── run-powershell-installer.bat    # 🔥 一键MCP工具安装
 │       ├── install-mcp-tools-enhanced-final.ps1 # PowerShell安装脚本
 │       ├── mcp-cross-platform-sync.ps1     # 跨平台同步脚本
+├       ├── parse-check.ps1                 # ✅ PowerShell语法和MCP配置验证器
+│       ├── list-cache.ps1                  # 📋 MCP缓存文件查看器和管理器
 │       └── 安装脚本使用说明.md              # 📚 MCP安装详细说明
 │
 ├── 📝 规则文件（核心功能）
@@ -330,12 +332,36 @@ cd mcp-scripts
 .\run-powershell-installer.bat
 ```
 
+### 🔄 MCP跨平台同步功能
+
+**支持平台：**
+- ✅ **Trae AI** - 智能代码助手
+- ✅ **Cursor IDE** - AI驱动的代码编辑器  
+- ✅ **OpenAI Codex** - OpenAI的代码生成平台
+
+**核心功能：**
+- 🔍 **自动检测** - 发现已安装的AI平台及其配置状态
+- 🔄 **配置同步** - 在多个平台间同步MCP服务器配置
+- 🛡️ **安全备份** - 同步前自动备份原有配置
+- 📊 **状态监控** - 实时查看各平台的配置状态
+
+**快速使用：**
+```powershell
+# 检测所有已安装的AI平台
+cd mcp-scripts
+.\mcp-cross-platform-sync.ps1 detect
+
+# 从Trae AI同步配置到OpenAI Codex（推荐先预览）
+.\mcp-cross-platform-sync.ps1 sync -SourcePlatform "Trae" -TargetPlatforms "OpenAICodex" -DryRun
+```
+
 **📚 相关文档：**
 - [🎯 MCP工具介绍](docs/MCP-TOOLS-INTRODUCTION.md) - 了解工具价值
-- [📋 安装说明](mcp-scripts/安装脚本使用说明.md) - 详细安装方法
+- [📋 安装说明](mcp-scripts/安装脚本使用说明.md) - 详细安装方法（含跨平台同步）
 - [🚀 快速入门](docs/MCP-QUICK-START-GUIDE.md) - 5分钟配置
 - [🔧 详细配置](docs/MCP-DETAILED-CONFIG-GUIDE.md) - 完整配置参数
 - [🔍 故障排除](docs/MCP-TROUBLESHOOTING-GUIDE.md) - 问题解决
+- [📝 配置路径更新](docs/MCP-CONFIG-PATHS-UPDATE.md) - 最新验证的AI工具配置路径
 
 > **💻 系统要求**：Windows 10/11自带PowerShell，Windows 7/8需要[下载安装](https://github.com/PowerShell/PowerShell/releases)
 

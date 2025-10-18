@@ -19,16 +19,16 @@ alwaysApply: true
   Trae: "%USERPROFILE%\AppData\Roaming\Trae\User\mcp.json"
   Trae_CN: "%USERPROFILE%\AppData\Roaming\Trae CN\User\mcp.json"
   Cursor: "%USERPROFILE%\AppData\Roaming\Cursor\User\globalStorage\cursor.mcp\mcp_settings.json"
-  Claude: "%USERPROFILE%\.claude\mcp_settings.json"
+  Claude: "%USERPROFILE%\AppData\Roaming\Claude\claude_desktop_config.json"
   
   # 2024-2025年热门AI工具
-  Windsurf: "%USERPROFILE%\AppData\Roaming\Windsurf\User\mcp_settings.json"
+  Windsurf: "%USERPROFILE%\AppData\Roaming\Windsurf\User\mcp.json"
   Replit: "%USERPROFILE%\.replit\mcp_config.json"
-  Sourcegraph_Cody: "%USERPROFILE%\.sourcegraph\cody_mcp.json"
-  Continue_dev: "%USERPROFILE%\.continue\mcp_settings.json"
+  Sourcegraph_Cody: "%USERPROFILE%\AppData\Roaming\Code\User\globalStorage\sourcegraph.cody-ai\mcp_settings.json"
+  Continue_dev: "%USERPROFILE%\.continue\mcpServers\mcp.json"
   
   # IDE集成AI助手
-  VSCode_Copilot: "%USERPROFILE%\AppData\Roaming\Code\User\globalStorage\github.copilot\mcp_settings.json"
+  VSCode_Copilot: "%USERPROFILE%\AppData\Roaming\Code\User\mcp.json"
   JetBrains_AI: "%USERPROFILE%\.jetbrains\mcp_config.json"
   Tabnine: "%USERPROFILE%\.tabnine\mcp_settings.json"
   
@@ -42,6 +42,30 @@ alwaysApply: true
   CodeGeeX: "%USERPROFILE%\.codegeex\mcp_settings.json"
   TabbyML: "%USERPROFILE%\.tabby\mcp_config.json"
   Cline: "%USERPROFILE%\.cline\mcp_settings.json"
+  
+  # OpenAI系列工具
+  OpenAI_Codex: "%USERPROFILE%\.openai\codex_mcp.json"
+  OpenAI_Codex_CLI: "%USERPROFILE%\.codex\cli_mcp_settings.json"
+  
+  # 腾讯AI工具
+  CodeBuddy: "%USERPROFILE%\.codebuddy\mcp_settings.json"
+  CodeBuddy_CLI: "%USERPROFILE%\.codebuddy\cli_mcp_config.json"
+  
+  # 新兴AI编辑器
+  Void: "%USERPROFILE%\.void\mcp_config.json"
+  Warp: "%USERPROFILE%\.warp\mcp_settings.json"
+  Zed: "%USERPROFILE%\.zed\mcp_config.json"
+  
+  # 高级AI助手
+  Refact_ai: "%USERPROFILE%\.refact\mcp_settings.json"
+  Jules_Google: "%USERPROFILE%\.jules\mcp_config.json"
+  Junie_JetBrains: "%USERPROFILE%\.junie\mcp_settings.json"
+  Kilo_Code: "%USERPROFILE%\.kilo\mcp_config.json"
+  Kodu: "%USERPROFILE%\.kodu\mcp_settings.json"
+  MarsCode: "%USERPROFILE%\.marscode\mcp_config.json"
+  Melty: "%USERPROFILE%\.melty\mcp_settings.json"
+  Memex: "%USERPROFILE%\.memex\mcp_config.json"
+  Mentat: "%USERPROFILE%\.mentat\mcp_settings.json"
 
 检测机制:
   自动扫描: 检测所有已安装的AI工具
@@ -50,6 +74,10 @@ alwaysApply: true
     - IDE集成: VSCode Copilot, JetBrains AI, Tabnine
     - 云端平台: Amazon Q, Gemini Code Assist, Qodo Gen
     - 开源工具: Aider, CodeGeeX, TabbyML, Cline
+    - OpenAI系列: OpenAI Codex, Codex CLI
+    - 腾讯AI工具: CodeBuddy, CodeBuddy CLI
+    - 新兴编辑器: Void, Warp, Zed
+    - 高级助手: Refact.ai, Jules, Junie, Kilo Code, Kodu, MarsCode, Melty, Memex, Mentat
   
   配置分析: 分析各平台MCP服务器配置
     - 配置文件格式兼容性检查
@@ -123,6 +151,9 @@ alwaysApply: true
   - "同步MCP配置" - 跨平台配置同步
   - "统一MCP设置" - 多平台配置统一
   - "备份MCP配置" - 配置文件备份
+  - "预览同步操作" - 干运行模式查看变更
+  - "自动同步MCP" - 智能选择源平台同步
+  - "多平台同步" - 同时同步到多个目标平台
 
 管理命令:
   - "MCP使用报告" - 使用统计分析
@@ -272,13 +303,30 @@ alwaysApply: true
   增量同步: 只同步缺失的服务器配置
   冲突解决: 智能合并冲突配置
   备份保护: 同步前自动备份原始配置
+  多目标同步: 支持同时同步到多个目标平台
+  干运行模式: 预览同步操作而不实际执行
+
+同步模式:
+  手动模式: 指定源平台和目标平台
+    - 示例: .\mcp-cross-platform-sync.ps1 sync -SourcePlatform "Trae" -TargetPlatforms "Cursor,OpenAICodex"
+  自动模式: 自动选择最佳源平台
+    - 示例: .\mcp-cross-platform-sync.ps1 sync -TargetPlatforms "OpenAICodex" -Auto
+  干运行模式: 预览同步操作
+    - 示例: .\mcp-cross-platform-sync.ps1 sync -SourcePlatform "Trae" -TargetPlatforms "Cursor" -DryRun
 
 同步流程:
-  1. 扫描所有平台配置
+  1. 扫描所有平台配置 (detect命令)
   2. 分析配置差异和完整性
-  3. 选择最佳配置作为同步源
-  4. 生成同步计划和预览
+  3. 选择最佳配置作为同步源 (自动模式)
+  4. 生成同步计划和预览 (干运行模式)
   5. 执行同步并验证结果
+  6. 创建备份和日志记录
+
+安全特性:
+  - 自动备份原始配置文件
+  - 详细的操作日志记录
+  - 干运行模式预览变更
+  - 配置文件完整性验证
 ```
 
 ## 🎯 使用示例
@@ -314,7 +362,10 @@ alwaysApply: true
   "🔄 开始跨平台同步..."
   "📖 源配置: [最佳平台] ([X] 个服务器)"
   "🎯 同步目标: [目标平台列表]"
+  "📋 同步模式: [手动/自动/干运行]"
+  "🔒 安全措施: 已创建配置备份"
   "✅ 同步完成: [结果摘要]"
+  "📊 同步统计: 成功 [X] 个，跳过 [Y] 个"
 ```
 
 ## 📈 效果评估

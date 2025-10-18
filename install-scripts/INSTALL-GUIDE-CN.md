@@ -261,7 +261,9 @@ install-scripts\install-ultra.bat C:\my-project
 │   ├── P6-system-optimization/     ← 系统优化规则 (优先级400)
 │   └── P7-utilities/               ← 实用工具规则 (优先级300)
 └── mcp-tools/                       ← MCP工具和脚本
-    └── mcp-cross-platform-sync.ps1 ← 跨平台MCP配置同步工具
+    ├── mcp-cross-platform-sync.ps1 ← 跨平台MCP配置同步工具
+    ├── parse-check.ps1             ← PowerShell语法和MCP配置验证器
+    └── list-cache.ps1              ← MCP缓存文件查看器和管理器
 └── scripts/                         ← 项目级维护与校验脚本
     └── validate-rules-consistency.ps1 ← 规则元数据一致性校验工具
 ```
@@ -504,6 +506,47 @@ Installation completed successfully
 **🎯 双击即用，零技术门槛！**
 **🌐 全球兼容，自动编码检测！**
 **🔄 MCP 同步支持，优化 AI 工具集成！**
+
+## 🛠️ MCP 工具详细说明
+
+安装完成后，`mcp-tools/` 目录包含以下管理工具：
+
+### 1. mcp-cross-platform-sync.ps1
+**跨平台 MCP 配置同步工具**
+- **功能**: 检测和同步多个AI工具的MCP配置
+- **支持平台**: Trae AI、Cursor IDE、OpenAI Codex等
+- **用法**: 
+  ```powershell
+  .\mcp-cross-platform-sync.ps1 detect  # 检测配置
+  .\mcp-cross-platform-sync.ps1 sync    # 同步配置
+  ```
+
+### 2. parse-check.ps1
+**PowerShell 语法和 MCP 配置验证器**
+- **功能**: 验证PowerShell脚本语法和MCP配置文件格式
+- **特点**: 快速语法检查，确保脚本可执行性
+- **用法**: 
+  ```powershell
+  .\parse-check.ps1 [文件路径]  # 检查指定文件
+  .\parse-check.ps1            # 检查当前目录
+  ```
+
+### 3. list-cache.ps1
+**MCP 缓存文件查看器和管理器**
+- **功能**: 查看和管理MCP相关的缓存文件
+- **特点**: 支持缓存清理和状态查看
+- **用法**: 
+  ```powershell
+  .\list-cache.ps1        # 列出所有缓存文件
+  .\list-cache.ps1 clean  # 清理缓存文件
+  ```
+
+### 🔧 工具集成优势
+
+- **自动化管理**: AI可直接调用这些脚本进行MCP管理
+- **跨平台兼容**: 支持所有主流AI开发工具
+- **智能检测**: 自动识别配置问题并提供修复建议
+- **缓存优化**: 提高MCP工具的响应速度和稳定性
 
 ---
 
