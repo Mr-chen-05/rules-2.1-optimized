@@ -58,9 +58,33 @@ alwaysApply: true
      - 解析脚本输出，获得完整的跨平台MCP状态
   
   2. 基础路径扫描:
+     # 主流AI编辑器
      - ~/.claude/mcp_settings.json
      - %USERPROFILE%\AppData\Roaming\Trae\User\mcp.json
+     - %USERPROFILE%\AppData\Roaming\Trae CN\User\mcp.json
      - %USERPROFILE%\AppData\Roaming\Cursor\User\globalStorage\cursor.mcp\mcp_settings.json
+     
+     # 2024-2025年热门AI工具
+     - %USERPROFILE%\AppData\Roaming\Windsurf\User\mcp_settings.json
+     - %USERPROFILE%\.replit\mcp_config.json
+     - %USERPROFILE%\.sourcegraph\cody_mcp.json
+     - %USERPROFILE%\.continue\mcp_settings.json
+     
+     # IDE集成AI助手
+     - %USERPROFILE%\AppData\Roaming\Code\User\globalStorage\github.copilot\mcp_settings.json
+     - %USERPROFILE%\.jetbrains\mcp_config.json
+     - %USERPROFILE%\.tabnine\mcp_settings.json
+     
+     # 云端AI平台
+     - %USERPROFILE%\.aws\q_developer_mcp.json
+     - %USERPROFILE%\.google\gemini_mcp.json
+     - %USERPROFILE%\.qodo\mcp_settings.json
+     
+     # 开源AI工具
+     - %USERPROFILE%\.aider\mcp_config.json
+     - %USERPROFILE%\.codegeex\mcp_settings.json
+     - %USERPROFILE%\.tabby\mcp_config.json
+     - %USERPROFILE%\.cline\mcp_settings.json
   
   3. 配置完整性分析:
      - 配置文件是否存在
@@ -106,6 +130,14 @@ alwaysApply: true
     "📊 检测到您已配置了 [X] 个MCP工具"
     "✅ 已有: [已配置的工具列表]"
     "❌ 缺少: [建议添加的工具列表]"
+    
+  AI工具检测:
+    "🤖 检测到的AI编程工具:"
+    "主流编辑器: Trae, Cursor, Claude"
+    "热门工具: Windsurf, Replit, Sourcegraph Cody, Continue.dev"
+    "IDE集成: VSCode Copilot, JetBrains AI, Tabnine"
+    "云端平台: Amazon Q, Gemini Code Assist, Qodo Gen"
+    "开源工具: Aider, CodeGeeX, TabbyML, Cline"
     
   针对性建议:
     "💡 基于您的项目类型 ([项目类型])，建议添加："

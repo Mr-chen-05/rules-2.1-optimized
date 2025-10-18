@@ -15,16 +15,56 @@ alwaysApply: true
 ### 1. 跨平台环境检测
 ```yaml
 支持的AI工具:
+  # 主流AI编辑器
   Trae: "%USERPROFILE%\AppData\Roaming\Trae\User\mcp.json"
   Trae_CN: "%USERPROFILE%\AppData\Roaming\Trae CN\User\mcp.json"
   Cursor: "%USERPROFILE%\AppData\Roaming\Cursor\User\globalStorage\cursor.mcp\mcp_settings.json"
   Claude: "%USERPROFILE%\.claude\mcp_settings.json"
+  
+  # 2024-2025年热门AI工具
+  Windsurf: "%USERPROFILE%\AppData\Roaming\Windsurf\User\mcp_settings.json"
+  Replit: "%USERPROFILE%\.replit\mcp_config.json"
+  Sourcegraph_Cody: "%USERPROFILE%\.sourcegraph\cody_mcp.json"
+  Continue_dev: "%USERPROFILE%\.continue\mcp_settings.json"
+  
+  # IDE集成AI助手
+  VSCode_Copilot: "%USERPROFILE%\AppData\Roaming\Code\User\globalStorage\github.copilot\mcp_settings.json"
+  JetBrains_AI: "%USERPROFILE%\.jetbrains\mcp_config.json"
+  Tabnine: "%USERPROFILE%\.tabnine\mcp_settings.json"
+  
+  # 云端AI平台
+  Amazon_Q: "%USERPROFILE%\.aws\q_developer_mcp.json"
+  Gemini_Code_Assist: "%USERPROFILE%\.google\gemini_mcp.json"
+  Qodo_Gen: "%USERPROFILE%\.qodo\mcp_settings.json"
+  
+  # 开源AI工具
+  Aider: "%USERPROFILE%\.aider\mcp_config.json"
+  CodeGeeX: "%USERPROFILE%\.codegeex\mcp_settings.json"
+  TabbyML: "%USERPROFILE%\.tabby\mcp_config.json"
+  Cline: "%USERPROFILE%\.cline\mcp_settings.json"
 
 检测机制:
   自动扫描: 检测所有已安装的AI工具
+    - 主流编辑器: Trae, Cursor, Claude
+    - 热门AI工具: Windsurf, Replit, Sourcegraph Cody, Continue.dev
+    - IDE集成: VSCode Copilot, JetBrains AI, Tabnine
+    - 云端平台: Amazon Q, Gemini Code Assist, Qodo Gen
+    - 开源工具: Aider, CodeGeeX, TabbyML, Cline
+  
   配置分析: 分析各平台MCP服务器配置
+    - 配置文件格式兼容性检查
+    - MCP服务器版本兼容性验证
+    - 工具特定配置项验证 (如Trae的disabled字段)
+  
   差异识别: 识别配置不一致和缺失项
+    - 跨平台配置同步状态
+    - 缺失的核心MCP服务器
+    - 工具特定功能缺失
+  
   性能评估: 分析服务器性能和可用性
+    - MCP服务器响应时间
+    - 内存使用情况
+    - 错误率统计
 ```
 
 ### 2. MCP专用推荐引擎 (与全局推荐引擎协同)
@@ -172,9 +212,33 @@ alwaysApply: true
     - 安全和权限配置
   
   平台适配:
+    # 主流编辑器
     - Trae特定配置 (disabled字段、timeout)
     - Cursor工作区配置
     - Claude标准配置
+    
+    # 热门AI工具
+    - Windsurf配置 (基于VSCode架构)
+    - Replit云端配置 (在线环境适配)
+    - Sourcegraph Cody企业配置
+    - Continue.dev开源配置
+    
+    # IDE集成
+    - VSCode Copilot扩展配置
+    - JetBrains AI插件配置
+    - Tabnine多IDE配置
+    
+    # 云端平台
+    - Amazon Q Developer配置
+    - Gemini Code Assist配置
+    - Qodo Gen测试生成配置
+    
+    # 开源工具
+    - Aider命令行配置
+    - CodeGeeX本地化配置
+    - TabbyML自托管配置
+    - Cline VS Code扩展配置
+    
     - 环境变量适配
 
   渐进式配置:
