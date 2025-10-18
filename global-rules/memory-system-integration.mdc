@@ -4,6 +4,21 @@ description: "记忆系统集成 - 项目记忆存储、管理和智能使用"
 globs: ["**/*"]
 priority: 930
 alwaysApply: false
+
+# Version Management
+version: "2.6.0"
+last_updated: "2025-10-18"
+author: "system"
+status: "stable"
+compatibility: "rule-system >= 2.0"
+
+changelog:
+  - version: "2.6.0"
+    date: "2025-10-18"
+    changes:
+      - "P0-2: 新增Memory使用授权机制"
+      - "添加Recorder vs Memory决策树"
+      - "实现敏感信息过滤和数据脱敏"
 ---
 
 # 💾 记忆系统集成

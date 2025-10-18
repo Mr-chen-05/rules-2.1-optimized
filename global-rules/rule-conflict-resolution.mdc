@@ -4,6 +4,21 @@ description: "规则冲突解决和用户指令优先级管理 - 确保用户指
 globs: ["**/*"]
 alwaysApply: true
 priority: 1180
+
+# Version Management
+version: "2.6.0"
+last_updated: "2025-10-18"
+author: "system"
+status: "stable"
+compatibility: "rule-system >= 2.0"
+
+changelog:
+  - version: "2.6.0"
+    date: "2025-10-18"
+    changes:
+      - "P0-1: 新增Level 0不可违反底线机制"
+      - "重新定义Level 1-3优先级层次"
+      - "添加完整执行逻辑和审计日志"
 ---
 
 # ⚖️ 规则冲突解决和用户指令优先级管理

@@ -4,6 +4,21 @@ description: "MCP零配置检测和提醒策略 - 检测用户是否缺少MCP配
 globs: ["**/*"]
 priority: 1050
 alwaysApply: true
+
+# Version Management
+version: "2.6.0"
+last_updated: "2025-10-18"
+author: "system"
+status: "stable"
+compatibility: "rule-system >= 2.0"
+
+changelog:
+  - version: "2.6.0"
+    date: "2025-10-18"
+    changes:
+      - "P1-3: 实现多级缓存机制(L1/L2/L3)"
+      - "添加智能失效机制(mtime+hash监控)"
+      - "新增缓存元数据v2.0结构"
 ---
 
 # 🔍 MCP零配置检测和提醒策略
