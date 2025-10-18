@@ -22,8 +22,8 @@ priority: 1180
     - 用户的安全和隐私要求
   
   Level 2 - 安全规则 (优先级: 1100-1200) - P0级别:
-    - file-generation-safety-rules.mdc (1200) - 文件生成安全
-    - rule-conflict-resolution.mdc (1180) - 规则冲突解决
+    - file-generation-safety-rules.mdc (1200) - 文件生成安全 [新增权限控制]
+    - rule-conflict-resolution.mdc (1180) - 规则冲突解决 [更新优先级声明]
     - ai-thinking-protocol.mdc (1160) - AI思维协议
     - dynamic-thinking-depth-regulation.mdc (1150) - 思维深度调节
     - human-ai-collaboration-optimization.mdc (1140) - 人机协作

@@ -1,0 +1,628 @@
+# 📋 记录员系统模板配置文件
+# Template Configuration for Context Recorder System v2.0
+# 定义项目类型、触发条件、分类规则等智能化配置
+
+version: "2.0-enhanced"
+last_updated: "2025-01-17"
+compatibility: "context-recorder-system v2.0+"
+
+# Template System v2.0 Configuration
+# 智能模板系统配置文件
+
+# 🎯 项目类型自动识别配置
+project_types:
+  frontend:
+    name: "前端项目"
+    detection_rules:
+      files:
+        - "package.json"
+        - "yarn.lock"
+        - "pnpm-lock.yaml"
+        - "webpack.config.js"
+        - "vite.config.js"
+        - "next.config.js"
+      directories:
+        - "src/components"
+        - "src/pages"
+        - "public"
+        - "assets"
+      dependencies:
+        - "react"
+        - "vue"
+        - "angular"
+        - "@angular/core"
+        - "svelte"
+    tech_stacks:
+      - "React"
+      - "Vue.js"
+      - "Angular"
+      - "Svelte"
+      - "Next.js"
+      - "Nuxt.js"
+      - "TypeScript"
+      - "JavaScript"
+    default_config:
+      complexity_score: 6
+      estimated_duration: "2-6个月"
+      team_size: "2-5人"
+      archive_threshold:
+        lines: 150
+        days: 5
+        decisions: 3
+
+  backend:
+    name: "后端项目"
+    detection_rules:
+      files:
+        - "pom.xml"
+        - "build.gradle"
+        - "requirements.txt"
+        - "Pipfile"
+        - "go.mod"
+        - "Cargo.toml"
+        - "composer.json"
+      directories:
+        - "src/main/java"
+        - "src/main/kotlin"
+        - "app"
+        - "api"
+        - "controllers"
+        - "models"
+        - "services"
+      dependencies:
+        - "spring-boot"
+        - "django"
+        - "flask"
+        - "express"
+        - "fastapi"
+        - "gin"
+    tech_stacks:
+      - "Spring Boot"
+      - "Django"
+      - "Flask"
+      - "Express.js"
+      - "FastAPI"
+      - "Go Gin"
+      - "ASP.NET Core"
+      - "Ruby on Rails"
+    default_config:
+      complexity_score: 8
+      estimated_duration: "3-12个月"
+      team_size: "3-8人"
+      archive_threshold:
+        lines: 200
+        days: 7
+        decisions: 5
+
+  fullstack:
+    name: "全栈项目"
+    detection_rules:
+      files:
+        - "package.json"
+        - "requirements.txt"
+        - "docker-compose.yml"
+        - "Dockerfile"
+      directories:
+        - "frontend"
+        - "backend"
+        - "client"
+        - "server"
+        - "api"
+        - "web"
+      mixed_indicators:
+        - has_frontend_and_backend: true
+        - has_database_config: true
+        - has_api_routes: true
+    tech_stacks:
+      - "MERN Stack"
+      - "MEAN Stack"
+      - "Django + React"
+      - "Spring Boot + Vue"
+      - "Next.js + API"
+      - "T3 Stack"
+    default_config:
+      complexity_score: 9
+      estimated_duration: "6-18个月"
+      team_size: "4-12人"
+      archive_threshold:
+        lines: 250
+        days: 10
+        decisions: 7
+
+  mobile:
+    name: "移动应用项目"
+    detection_rules:
+      files:
+        - "pubspec.yaml"
+        - "android/app/build.gradle"
+        - "ios/Podfile"
+        - "react-native.config.js"
+        - "expo.json"
+        - "app.json"
+      directories:
+        - "android"
+        - "ios"
+        - "lib"
+        - "src/screens"
+        - "src/components"
+      dependencies:
+        - "flutter"
+        - "react-native"
+        - "expo"
+        - "@react-native"
+    tech_stacks:
+      - "Flutter"
+      - "React Native"
+      - "Expo"
+      - "Ionic"
+      - "Xamarin"
+      - "Native iOS"
+      - "Native Android"
+    default_config:
+      complexity_score: 7
+      estimated_duration: "4-10个月"
+      team_size: "2-6人"
+      archive_threshold:
+        lines: 180
+        days: 6
+        decisions: 4
+
+  devops:
+    name: "DevOps/基础设施项目"
+    detection_rules:
+      files:
+        - "Dockerfile"
+        - "docker-compose.yml"
+        - "kubernetes.yaml"
+        - "terraform.tf"
+        - "ansible.yml"
+        - "Jenkinsfile"
+        - ".github/workflows"
+        - ".gitlab-ci.yml"
+      directories:
+        - "infrastructure"
+        - "deployment"
+        - "k8s"
+        - "terraform"
+        - "ansible"
+        - "scripts"
+    tech_stacks:
+      - "Docker"
+      - "Kubernetes"
+      - "Terraform"
+      - "Ansible"
+      - "Jenkins"
+      - "GitHub Actions"
+      - "AWS"
+      - "Azure"
+      - "GCP"
+    default_config:
+      complexity_score: 8
+      estimated_duration: "2-8个月"
+      team_size: "1-4人"
+      archive_threshold:
+        lines: 120
+        days: 14
+        decisions: 6
+
+# 🏷️ 智能标签系统配置
+smart_tags:
+  auto_generation: true
+  categories:
+    technical:
+      - "frontend"
+      - "backend" 
+      - "fullstack"
+      - "mobile"
+      - "api"
+      - "database"
+    functional:
+      - "crud"
+      - "authentication"
+      - "authorization"
+      - "payment"
+      - "notification"
+      - "search"
+    quality:
+      - "tested"
+      - "documented"
+      - "optimized"
+      - "secure"
+      - "scalable"
+    progress:
+      - "planning"
+      - "development"
+      - "testing"
+      - "deployment"
+      - "maintenance"
+
+tagging_system:
+  auto_generation:
+    enabled: true
+    update_frequency: "on_change"
+    confidence_threshold: 0.7
+
+  tag_categories:
+    technical:
+      prefix: "#tech-"
+      sources:
+        - "dependencies"
+        - "file_extensions"
+        - "framework_detection"
+      examples:
+        - "#tech-react"
+        - "#tech-typescript"
+        - "#tech-docker"
+        - "#tech-mysql"
+
+    status:
+      prefix: "#status-"
+      sources:
+        - "project_phase"
+        - "completion_rate"
+        - "activity_level"
+      examples:
+        - "#status-planning"
+        - "#status-development"
+        - "#status-testing"
+        - "#status-production"
+
+    priority:
+      prefix: "#priority-"
+      sources:
+        - "task_urgency"
+        - "business_impact"
+        - "deadline_proximity"
+      examples:
+        - "#priority-critical"
+        - "#priority-high"
+        - "#priority-medium"
+        - "#priority-low"
+
+    team:
+      prefix: "#team-"
+      sources:
+        - "team_size"
+        - "experience_level"
+        - "collaboration_pattern"
+      examples:
+        - "#team-small"
+        - "#team-medium"
+        - "#team-large"
+        - "#team-distributed"
+
+    domain:
+      prefix: "#domain-"
+      sources:
+        - "business_context"
+        - "industry_type"
+        - "application_domain"
+      examples:
+        - "#domain-ecommerce"
+        - "#domain-fintech"
+        - "#domain-healthcare"
+        - "#domain-education"
+
+# 📊 质量评分配置
+quality_scoring:
+  enabled: true
+  real_time_calculation: true
+  
+  scoring_dimensions:
+    completeness:
+      weight: 0.3
+      criteria:
+        - "required_fields_filled"
+        - "description_detail_level"
+        - "metadata_completeness"
+      scoring_rules:
+        excellent: 90-100  # 所有必填字段完整，描述详细
+        good: 70-89       # 大部分字段完整，描述适中
+        fair: 50-69       # 基本字段完整，描述简单
+        poor: 0-49        # 缺少关键字段或描述
+
+    evidence_quality:
+      weight: 0.25
+      criteria:
+        - "link_validity"
+        - "evidence_relevance"
+        - "proof_completeness"
+      scoring_rules:
+        excellent: 90-100  # 所有链接有效，证据充分
+        good: 70-89       # 大部分链接有效，证据较好
+        fair: 50-69       # 部分链接有效，证据一般
+        poor: 0-49        # 链接失效或证据不足
+
+    timeliness:
+      weight: 0.2
+      criteria:
+        - "update_frequency"
+        - "information_freshness"
+        - "response_time"
+      scoring_rules:
+        excellent: 90-100  # 及时更新，信息新鲜
+        good: 70-89       # 定期更新，信息较新
+        fair: 50-69       # 偶尔更新，信息一般
+        poor: 0-49        # 很少更新，信息陈旧
+
+    relevance:
+      weight: 0.25
+      criteria:
+        - "task_correlation"
+        - "decision_traceability"
+        - "context_consistency"
+      scoring_rules:
+        excellent: 90-100  # 高度相关，逻辑清晰
+        good: 70-89       # 较为相关，逻辑合理
+        fair: 50-69       # 基本相关，逻辑一般
+        poor: 0-49        # 相关性低，逻辑混乱
+
+  quality_thresholds:
+    high_quality: 85      # 高质量内容阈值
+    medium_quality: 70    # 中等质量内容阈值
+    low_quality: 50       # 低质量内容阈值
+    archive_threshold: 30 # 自动归档阈值
+
+# 🔄 智能归档策略配置
+archive_strategy:
+  enabled: true
+  strategy_type: "adaptive"  # adaptive, fixed, manual
+  
+  trigger_conditions:
+    primary:
+      - type: "line_count"
+        threshold: 200
+        weight: 0.3
+      - type: "file_size"
+        threshold: "2.90MB"
+        weight: 0.2
+      - type: "time_span"
+        threshold: "7days"
+        weight: 0.2
+      - type: "decision_count"
+        threshold: 5
+        weight: 0.15
+      - type: "milestone_reached"
+        threshold: true
+        weight: 0.15
+
+    secondary:
+      - type: "quality_degradation"
+        threshold: 0.3  # 低质量内容占比超过30%
+        weight: 0.4
+      - type: "activity_decline"
+        threshold: "3days"  # 3天无活动
+        weight: 0.3
+      - type: "phase_change"
+        threshold: true
+        weight: 0.3
+
+  content_classification:
+    by_priority:
+      P0_critical:
+        retention: "permanent"
+        archive_strategy: "preserve_all"
+      P1_important:
+        retention: "long_term"
+        archive_strategy: "preserve_key_info"
+      P2_normal:
+        retention: "standard"
+        archive_strategy: "summarize_and_archive"
+
+    by_type:
+      decisions:
+        retention: "permanent"
+        archive_strategy: "full_context_preserve"
+      tasks:
+        retention: "completion_based"
+        archive_strategy: "outcome_focused"
+      issues:
+        retention: "resolution_based"
+        archive_strategy: "solution_focused"
+      notes:
+        retention: "relevance_based"
+        archive_strategy: "selective_preserve"
+
+    by_quality:
+      high_quality:
+        retention: "extended"
+        archive_strategy: "priority_preserve"
+      medium_quality:
+        retention: "standard"
+        archive_strategy: "standard_archive"
+      low_quality:
+        retention: "minimal"
+        archive_strategy: "compress_or_discard"
+
+# 🔗 关联关系管理配置
+relationship_management:
+  enabled: true
+  auto_detection: true
+  
+  relationship_types:
+    dependency:
+      description: "任务或决策之间的依赖关系"
+      detection_keywords:
+        - "depends on"
+        - "requires"
+        - "blocks"
+        - "prerequisite"
+      weight: 0.8
+
+    influence:
+      description: "决策对后续任务的影响关系"
+      detection_keywords:
+        - "affects"
+        - "impacts"
+        - "influences"
+        - "determines"
+      weight: 0.7
+
+    similarity:
+      description: "相似问题或解决方案的关联"
+      detection_keywords:
+        - "similar to"
+        - "like"
+        - "related"
+        - "comparable"
+      weight: 0.6
+
+    sequence:
+      description: "时间序列上的前后关系"
+      detection_keywords:
+        - "follows"
+        - "precedes"
+        - "next"
+        - "previous"
+      weight: 0.5
+
+  visualization:
+    enabled: true
+    max_nodes: 50
+    layout: "force_directed"
+    show_weights: true
+    color_coding:
+      dependency: "#FF6B6B"
+      influence: "#4ECDC4"
+      similarity: "#45B7D1"
+      sequence: "#96CEB4"
+
+# 🔔 通知和提醒配置
+notifications:
+  enabled: true
+  
+  reminder_types:
+    milestone:
+      enabled: true
+      advance_notice: "3days"
+      frequency: "daily"
+    
+    deadline:
+      enabled: true
+      advance_notice: "3days"
+      frequency: "daily"
+      escalation: "1day"
+    
+    quality_degradation:
+      enabled: true
+      threshold: 70
+      frequency: "weekly"
+    
+    archive_suggestion:
+      enabled: true
+      threshold_reached: 0.8  # 80%达到归档条件时提醒
+      frequency: "on_trigger"
+
+  delivery_methods:
+    - "in_app"
+    - "comment"
+    - "summary_report"
+
+# 🔌 集成配置
+integrations:
+  git:
+    enabled: true
+    auto_record_commits: true
+    commit_message_analysis: true
+    branch_tracking: true
+    
+  ci_cd:
+    enabled: true
+    deployment_tracking: true
+    build_status_monitoring: true
+    
+  issue_tracking:
+    enabled: true
+    sync_issue_status: true
+    link_resolution: true
+    
+  documentation:
+    enabled: true
+    auto_link_docs: true
+    version_tracking: true
+
+# 🎨 模板自定义配置
+template_customization:
+  allow_custom_sections: true
+  section_ordering: "flexible"
+  required_sections:
+    - "项目元数据"
+    - "置顶信息"
+    - "决策记录"
+    - "待办事项"
+    - "已完成"
+  
+  optional_sections:
+    - "项目笔记"
+    - "问题追踪"
+    - "项目统计"
+    - "关联信息"
+    - "项目配置"
+  
+  custom_fields:
+    enabled: true
+    max_custom_fields: 10
+    field_types:
+      - "text"
+      - "number"
+      - "date"
+      - "url"
+      - "select"
+      - "multi_select"
+
+# 📈 分析和报告配置
+analytics:
+  enabled: true
+  
+  metrics:
+    productivity:
+      - "tasks_completed_per_day"
+      - "decision_making_speed"
+      - "issue_resolution_time"
+    
+    quality:
+      - "average_quality_score"
+      - "quality_trend"
+      - "evidence_completeness"
+    
+    collaboration:
+      - "team_activity_distribution"
+      - "communication_frequency"
+      - "knowledge_sharing_rate"
+  
+  reporting:
+    frequency: "weekly"
+    auto_generate: true
+    include_trends: true
+    include_recommendations: true
+
+# 🔧 系统配置
+system:
+  version_compatibility:
+    min_version: "2.0"
+    max_version: "2.x"
+  
+  performance:
+    max_file_size: "3MB"  # project.context.md 最大大小
+    max_archive_size: "5MB"  # 单个归档文件最大大小
+    max_total_archive_size: "100MB"  # 所有归档文件总大小
+    cache_duration: "24hours"
+    
+  backup:
+    enabled: true
+    frequency: "daily"
+    retention: "30days"
+    
+  security:
+    data_encryption: true
+    access_logging: true
+    sensitive_data_masking: true
+
+# 📝 使用说明
+usage_notes: |
+  1. 此配置文件定义了记录员系统v2.0的所有智能化功能参数
+  2. 项目类型会根据detection_rules自动识别，也可手动指定
+  3. 质量评分会实时计算，影响归档策略和内容分类
+  4. 关联关系会自动检测，支持可视化展示
+  5. 所有配置项都可以根据项目需求进行调整
+  6. 建议在项目初期根据实际情况调整阈值和权重

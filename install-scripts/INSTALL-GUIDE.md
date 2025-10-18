@@ -270,11 +270,13 @@ Your Project Directory/
 
 ## File Count by Mode
 
-| Mode          | File Count | Contents                                                              |
-| ------------- | ---------- | --------------------------------------------------------------------- |
-| **Frontend**  | 42 .mdc files   | Frontend rules + mermaid chart support + 8 Phase 2+3 intelligent rules |
-| **Backend**   | 41 .mdc files   | Backend rules (no mermaid) + 8 Phase 2+3 intelligent rules             |
-| **Fullstack** | 43 .mdc files   | Frontend + backend complete rules + optimized intelligent rule distribution      |
+| Mode          | Expected .mdc Files | Actually Available Files | Contents                                           |
+| ------------- | ------------------- | ------------------------ | -------------------------------------------------- |
+| **Frontend**  | 42 .mdc files       | About 8-15 files         | Frontend rules + mermaid chart support + core safety rules |
+| **Backend**   | 41 .mdc files       | About 8-15 files         | Backend rules (no mermaid) + core safety rules             |
+| **Fullstack** | 43 .mdc files       | About 8-15 files         | Frontend + backend complete rules + core safety rules      |
+
+> **⚠️ Important Note**: Since this is a development version, many advanced rule files are not yet fully ready. The script will display WARNING messages indicating that some source files are not found, which is normal. Core functionality files (P0-P1 level) will install normally, ensuring basic functionality is available.
 
 ## How to Use Installed Rules?
 
@@ -495,6 +497,120 @@ Installation completed successfully
 2. **Count Files**: Ensure all 43 .mdc files are present (for fullstack mode)
 3. **Priority Levels**: Verify P0-P7 directories are created
 4. **Templates**: Check that `templates/` and `mcp-tools/` directories exist
+
+## What to Do When You Encounter Problems?
+
+### WARNING Messages During Installation
+
+**⚠️ Normal WARNING Messages (No Need to Worry)**
+
+During installation, you may see many WARNING messages like:
+
+```
+WARNING: Source file not found: xxx\unified-rules-base.mdc
+WARNING: Source file not found: xxx\ai-agent-intelligence-core.mdc
+WARNING: Source file not found: xxx\frontend-rules.mdc
+WARNING: Source file not found: xxx\backend-rules.mdc
+```
+
+**These WARNINGs are normal** for the following reasons:
+
+- 🔧 **Development Version Feature**: Current version is an optimized development release, some advanced rule files are still being refined
+- ✅ **Core Functionality Guaranteed**: P0 (core safety) and P1 (core identity) level critical files will install normally
+- 📁 **Complete Directory Structure**: All rule directory structures will be created correctly, preparing for future updates
+- 🎯 **Basic Functionality Available**: AI tools can normally recognize and use installed rules
+
+**✅ Signs of Successful Installation**
+
+Seeing the following message indicates successful installation:
+
+```
+SUCCESS: fullstack Rules Directory Created! (Final Release)
+Rules Directory: C:\your-path\.rules
+AgentRules fullstack Installation Complete!
+```
+
+### Common Issues Quick Reference
+
+**❌ Issue 1: Script Cannot Run**
+
+```
+Error: Cannot recognize "install-scripts\install-ultra.bat" as cmdlet
+```
+
+**✅ Solution**: Ensure you're in the correct directory
+
+```
+cd c:\Users\luo20\Desktop\rules-2.4.2-optimized
+```
+
+**❌ Issue 2: Path Contains Special Characters**
+
+```
+Error: The filename, directory name, or volume label syntax is incorrect
+```
+
+**✅ Solution**: Script now automatically handles Unicode characters with enhanced encoding detection
+
+```
+# If still having issues, use English paths
+install-scripts\install-ultra.bat C:\projects\demo-project fullstack
+```
+
+**❌ Issue 3: Permission Issues**
+
+```
+Error: Access denied
+```
+
+**✅ Solution**: Run PowerShell as Administrator
+
+**❌ Issue 4: Parent Directory Does Not Exist**
+
+```
+Error: Parent directory does not exist
+```
+
+**✅ Solution**: Create parent directory first
+
+```
+mkdir C:\Users\luo20\Desktop
+```
+
+**❌ Issue 5: Duplicate Installation Detection**
+
+```
+NOTICE: Rules already exist in target directory!
+The AgentRules have already been installed in this location.
+```
+
+**✅ Solution**: Script automatically detects existing installations to avoid duplication
+
+- To reinstall: Delete existing `.rules` folder and run script again
+- To keep existing installation: Use existing rules directly, no need to reinstall
+
+**❌ Issue 6: Critical File Missing Error**
+
+```
+ERROR: Critical file missing: file-generation-safety-rules.mdc
+ERROR: Failed to copy file-generation-safety-rules.mdc
+```
+
+**✅ Solution**: This indicates core safety rule files are missing
+
+- Check if source directories are complete: `global-rules` and `project-rules` directories
+- Re-download complete AgentRules package
+- Ensure no file corruption during extraction
+
+### Built-in Error Handling Mechanisms
+
+install-ultra.bat script includes comprehensive error detection:
+
+1. **Directory Permission Check**: Automatically detects write permissions for target directory
+2. **Duplicate Installation Protection**: Detects existing installations to avoid overwriting
+3. **File Integrity Verification**: Checks if critical files exist
+4. **Encoding Compatibility**: Automatically adapts to different system encodings (CP936/CP950/CP932, etc.)
+5. **Error Status Tracking**: Records copy errors and missing file counts
 
 ### 🚀 Next Steps
 

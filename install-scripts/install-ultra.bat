@@ -684,6 +684,17 @@ if exist "%SOURCE_TEMPLATES_DIR%\archive-init-template.md" (
     echo WARNING: Source file not found: %SOURCE_TEMPLATES_DIR%\archive-init-template.md
 )
 
+if exist "%SOURCE_TEMPLATES_DIR%\template-config.yaml" (
+    copy "%SOURCE_TEMPLATES_DIR%\template-config.yaml" "%TEMPLATES_DIR%\" >nul 2>&1
+    if errorlevel 1 (
+        echo WARNING: Failed to copy template-config.yaml
+    ) else (
+        echo   Template configuration file installed: template-config.yaml
+    )
+) else (
+    echo WARNING: Source file not found: %SOURCE_TEMPLATES_DIR%\template-config.yaml
+)
+
 REM Create MCP Tools directory and copy management scripts
 echo Creating MCP Tools directory and copying management scripts...
 set "MCP_TOOLS_DIR=%TARGET_DIR%\mcp-tools"
@@ -743,9 +754,13 @@ if exist "%BASE_DIR%\scripts\validate-rules-consistency.ps1" (
 REM Add templates information to main.md
 echo ## Templates Directory >> "%MAIN_RULES%"
 echo. >> "%MAIN_RULES%"
-echo The templates/ directory contains initialization templates for AI context recording: >> "%MAIN_RULES%"
-echo - project-init-template.md - Template for creating project.context.md files >> "%MAIN_RULES%"
-echo - archive-init-template.md - Template for creating context.archive.md files >> "%MAIN_RULES%"
+echo The templates/ directory contains enhanced initialization templates for AI context recording: >> "%MAIN_RULES%"
+echo - project-init-template.md - Enhanced template for creating project.context.md files (v2.0) >> "%MAIN_RULES%"
+echo - archive-init-template.md - Enhanced template for creating context.archive.md files (v2.0) >> "%MAIN_RULES%"
+echo - template-config.yaml - Intelligent configuration file for template system >> "%MAIN_RULES%"
+echo. >> "%MAIN_RULES%"
+echo Enhanced features include: intelligent metadata, dynamic blocks, quality scoring, >> "%MAIN_RULES%"
+echo relationship management, and smart archiving strategies. >> "%MAIN_RULES%"
 echo. >> "%MAIN_RULES%"
 echo AI will automatically use these templates when initializing project context recording. >> "%MAIN_RULES%"
 echo Templates support variable replacement: {{PROJECT_NAME}}, {{TIMESTAMP}}, etc. >> "%MAIN_RULES%"

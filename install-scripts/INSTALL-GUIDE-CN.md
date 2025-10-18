@@ -270,11 +270,13 @@ install-scripts\install-ultra.bat C:\my-project
 
 ## 不同模式的文件数量
 
-| 模式          | .mdc文件数量  | 包含内容                                           |
-| ------------- | ------------- | -------------------------------------------------- |
-| **Frontend**  | 42 个.mdc文件 | 前端规则 + mermaid 图表支持 + 8 个Phase 2+3智能规则 |
-| **Backend**   | 41 个.mdc文件 | 后端规则（不含 mermaid）+ 8 个Phase 2+3智能规则     |
-| **Fullstack** | 43 个.mdc文件 | 前端 + 后端完整规则 + 优化后的智能规则分布         |
+| 模式          | 预期.mdc文件数量  | 实际可用文件 | 包含内容                                           |
+| ------------- | --------------- | ------------ | -------------------------------------------------- |
+| **Frontend**  | 42 个.mdc文件   | 约8-15个     | 前端规则 + mermaid 图表支持 + 核心安全规则         |
+| **Backend**   | 41 个.mdc文件   | 约8-15个     | 后端规则（不含 mermaid）+ 核心安全规则             |
+| **Fullstack** | 43 个.mdc文件   | 约8-15个     | 前端 + 后端完整规则 + 核心安全规则                 |
+
+> **⚠️ 重要说明**: 由于这是开发版本，许多高级规则文件尚未完全就绪。脚本会显示 WARNING 信息表示某些源文件未找到，这是正常现象。核心功能文件（P0-P1级别）会正常安装，确保基本功能可用。
 
 ## 如何使用安装的规则？
 
@@ -302,6 +304,36 @@ AI 会按照以下优先级顺序理解和执行规则:
 8. **P7 (300)**: 实用工具 - 辅助工具
 
 ## 遇到问题怎么办？
+
+### 安装过程中的WARNING信息说明
+
+**⚠️ 正常WARNING信息（无需担心）**
+
+安装过程中，您可能会看到大量类似的WARNING信息：
+
+```
+WARNING: Source file not found: xxx\unified-rules-base.mdc
+WARNING: Source file not found: xxx\ai-agent-intelligence-core.mdc
+WARNING: Source file not found: xxx\frontend-rules.mdc
+WARNING: Source file not found: xxx\backend-rules.mdc
+```
+
+**这些WARNING是正常的**，原因如下：
+
+- 🔧 **开发版本特性**: 当前版本是优化开发版，部分高级规则文件仍在完善中
+- ✅ **核心功能保证**: P0（核心安全）和P1（核心身份）级别的关键文件会正常安装
+- 📁 **目录结构完整**: 所有规则目录结构会正确创建，为后续更新做好准备
+- 🎯 **基本功能可用**: AI工具能正常识别和使用已安装的规则
+
+**✅ 成功安装的标志**
+
+看到以下信息表示安装成功：
+
+```
+SUCCESS: fullstack Rules Directory Created! (Final Release)
+Rules Directory: C:\your-path\.rules
+AgentRules fullstack Installation Complete!
+```
 
 ### 常见问题速查
 
@@ -349,6 +381,41 @@ install-scripts\install-ultra.bat C:\projects\demo-project fullstack
 ```
 mkdir C:\Users\luo20\Desktop
 ```
+
+**❌ 问题 5：重复安装检测**
+
+```
+NOTICE: Rules already exist in target directory!
+The AgentRules have already been installed in this location.
+```
+
+**✅ 解决**: 脚本自动检测已存在的安装，避免重复安装
+
+- 如需重新安装：删除现有的 `.rules` 文件夹后重新运行脚本
+- 如需保留现有安装：直接使用现有规则，无需重复安装
+
+**❌ 问题 6：关键文件缺失错误**
+
+```
+ERROR: Critical file missing: file-generation-safety-rules.mdc
+ERROR: Failed to copy file-generation-safety-rules.mdc
+```
+
+**✅ 解决**: 这表示核心安全规则文件缺失
+
+- 检查源目录是否完整：`global-rules` 和 `project-rules` 目录
+- 重新下载完整的 AgentRules 包
+- 确保解压时没有文件损坏
+
+### 脚本内置的错误处理机制
+
+install-ultra.bat 脚本包含完善的错误检测：
+
+1. **目录权限检查**: 自动检测目标目录的写入权限
+2. **重复安装防护**: 检测现有安装，避免覆盖
+3. **文件完整性验证**: 检查关键文件是否存在
+4. **编码兼容性**: 自动适配不同系统编码（CP936/CP950/CP932等）
+5. **错误状态跟踪**: 记录复制错误和缺失文件数量
 
 ## 高级用法
 

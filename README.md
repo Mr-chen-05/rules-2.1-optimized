@@ -45,7 +45,7 @@
 
 ## 🚀 快速开始（3分钟上手）
 
-### 📋 步骤1：环境检查
+#### 📋 步骤1：环境检查
 
 ```powershell
 # 检查必需环境
@@ -253,10 +253,11 @@ Rules 2.5.1/
 │           ├── mcp-zero-config-detection.mdc # 🔍 MCP零配置检测
 │           └── mermaid.mdc                 # 📊 Mermaid图表
 │
-├── 📋 智能模板系统
+├── 📋 智能模板系统 (v2.0)
 │   └── templates/                          # 🎨 智能项目模板
-│       ├── project-init-template.md        # 📋 项目初始化模板
-│       ├── archive-init-template.md        # 📦 归档项目模板
+│       ├── project-init-template.md        # 📋 增强版项目初始化模板 (v2.0)
+│       ├── archive-init-template.md        # 📦 增强版归档项目模板 (v2.0)
+│       ├── template-config.yaml            # ⚙️ 智能化配置文件
 │       └── [自定义模板]                    # 🛠️ 用户自定义模板
 │
 ├── 📚 核心教程和文档
@@ -290,7 +291,7 @@ Rules 2.5.1/
 | **install-scripts/** | 🚀 一键安装脚本 | ⭐⭐⭐⭐⭐ | 安装时使用 |
 | **global-rules/** | 📋 核心规则文件 | ⭐⭐⭐⭐⭐ | 每日使用 |
 | **project-rules/** | 🎯 模块化规则 | ⭐⭐⭐⭐⭐ | 每日使用 |
-| **templates/** | 🎨 智能项目模板 | ⭐⭐⭐⭐ | 项目初始化使用 |
+| **templates/** | 🎨 智能项目模板 (v2.0) | ⭐⭐⭐⭐ | 项目初始化使用 |
 | **tutorials/** | 🎓 使用教程 | ⭐⭐⭐⭐ | 学习阶段使用 |
 | **docs/** | 📚 详细文档 | ⭐⭐⭐⭐ | 遇到问题时查看 |
 | **mcp-scripts/** | 🔧 MCP工具配置 | ⭐⭐⭐ | 高级功能配置 |
