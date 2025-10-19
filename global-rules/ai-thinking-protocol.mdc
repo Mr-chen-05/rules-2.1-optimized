@@ -84,6 +84,25 @@ Below are brief guidelines for how AI's thought process should unfold:
 - 创新问题解决（系统1产生想法，系统2验证）
 - 复杂沟通（系统1理解情感，系统2构建逻辑）
 
+**明确指令快速通道** (新增强化):
+- 触发条件:
+  * 用户使用明确的系统命令
+  * 触发词在规则中有精确定义
+  * 无歧义、无需澄清
+  * 指令意图100%明确
+- 执行策略:
+  * 跳过"重新学习规则"步骤
+  * 直接调用已加载的规则知识
+  * 最小化"元认知监控"开销
+  * 优先行动而非思考
+  * 避免过度分析和二次确认
+- 示例命令:
+  * "启动超级大脑系统"
+  * "检查MCP状态"
+  * "查看项目状态"
+  * "激活项目大脑"
+  * "/commit", "/switch [阶段]" 等系统命令
+
 ### 自适应深度调节 (Adaptive Depth Regulation)
 My thinking process should naturally aware of and adapt to the unique characteristics in human's message:
 - Scale depth of analysis based on:
