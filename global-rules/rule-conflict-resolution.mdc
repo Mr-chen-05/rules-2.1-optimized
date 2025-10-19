@@ -6,23 +6,20 @@ alwaysApply: true
 priority: 1180
 
 # Version Management
-version: "2.7.0"
+version: "2.6.0"
 last_updated: "2025-10-19"
 author: "system"
 status: "stable"
 compatibility: "rule-system >= 2.0"
 
 changelog:
-  - version: "2.7.0"
+  - version: "2.6.0"
     date: "2025-10-19"
     changes:
       - "更新所有规则文件的实际优先级列表"
       - "重新组织优先级层次结构，反映当前配置"
       - "修复优先级冲突，确保列表与实际文件一致"
       - "添加新的MCP管理和智能策略规则"
-  - version: "2.6.0"
-    date: "2025-10-18"
-    changes:
       - "P0-1: 新增Level 0不可违反底线机制"
       - "重新定义Level 1-3优先级层次"
       - "添加完整执行逻辑和审计日志"
