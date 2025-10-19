@@ -16,8 +16,11 @@ changelog:
   - version: "2.6.0"
     date: "2025-10-19"
     changes:
-      - "Add version management system"
-      - "Standardize rule file structure"
+      - "P2-11: 新增评分算法实现细节(附录A)"
+      - "实现3个维度评分计算方法(Python函数)"
+      - "添加上下文因子计算(0.5-1.5调节)"
+      - "提供2个完整评分示例(Level 1和Level 5)"
+      - "建立实时权重调节机制"
 ---
 
 # 🎯 动态思考深度调节机制 (Dynamic Thinking Depth Regulation)

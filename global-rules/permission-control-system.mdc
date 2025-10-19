@@ -4,6 +4,22 @@ description: "权限控制系统 - 定义用户/AI/系统的角色权限和操�
 globs: ["**/*"]
 alwaysApply: true
 priority: 910
+
+# Version Management
+version: "2.6.0"
+last_updated: "2025-10-18"
+author: "system"
+status: "stable"
+compatibility: "rule-system >= 2.0"
+
+changelog:
+  - version: "2.6.0"
+    date: "2025-10-18"
+    changes:
+      - "P0-缺陷#26: 创建权限控制系统"
+      - "实现三角色权限模型 (User/AI/System)"
+      - "添加8层权限定义和操作审计"
+      - "建立权限分配矩阵和冲突解决机制"
 ---
 
 # 🔐 权限控制系统
