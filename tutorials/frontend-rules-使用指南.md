@@ -1034,7 +1034,7 @@ Get-Counter "\Process(node)\% Processor Time"
 ## 📋 版本信息
 
 - **当前版本**: Rules 2.6.0
-- **发布日期**: 2025年9月27日
+- **发布日期**: 2025年10月19日
 
 **📌 详细信息**: 请查看 [README.md](../README.md) 获取最新版本信息和更新日志。
 
