@@ -1,0 +1,607 @@
+---
+type: "global_rule"
+description: "审计日志系统 - 全面的操作审计和安全事件记录"
+globs: ["**/*"]
+priority: 950
+alwaysApply: true
+
+# Version Management
+version: "2.6.0"
+last_updated: "2025-10-18"
+author: "system"
+status: "stable"
+compatibility: "rule-system >= 2.0"
+
+changelog:
+  - version: "2.6.0"
+    date: "2025-10-18"
+    changes:
+      - "P2-7: 创建审计日志系统"
+      - "实现4级日志记录 (CRITICAL/WARNING/INFO/DEBUG)"
+      - "添加操作审计和安全事件跟踪"
+      - "实现日志轮转和归档机制"
+---
+
+# 📊 审计日志系统
+
+> **全面审计**: 记录所有关键操作和安全事件，提供完整的审计追踪能力
+
+## 🎯 系统概述
+
+审计日志系统为规则系统提供完整的操作追踪和安全监控：
+1. **操作审计**: 记录所有文件操作和系统变更
+2. **安全事件**: 追踪权限检查和异常行为
+3. **性能监控**: 记录性能指标和资源使用
+4. **合规支持**: 满足审计和合规要求
+
+## 📋 日志级别
+
+```yaml
+日志级别定义:
+  CRITICAL (严重):
+    - 安全违规事件
+    - 系统崩溃错误
+    - 数据损坏事件
+    - 权限突破尝试
+    - 敏感信息泄露
+    
+    示例:
+      [CRITICAL] 2025-10-18 10:30:00 | 检测到敏感信息泄露尝试
+      操作者: AI Agent
+      目标文件: project.context.md
+      敏感类型: API密钥
+      处理结果: 已阻止并脱敏
+      审计追踪: audit-2025-10-18-001
+  
+  WARNING (警告):
+    - 风险操作执行
+    - 性能降级事件
+    - 资源接近上限
+    - 配置不当警告
+    - 重试次数过多
+    
+    示例:
+      [WARNING] 2025-10-18 10:35:00 | 用户确认风险操作
+      操作类型: 删除归档文件
+      风险等级: HIGH
+      用户确认: 是
+      影响范围: 5个归档文件
+      审计追踪: audit-2025-10-18-002
+  
+  INFO (信息):
+    - 正常操作记录
+    - 状态变更事件
+    - 配置更新记录
+    - 用户指令执行
+    - 系统启动/关闭
+    
+    示例:
+      [INFO] 2025-10-18 10:40:00 | 项目记忆文件更新
+      操作者: AI Agent
+      文件路径: project.context.md
+      变更类型: 添加TODO项
+      变更大小: +120字节
+      耗时: 0.3秒
+  
+  DEBUG (调试):
+    - 详细调试信息
+    - 内部状态记录
+    - 性能分析数据
+    - 开发诊断信息
+    - 变量追踪记录
+    
+    示例:
+      [DEBUG] 2025-10-18 10:45:00 | 缓存查询命中
+      缓存类型: MCP检测缓存
+      缓存键: mcp-detection-cursor
+      命中率: 95%
+      响应时间: 2ms
+```
+
+## 📝 记录内容
+
+### 1. 操作日志 (Operation Log)
+
+```yaml
+操作日志结构:
+  基本信息:
+    - 时间戳: ISO 8601格式 (2025-10-18T10:30:00.123Z)
+    - 日志级别: CRITICAL/WARNING/INFO/DEBUG
+    - 操作类型: 文件操作/系统配置/用户交互等
+    - 操作者: User/AI Agent/System
+    - 会话ID: 唯一会话标识符
+  
+  详细信息:
+    - 操作目标: 文件路径/配置项/系统组件
+    - 操作内容: 具体执行的操作
+    - 影响范围: 受影响的资源
+    - 执行结果: 成功/失败/部分成功
+    - 错误信息: 失败时的详细错误
+  
+  性能指标:
+    - 开始时间: 操作开始时间戳
+    - 结束时间: 操作结束时间戳
+    - 耗时: 毫秒级精度
+    - 资源使用: CPU/内存/磁盘IO
+  
+  审计信息:
+    - 审计追踪ID: 唯一审计标识
+    - 关联操作: 相关的前序操作
+    - 风险等级: LOW/MEDIUM/HIGH/CRITICAL
+    - 合规标签: 合规要求标记
+
+日志格式 (JSON):
+  {
+    "timestamp": "2025-10-18T10:30:00.123Z",
+    "level": "INFO",
+    "type": "file_operation",
+    "operator": "AI Agent",
+    "session_id": "sess-20251018-001",
+    "operation": {
+      "action": "update",
+      "target": "project.context.md",
+      "section": "TODO",
+      "content_size": 120,
+      "backup_created": true
+    },
+    "result": {
+      "status": "success",
+      "duration_ms": 350,
+      "affected_lines": 5
+    },
+    "audit": {
+      "trace_id": "audit-2025-10-18-001",
+      "risk_level": "LOW",
+      "compliance": ["data-integrity"]
+    }
+  }
+
+日志格式 (文本):
+  [INFO] 2025-10-18 10:30:00.123 | file_operation | AI Agent | sess-20251018-001
+  Action: update project.context.md (TODO section)
+  Content: +120 bytes, 5 lines affected
+  Result: SUCCESS (350ms)
+  Audit: audit-2025-10-18-001 [LOW risk] [data-integrity]
+  Backup: .backups/project.context.md.20251018_103000.bak
+```
+
+### 2. 安全事件日志 (Security Event Log)
+
+```yaml
+安全事件类型:
+  权限检查事件:
+    - 权限验证: 验证操作权限
+    - 权限拒绝: 拒绝未授权操作
+    - 权限提升: 权限提升请求
+    - 权限变更: 权限配置变更
+    
+    记录内容:
+      - 请求者: 谁请求了权限
+      - 目标资源: 访问什么资源
+      - 所需权限: 需要什么权限
+      - 当前权限: 实际拥有的权限
+      - 检查结果: 允许/拒绝
+      - 拒绝原因: 拒绝的详细原因
+  
+  敏感操作事件:
+    - 敏感文件访问: 访问敏感文件
+    - 敏感信息处理: 处理敏感数据
+    - 配置变更: 修改系统配置
+    - 批量操作: 大规模批量操作
+    
+    记录内容:
+      - 操作类型: 具体敏感操作
+      - 敏感级别: CRITICAL/HIGH/MEDIUM
+      - 用户确认: 是否经用户确认
+      - 安全措施: 采取的安全措施
+      - 脱敏处理: 是否进行脱敏
+  
+  异常行为事件:
+    - 异常访问: 非正常访问模式
+    - 频繁失败: 连续操作失败
+    - 资源滥用: 资源使用异常
+    - 可疑操作: 可疑的操作序列
+    
+    记录内容:
+      - 异常类型: 异常行为类型
+      - 异常指标: 触发异常的指标
+      - 检测方法: 如何检测到异常
+      - 响应措施: 采取的响应措施
+      - 影响评估: 潜在影响评估
+
+安全事件示例:
+  权限拒绝:
+    [WARNING] 2025-10-18 10:30:00 | security_event | permission_denied
+    Request: AI Agent 尝试修改 PROTECTED 区块
+    Resource: project.context.md [项目元数据]
+    Required: ADMIN 权限
+    Current: WRITE 权限
+    Result: DENIED
+    Reason: PROTECTED区块需要用户明确授权
+    Audit: security-2025-10-18-001
+    
+  敏感信息检测:
+    [CRITICAL] 2025-10-18 10:35:00 | security_event | sensitive_data_detected
+    Type: API密钥检测
+    Pattern: sk-[a-zA-Z0-9]{32}
+    Location: project.context.md line 235
+    Action: 自动脱敏
+    Original: sk-abc123def456...
+    Masked: sk-***[REDACTED]***
+    Audit: security-2025-10-18-002
+    
+  异常访问:
+    [WARNING] 2025-10-18 10:40:00 | security_event | suspicious_activity
+    Activity: 短时间内5次连续权限请求被拒绝
+    Operator: AI Agent
+    Time Window: 60秒
+    Resources: [project.context.md, config.yaml, .env]
+    Risk Level: MEDIUM
+    Action: 触发安全审查
+    Audit: security-2025-10-18-003
+```
+
+### 3. 性能日志 (Performance Log)
+
+```yaml
+性能监控指标:
+  操作性能:
+    - 操作响应时间
+    - 吞吐量 (操作/秒)
+    - 并发操作数
+    - 队列等待时间
+    
+    记录示例:
+      [INFO] 2025-10-18 10:30:00 | performance | operation_metrics
+      Operation: file_read
+      Duration: 25ms (P50: 20ms, P95: 35ms, P99: 50ms)
+      Throughput: 40 ops/sec
+      Concurrent: 3 operations
+      Queue Wait: 5ms
+  
+  资源使用:
+    - CPU使用率
+    - 内存占用
+    - 磁盘IO
+    - 网络流量
+    
+    记录示例:
+      [INFO] 2025-10-18 10:35:00 | performance | resource_usage
+      CPU: 15% (peak: 45%)
+      Memory: 120MB / 512MB (23%)
+      Disk Read: 2.5MB/s
+      Disk Write: 1.2MB/s
+      Network: 0.5MB/s
+  
+  缓存性能:
+    - 缓存命中率
+    - 缓存响应时间
+    - 缓存容量使用
+    - 缓存失效次数
+    
+    记录示例:
+      [INFO] 2025-10-18 10:40:00 | performance | cache_metrics
+      Hit Rate: 95% (950/1000 requests)
+      Miss Rate: 5% (50/1000 requests)
+      Avg Response: 2ms (hit) / 150ms (miss)
+      Capacity: 45MB / 100MB (45%)
+      Evictions: 12 (last hour)
+
+性能警告阈值:
+  操作响应时间:
+    - INFO: < 100ms
+    - WARNING: 100-500ms
+    - CRITICAL: > 500ms
+  
+  资源使用率:
+    - INFO: < 70%
+    - WARNING: 70-85%
+    - CRITICAL: > 85%
+  
+  缓存命中率:
+    - INFO: > 90%
+    - WARNING: 70-90%
+    - CRITICAL: < 70%
+```
+
+## 📁 日志文件管理
+
+```yaml
+日志文件组织:
+  主日志文件:
+    路径: .logs/agent-audit.log
+    内容: 所有级别的操作日志
+    格式: 文本格式 (易读)
+    轮转: 每日轮转
+    保留: 30天
+  
+  安全日志文件:
+    路径: .logs/security-events.log
+    内容: 安全相关事件
+    格式: JSON格式 (易分析)
+    轮转: 每日轮转
+    保留: 90天 (合规要求)
+  
+  性能日志文件:
+    路径: .logs/performance.log
+    内容: 性能指标数据
+    格式: CSV格式 (易统计)
+    轮转: 每周轮转
+    保留: 14天
+  
+  错误日志文件:
+    路径: .logs/errors.log
+    内容: WARNING和CRITICAL级别
+    格式: 文本格式
+    轮转: 每日轮转
+    保留: 60天
+
+日志轮转策略:
+  触发条件:
+    - 时间触发: 每日00:00执行
+    - 大小触发: 文件超过50MB
+    - 手动触发: 用户执行轮转命令
+  
+  轮转流程:
+    1. 检查当前日志文件
+    2. 重命名为: <filename>.YYYYMMDD.log
+    3. 压缩归档: <filename>.YYYYMMDD.log.gz
+    4. 创建新的日志文件
+    5. 清理过期归档文件
+  
+  文件命名:
+    当前文件: agent-audit.log
+    归档文件: agent-audit.20251018.log.gz
+    索引文件: agent-audit.index.json
+
+日志清理策略:
+  自动清理:
+    - 每周日执行
+    - 删除超期文件
+    - 压缩历史文件
+    - 更新索引
+  
+  保留规则:
+    - 最近7天: 保留所有级别
+    - 7-30天: 保留INFO及以上
+    - 30-90天: 仅保留WARNING及以上
+    - 90天以上: 仅保留CRITICAL
+  
+  手动清理:
+    命令: /清理日志 [天数]
+    示例: /清理日志 30 → 删除30天前的日志
+```
+
+## 📊 日志查询和分析
+
+```yaml
+查询命令:
+  查看最近日志:
+    - /查看日志 → 显示最近50条
+    - /查看日志 100 → 显示最近100条
+    - /查看日志 today → 显示今天的日志
+  
+  按级别过滤:
+    - /查看日志 CRITICAL → 仅显示严重错误
+    - /查看日志 WARNING → 显示警告及以上
+    - /查看日志 ERROR → 显示错误日志
+  
+  按类型过滤:
+    - /查看安全日志 → 显示安全事件
+    - /查看性能日志 → 显示性能指标
+    - /查看操作日志 → 显示操作记录
+  
+  时间范围查询:
+    - /查看日志 2025-10-18 → 指定日期
+    - /查看日志 last-hour → 最近1小时
+    - /查看日志 last-24h → 最近24小时
+
+统计分析:
+  操作统计:
+    - 总操作次数
+    - 成功/失败比例
+    - 操作类型分布
+    - 平均响应时间
+    - 高峰时段分析
+  
+  安全统计:
+    - 安全事件数量
+    - 权限拒绝次数
+    - 敏感操作统计
+    - 异常行为检测
+    - 风险等级分布
+  
+  性能统计:
+    - 平均响应时间
+    - P95/P99延迟
+    - 资源使用峰值
+    - 缓存命中率
+    - 性能趋势分析
+
+报告生成:
+  日报:
+    生成时间: 每日23:59
+    内容: 当日操作统计、安全事件、性能指标
+    格式: Markdown
+    保存路径: .logs/reports/daily-report-YYYYMMDD.md
+  
+  周报:
+    生成时间: 每周日23:59
+    内容: 周度趋势、异常分析、改进建议
+    格式: Markdown
+    保存路径: .logs/reports/weekly-report-YYYYWW.md
+  
+  月报:
+    生成时间: 每月最后一天23:59
+    内容: 月度总结、合规审计、系统健康度
+    格式: PDF
+    保存路径: .logs/reports/monthly-report-YYYYMM.pdf
+```
+
+## 🔍 实时监控和告警
+
+```yaml
+实时监控:
+  监控指标:
+    - 错误率: CRITICAL/WARNING事件频率
+    - 性能指标: 响应时间、资源使用
+    - 安全事件: 异常访问、权限违规
+    - 系统健康: 组件状态、服务可用性
+  
+  监控频率:
+    - 实时事件: 立即记录
+    - 性能指标: 每分钟采样
+    - 资源使用: 每5分钟采样
+    - 健康检查: 每10分钟检查
+
+告警机制:
+  告警级别:
+    P0 (紧急):
+      - 系统崩溃
+      - 数据损坏
+      - 安全突破
+      - 立即响应
+    
+    P1 (重要):
+      - 性能严重降级
+      - 资源即将耗尽
+      - 多次权限违规
+      - 1小时内响应
+    
+    P2 (一般):
+      - 性能轻微降级
+      - 配置警告
+      - 偶发错误
+      - 4小时内响应
+  
+  告警方式:
+    - 日志记录: 所有告警写入日志
+    - 控制台输出: CRITICAL告警立即显示
+    - 用户通知: P0/P1告警通知用户
+    - 邮件通知: 配置后发送邮件
+  
+  告警抑制:
+    - 重复告警: 5分钟内相同告警只发送一次
+    - 告警风暴: 1分钟内超过10个告警触发抑制
+    - 维护窗口: 维护期间抑制非CRITICAL告警
+
+告警示例:
+  [ALERT-P0] 2025-10-18 10:30:00 | system_crash
+  Severity: CRITICAL
+  Component: context-recorder-system
+  Error: 项目记忆文件损坏，无法读取
+  Impact: 系统无法正常工作
+  Action: 已尝试从备份恢复
+  Status: 恢复成功
+  Duration: 30秒
+  Audit: alert-2025-10-18-001
+```
+
+## 🔒 日志安全和合规
+
+```yaml
+日志安全:
+  敏感信息处理:
+    - 自动检测: 密码、密钥、token等
+    - 自动脱敏: 敏感信息自动打码
+    - 访问控制: 日志文件权限限制
+    - 加密存储: 安全日志加密存储
+  
+  脱敏规则:
+    密码: password=***
+    API密钥: sk-***[REDACTED]***
+    邮箱: u***@example.com
+    IP地址: 192.168.***.***
+    手机号: 138****5678
+  
+  访问控制:
+    - 日志目录权限: 仅系统和管理员
+    - 查询权限: 需要明确授权
+    - 导出权限: 仅管理员可导出
+    - 删除权限: 禁止删除审计日志
+
+合规要求:
+  数据保留:
+    - 操作日志: 30天
+    - 安全日志: 90天
+    - 审计日志: 1年
+    - 合规日志: 根据法规要求
+  
+  完整性保证:
+    - 日志不可篡改
+    - 顺序写入
+    - 哈希校验
+    - 备份存储
+  
+  审计追踪:
+    - 每个操作可追溯
+    - 关联操作串联
+    - 责任人明确
+    - 时间戳精确
+
+合规标签:
+  - GDPR: 数据隐私合规
+  - SOX: 财务审计合规
+  - HIPAA: 医疗数据合规
+  - ISO27001: 信息安全合规
+```
+
+## 🛠️ 集成说明
+
+```yaml
+与其他规则协调:
+  error-recovery-system:
+    - 错误恢复操作记录到审计日志
+    - 备份/恢复操作全程审计
+    - 失败原因详细记录
+  
+  permission-control-system:
+    - 权限检查结果记录
+    - 权限违规事件记录
+    - 权限变更审计
+  
+  context-recorder-system:
+    - 记录文件操作审计
+    - 数据变更追踪
+    - 用户操作记录
+
+日志记录API:
+  log(level, type, message, metadata):
+    - level: 日志级别
+    - type: 日志类型
+    - message: 日志消息
+    - metadata: 附加元数据
+  
+  audit(operation, result, details):
+    - operation: 操作描述
+    - result: 操作结果
+    - details: 详细信息
+  
+  alert(severity, message, action):
+    - severity: 告警级别
+    - message: 告警消息
+    - action: 响应措施
+
+最佳实践:
+  开发建议:
+    - 关键操作必须记录
+    - 敏感操作详细审计
+    - 错误信息完整记录
+    - 性能数据定期采集
+  
+  运维建议:
+    - 定期检查日志文件
+    - 分析异常模式
+    - 优化告警阈值
+    - 及时处理告警
+  
+  安全建议:
+    - 保护日志文件安全
+    - 定期审计安全日志
+    - 监控异常访问
+    - 合规性定期检查
+```
+
+---
+
+**💡 使用提示**: 审计日志系统会自动记录所有关键操作和安全事件。通过 `/查看日志` 命令可以随时查询历史记录。建议定期查看安全日志和性能报告，及时发现和处理潜在问题。
