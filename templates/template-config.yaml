@@ -3,7 +3,7 @@
 # 定义项目类型、触发条件、分类规则等智能化配置
 
 version: "2.0-enhanced"
-last_updated: "2025-01-17"
+last_updated: "2025-10-18"
 compatibility: "context-recorder-system v2.0+"
 
 # Template System v2.0 Configuration

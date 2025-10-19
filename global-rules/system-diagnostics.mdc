@@ -4,6 +4,20 @@ description: "系统诊断工具 - 全面的系统健康检查和故障排查框
 globs: ["**/*"]
 alwaysApply: true
 priority: 900
+
+# Version Management
+version: "2.6.0"
+last_updated: "2025-10-19"
+author: "system"
+status: "stable"
+compatibility: "rule-system >= 2.0"
+
+changelog:
+  - version: "2.6.0"
+    date: "2025-10-19"
+    changes:
+      - "Add version management system"
+      - "Standardize rule file structure"
 ---
 
 # 🔧 系统诊断工具

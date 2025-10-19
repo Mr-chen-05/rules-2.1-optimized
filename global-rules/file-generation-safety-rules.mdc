@@ -4,6 +4,20 @@ description: "文件生成安全规则 - 强制性用户确认机制，防止AI�
 globs: ["**/*"]
 alwaysApply: true
 priority: 1200
+
+# Version Management
+version: "2.6.0"
+last_updated: "2025-10-19"
+author: "system"
+status: "stable"
+compatibility: "rule-system >= 2.0"
+
+changelog:
+  - version: "2.6.0"
+    date: "2025-10-19"
+    changes:
+      - "Add version management system"
+      - "Standardize rule file structure"
 ---
 
 # 🚨 文件生成安全规则（死命令）

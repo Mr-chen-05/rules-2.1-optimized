@@ -3,6 +3,20 @@ type: "global_rule"
 description: "Context7 知识预载标准 - 修复Bug与新项目启动前的前置步骤"
 priority: 450
 alwaysApply: false
+
+# Version Management
+version: "2.6.0"
+last_updated: "2025-10-19"
+author: "system"
+status: "stable"
+compatibility: "rule-system >= 2.0"
+
+changelog:
+  - version: "2.6.0"
+    date: "2025-10-19"
+    changes:
+      - "Add version management system"
+      - "Standardize rule file structure"
 ---
 
 # 🧠 Context7 知识预载标准（修复/新项目前置）

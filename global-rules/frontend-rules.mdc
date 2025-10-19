@@ -4,6 +4,20 @@ description: "前端开发AI助手规则 - 智能化企业级标准，集成最�
 globs: ["**/*"]
 alwaysApply: true
 priority: 860
+
+# Version Management
+version: "2.6.0"
+last_updated: "2025-10-19"
+author: "system"
+status: "stable"
+compatibility: "rule-system >= 2.0"
+
+changelog:
+  - version: "2.6.0"
+    date: "2025-10-19"
+    changes:
+      - "Add version management system"
+      - "Standardize rule file structure"
 ---
 
 # 🎨 前端开发 AI 助手规则 - 智能化升级版

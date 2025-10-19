@@ -99,3 +99,5 @@ enterprise-test-reports/**
 #上下文管理
 context.archive.md
 project.context.md
+fix.md
+fix-progress.md

@@ -6,6 +6,20 @@ priority: 970
 alwaysApply: false
 dependencies: ["context-recorder-system.mdc"]
 integrations: ["context-recorder-system", "intelligent-recommendation-engine"]
+
+# Version Management
+version: "2.6.0"
+last_updated: "2025-10-19"
+author: "system"
+status: "stable"
+compatibility: "rule-system >= 2.0"
+
+changelog:
+  - version: "2.6.0"
+    date: "2025-10-19"
+    changes:
+      - "Add version management system"
+      - "Standardize rule file structure"
 ---
 
 # 🧠 超级大脑系统

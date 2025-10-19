@@ -4,6 +4,20 @@ description: "AI伦理边界规则 - 确保AI行为符合伦理标准和社会�
 globs: ["**/*"]
 alwaysApply: true
 priority: 1090
+
+# Version Management
+version: "2.6.0"
+last_updated: "2025-10-19"
+author: "system"
+status: "stable"
+compatibility: "rule-system >= 2.0"
+
+changelog:
+  - version: "2.6.0"
+    date: "2025-10-19"
+    changes:
+      - "Add version management system"
+      - "Standardize rule file structure"
 ---
 
 # 🛡️ AI伦理边界规则 (AI Ethical Boundaries)

@@ -4,6 +4,20 @@ description: "MCP统一管理策略 - 整合检测、推荐、配置、同步等
 globs: ["**/*"]
 priority: 990
 alwaysApply: true
+
+# Version Management
+version: "2.6.0"
+last_updated: "2025-10-19"
+author: "system"
+status: "stable"
+compatibility: "rule-system >= 2.0"
+
+changelog:
+  - version: "2.6.0"
+    date: "2025-10-19"
+    changes:
+      - "Add version management system"
+      - "Standardize rule file structure"
 ---
 
 # 🌐 MCP统一管理策略

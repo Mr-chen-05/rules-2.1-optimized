@@ -4,6 +4,20 @@ description: "知识创造发现框架 - 智能知识挖掘、创新思维和学
 globs: ["**/*"]
 alwaysApply: true
 priority: 1120
+
+# Version Management
+version: "2.6.0"
+last_updated: "2025-10-19"
+author: "system"
+status: "stable"
+compatibility: "rule-system >= 2.0"
+
+changelog:
+  - version: "2.6.0"
+    date: "2025-10-19"
+    changes:
+      - "Add version management system"
+      - "Standardize rule file structure"
 ---
 
 # 🔬 知识创造与发现框架 (Knowledge Creation and Discovery Framework)

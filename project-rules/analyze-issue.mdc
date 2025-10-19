@@ -4,6 +4,20 @@ description: "GitHub issue analysis and implementation specification - GitHub问
 globs: ["**/*"]
 priority: 300
 alwaysApply: false
+
+# Version Management
+version: "2.6.0"
+last_updated: "2025-10-19"
+author: "system"
+status: "stable"
+compatibility: "rule-system >= 2.0"
+
+changelog:
+  - version: "2.6.0"
+    date: "2025-10-19"
+    changes:
+      - "Add version management system"
+      - "Standardize rule file structure"
 ---
 
 # 🔍 Issue Analysis - 问题分析

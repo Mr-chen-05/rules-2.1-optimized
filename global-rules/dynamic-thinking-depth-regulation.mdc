@@ -4,6 +4,20 @@ description: "动态思考深度调节 - 基于任务复杂度和用户需求智
 globs: ["**/*"]
 alwaysApply: true
 priority: 1150
+
+# Version Management
+version: "2.6.0"
+last_updated: "2025-10-19"
+author: "system"
+status: "stable"
+compatibility: "rule-system >= 2.0"
+
+changelog:
+  - version: "2.6.0"
+    date: "2025-10-19"
+    changes:
+      - "Add version management system"
+      - "Standardize rule file structure"
 ---
 
 # 🎯 动态思考深度调节机制 (Dynamic Thinking Depth Regulation)

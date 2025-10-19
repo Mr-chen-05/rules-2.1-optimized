@@ -4,6 +4,20 @@ description: "Complete bug-fixing workflow from issue to PR - 从问题到PR的�
 globs: ["**/*"]
 priority: 600
 alwaysApply: false
+
+# Version Management
+version: "2.6.0"
+last_updated: "2025-10-19"
+author: "system"
+status: "stable"
+compatibility: "rule-system >= 2.0"
+
+changelog:
+  - version: "2.6.0"
+    date: "2025-10-19"
+    changes:
+      - "Add version management system"
+      - "Standardize rule file structure"
 ---
 
 # 🐛 Bug Fix Workflow - Bug修复工作流

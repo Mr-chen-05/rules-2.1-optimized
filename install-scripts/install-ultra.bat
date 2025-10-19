@@ -777,7 +777,7 @@ echo Enhanced features include: intelligent metadata, dynamic blocks, quality sc
 echo relationship management, and smart archiving strategies. >> "%MAIN_RULES%"
 echo. >> "%MAIN_RULES%"
 echo AI will automatically use these templates when initializing project context recording. >> "%MAIN_RULES%"
-echo Templates support variable replacement: {{PROJECT_NAME}}, {{TIMESTAMP}}, etc. >> "%MAIN_RULES%"
+echo Templates support variable replacement: ${PROJECT_NAME}, ${TIMESTAMP}, etc. >> "%MAIN_RULES%"
 echo. >> "%MAIN_RULES%"
 
 REM Add MCP tools information to main.md

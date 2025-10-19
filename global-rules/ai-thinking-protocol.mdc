@@ -4,6 +4,20 @@ description: "AI思维协议 - 智能思考深度调节和认知负载管理"
 globs: ["**/*"]
 alwaysApply: true
 priority: 1160
+
+# Version Management
+version: "2.6.0"
+last_updated: "2025-10-19"
+author: "system"
+status: "stable"
+compatibility: "rule-system >= 2.0"
+
+changelog:
+  - version: "2.6.0"
+    date: "2025-10-19"
+    changes:
+      - "Add version management system"
+      - "Standardize rule file structure"
 ---
 
 # 🧠 AI思维协议 (Anthropic Thinking Protocol)

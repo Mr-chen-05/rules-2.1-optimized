@@ -4,6 +4,20 @@ description: "Context Loader与记录员系统集成配置 - 解决功能重叠�
 priority: 900
 alwaysApply: true
 integrations: ["context-loader", "context-recorder-system", "super-brain-system"]
+
+# Version Management
+version: "2.6.0"
+last_updated: "2025-10-19"
+author: "system"
+status: "stable"
+compatibility: "rule-system >= 2.0"
+
+changelog:
+  - version: "2.6.0"
+    date: "2025-10-19"
+    changes:
+      - "Add version management system"
+      - "Standardize rule file structure"
 ---
 
 # 🔗 Context Systems Integration - 上下文系统集成

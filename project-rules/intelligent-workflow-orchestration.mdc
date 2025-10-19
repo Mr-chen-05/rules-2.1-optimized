@@ -5,6 +5,20 @@ globs: ["**/*"]
 alwaysApply: false
 priority: 910
 dependencies: ["intelligent-project-management.mdc"]
+
+# Version Management
+version: "2.6.0"
+last_updated: "2025-10-19"
+author: "system"
+status: "stable"
+compatibility: "rule-system >= 2.0"
+
+changelog:
+  - version: "2.6.0"
+    date: "2025-10-19"
+    changes:
+      - "Add version management system"
+      - "Standardize rule file structure"
 ---
 
 # 🚀 企业级智能工作流编排系统

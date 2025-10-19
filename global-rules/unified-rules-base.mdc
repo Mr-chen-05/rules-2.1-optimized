@@ -4,6 +4,20 @@ description: "增强统一规则基准 - 确保不同AI工具功能完全一致�
 globs: ["**/*"]
 alwaysApply: true
 priority: 920
+
+# Version Management
+version: "2.6.0"
+last_updated: "2025-10-19"
+author: "system"
+status: "stable"
+compatibility: "rule-system >= 2.0"
+
+changelog:
+  - version: "2.6.0"
+    date: "2025-10-19"
+    changes:
+      - "Add version management system"
+      - "Standardize rule file structure"
 ---
 
 # 🎯 增强统一AI助手规则基准 🚀

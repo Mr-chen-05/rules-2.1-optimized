@@ -4,6 +4,20 @@ description: "AI代理智能核心规则 - 统一智能决策引擎和工作流�
 globs: ["**/*"]
 alwaysApply: true
 priority: 950
+
+# Version Management
+version: "2.6.0"
+last_updated: "2025-10-19"
+author: "system"
+status: "stable"
+compatibility: "rule-system >= 2.0"
+
+changelog:
+  - version: "2.6.0"
+    date: "2025-10-19"
+    changes:
+      - "Add version management system"
+      - "Standardize rule file structure"
 ---
 
 # 🤖 AI代理智能核心规则

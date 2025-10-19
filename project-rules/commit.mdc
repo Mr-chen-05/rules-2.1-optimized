@@ -5,6 +5,20 @@ globs: ["**/*"]
 priority: 680
 alwaysApply: true
 integrations: ["super-brain-system", "code-quality-check", "changelog-management", "mcp-intelligent-strategy", "intelligent-project-management"]
+
+# Version Management
+version: "2.6.0"
+last_updated: "2025-10-19"
+author: "system"
+status: "stable"
+compatibility: "rule-system >= 2.0"
+
+changelog:
+  - version: "2.6.0"
+    date: "2025-10-19"
+    changes:
+      - "Add version management system"
+      - "Standardize rule file structure"
 ---
 
 # 📝 Commit Unified Workflow - 统一提交工作流
