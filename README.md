@@ -522,6 +522,32 @@ install-scripts\install-ultra.bat "你的项目路径" fullstack
 | `/feedback` | 智能反馈 | 交互式用户反馈 | `feedback-enhanced.mdc` |
 | `/mcp-intelligent-strategy` | MCP智能策略 | 自动优化工具使用 | `mcp-intelligent-strategy.mdc` |
 
+### 🔐 系统管理命令 (v1.0+v2.0新增)
+
+#### 权限控制系统
+| 命令 | 功能 | 适用场景 | 对应文件 |
+|------|------|----------|----------|
+| `/permissions` | 查看权限 | 查看当前权限 | `permission-control-system.mdc` |
+| `/audit-log` | 查看审计日志 | 查看操作记录 | `permission-control-system.mdc` |
+| `/access-request [resource]` | 请求权限 | 请求额外权限 | `permission-control-system.mdc` |
+
+#### 系统诊断工具
+| 命令 | 功能 | 适用场景 | 对应文件 |
+|------|------|----------|----------|
+| `/diagnose-rules` | 规则诊断 | 检查规则系统状态 | `system-diagnostics.mdc` |
+| `/diagnose-context` | 上下文诊断 | 检查上下文完整性 | `system-diagnostics.mdc` |
+| `/diagnose-permissions` | 权限诊断 | 检查权限配置 | `system-diagnostics.mdc` |
+| `/diagnose-performance` | 性能诊断 | 获取性能报告 | `system-diagnostics.mdc` |
+| `/dashboard` | 诊断仪表板 | 实时系统状态 | `system-diagnostics.mdc` |
+
+#### 审计日志系统
+| 命令 | 功能 | 适用场景 | 对应文件 |
+|------|------|----------|----------|
+| `/查看日志` | 查看日志 | 查看系统日志 | `audit-logging-system.mdc` |
+| `/查看安全日志` | 安全日志 | 查看安全事件 | `audit-logging-system.mdc` |
+| `/查看性能日志` | 性能日志 | 查看性能指标 | `audit-logging-system.mdc` |
+| `/清理日志 [天数]` | 清理日志 | 清理过期日志 | `audit-logging-system.mdc` |
+
 ### ⚡ 快速操作命令
 
 #### 🎯 智能快捷操作
