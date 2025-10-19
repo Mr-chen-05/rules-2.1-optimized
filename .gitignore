@@ -96,6 +96,10 @@ tools/
 releases/** 
 enterprise-test-reports/**
 
+# 维护脚本 (不跟踪)
+scripts/remove-bom.ps1
+scripts/validate-rules-v2.ps1
+
 #上下文管理
 context.archive.md
 project.context.md
