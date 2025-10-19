@@ -421,3 +421,251 @@ AI助手应该维护一个确认状态，跟踪：
 ```
 
 **安全增强版本 v1.0 - 保护项目记忆的每一个细节**
+
+---
+
+## 🔐 MCP 工具权限管理系统 (新增)
+
+### MCP 工具分类与权限
+
+白名单工具 (可直接使用，部分操作需授权):
+  
+  文件系统工具 (server-filesystem | b-ideaProgram-projects | e-vue-projects):
+    无需授权操作:
+      - 读取文件 (read_file, read_text_file)
+      - 列出目录 (list_directory)
+      - 搜索文件 (search_files)
+      - 获取文件信息 (get_file_info)
+      - 目录树查看 (directory_tree)
+    
+    需要授权操作:
+      - 写入文件 (write_file, edit_file)
+      - 创建目录 (create_directory)
+      - 移动文件 (move_file)
+      - 批量操作 (read_multiple_files)
+    
+    禁止操作:
+      - 删除文件 (需明确指令 + 二次确认)
+      - 修改系统文件
+      - 操作冻结目录
+  
+  GitHub 集成 (server-github):
+    无需授权操作:
+      - 查看仓库信息
+      - 读取文件内容
+      - 列出提交记录
+      - 查看Issue和PR
+      - 搜索代码
+    
+    需要授权操作:
+      - 创建分支
+      - 提交代码
+      - 创建Issue
+      - 创建PR
+      - Fork仓库
+    
+    禁止操作:
+      - 强制推送 (force push)
+      - 删除分支
+      - 合并到主分支 (需明确确认)
+      - 修改仓库设置
+  
+  记忆系统 (server-memory):
+    无需授权操作:
+      - 读取知识图谱
+      - 搜索节点
+      - 查看实体信息
+    
+    需要授权操作:
+      - 创建实体
+      - 创建关系
+      - 添加观察
+      - 修改节点信息
+    
+    禁止操作:
+      - 删除实体（需二次确认）
+      - 批量删除
+      - 存储敏感信息
+  
+  反馈增强 (mcp-feedback-enhanced):
+    无需授权操作:
+      - 显示反馈界面
+      - 收集用户输入
+      - 获取系统信息
+    
+    需要授权操作:
+      - (无，用户主动交互)
+    
+    禁止操作:
+      - (无特殊限制)
+  
+  知识库检索 (context7):
+    无需授权操作:
+      - 解析库ID
+      - 获取文档
+      - 搜索知识
+    
+    需要授权操作:
+      - (无，只读工具)
+    
+    禁止操作:
+      - (无，只读工具)
+
+灰名单工具 (需要逐项授权):
+  
+  数据库工具 (MySQL_Server):
+    所有操作需授权:
+      - 执行SELECT查询 (需确认)
+      - 执行INSERT/UPDATE (需确认 + 显示SQL)
+      - 执行DELETE (需二次确认 + 显示影响范围)
+      - 执行DDL (需二次确认 + 备份提醒)
+    
+    特殊保护:
+      - DROP操作需输入表名确认
+      - TRUNCATE需二次确认
+      - 批量DELETE需显示影响行数
+  
+  Testsprite 测试工具:
+    需要授权操作:
+      - 初始化测试环境
+      - 生成测试代码
+      - 执行测试
+      - 修改项目配置
+    
+    自动授权场景:
+      - 用户明确说"开始测试"
+      - 用户使用测试命令
+  
+  其他MCP服务器:
+    默认策略:
+      - 首次使用需说明功能
+      - 写操作需授权
+      - 敏感操作需二次确认
+
+黑名单操作 (绝对禁止):
+  
+  系统级危险操作:
+    - 格式化磁盘
+    - 修改系统配置
+    - 操作注册表（Windows）
+    - 修改环境变量（除项目内）
+    - 修改hosts文件
+    - 操作系统服务
+  
+  数据库危险操作:
+    - DROP DATABASE（除非明确且二次确认）
+    - 无WHERE的DELETE
+    - 无WHERE的UPDATE
+    - 修改系统表
+  
+  版本控制危险操作:
+    - git push --force 到主分支
+    - git reset --hard（未备份）
+    - 删除远程分支
+    - 修改已推送的提交历史
+
+### 权限检查流程
+
+操作前检查:
+  function check_mcp_permission(tool, operation, params):
+      # 1. 检查工具类别
+      tool_category = get_tool_category(tool)
+      
+      if tool_category == "blacklist":
+          return DENY("该操作被永久禁止")
+      
+      # 2. 检查操作类型
+      if operation in get_prohibited_operations(tool):
+          return DENY("该工具的此操作被禁止")
+      
+      # 3. 检查是否需要授权
+      if operation in get_auth_required_operations(tool):
+          if not has_user_authorization(tool, operation):
+              return REQUEST_AUTH(generate_auth_prompt(tool, operation, params))
+      
+      # 4. 检查冻结目录
+      if is_file_operation(operation):
+          target_path = params.get("path")
+          if is_frozen_directory(target_path):
+              return DENY("目标路径被冻结保护")
+      
+      # 5. 检查敏感信息
+      if is_write_operation(operation):
+          if contains_sensitive_data(params):
+              return DENY("检测到敏感信息，拒绝操作")
+      
+      # 6. 全部通过
+      return ALLOW()
+
+授权请求模板:
+  "🔒 MCP 工具授权请求
+   
+   工具名称: {tool_name}
+   操作类型: {operation}
+   操作说明: {description}
+   
+   📋 操作详情:
+   {formatted_params}
+   
+   ⚠️ 影响范围:
+   - 将修改: {affected_resources}
+   - 可能影响: {potential_impacts}
+   
+   🛡️ 安全提示:
+   {safety_warnings}
+   
+   是否授权此操作? (y/n)
+   [y] 授权执行
+   [n] 拒绝操作
+   [d] 显示更多详情"
+
+### 权限缓存机制
+
+会话级授权缓存:
+  # 避免重复询问相同操作
+  authorization_cache = {
+      "session_id": "sess_20251018_001",
+      "cached_authorizations": [
+          {
+              "tool": "server-filesystem",
+              "operation": "write_file",
+              "scope": "project-memory/active/",
+              "granted_at": "2025-10-18T10:30:00Z",
+              "valid_until": "session_end",
+              "conditions": ["no_sensitive_data", "not_frozen_dir"]
+          }
+      ]
+  }
+  
+  缓存策略:
+    单次授权: 仅本次操作有效
+    会话授权: 本次会话内相同操作有效
+    持久授权: 跨会话有效（仅限低风险操作）
+    
+  缓存失效:
+    - 会话结束
+    - 用户明确撤销
+    - 操作条件变化
+    - 检测到风险变化
+
+### 审计日志
+
+MCP操作审计:
+  记录内容:
+    - 时间戳
+    - 工具名称
+    - 操作类型
+    - 参数详情
+    - 授权状态
+    - 执行结果
+    - 用户决策
+    
+  日志文件:
+    - .logs/mcp-operations.log
+    - 每日轮转
+    - 保留30天
+    
+  高危操作特别记录:
+    - 单独日志: .logs/mcp-sensitive-ops.log
+    - 永久保留
+    - 包含完整上下文
