@@ -97,7 +97,10 @@ releases/**
 enterprise-test-reports/**
 
 #上下文管理
-context.archive.md
-project.context.md
-fix.md
-fix-progress.md
+context.archive.md/
+project.context.md/
+fix.md/
+fix-progress.md/
+规则系统修复方案-v1.0.md/
+规则系统修复方案-v2.0.md/
+规则系统协作效果分析报告.md/

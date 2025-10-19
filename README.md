@@ -205,7 +205,7 @@ Rules 2.5.1/
 │       └── 安装脚本使用说明.md              # 📚 MCP安装详细说明
 │
 ├── 📝 规则文件（核心功能）
-│   ├── global-rules/                       # 📋 全局规则文件 (22个)
+│   ├── global-rules/                       # 📋 全局规则文件 (27个)
 │   │   ├── ai-agent-intelligence-core.mdc  # 🧠 AI智能核心
 │   │   ├── frontend-rules.mdc              # 🎨 前端完整规则
 │   │   ├── backend-rules.mdc               # 🔧 后端完整规则
@@ -214,8 +214,8 @@ Rules 2.5.1/
 │   │   ├── brain-recorder-integration.mdc  # 🧠 大脑-记录员集成
 │   │   ├── context-systems-integration.mdc # 🔗 上下文系统集成
 │   │   ├── unified-rules-base.mdc          # 📋 统一规则基础
-│   │   ├── permission-control-system.mdc   # 🔐 权限控制系统（新增）
-│   │   ├── system-diagnostics.mdc          # 🔧 系统诊断工具（新增）
+│   │   ├── permission-control-system.mdc   # 🔐 权限控制系统（v1.0新增）
+│   │   ├── system-diagnostics.mdc          # 🔧 系统诊断工具（v1.0新增）
 │   │   ├── intelligent-recommendation-engine.mdc # 🎯 智能推荐引擎
 │   │   ├── ai-ethical-boundaries.mdc       # 🛡️ AI伦理边界
 │   │   ├── ai-thinking-protocol.mdc        # 🤔 AI思维协议
@@ -225,7 +225,13 @@ Rules 2.5.1/
 │   │   ├── knowledge-creation-discovery-framework.mdc # 📚 知识创建发现框架
 │   │   ├── multimodal-interaction-framework.mdc # 🎭 多模态交互框架
 │   │   ├── rule-conflict-resolution.mdc     # ⚖️ 规则冲突解决
-│   │   └── system-integration-config.mdc    # ⚙️ 系统集成配置
+│   │   ├── system-integration-config.mdc    # ⚙️ 系统集成配置
+│   │   ├── error-recovery-system.mdc        # 🔄 错误恢复系统（v1.0新增）
+│   │   ├── audit-logging-system.mdc         # 📋 审计日志系统（v1.0新增）
+│   │   ├── memory-system-integration.mdc    # 🧠 记忆系统集成
+│   │   ├── performance-monitoring-system.mdc # 📊 性能监控系统（v2.0新增）
+│   │   ├── disaster-recovery-plan.mdc       # 🆘 灾难恢复计划（v2.0新增）
+│   │   └── rule-hot-reload-system.mdc       # 🔥 规则热更新机制（v2.0新增）
 │   └── project-rules/                      # 🎯 模块化项目规则 (23个)
 │       ├── 🚀 Phase 3 智能补强规则 (3个)
 │       │   ├── context-loader.mdc          # 🧠 智能项目上下文加载器
@@ -312,16 +318,25 @@ install-scripts\install-ultra.bat "你的项目目录路径" fullstack  # 🌟 �
 
 | 开发模式 | 前端 | 后端 | MCP | 文件数 | 安装命令 |
 |----------|------|------|-----|--------|-----------|
-| **前端开发** | ✅ | ❌ | ✅ | 44个.mdc | `install-scripts\install-ultra.bat "项目路径" frontend` |
-| **后端开发** | ❌ | ✅ | ✅ | 43个.mdc | `install-scripts\install-ultra.bat "项目路径" backend` |
-| **全栈开发** | ✅ | ✅ | ✅ | 45个.mdc | `install-scripts\install-ultra.bat "项目路径" fullstack` |
-| **默认模式** | ✅ | ✅ | ✅ | 45个.mdc | `install-scripts\install-ultra.bat "项目路径"` |
+| **前端开发** | ✅ | ❌ | ✅ | 49个.mdc | `install-scripts\install-ultra.bat "项目路径" frontend` |
+| **后端开发** | ❌ | ✅ | ✅ | 48个.mdc | `install-scripts\install-ultra.bat "项目路径" backend` |
+| **全栈开发** | ✅ | ✅ | ✅ | 50个.mdc | `install-scripts\install-ultra.bat "项目路径" fullstack` |
+| **默认模式** | ✅ | ✅ | ✅ | 50个.mdc | `install-scripts\install-ultra.bat "项目路径"` |
 
 > **💡 提示**：统一安装脚本 `install-ultra.bat` 适配所有AI工具（Augment、Cursor、Claude、Trae AI等），支持前端/后端/全栈三种开发模式，100%测试通过
 > 
-> **🆕 新增规则**：
+> **🆕 v1.0+v2.0新增规则（7个）**：
+> 
+> **v1.0新增（4个）**：
 > - 🔐 **permission-control-system.mdc** - 三角色权限控制系统（User/AI/System）
-> - 🔧 **system-diagnostics.mdc** - 10层系统诊断工具（规则/上下文/性能/数据一致性）
+> - 🔧 **system-diagnostics.mdc** - 10层系统诊断工具
+> - 🔄 **error-recovery-system.mdc** - 错误恢复系统（系统激活/文件操作/MCP工具故障）
+> - 📋 **audit-logging-system.mdc** - 审计日志系统（4级日志/操作审计/安全事件）
+> 
+> **v2.0新增（3个）**：
+> - 📊 **performance-monitoring-system.mdc** - 性能监控系统（响应时间/资源使用/系统指标）
+> - 🆘 **disaster-recovery-plan.mdc** - 灾难恢复计划（数据丢失/系统故障/安全事件）
+> - 🔥 **rule-hot-reload-system.mdc** - 规则热更新机制（文件监控/更新流程/回滚）
 
 ### 🔧 MCP智能工具集成
 
