@@ -6,13 +6,20 @@ alwaysApply: true
 priority: 1180
 
 # Version Management
-version: "2.6.0"
-last_updated: "2025-10-18"
+version: "2.7.0"
+last_updated: "2025-10-19"
 author: "system"
 status: "stable"
 compatibility: "rule-system >= 2.0"
 
 changelog:
+  - version: "2.7.0"
+    date: "2025-10-19"
+    changes:
+      - "更新所有规则文件的实际优先级列表"
+      - "重新组织优先级层次结构，反映当前配置"
+      - "修复优先级冲突，确保列表与实际文件一致"
+      - "添加新的MCP管理和智能策略规则"
   - version: "2.6.0"
     date: "2025-10-18"
     changes:
@@ -54,7 +61,7 @@ changelog:
     - 用户的明确偏好和选择
     - 用户的实时反馈和修正
   
-  Level 3 - 功能规则 (优先级: 300-999):
+  Level 3 - 最高功能规则 (优先级: 1100-1200):
     - file-generation-safety-rules.mdc (1200) - 文件生成安全 [新增权限控制]
     - rule-conflict-resolution.mdc (1180) - 规则冲突解决 [更新优先级声明]
     - ai-thinking-protocol.mdc (1160) - AI思维协议
@@ -63,51 +70,58 @@ changelog:
     - knowledge-creation-discovery-framework.mdc (1120) - 知识框架
     - ai-ethical-boundaries.mdc (1090) - AI伦理边界
   
-  Level 3 - 核心身份规则 (优先级: 1000-1099) - P1级别:
-    - mcp-zero-config-detection.mdc (1050) - MCP零配置检测
-  
-  Level 4 - 智能系统规则 (优先级: 900-999) - P2级别:
-    - system-integration-config.mdc (970) - 系统集成配置
-    - super-brain-system.mdc (970) - 超级大脑系统 ← 从P3提升
-    - feedback-enhanced.mdc (960) - 增强反馈机制
-    - ai-agent-intelligence-core.mdc (950) - AI智能核心
+  Level 4 - 核心身份规则 (优先级: 1000-1099):
+    - mcp-unified-management.mdc (990) - MCP统一管理
+    - mcp-intelligent-strategy.mdc (980) - MCP智能策略
+    - system-integration-config.mdc (971) - 系统集成配置
+    - super-brain-system.mdc (970) - 超级大脑系统
+    - feedback-enhanced.mdc (961) - 增强反馈机制
+    - performance-monitoring-system.mdc (960) - 性能监控系统
     - intelligent-project-management.mdc (952) - 智能项目管理
-    - disaster-recovery-plan.mdc (945) - 灾难恢复计划
+    - ai-agent-intelligence-core.mdc (950) - AI智能核心
     - audit-logging-system.mdc (948) - 审计日志系统
-    - intelligent-recommendation-engine.mdc (940) - 智能推荐引擎
+    - disaster-recovery-plan.mdc (945) - 灾难恢复计划
     - rule-hot-reload-system.mdc (942) - 规则热更新机制
+    - intelligent-recommendation-engine.mdc (940) - 智能推荐引擎
     - error-recovery-system.mdc (938) - 错误恢复系统
-    - context-recorder-system.mdc (920) - 上下文记录系统 ← 从P3提升
-    - unified-rules-base.mdc (920) - 统一规则基础
+    - memory-system-integration.mdc (930) - 内存系统集成
+    - unified-rules-base.mdc (921) - 统一规则基础
+    - context-recorder-system.mdc (920) - 上下文记录系统
+    - intelligent-workflow-orchestration.mdc (911) - 智能工作流编排
+    - permission-control-system.mdc (910) - 权限控制系统
+    - system-diagnostics.mdc (901) - 系统诊断
+    - context-systems-integration.mdc (900) - 上下文系统集成
+    - mcp-zero-config-detection.mdc (1050) - MCP零配置检测
 
-  Level 5 - 专业开发规则 (优先级: 800-899) - P3级别:
+  Level 5 - 专业开发规则 (优先级: 800-899):
     - brain-recorder-integration.mdc (890) - 大脑记录员集成
-    - frontend-rules.mdc (860) - 前端完整规则 ← 从P4提升
-    - backend-rules.mdc (850) - 后端完整规则 ← 从P4提升
-    - backend-dev.mdc (820) - 后端开发工作流 ← 从Level 6调整至Level 5以匹配优先级范围
-    - multimodal-interaction-framework.mdc (800) - 多模态交互 ← 从P0调整
+    - frontend-rules.mdc (860) - 前端完整规则
+    - backend-rules.mdc (850) - 后端完整规则
+    - backend-dev.mdc (820) - 后端开发工作流
+    - multimodal-interaction-framework.mdc (800) - 多模态交互
 
-  Level 6 - 项目工作流规则 (优先级: 700-799) - P4级别:
+  Level 6 - 项目工作流规则 (优先级: 700-799):
     - frontend-dev.mdc (700) - 前端开发工作流
-    - 其他项目工作流程规则
 
-  Level 7 - 高级功能规则 (优先级: 600-699) - P5级别:
-    - context-loader.mdc (680) - 上下文加载器 ← 从P2降级
-    - commit.mdc (680) - 统一提交工作流（支持 /commit-fast 别名；含快速模式 --fast） ← 从P4降级
+  Level 7 - 高级功能规则 (优先级: 600-699):
+    - context-loader.mdc (681) - 上下文加载器
+    - commit.mdc (680) - 统一提交工作流
+    - mcp-debugging-enhanced.mdc (652) - MCP调试增强
+    - root-cause-analysis.mdc (650) - 根因分析
+    - systematic-debugging.mdc (648) - 系统化调试
+    - custom-command-builder.mdc (654) - 自定义命令构建器
+    - code-quality-check.mdc (640) - 代码质量检查
+    - changelog-management.mdc (620) - 变更日志管理
     - code-review.mdc (602) - 代码审查
     - bug-fix.mdc (600) - Bug修复
-    - systematic-debugging.mdc (648) - 系统化调试
-    - root-cause-analysis.mdc (650) - 根因分析
-    - mcp-debugging-enhanced.mdc (652) - MCP调试增强
-    - custom-command-builder.mdc (654) - 自定义命令构建器
-    - 调试和分析工具
 
-  Level 8 - 系统优化和实用工具 (优先级: 300-599) - P6/P7级别:
-    - create-docs.mdc (300) - 文档创建
-    - implement-task.mdc (300) - 任务实现
-    - mermaid.mdc (300) - 图表生成
-    - analyze-issue.mdc (300) - 问题分析
+  Level 8 - 系统优化和实用工具 (优先级: 300-599):
+    - ai-powered-code-review.mdc (500) - AI驱动代码审查
     - context7-preload-standard.mdc (450) - 知识预载（修复/新项目前置）
+    - mermaid.mdc (303) - 图表生成
+    - implement-task.mdc (302) - 任务实现
+    - create-docs.mdc (301) - 文档创建
+    - analyze-issue.mdc (300) - 问题分析
 ```
 
 ### 2. 执行逻辑（安全增强版）
