@@ -1,4 +1,4 @@
-# Rules 2.5.1 - Installation Guide
+# Rules 2.6.0 - Installation Guide
 
 > **🌐 Language Options**: 🇺🇸 English (Current) | [🇨🇳 中文](./INSTALL-GUIDE-CN.md)
 
@@ -10,7 +10,7 @@
 
 ## What This Tutorial Can Help You Do
 
-Use **one script** to install Rules 2.5.1 rule system for **all AI tools**, making your AI assistant super intelligent.
+Use **one script** to install Rules 2.6.0 rule system for **all AI tools**, making your AI assistant super intelligent.
 
 ### 🎯 Core Features
 
@@ -91,7 +91,7 @@ install-ultra.bat D:\WebApp backend        # Backend development setup
 
 ```
 your-project/
-├── .rules/                    # Rules 2.5.1 directory
+├── .rules/                    # Rules 2.6.0 directory
 │   ├── P0-core-safety/       # Core safety rules
 │   ├── P1-core-identity/     # Core identity rules
 │   ├── P2-intelligent-system/ # Intelligent system rules

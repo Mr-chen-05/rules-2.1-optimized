@@ -1,6 +1,6 @@
 # Test Scripts 测试脚本
 
-本目录包含用于测试和验证Rules 2.5.1安装的脚本。
+本目录包含用于测试和验证Rules 2.6.0安装的脚本。
 
 ## 可用脚本
 
@@ -24,7 +24,7 @@
 **最新测试输出示例 (2025年10月)** ✅:
 ```
 ========================================
-Rules 2.5.1 Comprehensive Detection Tool
+Rules 2.6.0 Comprehensive Detection Tool
 ========================================
 Detecting project path: e:\temp-test-rules
 Rules directory path: e:\temp-test-rules\.rules
@@ -76,7 +76,7 @@ Health Score: 100/100
 **历史测试输出示例 (参考)**:
 ```
 ========================================
-Rules 2.5.1 Comprehensive Detection Tool
+Rules 2.6.0 Comprehensive Detection Tool
 ========================================
 Detecting project path: C:\Users\luo20\Desktop\demo-project
 Rules directory path: C:\Users\luo20\Desktop\demo-project\rules

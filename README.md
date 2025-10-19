@@ -1,6 +1,6 @@
-# 🎯 Rules 2.5.1 - 下一代智能AI助手规则体系
+# 🎯 Rules 2.6.0 - 下一代智能AI助手规则体系
 
-> **🏆 PERFECT (A++)评级** | **✅ 100%测试通过** | **🚀 生产就绪** | **💬 完整MCP支持** | **🧠 AI智能化** | **🎯 43个规则（.mdc）**
+> **🏆 PERFECT (A++)评级** | **✅ 100%测试通过** | **🚀 生产就绪** | **💬 完整MCP支持** | **🧠 AI智能化** | **🎯 50个规则（.mdc）**
 
 ## 📖 项目简介
 
@@ -58,7 +58,7 @@ npm --version   # 应该 >= 8.0.0
 #### 🚀 PowerShell安装（推荐）
 ```powershell
 # 进入规则目录
-cd "你的rules-2.5.1目录路径"
+cd "你的rules-2.6.0目录路径"
 
 # 选择项目类型安装（三选一）
 install-scripts\install-ultra.bat "你的项目目录路径" frontend   # 前端项目
@@ -69,7 +69,7 @@ install-scripts\install-ultra.bat "你的项目目录路径" fullstack  # 全栈
 #### 💡 安装示例
 ```powershell
 # 前端项目
-cd "E:\rules-2.5.1"
+cd "E:\rules-2.6.0"
 install-scripts\install-ultra.bat "D:\MyProjects\vue-app" frontend
 
 # 后端项目
@@ -126,7 +126,7 @@ install-scripts\install-ultra.bat "[你的项目路径]" [项目类型]
 #### 🎯 成功标志
 
 看到以下任一响应即表示安装成功：
-- ✅ "Rules 2.5.1 系统已激活"
+- ✅ "Rules 2.6.0 系统已激活"
 - ✅ "智能开发助手已就绪"
 - ✅ "超级大脑系统已启动"
 - ✅ 显示详细的系统状态信息
@@ -180,7 +180,7 @@ dir "你的项目目录路径\rules\P0-core-safety\" # 核心安全规则
 > **📁 智能化文件组织**: 基于功能模块和使用频率的科学分类
 
 ```
-Rules 2.5.1/
+Rules 2.6.0/
 ├── 📄 核心文档
 │   ├── README.md                           # 📚 项目主文档
 │   ├── USAGE.md                            # 📚 详细使用指南
@@ -808,7 +808,7 @@ type: 'always_apply'        # 可选：用于分类
 | **💡 功能建议** | [Discussions](https://github.com/Mr-chen-05/rules-2.1-optimized/discussions) |
 
 ### 🏷️ 版本信息
-- **当前版本**: Rules 2.5.1
+- **当前版本**: Rules 2.6.0
 - **发布日期**: 2025年9月27日
 - **质量评级**: PERFECT (A++)
 - **稳定性**: 生产就绪

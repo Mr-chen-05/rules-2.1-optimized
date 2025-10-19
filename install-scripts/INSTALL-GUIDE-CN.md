@@ -1,4 +1,4 @@
-# Rules 2.5.1 - 统一安装指南
+# Rules 2.6.0 - 统一安装指南
 
 > **🌐 语言选择**: [🇺🇸 English](./INSTALL-GUIDE.md) | 🇨🇳 中文 (当前)
 
@@ -10,7 +10,7 @@
 
 ## 这个教程能帮你做什么？
 
-使用 **一个脚本** 为 **所有 AI 工具** 安装 Rules 2.5.1 规则系统，让你的 AI 助手变得超级智能。
+使用 **一个脚本** 为 **所有 AI 工具** 安装 Rules 2.6.0 规则系统，让你的 AI 助手变得超级智能。
 
 ### 🎯 核心功能
 
@@ -91,7 +91,7 @@ install-ultra.bat D:\WebApp backend        # 后端开发设置
 
 ```
 你的项目/
-├── .rules/                    # Rules 2.5.1 规则目录
+├── .rules/                    # Rules 2.6.0 规则目录
 │   ├── P0-core-safety/       # 核心安全规则
 │   ├── P1-core-identity/     # 核心身份规则
 │   ├── P2-intelligent-system/ # 智能系统规则
