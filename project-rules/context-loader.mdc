@@ -2,7 +2,7 @@
 type: "always_apply"
 description: "AI-powered intelligent project context loader with deep analysis - AI驱动的智能项目上下文加载器"
 globs: ["**/*"]
-priority: 680
+priority: 681
 alwaysApply: true
 integrations: ["super-brain-system", "mcp-intelligent-strategy", "intelligent-project-management", "commit", "changelog-management", "code-quality-check", "root-cause-analysis", "systematic-debugging"]
 

@@ -2,7 +2,7 @@
 type: "global_rule"
 description: "规则热更新机制 - 实时监控规则变化，动态加载更新，无需重启系统"
 globs: ["**/*"]
-priority: 940
+priority: 942
 alwaysApply: true
 
 # Version Management

@@ -3,7 +3,7 @@ type: "project_rule"
 description: "企业级工作流编排规则 - 大型团队和复杂项目的高级智能编排"
 globs: ["**/*"]
 alwaysApply: false
-priority: 910
+priority: 911
 dependencies: ["intelligent-project-management.mdc"]
 
 # Version Management

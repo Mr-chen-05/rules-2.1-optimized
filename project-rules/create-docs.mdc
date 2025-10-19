@@ -2,7 +2,7 @@
 type: "utility_rule"
 description: "Comprehensive documentation generation - 全面的文档生成"
 globs: ["**/*.md", "**/*.mdx", "**/*.rst", "**/*.txt"]
-priority: 300
+priority: 301
 alwaysApply: false
 
 # Version Management
@@ -119,13 +119,15 @@ npm start
 
 ## 📚 文档
 
-- [用户指南](./docs/user-guide.md)
-- [API文档](./docs/api.md)
-- [开发指南](./docs/development.md)
+创建以下文档文件（在项目根目录的 docs/ 文件夹中）：
+
+- **用户指南** (`docs/user-guide.md`) - 面向最终用户的使用说明
+- **API文档** (`docs/api.md`) - 详细的API接口文档  
+- **开发指南** (`docs/development.md`) - 开发者指南和最佳实践
 
 ## 🤝 贡献
 
-请阅读 [贡献指南](./CONTRIBUTING.md)
+请阅读 [项目说明](./README.md)
 
 ## 📄 许可证
 

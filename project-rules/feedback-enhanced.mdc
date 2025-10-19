@@ -4,7 +4,7 @@ description: "Enhanced feedback mechanism with 1-hour timeout - 增强反馈机�
 globs: ["**/*"]
 alwaysApply: true
 enforcement: mandatory
-priority: 960
+priority: 961
 
 # Version Management
 version: "2.6.0"

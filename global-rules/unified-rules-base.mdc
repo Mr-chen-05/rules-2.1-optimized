@@ -3,7 +3,7 @@ type: "always_apply"
 description: "增强统一规则基准 - 确保不同AI工具功能完全一致，集成智能需求理解和深度讨论框架"
 globs: ["**/*"]
 alwaysApply: true
-priority: 920
+priority: 921
 
 # Version Management
 version: "2.6.0"

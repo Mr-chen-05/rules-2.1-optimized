@@ -2,7 +2,7 @@
 type: "global_rule"
 description: "灾难恢复计划 - 应对数据丢失、系统故障和安全事件的完整恢复策略"
 globs: ["**/*"]
-priority: 950
+priority: 945
 alwaysApply: true
 
 # Version Management

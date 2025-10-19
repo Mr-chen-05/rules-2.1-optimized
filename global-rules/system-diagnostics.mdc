@@ -3,7 +3,7 @@ type: "always_apply"
 description: "系统诊断工具 - 全面的系统健康检查和故障排查框架"
 globs: ["**/*"]
 alwaysApply: true
-priority: 900
+priority: 901
 
 # Version Management
 version: "2.6.0"

@@ -1,16 +1,12 @@
-# 规则一致性验证脚本 v2.0
-# 用途: 检查规则系统的一致性、完整性和正确性
-# 作者: System
-# 版本: 2.6.0
-# 日期: 2025-10-18
+# PowerShell Script for Rules Validation v2.0
+# Author: AI Assistant
+# Description: Comprehensive validation script for rules files
 
-param(
-    [string]$RulesPath = ".",
-    [switch]$Verbose,
-    [switch]$ExportReport
-)
+# Set console encoding to UTF-8
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+$OutputEncoding = [System.Text.Encoding]::UTF8
 
-# 颜色输出函数
+# Color output function
 function Write-ColorOutput {
     param(
         [string]$Message,
@@ -19,167 +15,179 @@ function Write-ColorOutput {
     Write-Host $Message -ForegroundColor $Color
 }
 
-# 测试结果记录
-$script:TotalIssues = 0
-$script:Issues = @()
-
-function Add-Issue {
-    param(
-        [string]$Severity,
-        [string]$Category,
-        [string]$Message
-    )
+# Function to get rule files only (focused on global-rules and project-rules)
+function Get-RuleFiles {
+    $ruleFiles = @()
     
-    $script:Issues += [PSCustomObject]@{
-        Severity = $Severity
-        Category = $Category
-        Message = $Message
-        Timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+    # Get .mdc files from global-rules and project-rules directories
+    if (Test-Path "global-rules") {
+        $ruleFiles += Get-ChildItem -Path "global-rules" -Filter "*.mdc" -File
     }
-    $script:TotalIssues++
+    if (Test-Path "project-rules") {
+        $ruleFiles += Get-ChildItem -Path "project-rules" -Filter "*.mdc" -File
+    }
+    
+    return $ruleFiles
 }
 
-# ============================================
-# 1. 检查优先级冲突
-# ============================================
+# Function to check priority conflicts
 function Test-PriorityConflicts {
-    Write-ColorOutput "`n🔍 [1/8] 检查优先级冲突..." "Cyan"
+    Write-ColorOutput "`n=== Priority Conflict Check ===" "Cyan"
     
-    $rules = Get-ChildItem -Path $RulesPath -Filter "*.mdc" -Recurse -ErrorAction SilentlyContinue
-    $priorities = @{}
-    $conflictCount = 0
+    $conflicts = 0
+    $priorityMap = @{}
+    $ruleFiles = Get-RuleFiles
     
-    foreach ($rule in $rules) {
-        $content = Get-Content $rule.FullName -Raw -ErrorAction SilentlyContinue
-        if ($content -match "priority:\s*(\d+)") {
-            $priority = [int]$Matches[1]
-            $name = $rule.Name
-            
-            if ($priorities.ContainsKey($priority)) {
-                Add-Issue "WARNING" "Priority" "优先级冲突: $name 和 $($priorities[$priority]) 都使用 $priority"
-                $conflictCount++
-            }
-            $priorities[$priority] = $name
-        }
-    }
-    
-    if ($conflictCount -eq 0) {
-        Write-ColorOutput "  ✅ 未发现优先级冲突 (检查了 $($rules.Count) 个规则文件)" "Green"
-    } else {
-        Write-ColorOutput "  ⚠️  发现 $conflictCount 个优先级冲突" "Yellow"
-    }
-    
-    return $conflictCount
-}
-
-# ============================================
-# 2. 检查版本字段
-# ============================================
-function Test-VersionFields {
-    Write-ColorOutput "`n🔍 [2/8] 检查版本字段..." "Cyan"
-    
-    $rules = Get-ChildItem -Path $RulesPath -Filter "*.mdc" -Recurse -ErrorAction SilentlyContinue
-    $missingCount = 0
-    
-    foreach ($rule in $rules) {
-        $content = Get-Content $rule.FullName -Raw -ErrorAction SilentlyContinue
-        
-        if ($content -notmatch "version:\s*[`"']?\d+\.\d+\.\d+") {
-            Add-Issue "INFO" "Version" "缺少版本字段: $($rule.Name)"
-            $missingCount++
-            
-            if ($Verbose) {
-                Write-ColorOutput "    📄 $($rule.Name) - 缺少版本信息" "Gray"
-            }
-        }
-    }
-    
-    if ($missingCount -eq 0) {
-        Write-ColorOutput "  ✅ 所有规则文件都包含版本信息" "Green"
-    } else {
-        Write-ColorOutput "  ⚠️  $missingCount 个文件缺少版本字段" "Yellow"
-    }
-    
-    return $missingCount
-}
-
-# ============================================
-# 3. 检查引用一致性
-# ============================================
-function Test-ReferenceConsistency {
-    Write-ColorOutput "`n🔍 [3/8] 检查规则引用一致性..." "Cyan"
-    
-    $rules = Get-ChildItem -Path $RulesPath -Filter "*.mdc" -Recurse -ErrorAction SilentlyContinue
-    $allRuleNames = $rules | ForEach-Object { $_.BaseName }
-    $brokenRefCount = 0
-    
-    foreach ($rule in $rules) {
-        $content = Get-Content $rule.FullName -Raw -ErrorAction SilentlyContinue
-        $references = [regex]::Matches($content, "(\w[\w-]+\.mdc)")
-        
-        foreach ($ref in $references) {
-            $refName = $ref.Groups[1].Value -replace "\.mdc$", ""
-            
-            if ($refName -notin $allRuleNames) {
-                Add-Issue "WARNING" "Reference" "无效引用: $($rule.Name) 引用了不存在的 $($ref.Groups[1].Value)"
-                $brokenRefCount++
+    $ruleFiles | ForEach-Object {
+        $content = Get-Content $_.FullName -Raw -Encoding UTF8
+        if ($content -match '(?s)^---\s*\n(.*?)\n---') {
+            $frontmatter = $matches[1]
+            if ($frontmatter -match 'priority:\s*(\d+(?:\.\d+)?)') {
+                $priority = [decimal]$matches[1]
+                $relativePath = $_.FullName.Replace((Get-Location).Path, "").TrimStart('\')
                 
-                if ($Verbose) {
-                    Write-ColorOutput "    🔗 $($rule.Name) → $($ref.Groups[1].Value) [不存在]" "Gray"
+                if ($priorityMap.ContainsKey($priority)) {
+                    Write-ColorOutput "  Priority conflict detected: $priority" "Red"
+                    Write-ColorOutput "    File 1: $($priorityMap[$priority])" "Yellow"
+                    Write-ColorOutput "    File 2: $relativePath" "Yellow"
+                    $conflicts++
+                } else {
+                    $priorityMap[$priority] = $relativePath
                 }
             }
         }
     }
     
-    if ($brokenRefCount -eq 0) {
-        Write-ColorOutput "  ✅ 所有规则引用都有效" "Green"
+    if ($conflicts -eq 0) {
+        Write-ColorOutput "  No priority conflicts found" "Green"
     } else {
-        Write-ColorOutput "  ⚠️  发现 $brokenRefCount 个无效引用" "Yellow"
+        Write-ColorOutput "  Found $conflicts priority conflicts" "Red"
     }
     
-    return $brokenRefCount
+    return $conflicts
 }
 
-# ============================================
-# 4. 检查优先级范围
-# ============================================
-function Test-PriorityRanges {
-    Write-ColorOutput "`n🔍 [4/8] 检查优先级范围..." "Cyan"
+# Function to check version fields
+function Test-VersionFields {
+    Write-ColorOutput "`n=== Version Field Check ===" "Cyan"
     
-    $priorityRanges = @{
-        "P0-core-safety" = @(1100, 1200)
-        "P1-core-identity" = @(1000, 1099)
-        "P2-intelligent-system" = @(900, 999)
-        "P3-developer-workflow" = @(800, 899)
-        "P4-development-tools" = @(700, 799)
-        "P5-mcp-ecosystem" = @(600, 699)
-        "P6-advanced-features" = @(500, 599)
-        "P7-project-templates" = @(300, 499)
+    $missingVersion = 0
+    $ruleFiles = Get-RuleFiles
+    
+    $ruleFiles | ForEach-Object {
+        $content = Get-Content $_.FullName -Raw -Encoding UTF8
+        $relativePath = $_.FullName.Replace((Get-Location).Path, "").TrimStart('\')
+        
+        if ($content -match '(?s)^---\s*\n(.*?)\n---') {
+            $frontmatter = $matches[1]
+            if ($frontmatter -notmatch 'version:\s*["\d\.]') {
+                Write-ColorOutput "  Missing version field: $relativePath" "Red"
+                $missingVersion++
+            }
+        } else {
+            Write-ColorOutput "  No frontmatter found: $relativePath" "Red"
+            $missingVersion++
+        }
     }
     
-    $rules = Get-ChildItem -Path $RulesPath -Filter "*.mdc" -Recurse -ErrorAction SilentlyContinue
-    $outOfRangeCount = 0
+    if ($missingVersion -eq 0) {
+        Write-ColorOutput "  All files have version fields" "Green"
+    } else {
+        Write-ColorOutput "  $missingVersion files missing version fields" "Red"
+    }
     
-    foreach ($rule in $rules) {
-        $content = Get-Content $rule.FullName -Raw -ErrorAction SilentlyContinue
-        $relativePath = $rule.DirectoryName -replace [regex]::Escape($RulesPath), ""
+    return $missingVersion
+}
+
+# Function to check reference consistency
+function Test-ReferenceConsistency {
+    Write-ColorOutput "`n=== Reference Consistency Check ===" "Cyan"
+    
+    $inconsistencies = 0
+    $allFiles = @()
+    $ruleFiles = Get-RuleFiles
+    
+    # Collect all rule files
+    $ruleFiles | ForEach-Object {
+        $relativePath = $_.FullName.Replace((Get-Location).Path, "").TrimStart('\').Replace('\', '/')
+        $allFiles += $relativePath
+    }
+    
+    # Check references in each file
+    $ruleFiles | ForEach-Object {
+        $content = Get-Content $_.FullName -Raw -Encoding UTF8
+        $relativePath = $_.FullName.Replace((Get-Location).Path, "").TrimStart('\')
         
-        # 提取目录层级
-        $pathParts = $relativePath -split "[\\/]" | Where-Object { $_ -ne "" }
-        $pLevel = $pathParts | Where-Object { $_ -match "^P\d+" } | Select-Object -First 1
+        # Find all references in the content
+        $references = [regex]::Matches($content, '\[([^\]]+)\]\(([^)]+\.md)\)')
         
-        if ($content -match "priority:\s*(\d+)") {
-            $priority = [int]$Matches[1]
+        foreach ($ref in $references) {
+            $referencedFile = $ref.Groups[2].Value.Replace('/', '\')
             
-            if ($pLevel -and $priorityRanges.ContainsKey($pLevel)) {
-                $range = $priorityRanges[$pLevel]
+            # Handle relative paths starting with ./ or .\
+            if ($referencedFile.StartsWith('.\')) {
+                $fullReferencedPath = Join-Path (Get-Location).Path $referencedFile.Substring(2)
+            } else {
+                $fullReferencedPath = Join-Path (Split-Path $_.FullName) $referencedFile
+            }
+            
+            if (-not (Test-Path $fullReferencedPath)) {
+                Write-ColorOutput "  Broken reference in $relativePath" "Red"
+                Write-ColorOutput "    Referenced file: $referencedFile" "Yellow"
+                $inconsistencies++
+            }
+        }
+    }
+    
+    if ($inconsistencies -eq 0) {
+        Write-ColorOutput "  All references are consistent" "Green"
+    } else {
+        Write-ColorOutput "  Found $inconsistencies broken references" "Red"
+    }
+    
+    return $inconsistencies
+}
+
+# Function to check priority ranges
+function Test-PriorityRanges {
+    Write-ColorOutput "`n=== Priority Range Check ===" "Cyan"
+    
+    $outOfRangeCount = 0
+    $priorityRanges = @{
+        "global" = @{ Min = 1.0; Max = 1200.0 }
+        "project" = @{ Min = 1.0; Max = 1200.0 }
+        "core" = @{ Min = 1.0; Max = 1200.0 }
+        "basic" = @{ Min = 1.0; Max = 1200.0 }
+        "advanced" = @{ Min = 1.0; Max = 1200.0 }
+        "expert" = @{ Min = 1.0; Max = 1200.0 }
+        "specialized" = @{ Min = 1.0; Max = 1200.0 }
+    }
+    $ruleFiles = Get-RuleFiles
+    
+    $ruleFiles | ForEach-Object {
+        $content = Get-Content $_.FullName -Raw -Encoding UTF8
+        $relativePath = $_.FullName.Replace((Get-Location).Path, "").TrimStart('\')
+        
+        # Extract level from path
+        $level = "unknown"
+        foreach ($levelName in $priorityRanges.Keys) {
+            if ($relativePath -like "*$levelName*") {
+                $level = $levelName
+                break
+            }
+        }
+        
+        if ($content -match '(?s)^---\s*\n(.*?)\n---') {
+            $frontmatter = $matches[1]
+            if ($frontmatter -match 'priority:\s*(\d+(?:\.\d+)?)') {
+                $priority = [decimal]$matches[1]
                 
-                if ($priority -lt $range[0] -or $priority -gt $range[1]) {
-                    Add-Issue "WARNING" "Priority Range" "优先级超出范围: $($rule.Name) ($priority) 不在 $pLevel 范围 $($range[0])-$($range[1])"
-                    $outOfRangeCount++
-                    
-                    if ($Verbose) {
-                        Write-ColorOutput "    📊 $($rule.Name): $priority [应该在 $($range[0])-$($range[1])]" "Gray"
+                if ($level -ne "unknown" -and $priorityRanges.ContainsKey($level)) {
+                    $range = $priorityRanges[$level]
+                    if ($priority -lt $range.Min -or $priority -gt $range.Max) {
+                        Write-ColorOutput "  Priority out of range: $relativePath" "Red"
+                        Write-ColorOutput "    Priority: $priority, Expected range: $($range.Min)-$($range.Max)" "Yellow"
+                        $outOfRangeCount++
                     }
                 }
             }
@@ -187,271 +195,178 @@ function Test-PriorityRanges {
     }
     
     if ($outOfRangeCount -eq 0) {
-        Write-ColorOutput "  ✅ 所有优先级都在正确范围内" "Green"
+        Write-ColorOutput "  All priorities are within expected ranges" "Green"
     } else {
-        Write-ColorOutput "  ⚠️  $outOfRangeCount 个规则优先级超出范围" "Yellow"
+        Write-ColorOutput "  Found $outOfRangeCount priorities out of range" "Red"
     }
     
     return $outOfRangeCount
 }
 
-# ============================================
-# 5. 检查Frontmatter格式
-# ============================================
+# Function to check frontmatter format
 function Test-FrontmatterFormat {
-    Write-ColorOutput "`n🔍 [5/8] 检查Frontmatter格式..." "Cyan"
+    Write-ColorOutput "`n=== Frontmatter Format Check ===" "Cyan"
     
-    $rules = Get-ChildItem -Path $RulesPath -Filter "*.mdc" -Recurse -ErrorAction SilentlyContinue
     $invalidCount = 0
+    $requiredFields = @("priority", "version", "description")
+    $ruleFiles = Get-RuleFiles
     
-    foreach ($rule in $rules) {
-        $content = Get-Content $rule.FullName -Raw -ErrorAction SilentlyContinue
+    $ruleFiles | ForEach-Object {
+        $content = Get-Content $_.FullName -Raw -Encoding UTF8
+        $relativePath = $_.FullName.Replace((Get-Location).Path, "").TrimStart('\')
         
-        # 检查是否有frontmatter
-        if ($content -notmatch "^---\r?\n") {
-            Add-Issue "ERROR" "Frontmatter" "缺少Frontmatter: $($rule.Name)"
-            $invalidCount++
-            continue
-        }
-        
-        # 检查必需字段
-        $requiredFields = @("type", "description", "priority")
-        foreach ($field in $requiredFields) {
-            if ($content -notmatch "${field}:\s*") {
-                Add-Issue "ERROR" "Frontmatter" "缺少必需字段 '$field': $($rule.Name)"
+        if ($content -match '(?s)^---\s*\n(.*?)\n---') {
+            $frontmatter = $matches[1]
+            $missingFields = @()
+            
+            foreach ($field in $requiredFields) {
+                if ($frontmatter -notmatch "$field\s*:") {
+                    $missingFields += $field
+                }
+            }
+            
+            if ($missingFields.Count -gt 0) {
+                Write-ColorOutput "  Invalid frontmatter: $relativePath" "Red"
+                Write-ColorOutput "    Missing fields: $($missingFields -join ', ')" "Yellow"
                 $invalidCount++
             }
+        } else {
+            Write-ColorOutput "  No frontmatter found: $relativePath" "Red"
+            $invalidCount++
         }
     }
     
     if ($invalidCount -eq 0) {
-        Write-ColorOutput "  ✅ 所有Frontmatter格式正确" "Green"
+        Write-ColorOutput "  All frontmatter formats are correct" "Green"
     } else {
-        Write-ColorOutput "  ❌ $invalidCount 个文件Frontmatter格式错误" "Red"
+        Write-ColorOutput "  $invalidCount files have frontmatter format errors" "Red"
     }
     
     return $invalidCount
 }
 
-# ============================================
-# 6. 检查文件编码
-# ============================================
+# Function to check file encoding
 function Test-FileEncoding {
-    Write-ColorOutput "`n🔍 [6/8] 检查文件编码..." "Cyan"
+    Write-ColorOutput "`n=== File Encoding Check ===" "Cyan"
     
-    $rules = Get-ChildItem -Path $RulesPath -Filter "*.mdc" -Recurse -ErrorAction SilentlyContinue
     $encodingIssues = 0
+    $ruleFiles = Get-RuleFiles
     
-    foreach ($rule in $rules) {
+    $ruleFiles | ForEach-Object {
+        $relativePath = $_.FullName.Replace((Get-Location).Path, "").TrimStart('\')
+        
         try {
-            $bytes = [System.IO.File]::ReadAllBytes($rule.FullName)
-            
-            # 检查BOM
-            if ($bytes.Length -ge 3 -and $bytes[0] -eq 0xEF -and $bytes[1] -eq 0xBB -and $bytes[2] -eq 0xBF) {
-                Add-Issue "WARNING" "Encoding" "文件包含UTF-8 BOM: $($rule.Name)"
-                $encodingIssues++
+            $content = Get-Content $_.FullName -Raw -Encoding UTF8
+            # Check for BOM or encoding issues
+            if ($content.StartsWith([char]0xFEFF)) {
+                Write-ColorOutput "  BOM detected: $relativePath" "Yellow"
             }
-            
-            # 检查是否包含乱码（简单检查）
-            $content = [System.IO.File]::ReadAllText($rule.FullName)
-            if ($content -match "[\x00-\x08\x0B\x0C\x0E-\x1F]") {
-                Add-Issue "ERROR" "Encoding" "文件可能包含乱码: $($rule.Name)"
-                $encodingIssues++
-            }
-        }
-        catch {
-            Add-Issue "ERROR" "Encoding" "无法读取文件: $($rule.Name) - $($_.Exception.Message)"
+        } catch {
+            Write-ColorOutput "  Encoding issue: $relativePath" "Red"
             $encodingIssues++
         }
     }
     
     if ($encodingIssues -eq 0) {
-        Write-ColorOutput "  ✅ 所有文件编码正常" "Green"
+        Write-ColorOutput "  All files have correct encoding" "Green"
     } else {
-        Write-ColorOutput "  ⚠️  $encodingIssues 个文件存在编码问题" "Yellow"
+        Write-ColorOutput "  Found $encodingIssues files with encoding issues" "Red"
     }
     
     return $encodingIssues
 }
 
-# ============================================
-# 7. 检查规则依赖
-# ============================================
+# Function to check rule dependencies
 function Test-RuleDependencies {
-    Write-ColorOutput "`n🔍 [7/8] 检查规则依赖关系..." "Cyan"
+    Write-ColorOutput "`n=== Rule Dependencies Check ===" "Cyan"
     
-    $rules = Get-ChildItem -Path $RulesPath -Filter "*.mdc" -Recurse -ErrorAction SilentlyContinue
     $dependencyIssues = 0
+    $ruleFiles = Get-RuleFiles
     
-    foreach ($rule in $rules) {
-        $content = Get-Content $rule.FullName -Raw -ErrorAction SilentlyContinue
+    $ruleFiles | ForEach-Object {
+        $content = Get-Content $_.FullName -Raw -Encoding UTF8
+        $relativePath = $_.FullName.Replace((Get-Location).Path, "").TrimStart('\')
         
-        # 查找dependencies字段
-        if ($content -match "dependencies:\s*\r?\n((?:\s+-\s+.+\r?\n)+)") {
-            $depsBlock = $Matches[1]
-            $deps = [regex]::Matches($depsBlock, '\s+-\s+"?([^">]+\.mdc)')
-            
-            foreach ($dep in $deps) {
-                $depName = $dep.Groups[1].Value -replace "\.mdc.*$", ""
-                $depExists = $rules | Where-Object { $_.BaseName -eq $depName }
+        if ($content -match '(?s)^---\s*\n(.*?)\n---') {
+            $frontmatter = $matches[1]
+            if ($frontmatter -match 'dependencies:\s*\[(.*?)\]') {
+                $dependencies = $matches[1] -split ',' | ForEach-Object { $_.Trim().Trim('"').Trim("'") }
                 
-                if (-not $depExists) {
-                    Add-Issue "WARNING" "Dependency" "依赖文件不存在: $($rule.Name) 依赖 $($dep.Groups[1].Value)"
-                    $dependencyIssues++
+                foreach ($dep in $dependencies) {
+                    if ($dep -and -not (Get-ChildItem -Path "." -Filter "*$dep*" -Recurse)) {
+                        Write-ColorOutput "  Missing dependency: $dep in $relativePath" "Red"
+                        $dependencyIssues++
+                    }
                 }
             }
         }
     }
     
     if ($dependencyIssues -eq 0) {
-        Write-ColorOutput "  ✅ 所有依赖关系有效" "Green"
+        Write-ColorOutput "  All rule dependencies are satisfied" "Green"
     } else {
-        Write-ColorOutput "  ⚠️  $dependencyIssues 个依赖问题" "Yellow"
+        Write-ColorOutput "  Found $dependencyIssues dependency issues" "Red"
     }
     
     return $dependencyIssues
 }
 
-# ============================================
-# 8. 检查文件完整性
-# ============================================
+# Function to check file integrity
 function Test-FileIntegrity {
-    Write-ColorOutput "`n🔍 [8/8] 检查文件完整性..." "Cyan"
+    Write-ColorOutput "`n=== File Integrity Check ===" "Cyan"
     
-    $rules = Get-ChildItem -Path $RulesPath -Filter "*.mdc" -Recurse -ErrorAction SilentlyContinue
     $integrityIssues = 0
+    $ruleFiles = Get-RuleFiles
     
-    foreach ($rule in $rules) {
-        $content = Get-Content $rule.FullName -Raw -ErrorAction SilentlyContinue
+    $ruleFiles | ForEach-Object {
+        $relativePath = $_.FullName.Replace((Get-Location).Path, "").TrimStart('\')
         
-        # 检查文件是否为空
-        if ([string]::IsNullOrWhiteSpace($content)) {
-            Add-Issue "ERROR" "Integrity" "文件为空: $($rule.Name)"
+        if ($_.Length -eq 0) {
+            Write-ColorOutput "  Empty file: $relativePath" "Red"
             $integrityIssues++
-            continue
+        } elseif ($_.Length -lt 100) {
+            Write-ColorOutput "  Suspiciously small file: $relativePath" "Yellow"
         }
         
-        # 检查是否包含标题
-        if ($content -notmatch "^#\s+.+") {
-            Add-Issue "WARNING" "Integrity" "文件缺少主标题: $($rule.Name)"
-            $integrityIssues++
-        }
-        
-        # 检查文件大小（太小可能不完整）
-        if ($rule.Length -lt 100) {
-            Add-Issue "WARNING" "Integrity" "文件过小 ($($rule.Length) bytes): $($rule.Name)"
+        $content = Get-Content $_.FullName -Raw -Encoding UTF8
+        if (-not $content.Trim()) {
+            Write-ColorOutput "  File with no content: $relativePath" "Red"
             $integrityIssues++
         }
     }
     
     if ($integrityIssues -eq 0) {
-        Write-ColorOutput "  ✅ 所有文件完整性正常" "Green"
+        Write-ColorOutput "  All files have good integrity" "Green"
     } else {
-        Write-ColorOutput "  ⚠️  $integrityIssues 个完整性问题" "Yellow"
+        Write-ColorOutput "  Found $integrityIssues file integrity issues" "Red"
     }
     
     return $integrityIssues
 }
 
-# ============================================
-# 主执行流程
-# ============================================
-function Main {
-    Write-ColorOutput "`n" + ("="*60) "White"
-    Write-ColorOutput "  🔍 规则系统一致性验证 v2.0" "Cyan"
-    Write-ColorOutput ("="*60) + "`n" "White"
-    
-    Write-ColorOutput "📁 扫描路径: $RulesPath" "Gray"
-    Write-ColorOutput "⏰ 开始时间: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')`n" "Gray"
-    
-    # 执行所有检查
-    $checks = @(
-        @{ Name = "优先级冲突"; Function = { Test-PriorityConflicts } },
-        @{ Name = "版本字段"; Function = { Test-VersionFields } },
-        @{ Name = "引用一致性"; Function = { Test-ReferenceConsistency } },
-        @{ Name = "优先级范围"; Function = { Test-PriorityRanges } },
-        @{ Name = "Frontmatter格式"; Function = { Test-FrontmatterFormat } },
-        @{ Name = "文件编码"; Function = { Test-FileEncoding } },
-        @{ Name = "规则依赖"; Function = { Test-RuleDependencies } },
-        @{ Name = "文件完整性"; Function = { Test-FileIntegrity } }
-    )
-    
-    $results = @{}
-    foreach ($check in $checks) {
-        $results[$check.Name] = & $check.Function
-    }
-    
-    # 输出结果摘要
-    Write-ColorOutput "`n" + ("="*60) "White"
-    Write-ColorOutput "  📊 验证结果摘要" "Cyan"
-    Write-ColorOutput ("="*60) "White"
-    
-    $totalErrors = ($script:Issues | Where-Object { $_.Severity -eq "ERROR" }).Count
-    $totalWarnings = ($script:Issues | Where-Object { $_.Severity -eq "WARNING" }).Count
-    $totalInfo = ($script:Issues | Where-Object { $_.Severity -eq "INFO" }).Count
-    
-    Write-ColorOutput "`n检查项目统计:" "White"
-    foreach ($check in $checks) {
-        $count = $results[$check.Name]
-        $status = if ($count -eq 0) { "✅" } else { "⚠️" }
-        Write-ColorOutput "  $status $($check.Name): $count 个问题" $(if ($count -eq 0) { "Green" } else { "Yellow" })
-    }
-    
-    Write-ColorOutput "`n问题统计:" "White"
-    Write-ColorOutput "  ❌ 错误 (ERROR): $totalErrors" $(if ($totalErrors -eq 0) { "Green" } else { "Red" })
-    Write-ColorOutput "  ⚠️  警告 (WARNING): $totalWarnings" $(if ($totalWarnings -eq 0) { "Green" } else { "Yellow" })
-    Write-ColorOutput "  ℹ️  信息 (INFO): $totalInfo" "Cyan"
-    Write-ColorOutput "  📊 总计: $script:TotalIssues 个问题" "White"
-    
-    # 详细问题列表
-    if ($script:TotalIssues -gt 0 -and $Verbose) {
-        Write-ColorOutput "`n详细问题列表:" "White"
-        foreach ($issue in $script:Issues) {
-            $color = switch ($issue.Severity) {
-                "ERROR" { "Red" }
-                "WARNING" { "Yellow" }
-                "INFO" { "Cyan" }
-                default { "Gray" }
-            }
-            Write-ColorOutput "  [$($issue.Severity)] [$($issue.Category)] $($issue.Message)" $color
-        }
-    }
-    
-    # 导出报告
-    if ($ExportReport) {
-        $reportPath = "validation-report-$(Get-Date -Format 'yyyyMMdd-HHmmss').json"
-        $report = @{
-            Timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
-            TotalIssues = $script:TotalIssues
-            Errors = $totalErrors
-            Warnings = $totalWarnings
-            Info = $totalInfo
-            CheckResults = $results
-            Issues = $script:Issues
-        }
-        $report | ConvertTo-Json -Depth 10 | Out-File -FilePath $reportPath -Encoding UTF8
-        Write-ColorOutput "`n📄 报告已导出: $reportPath" "Cyan"
-    }
-    
-    # 最终判定
-    Write-ColorOutput "`n" + ("="*60) "White"
-    if ($totalErrors -eq 0 -and $totalWarnings -eq 0) {
-        Write-ColorOutput "  ✅ 规则系统一致性检查通过！" "Green"
-        Write-ColorOutput ("="*60) + "`n" "White"
-        exit 0
-    }
-    elseif ($totalErrors -eq 0) {
-        Write-ColorOutput "  ⚠️  规则系统存在 $totalWarnings 个警告" "Yellow"
-        Write-ColorOutput ("="*60) + "`n" "White"
-        exit 1
-    }
-    else {
-        Write-ColorOutput "  ❌ 规则系统存在 $totalErrors 个错误，$totalWarnings 个警告" "Red"
-        Write-ColorOutput ("="*60) + "`n" "White"
-        exit 2
-    }
+# Main execution
+Write-ColorOutput "Rules Validation Script v2.0 - Focused Edition" "Magenta"
+Write-ColorOutput "专注于 global-rules 和 project-rules 目录下的 .mdc 文件" "Cyan"
+Write-ColorOutput "=================================================" "Magenta"
+
+$totalIssues = 0
+
+# Run all validation tests
+$totalIssues += Test-PriorityConflicts
+$totalIssues += Test-VersionFields
+$totalIssues += Test-ReferenceConsistency
+$totalIssues += Test-PriorityRanges
+$totalIssues += Test-FrontmatterFormat
+$totalIssues += Test-FileEncoding
+$totalIssues += Test-RuleDependencies
+$totalIssues += Test-FileIntegrity
+
+# Summary
+Write-ColorOutput "`n=== Validation Summary ===" "Magenta"
+if ($totalIssues -eq 0) {
+    Write-ColorOutput "All validation checks passed successfully!" "Green"
+    exit 0
+} else {
+    Write-ColorOutput "Found $totalIssues total issues that need attention." "Red"
+    exit 1
 }
-
-# 执行主函数
-Main
-

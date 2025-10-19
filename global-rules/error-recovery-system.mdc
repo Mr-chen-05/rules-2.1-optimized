@@ -2,7 +2,7 @@
 type: "global_rule"
 description: "错误恢复机制 - 系统级错误检测和自动恢复策略"
 globs: ["**/*"]
-priority: 940
+priority: 938
 alwaysApply: true
 
 # Version Management

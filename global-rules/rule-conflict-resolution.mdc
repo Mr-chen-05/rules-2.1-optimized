@@ -71,27 +71,37 @@ changelog:
     - super-brain-system.mdc (970) - 超级大脑系统 ← 从P3提升
     - feedback-enhanced.mdc (960) - 增强反馈机制
     - ai-agent-intelligence-core.mdc (950) - AI智能核心
+    - intelligent-project-management.mdc (952) - 智能项目管理
+    - disaster-recovery-plan.mdc (945) - 灾难恢复计划
+    - audit-logging-system.mdc (948) - 审计日志系统
     - intelligent-recommendation-engine.mdc (940) - 智能推荐引擎
+    - rule-hot-reload-system.mdc (942) - 规则热更新机制
+    - error-recovery-system.mdc (938) - 错误恢复系统
     - context-recorder-system.mdc (920) - 上下文记录系统 ← 从P3提升
     - unified-rules-base.mdc (920) - 统一规则基础
-  
+
   Level 5 - 专业开发规则 (优先级: 800-899) - P3级别:
     - brain-recorder-integration.mdc (890) - 大脑记录员集成
     - frontend-rules.mdc (860) - 前端完整规则 ← 从P4提升
     - backend-rules.mdc (850) - 后端完整规则 ← 从P4提升
     - backend-dev.mdc (820) - 后端开发工作流 ← 从Level 6调整至Level 5以匹配优先级范围
     - multimodal-interaction-framework.mdc (800) - 多模态交互 ← 从P0调整
-  
+
   Level 6 - 项目工作流规则 (优先级: 700-799) - P4级别:
     - frontend-dev.mdc (700) - 前端开发工作流
     - 其他项目工作流程规则
-  
+
   Level 7 - 高级功能规则 (优先级: 600-699) - P5级别:
     - context-loader.mdc (680) - 上下文加载器 ← 从P2降级
     - commit.mdc (680) - 统一提交工作流（支持 /commit-fast 别名；含快速模式 --fast） ← 从P4降级
-    - custom-command-builder.mdc (650) - 自定义命令构建器 ← 从Level 8调整至Level 7以匹配优先级范围
+    - code-review.mdc (602) - 代码审查
+    - bug-fix.mdc (600) - Bug修复
+    - systematic-debugging.mdc (648) - 系统化调试
+    - root-cause-analysis.mdc (650) - 根因分析
+    - mcp-debugging-enhanced.mdc (652) - MCP调试增强
+    - custom-command-builder.mdc (654) - 自定义命令构建器
     - 调试和分析工具
-  
+
   Level 8 - 系统优化和实用工具 (优先级: 300-599) - P6/P7级别:
     - create-docs.mdc (300) - 文档创建
     - implement-task.mdc (300) - 任务实现

@@ -2,7 +2,7 @@
 type: "always_apply"
 description: "AI-powered MCP debugging and diagnostics with intelligent analysis - AI驱动的MCP调试和诊断工具"
 globs: ["**/*"]
-priority: 650
+priority: 652
 alwaysApply: true
 integrations: ["super-brain-system", "mcp-intelligent-strategy", "intelligent-project-management", "context-loader", "custom-command-builder", "systematic-debugging", "root-cause-analysis"]
 

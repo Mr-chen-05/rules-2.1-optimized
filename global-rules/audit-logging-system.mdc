@@ -2,7 +2,7 @@
 type: "global_rule"
 description: "审计日志系统 - 全面的操作审计和安全事件记录"
 globs: ["**/*"]
-priority: 950
+priority: 948
 alwaysApply: true
 
 # Version Management

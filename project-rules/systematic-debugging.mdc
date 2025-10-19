@@ -2,7 +2,7 @@
 type: "always_apply"
 description: "AI-powered systematic debugging with intelligent troubleshooting - AI驱动的系统化调试方法"
 globs: ["**/*"]
-priority: 650
+priority: 648
 alwaysApply: true
 integrations: ["super-brain-system", "mcp-intelligent-strategy", "intelligent-project-management", "commit", "changelog-management", "code-quality-check", "root-cause-analysis"]
 

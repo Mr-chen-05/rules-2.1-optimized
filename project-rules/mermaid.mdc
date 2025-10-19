@@ -2,7 +2,7 @@
 type: "utility_rule"
 description: "Mermaid diagram generation for various visualizations - Mermaid图表生成工具"
 globs: ["**/*.md", "**/*.mdx", "**/*.mmd"]
-priority: 300
+priority: 303
 alwaysApply: false
 
 # Version Management

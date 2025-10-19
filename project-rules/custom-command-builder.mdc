@@ -2,7 +2,7 @@
 type: "always_apply"
 description: "AI-powered custom command builder with intelligent templates - AI驱动的自定义命令构建器"
 globs: ["**/*"]
-priority: 650
+priority: 654
 alwaysApply: true
 integrations: ["super-brain-system", "mcp-intelligent-strategy", "context-loader"]
 
