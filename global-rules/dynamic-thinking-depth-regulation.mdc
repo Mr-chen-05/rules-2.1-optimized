@@ -283,4 +283,203 @@ Level 5: 突破性验证
 
 ---
 
+## 附录A: 评分算法实现细节
+
+### A.1 维度评分计算方法
+
+认知复杂度评分实现:
+  def calculate_cognitive_complexity(task):
+      score = 0
+      
+      # 1. 步骤数量 (0-3分)
+      steps = count_required_steps(task)
+      if steps <= 2:
+          score += 1
+      elif steps <= 5:
+          score += 2
+      else:
+          score += 3
+      
+      # 2. 概念抽象度 (0-3分)
+      abstraction = measure_abstraction_level(task)
+      score += abstraction  # 0:具体, 1:半抽象, 2:抽象, 3:高度抽象
+      
+      # 3. 领域知识需求 (0-4分)
+      domain_knowledge = assess_domain_knowledge(task)
+      score += domain_knowledge  # 0:通用, 1:基础, 2:中级, 3:高级, 4:专家
+      
+      # 归一化到1-10
+      return min(10, max(1, score))
+
+信息密度评分实现:
+  def calculate_information_density(context):
+      score = 0
+      
+      # 1. 信息源数量
+      sources = count_information_sources(context)
+      if sources <= 1:
+          score += 2
+      elif sources <= 3:
+          score += 4
+      elif sources <= 5:
+          score += 6
+      else:
+          score += 8
+      
+      # 2. 信息冲突程度
+      conflicts = detect_conflicting_information(context)
+      score += min(2, conflicts)  # 最多+2分
+      
+      # 归一化到1-10
+      return min(10, max(1, score))
+
+不确定性评分实现:
+  def calculate_uncertainty(task, context):
+      score = 0
+      
+      # 1. 明确性程度 (0-4分)
+      clarity = assess_requirement_clarity(task)
+      score += (4 - clarity)  # 越不明确分数越高
+      
+      # 2. 可验证性 (0-3分)
+      verifiability = check_verifiability(task)
+      score += (3 - verifiability)
+      
+      # 3. 先例数量 (0-3分)
+      precedents = count_similar_precedents(task)
+      if precedents == 0:
+          score += 3
+      elif precedents <= 2:
+          score += 2
+      elif precedents <= 5:
+          score += 1
+      
+      # 归一化到1-10
+      return min(10, max(1, score))
+
+### A.2 上下文因子计算
+
+def calculate_context_factor(dimension, context):
+    """
+    计算上下文调节因子 (0.5-1.5)
+    用于微调维度权重
+    """
+    base_factor = 1.0
+    
+    if dimension == "cognitive_complexity":
+        # 项目熟悉度调节
+        if context.project_familiarity == "high":
+            base_factor *= 0.8  # 熟悉项目降低复杂度
+        elif context.project_familiarity == "low":
+            base_factor *= 1.2
+        
+        # 用户经验调节
+        if context.user_experience == "expert":
+            base_factor *= 0.9
+        elif context.user_experience == "beginner":
+            base_factor *= 1.1
+    
+    elif dimension == "time_sensitivity":
+        # 紧急程度调节
+        if context.urgency == "critical":
+            base_factor *= 1.3
+        elif context.urgency == "low":
+            base_factor *= 0.7
+    
+    # 限制在合理范围
+    return min(1.5, max(0.5, base_factor))
+
+### A.3 完整评分示例
+
+示例1 - 简单查询:
+  任务: "JavaScript的变量声明方式有哪些？"
+  
+  评分过程:
+    认知复杂度: 2/10
+      - 单步骤 (+1)
+      - 具体概念 (+0)
+      - 基础知识 (+1)
+    
+    信息密度: 2/10
+      - 单一信息源 (+2)
+      - 无冲突 (+0)
+    
+    不确定性: 1/10
+      - 明确问题 (+0)
+      - 可验证 (+0)
+      - 常见问题 (+0)
+    
+    时间敏感性: 3/10 (假设非紧急)
+    风险等级: 1/10 (低风险)
+    
+  计算:
+    Score = Σ(Dimension_i × Weight_i × Context_Factor_i)
+          = (2×0.25×1.0) + (2×0.20×1.0) + (1×0.20×1.0) + (3×0.15×1.0) + (1×0.10×1.0)
+          = 0.5 + 0.4 + 0.2 + 0.45 + 0.1
+          = 1.65
+    
+    归一化: 1.65 × 10 = 16.5
+  
+  结果: 16.5分 → Level 1 (快速响应模式)
+
+示例2 - 复杂设计:
+  任务: "设计一个可扩展的微服务架构来支持百万用户"
+  
+  评分过程:
+    认知复杂度: 9/10
+      - 多步骤 (+3)
+      - 高度抽象 (+3)
+      - 专家知识 (+4) → 10分，取9
+    
+    信息密度: 7/10
+      - 多信息源 (+6)
+      - 轻微冲突 (+1)
+    
+    不确定性: 8/10
+      - 要求不够具体 (+3)
+      - 难以完全验证 (+2)
+      - 少量先例 (+2)
+    
+    时间敏感性: 6/10 (假设有期限)
+    风险等级: 9/10 (高风险)
+    创新要求: 8/10
+    
+  计算:
+    Score = (9×0.25×1.2) + (7×0.20×1.0) + (8×0.20×1.1) + (6×0.15×1.0) + (9×0.10×1.3) + (8×0.10×1.0)
+          = 2.7 + 1.4 + 1.76 + 0.9 + 1.17 + 0.8
+          = 8.73
+    
+    归一化: 8.73 × 10 = 87.3
+  
+  结果: 87.3分 → Level 5 (超深度研究模式)
+
+### A.4 实时调节机制
+
+动态权重调整:
+  def adjust_weights_based_on_feedback(dimension_weights, feedback_history):
+      """
+      基于反馈历史调整维度权重
+      """
+      for dimension in dimension_weights:
+          # 获取该维度相关的反馈
+          relevant_feedback = filter_feedback(feedback_history, dimension)
+          
+          # 计算该维度的预测准确率
+          accuracy = calculate_prediction_accuracy(relevant_feedback)
+          
+          # 调整权重
+          if accuracy < 0.7:
+              # 准确率低，降低权重
+              dimension_weights[dimension] *= 0.95
+          elif accuracy > 0.9:
+              # 准确率高，微调权重
+              dimension_weights[dimension] *= 1.02
+      
+      # 归一化权重总和为1
+      normalize_weights(dimension_weights)
+      
+      return dimension_weights
+
+---
+
 **注意**: 本机制是AI认知能力的核心调节系统，确保在不同情境下都能提供最适合的思考深度和质量。所有AI交互都应根据此机制动态调节思考策略。

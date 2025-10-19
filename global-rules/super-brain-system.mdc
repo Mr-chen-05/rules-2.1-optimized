@@ -313,4 +313,237 @@ MCP工具智能编排:
 
 ---
 
+## 七、系统状态管理
+
+### 7.1 状态检测机制
+
+激活前状态检测:
+  检测项目:
+    - [ ] 检查 project-memory/active/project.context.md 存在性
+    - [ ] 检查 project-memory/archives/ 目录存在性
+    - [ ] 验证现有文件完整性
+    - [ ] 检测上次激活状态
+    - [ ] 识别中断激活场景
+  
+  完整性验证:
+    必需区块检查:
+      - 📌 置顶信息 (Pinned)
+      - 🎯 决策记录 (Decisions)
+      - 📝 待办事项 (TODO)
+      - ✅ 已完成事项 (Done)
+      - 📋 项目笔记 (Notes)
+    
+    元数据验证:
+      - 项目类型字段
+      - 创建时间字段
+      - 最后修改时间
+      - 模板版本字段
+    
+    完整性评分:
+      100%: 所有必需区块和元数据完整
+      80-99%: 缺少非关键区块或部分元数据
+      50-79%: 缺少关键区块但主体存在
+      <50%: 文件严重不完整或损坏
+      0%: 文件不存在
+
+### 7.2 状态恢复策略
+
+恢复决策树:
+  完整性 100%:
+    → 系统已完整激活
+    → 跳过激活流程
+    → 显示当前状态
+    → 提供状态刷新选项
+  
+  完整性 80-99%:
+    → 系统部分激活
+    → 补全缺失区块
+    → 保留现有内容
+    → 记录恢复操作
+  
+  完整性 50-79%:
+    → 系统不完整激活
+    → 询问用户选择:
+      1. 补全修复（推荐）
+      2. 重新激活
+      3. 备份后重建
+  
+  完整性 <50%:
+    → 系统激活失败
+    → 备份现有文件
+    → 提供重新激活
+    → 记录失败原因
+  
+  完整性 0%:
+    → 首次激活
+    → 执行完整激活流程
+    → 创建所有文件
+    → 初始化系统状态
+
+### 7.3 中断恢复机制
+
+中断检测:
+  检测标志:
+    - 存在临时激活标记文件: .brain-activating
+    - project.context.md 修改时间异常（创建后1分钟内未更新完成标记）
+    - 归档文件存在但项目文件不存在
+    - 文件大小异常（小于预期最小值）
+  
+  中断原因分析:
+    - 用户手动中断 (Ctrl+C)
+    - 系统崩溃或异常
+    - 网络或IO错误
+    - 权限不足
+    - 磁盘空间不足
+
+恢复流程:
+  步骤1 - 检测中断:
+    if exists(".brain-activating"):
+      detect_interruption = True
+      last_step = read_last_step_from_marker()
+    
+  步骤2 - 备份现场:
+    if incomplete_files_exist():
+      backup_dir = f"project-memory/backups/interrupted-{timestamp}/"
+      backup_incomplete_files(backup_dir)
+  
+  步骤3 - 用户确认:
+    "🔍 检测到系统激活被中断
+     
+     上次激活进度: [last_step]
+     中断时间: [timestamp]
+     
+     恢复选项:
+     1. 从中断点继续（推荐）
+     2. 重新完整激活
+     3. 取消并保持现状
+     4. 清理并退出
+     
+     请选择 (1-4):"
+  
+  步骤4 - 执行恢复:
+    选项1: resume_from_checkpoint(last_step)
+    选项2: full_reactivation()
+    选项3: keep_current_state()
+    选项4: cleanup_and_exit()
+  
+  步骤5 - 清理标记:
+    remove(".brain-activating")
+    record_recovery_to_recorder()
+
+### 7.4 状态持久化
+
+激活检查点:
+  checkpoint_structure:
+    {
+      "activation_id": "act_20251018_001",
+      "start_time": "2025-10-18T10:30:00Z",
+      "current_step": "creating_archive_file",
+      "completed_steps": [
+        "directory_creation",
+        "project_context_creation"
+      ],
+      "pending_steps": [
+        "archive_file_creation",
+        "template_initialization",
+        "final_verification"
+      ],
+      "state_data": {
+        "project_name": "Agent",
+        "project_type": "hybrid",
+        "detected_tech_stack": "PowerShell, Markdown"
+      }
+    }
+  
+  检查点位置:
+    - .brain-activating (激活进行中标记)
+    - project-memory/.activation-state.json (详细状态)
+
+### 7.5 状态管理命令
+
+新增命令:
+  /brain-status:
+    功能: 显示超级大脑系统当前状态
+    输出:
+      - 激活状态 (已激活/未激活/部分激活)
+      - 文件完整性评分
+      - 各子系统状态
+      - 最后激活时间
+      - 健康度评分
+  
+  /brain-repair:
+    功能: 修复系统状态问题
+    流程:
+      1. 诊断问题
+      2. 生成修复方案
+      3. 请求用户确认
+      4. 执行修复
+      5. 验证结果
+  
+  /brain-reset:
+    功能: 完全重置系统状态
+    警告: 将清除所有激活数据
+    流程:
+      1. 备份现有数据
+      2. 确认用户意图（需输入项目名称确认）
+      3. 清理所有文件
+      4. 重新完整激活
+  
+  /brain-backup:
+    功能: 创建系统状态备份
+    输出: 备份文件路径
+  
+  /brain-restore:
+    功能: 从备份恢复系统状态
+    输入: 备份文件路径或时间点
+
+### 7.6 健康度监控
+
+健康度评估:
+  评估维度:
+    文件完整性 (30%):
+      - 必需文件存在
+      - 文件格式正确
+      - 内容完整性
+    
+    数据一致性 (25%):
+      - 元数据一致
+      - 引用有效性
+      - 时间戳合理
+    
+    功能可用性 (25%):
+      - 记录系统正常
+      - 推荐引擎可用
+      - MCP工具就绪
+    
+    性能指标 (20%):
+      - 响应速度
+      - 资源使用
+      - 错误率
+  
+  健康度等级:
+    优秀 (90-100分): 🟢 系统运行完美
+    良好 (75-89分): 🟡 系统基本正常
+    一般 (60-74分): 🟠 建议进行检查
+    较差 (40-59分): 🔴 需要立即修复
+    危险 (<40分): ⚠️ 系统严重问题
+
+自动修复:
+  轻微问题:
+    - 自动修复并记录
+    - 无需用户干预
+    - 后台静默处理
+  
+  中等问题:
+    - 提示用户注意
+    - 提供修复建议
+    - 用户确认后修复
+  
+  严重问题:
+    - 立即告警用户
+    - 详细说明影响
+    - 强制修复或重置
+
+---
+
 **🚀 立即体验**: 输入"启动超级大脑系统"开始您的智能项目管理之旅！
