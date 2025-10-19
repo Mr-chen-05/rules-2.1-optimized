@@ -318,7 +318,7 @@ install-scripts\install-ultra.bat "你的项目目录路径" fullstack  # 🌟 �
 
 | 开发模式 | 前端 | 后端 | MCP | 文件数 | 安装命令 |
 |----------|------|------|-----|--------|-----------|
-| **前端开发** | ✅ | ❌ | ✅ | 49个.mdc | `install-scripts\install-ultra.bat "项目路径" frontend` |
+| **前端开发** | ✅ | ❌ | ✅ | 48个.mdc | `install-scripts\install-ultra.bat "项目路径" frontend` |
 | **后端开发** | ❌ | ✅ | ✅ | 48个.mdc | `install-scripts\install-ultra.bat "项目路径" backend` |
 | **全栈开发** | ✅ | ✅ | ✅ | 50个.mdc | `install-scripts\install-ultra.bat "项目路径" fullstack` |
 | **默认模式** | ✅ | ✅ | ✅ | 50个.mdc | `install-scripts\install-ultra.bat "项目路径"` |

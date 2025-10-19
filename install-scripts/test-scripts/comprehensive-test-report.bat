@@ -229,7 +229,7 @@ if %TOTAL_FILES% GEQ 40 if %TOTAL_FILES% LEQ 42 (
 
 echo   Unknown mode or incomplete files
 echo   File count: %TOTAL_FILES%
-echo   Expected count: Frontend(42), Backend(41), Fullstack(43) .mdc files
+echo   Expected count: Frontend(48), Backend(48), Fullstack(50) .mdc files
 
 :mode_detected
 echo.

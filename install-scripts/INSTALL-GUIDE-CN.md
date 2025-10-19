@@ -83,7 +83,7 @@ install-ultra.bat D:\WebApp backend        # 后端开发设置
 
 | 模式 | .mdc文件数 | 优先级层次 | 适用场景 |
 |------|------------|------------|----------|
-| `frontend` | 49 个.mdc文件 | P0-P7 (8层) | React、Vue、Angular 项目 |
+| `frontend` | 48 个.mdc文件 | P0-P7 (8层) | React、Vue、Angular 项目 |
 | `backend` | 48 个.mdc文件 | P0-P7 (8层) | API、服务器、数据库项目 |
 | `fullstack` | 50 个.mdc文件 | P0-P7 (8层) | 完整的 Web 应用程序（推荐） |
 
@@ -272,8 +272,8 @@ install-scripts\install-ultra.bat C:\my-project
 
 | 模式          | 预期.mdc文件数量  | 实际可用文件 | 包含内容                                           |
 | ------------- | --------------- | ------------ | -------------------------------------------------- |
-| **Frontend**  | 49 个.mdc文件   | 约8-15个     | 前端规则 + mermaid 图表支持 + 核心安全规则         |
-| **Backend**   | 48 个.mdc文件   | 约8-15个     | 后端规则（不含 mermaid）+ 核心安全规则             |
+| **Frontend**  | 48 个.mdc文件   | 约8-15个     | 前端规则 + mermaid 图表支持 + 核心安全规则         |
+| **Backend**   | 48 个.mdc文件   | 约8-15个     | 后端规则 + mermaid 图表支持 + 核心安全规则             |
 | **Fullstack** | 50 个.mdc文件   | 约8-15个     | 前端 + 后端完整规则 + 核心安全规则                 |
 
 > **⚠️ 重要说明**: 由于这是开发版本，许多高级规则文件尚未完全就绪。脚本会显示 WARNING 信息表示某些源文件未找到，这是正常现象。核心功能文件（P0-P1级别）会正常安装，确保基本功能可用。
@@ -527,7 +527,7 @@ install-scripts\install-ultra.bat
 
 **🚀 三种开发模式**:
 
-- `frontend` - 前端开发（49 个.mdc文件，P0-P7 优先级层次）
+- `frontend` - 前端开发（48 个.mdc文件，P0-P7 优先级层次）
 - `backend` - 后端开发（48 个.mdc文件，P0-P7 优先级层次）
 - `fullstack` - 全栈开发（50 个.mdc文件，P0-P7 优先级层次，推荐）
 
