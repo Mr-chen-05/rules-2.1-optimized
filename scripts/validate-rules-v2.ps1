@@ -256,9 +256,9 @@ function Test-FileEncoding {
         $relativePath = $_.FullName.Replace((Get-Location).Path, "").TrimStart('\')
         
         try {
-            $content = Get-Content $_.FullName -Raw -Encoding UTF8
-            # Check for BOM or encoding issues
-            if ($content.StartsWith([char]0xFEFF)) {
+            # Check for BOM at byte level (UTF-8 BOM: EF BB BF)
+            $bytes = [System.IO.File]::ReadAllBytes($_.FullName)
+            if ($bytes.Length -ge 3 -and $bytes[0] -eq 0xEF -and $bytes[1] -eq 0xBB -and $bytes[2] -eq 0xBF) {
                 Write-ColorOutput "  BOM detected: $relativePath" "Yellow"
             }
         } catch {
@@ -346,7 +346,7 @@ function Test-FileIntegrity {
 
 # Main execution
 Write-ColorOutput "Rules Validation Script v2.0 - Focused Edition" "Magenta"
-Write-ColorOutput "专注于 global-rules 和 project-rules 目录下的 .mdc 文件" "Cyan"
+Write-ColorOutput "Focused on .mdc files in global-rules and project-rules directories" "Cyan"
 Write-ColorOutput "=================================================" "Magenta"
 
 $totalIssues = 0
