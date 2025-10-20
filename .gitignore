@@ -99,6 +99,8 @@ enterprise-test-reports/**
 # 维护脚本 (不跟踪)
 scripts/remove-bom.ps1
 scripts/validate-rules-v2.ps1
+install-scripts/test-scripts/run-all-tests.bat
+
 
 #上下文管理
 context.archive.md

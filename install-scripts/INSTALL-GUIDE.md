@@ -83,9 +83,9 @@ install-ultra.bat D:\WebApp backend        # Backend development setup
 
 | Mode | .mdc Files | Priority Levels | Best For |
 |------|------------|----------------|----------|
-| `frontend` | 48 .mdc files | P0-P7 (8 levels) | React, Vue, Angular projects |
-| `backend` | 48 .mdc files | P0-P7 (8 levels) | API, server, database projects |
-| `fullstack` | 50 .mdc files | P0-P7 (8 levels) | Complete web applications (recommended) |
+| `frontend` | 52 .mdc files | P0-P7 (8 levels) | React, Vue, Angular projects |
+| `backend` | 52 .mdc files | P0-P7 (8 levels) | API, server, database projects |
+| `fullstack` | 54 .mdc files | P0-P7 (8 levels) | Complete web applications (recommended) |
 
 ### 📁 Directory Structure Created
 
@@ -272,9 +272,9 @@ Your Project Directory/
 
 | Mode          | Expected .mdc Files | Actually Available Files | Contents                                           |
 | ------------- | ------------------- | ------------------------ | -------------------------------------------------- |
-| **Frontend**  | 48 .mdc files       | About 8-15 files         | Frontend rules + mermaid chart support + core safety rules |
-| **Backend**   | 48 .mdc files       | About 8-15 files         | Backend rules + mermaid chart support + core safety rules             |
-| **Fullstack** | 50 .mdc files       | About 8-15 files         | Frontend + backend complete rules + core safety rules      |
+| **Frontend**  | 52 .mdc files       | About 8-15 files         | Frontend rules + mermaid chart support + core safety rules |
+| **Backend**   | 52 .mdc files       | About 8-15 files         | Backend rules + mermaid chart support + core safety rules             |
+| **Fullstack** | 54 .mdc files       | About 8-15 files         | Frontend + backend complete rules + core safety rules      |
 
 > **⚠️ Important Note**: Since this is a development version, many advanced rule files are not yet fully ready. The script will display WARNING messages indicating that some source files are not found, which is normal. Core functionality files (P0-P1 level) will install normally, ensuring basic functionality is available.
 
@@ -462,9 +462,9 @@ install-scripts\install-ultra.bat
 
 **🚀 Three Development Modes**:
 
-- `frontend` - Frontend development (48 .mdc files, P0-P7 priority levels)
-- `backend` - Backend development (48 .mdc files, P0-P7 priority levels)
-- `fullstack` - Full-stack development (50 .mdc files, P0-P7 priority levels, recommended)
+- `frontend` - Frontend development (52 .mdc files, P0-P7 priority levels)
+- `backend` - Backend development (52 .mdc files, P0-P7 priority levels)
+- `fullstack` - Full-stack development (54 .mdc files, P0-P7 priority levels, recommended)
 
 **🔧 MCP Cross-Platform Management**:
 

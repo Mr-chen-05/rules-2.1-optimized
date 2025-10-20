@@ -6,13 +6,19 @@ alwaysApply: true
 priority: 1180
 
 # Version Management
-version: "2.6.0"
+version: "2.6.1"
 last_updated: "2025-10-19"
 author: "system"
 status: "stable"
 compatibility: "rule-system >= 2.0"
 
 changelog:
+  - version: "2.6.1"
+    date: "2025-10-19"
+    changes:
+      - "添加context-recorder模块化文件到优先级列表"
+      - "新增4个记录员系统模块文件 (core/templates/advanced/edge-cases)"
+      - "更新P2-intelligent-system规则文件总数为24个"
   - version: "2.6.0"
     date: "2025-10-19"
     changes:
@@ -83,7 +89,11 @@ changelog:
     - error-recovery-system.mdc (938) - 错误恢复系统
     - memory-system-integration.mdc (930) - 内存系统集成
     - unified-rules-base.mdc (921) - 统一规则基础
-    - context-recorder-system.mdc (920) - 上下文记录系统
+    - context-recorder-system.mdc (920) - 上下文记录系统 [索引文件]
+    - context-recorder-core.mdc (920) - 记录员核心模块
+    - context-recorder-templates.mdc (918) - 记录员模板模块
+    - context-recorder-advanced.mdc (917) - 记录员高级功能
+    - context-recorder-edge-cases.mdc (916) - 记录员边界情况处理
     - intelligent-workflow-orchestration.mdc (911) - 智能工作流编排
     - permission-control-system.mdc (910) - 权限控制系统
     - system-diagnostics.mdc (901) - 系统诊断

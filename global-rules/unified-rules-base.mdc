@@ -497,7 +497,7 @@ global-rules版本绑定:
   最后检查: 2025-01-31 14:30:00
   
   规则版本详情:
-    - global-rules: v2.1.0 (20个文件)
+    - global-rules: v2.1.0 (31个文件)
     - project-rules: v2.1.0 (23个文件)
     - templates: v2.0 (2个文件)
   

@@ -313,6 +313,30 @@ if exist "%GLOBAL_RULES_DIR%\context-recorder-system.mdc" (
 ) else (
     echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\context-recorder-system.mdc
 )
+if exist "%GLOBAL_RULES_DIR%\context-recorder-core.mdc" (
+    copy "%GLOBAL_RULES_DIR%\context-recorder-core.mdc" "%RULES_DIR%\P2-intelligent-system\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy context-recorder-core.mdc
+) else (
+    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\context-recorder-core.mdc
+)
+if exist "%GLOBAL_RULES_DIR%\context-recorder-templates.mdc" (
+    copy "%GLOBAL_RULES_DIR%\context-recorder-templates.mdc" "%RULES_DIR%\P2-intelligent-system\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy context-recorder-templates.mdc
+) else (
+    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\context-recorder-templates.mdc
+)
+if exist "%GLOBAL_RULES_DIR%\context-recorder-advanced.mdc" (
+    copy "%GLOBAL_RULES_DIR%\context-recorder-advanced.mdc" "%RULES_DIR%\P2-intelligent-system\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy context-recorder-advanced.mdc
+) else (
+    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\context-recorder-advanced.mdc
+)
+if exist "%GLOBAL_RULES_DIR%\context-recorder-edge-cases.mdc" (
+    copy "%GLOBAL_RULES_DIR%\context-recorder-edge-cases.mdc" "%RULES_DIR%\P2-intelligent-system\" >nul 2>&1
+    if errorlevel 1 echo WARNING: Failed to copy context-recorder-edge-cases.mdc
+) else (
+    echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\context-recorder-edge-cases.mdc
+)
 if exist "%GLOBAL_RULES_DIR%\context-systems-integration.mdc" (
     copy "%GLOBAL_RULES_DIR%\context-systems-integration.mdc" "%RULES_DIR%\P2-intelligent-system\" >nul 2>&1
     if errorlevel 1 echo WARNING: Failed to copy context-systems-integration.mdc
@@ -409,12 +433,16 @@ if exist "%GLOBAL_RULES_DIR%\system-integration-config.mdc" (
 ) else (
     echo WARNING: Source file not found: %GLOBAL_RULES_DIR%\system-integration-config.mdc
 )
-echo - P2-intelligent-system/ (Priority: 900-999) - 20 files >> "%MAIN_RULES%"
+echo - P2-intelligent-system/ (Priority: 900-999) - 24 files >> "%MAIN_RULES%"
 echo   - unified-rules-base.mdc >> "%MAIN_RULES%"
 echo   - ai-agent-intelligence-core.mdc >> "%MAIN_RULES%"
 echo   - audit-logging-system.mdc >> "%MAIN_RULES%"
-echo   - context-recorder-system.mdc >> "%MAIN_RULES%"
-echo   - context-systems-integration.mdc >> "%MAIN_RULES%"
+echo   - context-recorder-system.mdc (模块化架构索引) >> "%MAIN_RULES%"
+echo   - context-recorder-core.mdc (核心功能模块) >> "%MAIN_RULES%"
+echo   - context-recorder-templates.mdc (模板定义模块) >> "%MAIN_RULES%"
+echo   - context-recorder-advanced.mdc (高级功能模块) >> "%MAIN_RULES%"
+echo   - context-recorder-edge-cases.mdc (边界处理模块) >> "%MAIN_RULES%"
+echo   - context-systems-integration.mdc (系统集成配置) >> "%MAIN_RULES%"
 echo   - disaster-recovery-plan.mdc >> "%MAIN_RULES%"
 echo   - error-recovery-system.mdc >> "%MAIN_RULES%"
 echo   - feedback-enhanced.mdc >> "%MAIN_RULES%"
@@ -1127,6 +1155,23 @@ REM Count total .mdc files only
 set /a TOTAL_FILES=0
 for /r "%RULES_DIR%" %%f in (*.mdc) do set /a TOTAL_FILES+=1
 
+REM Count additional resource files
+set /a TEMPLATE_COUNT=0
+set /a MCP_TOOLS_COUNT=0
+set /a SCRIPTS_COUNT=0
+
+if exist "%TARGET_DIR%\templates" (
+    for %%f in ("%TARGET_DIR%\templates\*.*") do set /a TEMPLATE_COUNT+=1
+)
+
+if exist "%TARGET_DIR%\mcp-tools" (
+    for %%f in ("%TARGET_DIR%\mcp-tools\*.*") do set /a MCP_TOOLS_COUNT+=1
+)
+
+if exist "%TARGET_DIR%\scripts" (
+    for %%f in ("%TARGET_DIR%\scripts\*.*") do set /a SCRIPTS_COUNT+=1
+)
+
 echo.
 echo ========================================
 echo SUCCESS: %RULE_TYPE% Rules Directory Created! (Final Release)
@@ -1137,6 +1182,12 @@ echo Rules Directory: %RULES_DIR%
 echo Rule Type: %RULE_TYPE%
 echo Total .mdc files installed: %TOTAL_FILES%
 echo Priority levels: P0-P7 (8 levels)
+echo.
+echo Additional Directories:
+echo   - templates/ (%TEMPLATE_COUNT% files for context recording)
+echo   - mcp-tools/ (%MCP_TOOLS_COUNT% management scripts)
+echo   - scripts/ (%SCRIPTS_COUNT% validation scripts)
+echo.
 echo Target location: %TARGET_DIR%
 echo.
 echo You can now navigate to the above path to access your AgentRules!
@@ -1177,6 +1228,12 @@ if "%MISSING_FILES%"=="1" (
 
 echo Total .mdc files installed: %TOTAL_FILES%
 echo Priority levels: P0-P7 (8 levels)
+echo.
+echo Additional Resources:
+echo   - Templates: %TEMPLATE_COUNT% files
+echo   - MCP Tools: %MCP_TOOLS_COUNT% scripts
+echo   - Scripts: %SCRIPTS_COUNT% validation scripts
+echo.
 echo Target location: %TARGET_DIR%
 echo.
 echo You can now use these rules with your AI development tools.
@@ -1186,9 +1243,12 @@ echo ========================================
 echo Installation Summary:
 echo ========================================
 echo Rule Type: %RULE_TYPE%
-echo Files Copied: %TOTAL_FILES%
+echo Rule Files (.mdc): %TOTAL_FILES%
 echo Target Path: %TARGET_DIR%
 echo Rules Path: %RULES_DIR%
+echo Templates: %TARGET_DIR%\templates
+echo MCP Tools: %TARGET_DIR%\mcp-tools
+echo Scripts: %TARGET_DIR%\scripts
 if "%MISSING_FILES%"=="1" echo Status: WARNING - Missing critical files
 if "%COPY_ERRORS%"=="1" echo Status: WARNING - Copy errors occurred
 if "%MISSING_FILES%"=="0" if "%COPY_ERRORS%"=="0" echo Status: SUCCESS - All files installed correctly

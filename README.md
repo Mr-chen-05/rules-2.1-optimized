@@ -1,6 +1,6 @@
 # 🎯 Rules 2.6.0 - 下一代智能AI助手规则体系
 
-> **🏆 PERFECT (A++)评级** | **✅ 100%测试通过** | **🚀 生产就绪** | **💬 完整MCP支持** | **🧠 AI智能化** | **🎯 50个规则（.mdc）**
+> **🏆 PERFECT (A++)评级** | **✅ 100%测试通过** | **🚀 生产就绪** | **💬 完整MCP支持** | **🧠 AI智能化** | **🎯 54个规则（.mdc）**
 
 ## 📖 项目简介
 
@@ -205,14 +205,19 @@ Rules 2.6.0/
 │       └── 安装脚本使用说明.md              # 📚 MCP安装详细说明
 │
 ├── 📝 规则文件（核心功能）
-│   ├── global-rules/                       # 📋 全局规则文件 (27个)
+│   ├── global-rules/                       # 📋 全局规则文件 (31个)
 │   │   ├── ai-agent-intelligence-core.mdc  # 🧠 AI智能核心
 │   │   ├── frontend-rules.mdc              # 🎨 前端完整规则
 │   │   ├── backend-rules.mdc               # 🔧 后端完整规则
 │   │   ├── super-brain-system.mdc          # 🧠 超级大脑系统
 │   │   ├── context-recorder-system.mdc     # 📝 上下文记录系统
+│   │   ├── context-recorder-core.mdc       # 📝 上下文记录核心模块
+│   │   ├── context-recorder-templates.mdc  # 📝 上下文记录模板
+│   │   ├── context-recorder-advanced.mdc   # 📝 上下文记录高级功能
+│   │   ├── context-recorder-edge-cases.mdc # 📝 上下文记录边缘情况处理
 │   │   ├── brain-recorder-integration.mdc  # 🧠 大脑-记录员集成
 │   │   ├── context-systems-integration.mdc # 🔗 上下文系统集成
+│   │   ├── context7-preload-standard.mdc   # 🔗 Context7预加载标准
 │   │   ├── unified-rules-base.mdc          # 📋 统一规则基础
 │   │   ├── permission-control-system.mdc   # 🔐 权限控制系统（v1.0新增）
 │   │   ├── system-diagnostics.mdc          # 🔧 系统诊断工具（v1.0新增）
@@ -238,25 +243,24 @@ Rules 2.6.0/
 │       │   ├── custom-command-builder.mdc  # 🛠️ 智能自定义命令构建器
 │       │   └── mcp-debugging-enhanced.mdc  # 🔧 增强MCP调试工具
 │       ├── ⚡ Phase 2 核心工作流规则 (5个)
-│       │   ├── commit.mdc                  # 统一提交工作流（支持快速模式）
+│       │   ├── commit.mdc                  # 📝 统一提交工作流（支持快速模式）
 │       │   ├── changelog-management.mdc    # 📋 智能变更日志管理
 │       │   ├── code-quality-check.mdc      # 🔍 跨语言代码质量检查
 │       │   ├── root-cause-analysis.mdc     # 🔧 AI根因分析方法
 │       │   └── systematic-debugging.mdc    # 🐛 系统化调试工具
-│       └── 📋 基础项目规则 (16个)
-│           ├── frontend-dev.mdc            # 🎨 前端开发工作流
-│           ├── backend-dev.mdc             # 🔧 后端开发工作流
-│           ├── feedback-enhanced.mdc       # 💬 智能反馈机制
-│           ├── code-review.mdc             # 👀 代码审查
-│           ├── mcp-intelligent-strategy.mdc # 🧠 MCP智能使用策略
+│       └── 📋 基础项目规则 (15个)
 │           ├── ai-powered-code-review.mdc  # 🤖 AI驱动代码审查
 │           ├── analyze-issue.mdc           # 🔍 问题分析
+│           ├── backend-dev.mdc             # 🔧 后端开发工作流
 │           ├── bug-fix.mdc                 # 🐛 错误修复
-│           ├── commit.mdc                  # 📝 提交规范
+│           ├── code-review.mdc             # 👀 代码审查
 │           ├── create-docs.mdc             # 📚 文档创建
+│           ├── feedback-enhanced.mdc       # 💬 智能反馈机制
+│           ├── frontend-dev.mdc            # 🎨 前端开发工作流
 │           ├── implement-task.mdc          # ⚡ 任务实现
 │           ├── intelligent-project-management.mdc # 📊 智能项目管理
 │           ├── intelligent-workflow-orchestration.mdc # 🎼 智能工作流编排
+│           ├── mcp-intelligent-strategy.mdc # 🧠 MCP智能使用策略
 │           ├── mcp-unified-management.mdc  # 🔧 MCP统一管理
 │           ├── mcp-zero-config-detection.mdc # 🔍 MCP零配置检测
 │           └── mermaid.mdc                 # 📊 Mermaid图表
@@ -318,10 +322,10 @@ install-scripts\install-ultra.bat "你的项目目录路径" fullstack  # 🌟 �
 
 | 开发模式 | 前端 | 后端 | MCP | 文件数 | 安装命令 |
 |----------|------|------|-----|--------|-----------|
-| **前端开发** | ✅ | ❌ | ✅ | 48个.mdc | `install-scripts\install-ultra.bat "项目路径" frontend` |
-| **后端开发** | ❌ | ✅ | ✅ | 48个.mdc | `install-scripts\install-ultra.bat "项目路径" backend` |
-| **全栈开发** | ✅ | ✅ | ✅ | 50个.mdc | `install-scripts\install-ultra.bat "项目路径" fullstack` |
-| **默认模式** | ✅ | ✅ | ✅ | 50个.mdc | `install-scripts\install-ultra.bat "项目路径"` |
+| **前端开发** | ✅ | ❌ | ✅ | 52个.mdc | `install-scripts\install-ultra.bat "项目路径" frontend` |
+| **后端开发** | ❌ | ✅ | ✅ | 52个.mdc | `install-scripts\install-ultra.bat "项目路径" backend` |
+| **全栈开发** | ✅ | ✅ | ✅ | 54个.mdc | `install-scripts\install-ultra.bat "项目路径" fullstack` |
+| **默认模式** | ✅ | ✅ | ✅ | 54个.mdc | `install-scripts\install-ultra.bat "项目路径"` |
 
 > **💡 提示**：统一安装脚本 `install-ultra.bat` 适配所有AI工具（Augment、Cursor、Claude、Trae AI等），支持前端/后端/全栈三种开发模式，100%测试通过
 > 
@@ -483,8 +487,8 @@ install-scripts\install-ultra.bat "你的项目路径" fullstack
 | `/backend-dev` | 后端开发工作流 | API/服务器开发 | `backend-dev.mdc` |
 | `/component` | 组件创建 | 创建UI组件 | 由 `frontend-dev.mdc` 提供（子命令） |
 | `/ui-design` | UI设计 | 界面设计和样式 | 由 `frontend-dev.mdc` 提供（子命令） |
-| `/api-design` | API设计 | 接口设计和文档 | 由 `backend-dev.mdc` 提供（子命令） |
-| `/database-design` | 数据库设计 | 数据模型设计 | 由 `backend-dev.mdc` 提供（子命令） |
+| `/api-design [描述]` | API设计 | 接口设计和文档 | 由 `backend-dev.mdc` 提供（子命令） |
+| `/database-design [描述]` | 数据库设计 | 数据模型设计 | 由 `backend-dev.mdc` 提供（子命令） |
 | `/responsive-design` | 响应式设计 | 移动端适配 | 无独立 .mdc（由 `/ui-design` 及前端开发流程支持） |
 
 ### 🛡️ 质量保证命令
