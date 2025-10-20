@@ -361,9 +361,59 @@ cd mcp-scripts
 ### 🔄 MCP跨平台同步功能
 
 **支持平台：**
+
+**🎯 主流AI编辑器**
 - ✅ **Trae AI** - 智能代码助手
-- ✅ **Cursor IDE** - AI驱动的代码编辑器  
+- ✅ **Trae AI (Chinese)** - 中文版智能代码助手
+- ✅ **Cursor IDE** - AI驱动的代码编辑器
+- ✅ **Claude Desktop** - Anthropic官方桌面应用
+
+**🔥 2024-2025年热门AI工具**
+- ✅ **Windsurf AI** - 新一代AI编程环境
+- ✅ **Replit AI** - 云端AI编程平台
+- ✅ **Sourcegraph Cody** - 企业级AI代码助手
+- ✅ **Continue.dev** - 开源AI编程助手
+
+**🛠️ IDE集成AI助手**
+- ✅ **VSCode GitHub Copilot** - GitHub官方AI助手
+- ✅ **JetBrains AI Assistant** - JetBrains全家桶AI助手
+- ✅ **Tabnine AI** - 多IDE支持的AI补全工具
+
+**☁️ 云端AI平台**
+- ✅ **Amazon Q Developer** - AWS官方开发者AI助手
+- ✅ **Google Gemini Code Assist** - Google AI编程助手
+- ✅ **Qodo Gen (CodiumAI)** - 智能测试生成平台
+
+**🔓 开源AI工具**
+- ✅ **Aider AI** - 命令行AI编程助手
+- ✅ **CodeGeeX** - 清华大学开源AI编程工具
+- ✅ **Tabby ML** - 自托管AI代码补全
+- ✅ **Cline (Claude Dev)** - VS Code扩展AI助手
+
+**🤖 OpenAI系列工具**
 - ✅ **OpenAI Codex** - OpenAI的代码生成平台
+- ✅ **OpenAI Codex CLI** - Codex命令行工具
+
+**🐧 腾讯AI工具**
+- ✅ **Tencent CodeBuddy** - 腾讯AI编程助手
+- ✅ **Tencent CodeBuddy CLI** - CodeBuddy命令行版本
+
+**🚀 新兴AI编辑器**
+- ✅ **Qoder AI Editor** - 新兴AI代码编辑器
+- ✅ **Void Editor** - 轻量级AI编辑器
+- ✅ **Warp Terminal** - AI增强终端
+- ✅ **Zed Editor** - 高性能协作编辑器
+
+**⚡ 高级AI助手**
+- ✅ **Refact.ai** - 智能代码重构工具
+- ✅ **Jules (Google)** - Google实验性AI助手
+- ✅ **Junie (JetBrains)** - JetBrains实验性AI工具
+- ✅ **Kilo Code** - 代码分析AI助手
+- ✅ **Kodu AI** - 智能编程助手
+- ✅ **MarsCode** - 字节跳动AI编程平台
+- ✅ **Melty AI** - 智能代码生成工具
+- ✅ **Memex AI** - 知识管理AI助手
+- ✅ **Mentat AI** - 命令行AI编程工具
 
 **核心功能：**
 - 🔍 **自动检测** - 发现已安装的AI平台及其配置状态
@@ -380,6 +430,8 @@ cd mcp-scripts
 # 从Trae AI同步配置到OpenAI Codex（推荐先预览）
 .\mcp-cross-platform-sync.ps1 sync -SourcePlatform "Trae" -TargetPlatforms "OpenAICodex" -DryRun
 ```
+**💡mcp-cross-platform-sync.ps1 使用提示：**
+如果对具体使用方法还有疑问，可以让AI助手读取相应的规则文档（如`mcp-unified-management.mdc`、`mcp-zero-config-detection.mdc`等），然后直接让AI来执行对应的脚本操作，AI会根据规则自动选择最合适的参数和配置。
 
 **📚 相关文档：**
 - [🎯 MCP工具介绍](docs/MCP-TOOLS-INTRODUCTION.md) - 了解工具价值
