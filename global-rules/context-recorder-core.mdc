@@ -2,7 +2,7 @@
 type: "always_apply"
 description: "Context Recorder Core (记录员核心) - 核心定义、任务和主要规则"
 globs: ["**/*"]
-priority: 920
+priority: 919
 alwaysApply: true
 integrations: ["super-brain-system", "brain-recorder-integration"]
 

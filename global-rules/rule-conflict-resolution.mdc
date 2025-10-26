@@ -90,7 +90,7 @@ changelog:
     - memory-system-integration.mdc (930) - 内存系统集成
     - unified-rules-base.mdc (921) - 统一规则基础
     - context-recorder-system.mdc (920) - 上下文记录系统 [索引文件]
-    - context-recorder-core.mdc (920) - 记录员核心模块
+    - context-recorder-core.mdc (919) - 记录员核心模块
     - context-recorder-templates.mdc (918) - 记录员模板模块
     - context-recorder-advanced.mdc (917) - 记录员高级功能
     - context-recorder-edge-cases.mdc (916) - 记录员边界情况处理
