@@ -59,7 +59,7 @@ changelog:
 
 上下文存储位置:
   - 主记录: project.context.md 的 project_metadata 中
-  - 备份: context.archive.md 中的历史记录
+  - 备份: context.archive*.md 中的历史记录
   - 更新频率: 每次 /switch 命令或阶段进度变化时更新
   - 访问权限: 所有规则读取权限，仅项目管理系统写入权限
 

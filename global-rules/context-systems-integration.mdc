@@ -1,4 +1,4 @@
----
+﻿---
 type: "always_apply"
 description: "Context Loader与记录员系统集成配置 - 解决功能重叠和协同工作"
 priority: 900
@@ -65,7 +65,7 @@ changelog:
 
 输出内容:
   - project.context.md (实时状态)
-  - context.archive.md (历史归档)
+  - context.archive*.md (历史归档，多归档文件支持)
   - 任务进度跟踪
   - 决策记录链
 

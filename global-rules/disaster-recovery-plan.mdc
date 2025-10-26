@@ -225,7 +225,7 @@ MCP工具全部失效:
 备份内容:
   必须备份:
     - project.context.md
-    - context.archive.md
+    - context.archive*.md (所有归档文件)
     - .rules/ 目录
     - templates/ 目录
     - 用户代码文件

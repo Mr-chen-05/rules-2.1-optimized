@@ -76,9 +76,9 @@ Context Recorder System (记录员系统) 是一个智能化的AI上下文管理
 
 **包含内容**:
 - project.context.md 标准模板
-- context.archive.md 标准模板
+- context.archive*.md 标准模板（带编号的多归档系统）
 - 归档文件管理规则
-- 多归档文件管理机制
+- 多归档文件管理机制（archive0, archive1, archive2...）
 - 归档生命周期管理
 - 文档元数据标准
 - 输出格式规范

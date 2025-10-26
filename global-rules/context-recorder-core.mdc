@@ -138,14 +138,14 @@ changelog:
 受保护区块:
   - Pinned区块: 持续生效的核心约束
   - Decisions区块: 不可自动删除，只能追加
-  - 历史保护: context.archive.md 只增不减
+  - 历史保护: context.archive*.md 只增不减
 
 Pinned生命周期管理:
   生命周期阶段:
     1. 新建阶段: [2025-01-31] 核心约束内容
     2. 活跃阶段: [2025-01-31-2025-02-15] 已验证且持续有效
     3. 过期阶段: [2025-01-31-2025-02-15 ✓] 不再适用但需保留
-    4. 归档阶段: 迁移到 context.archive.md 中
+    4. 归档阶段: 迁移到 context.archive*.md 中（当前活跃归档文件）
   
   Pinned操作规则:
     追加: AI和用户都可以追加新Pinned条目
@@ -217,16 +217,28 @@ ID编号规则:
   启动检查:
     1. 检测当前目录是否存在 project.context.md
     2. 如不存在，自动创建标准模板文件
-    3. 检测是否存在 context.archive.md
-    4. 如不存在，创建空的归档文件
+    3. 检测是否存在归档文件 (context.archive*.md)
+    4. 如不存在，创建第一个归档文件 (context.archive0.md)
     5. 记录文件创建日志
   
-  模板文件路径识别:
+  模板文件路径识别（强制优先级）:
     优先级顺序:
-      1. 当前项目 templates/ 目录（强制：存在则必须使用）
-      2. 远程 GitHub 仓库模板（RAW链接拉取后缓存）
-      3. 远程 Gitee 仓库模板（GitHub不可达时使用）
-      4. 内置默认模板（仅当外部模板不可用时回退）
+      1. 📁 当前项目 ./templates/ 目录（最高优先级，存在则强制使用）
+         - project-init-template.md: 主项目记忆文件模板
+         - archive-init-template.md: 归档文件模板
+         - template-config.yaml: 项目类型识别配置
+         - 检测方式: 检查文件是否存在
+         - 使用要求: 一旦检测到该目录，必须使用其中的模板，不得回退到其他来源
+      
+      2. 📄 context-recorder-templates.mdc 内置模板（备用模板）
+         - 仅在 ./templates/ 不存在时使用
+         - 提供标准的 v3.0-modular 简洁模板
+         - 适用于没有自定义模板的项目
+      
+      3. 🌐 远程模板（可选，暂不启用）
+         - GitHub 仓库模板（RAW链接拉取后缓存）
+         - Gitee 仓库模板（GitHub不可达时使用）
+         - 注: 目前优先级低于本地模板
   
   创建触发条件:
     - 记录员系统首次激活
@@ -238,12 +250,26 @@ ID编号规则:
 ### 指令路由系统
 ```yaml
 模板变量替换机制:
-  支持变量:
-    - {{PROJECT_NAME}}: 自动检测项目名称
-    - {{TIMESTAMP}}: 当前时间戳（YYYY-MM-DD HH:mm:ss）
-    - {{DATE}}: 当前日期（YYYY-MM-DD）
-    - {{USER}}: 当前用户名
-    - {{RULE_TYPE}}: 项目类型（frontend/backend/fullstack）
+  检测流程:
+    1. 检查 ./templates/ 目录是否存在
+    2. 如果存在，读取 template-config.yaml 获取项目类型识别规则
+    3. 读取 project-init-template.md 和 archive-init-template.md
+    4. 如果不存在，使用 context-recorder-templates.mdc 中的备用模板
+  
+  支持变量（兼容两种模板系统）:
+    ./templates/ 模板变量:
+      - ${PROJECT_NAME}: 自动检测项目名称
+      - ${TIMESTAMP}: 当前时间戳（YYYY-MM-DDTHH:mm:ssZ）
+      - ${PROJECT_TYPE}: 项目类型（根据 template-config.yaml 自动识别）
+      - ${TECH_STACK}: 技术栈（自动检测）
+      - ${PRIMARY_TAGS}: 主要标签（自动生成）
+      - ${ARCHIVE_NUMBER}: 归档编号（0, 1, 2...）
+    
+    备用模板变量（v3.0-modular）:
+      - {{PROJECT_NAME}}: 自动检测项目名称
+      - {{TIMESTAMP}}: 当前时间戳（YYYY-MM-DD HH:mm:ss）
+      - {{DATE}}: 当前日期（YYYY-MM-DD）
+      - {{RULE_TYPE}}: 项目类型（frontend/backend/fullstack）
 
 手动指令路由:
   "/record": 执行增量合并任务
@@ -310,7 +336,7 @@ ID编号规则:
 
 输出目标:
   - project.context.md (当前状态)
-  - context.archive.md (历史记录)
+  - context.archive*.md (历史记录，支持多归档文件)
   - 超级大脑系统的上下文输入
   - 用户的项目状态报告
 ```

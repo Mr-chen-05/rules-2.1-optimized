@@ -7,7 +7,7 @@ alwaysApply: false
 parent: "context-recorder-core.mdc"
 
 # Version Management
-version: "3.0.0"
+version: "2.0.0"
 last_updated: "2025-10-19"
 author: "system"
 status: "stable"
@@ -16,7 +16,31 @@ compatibility: "rule-system >= 2.0"
 
 # 📄 Context Recorder Templates (记录员模板系统)
 
-> **模块说明**: 本文件包含所有模板定义和归档配置，是记录员系统的模板模块
+> **模块说明**: 本文件包含备用模板定义和归档配置，是记录员系统的模板模块
+
+## ⚠️ 重要说明
+
+**本文件中的模板是备用模板（Fallback Templates）**
+
+### 模板使用优先级
+```yaml
+优先级规则:
+  1. ✅ 优先: ./templates/ 目录（如果存在）
+     - 这是项目定制模板，必须优先使用
+     - 包含: project-init-template.md, archive-init-template.md, template-config.yaml
+     - 检测方式: 在文件初始化前先检查该目录是否存在
+  
+  2. 📋 备用: 本文件（context-recorder-templates.mdc）中的模板
+     - 仅在 ./templates/ 不存在时使用
+     - 提供标准的 v3.0-modular 简洁模板
+     - 适用于没有自定义模板需求的项目
+
+执行逻辑:
+  if exists("./templates/project-init-template.md"):
+      使用 ./templates/ 中的模板 (v2.0-enhanced 或更高版本)
+  else:
+      使用本文件中定义的备用模板 (v3.0-modular)
+```
 
 ## 相关模块
 - `context-recorder-core.mdc` - 核心定义和主要规则
@@ -25,7 +49,7 @@ compatibility: "rule-system >= 2.0"
 
 ---
 
-## project.context.md 标准模板
+## 📋 备用模板 - project.context.md
 
 \`\`\`markdown
 # Project: {{PROJECT_NAME}}
@@ -125,7 +149,7 @@ _暂无相关项目_
 
 ---
 
-## context.archive.md 标准模板
+## 📋 备用模板 - context.archive.md
 
 \`\`\`markdown
 # 📁 Project Archive: {{PROJECT_NAME}}
@@ -391,7 +415,7 @@ TODO状态:
 
 📁 **文件状态**:
 - project.context.md: 已更新 (<current_size>)
-- context.archive.md: <archive_status>
+- context.archive0.md: <archive_status>
 
 ⏰ **下次归档提醒**: <reminder_message>
 \`\`\`
@@ -420,7 +444,7 @@ TODO状态:
   ✓ Pinned/Decisions 仅高置信内容追加
   ✓ TODO的#ID唯一且单调递增
   ✓ Done条目包含有效证据指针
-  ✓ context.archive.md文件只增不删
+  ✓ context.archive*.md文件只增不删
   ✓ 时间戳格式正确 (YYYY-MM-DD)
   ✓ 弱化词已正确降级至Notes
   ✓ 文档格式符合模板标准
