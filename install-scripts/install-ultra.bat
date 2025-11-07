@@ -1,32 +1,50 @@
 @echo off
-setlocal enabledelayedexpansion
+REM 初始化批处理环境：启用扩展与延迟变量展开，提升脚本兼容性与健壮性
+setlocal EnableExtensions EnableDelayedExpansion
 
 REM Enhanced System Encoding Detection and Auto-Adaptation
 REM Detect current system code page and set appropriate encoding
 for /f "tokens=2 delims=:" %%i in ('chcp') do set "CURRENT_CP=%%i"
 set "CURRENT_CP=%CURRENT_CP: =%"
 
-REM Auto-detect and set optimal encoding based on system
+REM 基于系统代码页选择最优编码（改为更稳健的写法，避免 "||" 在 IF 块中的解析问题）
+REM 1) 先检测当前系统代码页
+REM 2) 优先尝试切换到 UTF-8；若失败则回退到系统原生代码页
+REM 3) 设置 ENCODING_MODE 以供后续逻辑参考
+
+REM 计算回退代码页（NATIVE_CP）
+set "NATIVE_CP=437"
+if "%CURRENT_CP%"=="936" set "NATIVE_CP=936"
+if "%CURRENT_CP%"=="950" set "NATIVE_CP=950"
+if "%CURRENT_CP%"=="932" set "NATIVE_CP=932"
+if "%CURRENT_CP%"=="949" set "NATIVE_CP=949"
+
+REM 尝试切换到 UTF-8；如失败则回退到 NATIVE_CP
+chcp 65001 >nul 2>&1
+if errorlevel 1 chcp %NATIVE_CP% >nul
+
+REM 设置 ENCODING_MODE（使用嵌套 IF，避免 ELSE IF 在不同环境下的歧义）
 if "%CURRENT_CP%"=="936" (
     REM Chinese Simplified system
-    chcp 65001 >nul 2>&1 || chcp 936 >nul
     set "ENCODING_MODE=UTF8_CN"
-) else if "%CURRENT_CP%"=="950" (
-    REM Chinese Traditional system  
-    chcp 65001 >nul 2>&1 || chcp 950 >nul
-    set "ENCODING_MODE=UTF8_TW"
-) else if "%CURRENT_CP%"=="932" (
-    REM Japanese system
-    chcp 65001 >nul 2>&1 || chcp 932 >nul
-    set "ENCODING_MODE=UTF8_JP"
-) else if "%CURRENT_CP%"=="949" (
-    REM Korean system
-    chcp 65001 >nul 2>&1 || chcp 949 >nul
-    set "ENCODING_MODE=UTF8_KR"
 ) else (
-    REM Western/English systems or others
-    chcp 65001 >nul 2>&1 || chcp 437 >nul
-    set "ENCODING_MODE=UTF8_EN"
+    if "%CURRENT_CP%"=="950" (
+        REM Chinese Traditional system
+        set "ENCODING_MODE=UTF8_TW"
+    ) else (
+        if "%CURRENT_CP%"=="932" (
+            REM Japanese system
+            set "ENCODING_MODE=UTF8_JP"
+        ) else (
+            if "%CURRENT_CP%"=="949" (
+                REM Korean system
+                set "ENCODING_MODE=UTF8_KR"
+            ) else (
+                REM Western/English systems or others
+                set "ENCODING_MODE=UTF8_EN"
+            )
+        )
+    )
 )
 
 REM Enhanced encoding stability test
