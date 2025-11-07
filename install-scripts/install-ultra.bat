@@ -1,5 +1,5 @@
 @echo off
-REM 初始化批处理环境：启用扩展与延迟变量展开，提升脚本兼容性与健壮性
+REM Initialize extended features: enable extensions, delayed expansion for robust script execution
 setlocal EnableExtensions EnableDelayedExpansion
 
 REM Enhanced System Encoding Detection and Auto-Adaptation
@@ -7,41 +7,41 @@ REM Detect current system code page and set appropriate encoding
 for /f "tokens=2 delims=:" %%i in ('chcp') do set "CURRENT_CP=%%i"
 set "CURRENT_CP=%CURRENT_CP: =%"
 
-REM 基于系统代码页选择最优编码（改为更稳健的写法，避免 "||" 在 IF 块中的解析问题）
-REM 1) 先检测当前系统代码页
-REM 2) 优先尝试切换到 UTF-8；若失败则回退到系统原生代码页
-REM 3) 设置 ENCODING_MODE 以供后续逻辑参考
+REM System code page selection and script encoding (avoid UTF-8 encoding issues in batch files)
+REM 1) Detect current system code page
+REM 2) Use system native code page instead of UTF-8 to avoid command parsing issues
+REM 3) Set ENCODING_MODE for reference logic
 
-REM 计算回退代码页（NATIVE_CP）
+REM Set native code page based on system detection
 set "NATIVE_CP=437"
 if "%CURRENT_CP%"=="936" set "NATIVE_CP=936"
 if "%CURRENT_CP%"=="950" set "NATIVE_CP=950"
 if "%CURRENT_CP%"=="932" set "NATIVE_CP=932"
 if "%CURRENT_CP%"=="949" set "NATIVE_CP=949"
 
-REM 尝试切换到 UTF-8；如失败则回退到 NATIVE_CP
-chcp 65001 >nul 2>&1
-if errorlevel 1 chcp %NATIVE_CP% >nul
+REM Use system native code page instead of UTF-8 to avoid command parsing issues
+REM Skip switching to UTF-8, directly use detected system native code page
+chcp %NATIVE_CP% >nul
 
-REM 设置 ENCODING_MODE（使用嵌套 IF，避免 ELSE IF 在不同环境下的歧义）
+REM Set ENCODING_MODE using nested IF statements for different system types
 if "%CURRENT_CP%"=="936" (
     REM Chinese Simplified system
-    set "ENCODING_MODE=UTF8_CN"
+    set "ENCODING_MODE=GBK_CN"
 ) else (
     if "%CURRENT_CP%"=="950" (
         REM Chinese Traditional system
-        set "ENCODING_MODE=UTF8_TW"
+        set "ENCODING_MODE=BIG5_TW"
     ) else (
         if "%CURRENT_CP%"=="932" (
             REM Japanese system
-            set "ENCODING_MODE=UTF8_JP"
+            set "ENCODING_MODE=SJIS_JP"
         ) else (
             if "%CURRENT_CP%"=="949" (
                 REM Korean system
-                set "ENCODING_MODE=UTF8_KR"
+                set "ENCODING_MODE=EUCKR_KR"
             ) else (
                 REM Western/English systems or others
-                set "ENCODING_MODE=UTF8_EN"
+                set "ENCODING_MODE=ANSI_EN"
             )
         )
     )
@@ -69,7 +69,7 @@ echo [Step] Validating rules consistency...
 powershell -NoProfile -ExecutionPolicy Bypass -File "%BASE_DIR%\scripts\validate-rules-consistency.ps1"
 if errorlevel 1 (
     echo ERROR: Rules consistency validation failed. Please fix rule metadata per README.md.
-    echo See: README.md -> 规则元数据字段说明
+    echo See: README.md -> Rule metadata field descriptions
     echo.
     pause
     exit /b 1
@@ -455,12 +455,12 @@ echo - P2-intelligent-system/ (Priority: 900-999) - 24 files >> "%MAIN_RULES%"
 echo   - unified-rules-base.mdc >> "%MAIN_RULES%"
 echo   - ai-agent-intelligence-core.mdc >> "%MAIN_RULES%"
 echo   - audit-logging-system.mdc >> "%MAIN_RULES%"
-echo   - context-recorder-system.mdc (模块化架构索引) >> "%MAIN_RULES%"
-echo   - context-recorder-core.mdc (核心功能模块) >> "%MAIN_RULES%"
-echo   - context-recorder-templates.mdc (模板定义模块) >> "%MAIN_RULES%"
-echo   - context-recorder-advanced.mdc (高级功能模块) >> "%MAIN_RULES%"
-echo   - context-recorder-edge-cases.mdc (边界处理模块) >> "%MAIN_RULES%"
-echo   - context-systems-integration.mdc (系统集成配置) >> "%MAIN_RULES%"
+echo   - context-recorder-system.mdc (Modular Function Management) >> "%MAIN_RULES%"
+echo   - context-recorder-core.mdc (Core Function Module) >> "%MAIN_RULES%"
+echo   - context-recorder-templates.mdc (Template Definition Module) >> "%MAIN_RULES%"
+echo   - context-recorder-advanced.mdc (Advanced Logic Module) >> "%MAIN_RULES%"
+echo   - context-recorder-edge-cases.mdc (Edge Case Handling Module) >> "%MAIN_RULES%"
+echo   - context-systems-integration.mdc (System Integration Module) >> "%MAIN_RULES%"
 echo   - disaster-recovery-plan.mdc >> "%MAIN_RULES%"
 echo   - error-recovery-system.mdc >> "%MAIN_RULES%"
 echo   - feedback-enhanced.mdc >> "%MAIN_RULES%"
